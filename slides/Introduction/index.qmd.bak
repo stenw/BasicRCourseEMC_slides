@@ -1121,7 +1121,7 @@ x[c('foo', 'one')]
 * Indexing matrices is similar to indexing vectors but with double index
 
   - The first position denotes the rows `["index", ]`
-  - The second position denotes the columns `[ , "index"]`
+  - The first position denotes the columns `[ , "index"]`
   
 ::: {.columns}
 
