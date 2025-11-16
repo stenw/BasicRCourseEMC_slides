@@ -1,6 +1,10 @@
 project:
   type: website
   output-dir: docs
+  render:
+    - "*.qmd"       # Render all .qmd files...
+    - "!slides/Rmarkdown/assets-day4/"
+    - "!slides/Introduction/assets-day4/"
 
 website:
   title: "BasicRCourseEMC_Slides"

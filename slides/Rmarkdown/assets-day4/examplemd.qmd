@@ -1,10 +1,11 @@
-````{verbatim, lang="md"}
+````{verbatim, lang="md", source-line-numbers: "1,4"}
 ---
 title: "Example document"              # YAML metadata header
-output: html_document                  # YAML metadata header    
+output: html                           # YAML metadata header    
 ---
 
 ## Introduction
+
 
 We are going to look at the pbc data  <!-- documentation -->
 

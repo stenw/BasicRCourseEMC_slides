@@ -1,0 +1,20 @@
+````{verbatim, lang="md"}
+#' ---
+#' title: "Example document"              
+#'output: html                             
+#'---
+
+#' ## Introduction
+
+#' We are going to look at the pbc data  
+
+#' ## Results
+
+#| label firstchunk
+library(survival)                       # R code chunk  
+mean(pbc$age)
+
+
+#' Very interesting!
+
+````

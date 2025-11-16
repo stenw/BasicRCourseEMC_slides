@@ -1,0 +1,20 @@
+<svg viewBox="0 0 1280 800" xmlns="http://www.w3.org/2000/svg">
+     <g>
+    <title>Layer 1</title>
+    <polygon points="0,0 80,0 0, 80" stroke="#000" fill="#0c2074"/>
+    </g>
+
+    <g transform="translate(1180, 20)">
+    <!-- Book 1 -->
+    <rect x="0" y="10" width="20" height="30" fill="#4a90e2" stroke="#2e5c8a" stroke-width="1" rx="1"/>
+    <line x1="0" y1="25" x2="20" y2="25" stroke="#2e5c8a" stroke-width="0.5"/>
+    
+    <!-- Book 2 (tilted) -->
+    <rect x="22" y="8" width="20" height="30" fill="#e27d4a" stroke="#8a4a2e" stroke-width="1" rx="1" transform="rotate(8 32 23)"/>
+    <line x1="22" y1="23" x2="42" y2="23" stroke="#8a4a2e" stroke-width="0.5" transform="rotate(8 32 23)"/>
+    
+    <!-- Book 3 -->
+    <rect x="45" y="12" width="20" height="28" fill="#6b4ae2" stroke="#4a2e8a" stroke-width="1" rx="1"/>
+    <line x1="45" y1="26" x2="65" y2="26" stroke="#4a2e8a" stroke-width="0.5"/>
+  </g>
+ </svg>

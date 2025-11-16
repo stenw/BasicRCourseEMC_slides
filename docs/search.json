@@ -1,5 +1,628 @@
 [
   {
+    "objectID": "slides/Introduction/index.html#introduction-to-r-1",
+    "href": "slides/Introduction/index.html#introduction-to-r-1",
+    "title": "R course - Day 1",
+    "section": "Introduction to R",
+    "text": "Introduction to R\nStatistics have flourished in the recent years mainly due to the possibility of doing complex analysis using computers\n\nThe most valuable tool of a modern quantitative researcher is his/her personal computer\n\n\nAnalysts must not only learn how to use the software but also the ideas behind it\nLearning statistical modelling and algorithm is more important than learning a programming language"
+  },
+  {
+    "objectID": "slides/Introduction/index.html#introduction-to-r-contd",
+    "href": "slides/Introduction/index.html#introduction-to-r-contd",
+    "title": "R course - Day 1",
+    "section": "Introduction to R (cont’d)",
+    "text": "Introduction to R (cont’d)\n\nMany statistical software packages exists to do simple and specialized analysis\nThe programming language R is popular for data scientists\nR is a software environment for statistical computing and graphics\n\nfree and open source\nextensive catalog of statistical and graphical methods\n\nR is mainly used in academia. However, many large companies also use R programming language, including healthcare industries but also Uber, Google, Airbnb, Facebook and so on"
+  },
+  {
+    "objectID": "slides/Introduction/index.html#agenda",
+    "href": "slides/Introduction/index.html#agenda",
+    "title": "R course - Day 1",
+    "section": "Agenda",
+    "text": "Agenda\n\nDay 1:\n\nIntroduction\n\nDay 2:\n\nData cleaning\nData visualization\n\nDay 3:\n\nR functions\nStatistical analysis\n\nDay 4:\n\nAdditional topics"
+  },
+  {
+    "objectID": "slides/Introduction/index.html#program-this-morning",
+    "href": "slides/Introduction/index.html#program-this-morning",
+    "title": "R course - Day 1",
+    "section": "Program this morning",
+    "text": "Program this morning\n\n\nIntroduction to R\nBasic use of R\nCommon objects in R\nIndexing / Subsetting"
+  },
+  {
+    "objectID": "slides/Introduction/index.html#references",
+    "href": "slides/Introduction/index.html#references",
+    "title": "R course - Day 1",
+    "section": "References",
+    "text": "References\n\nMore books that use R (or S) can be found at:\nhttp://www.r-project.org/doc/bib/R-books.html, or\nhttp://www.r-project.org/doc/bib/R-jabref.html\nR ships with a number of helpful manuals\nOther manuals and helpful material are available on-line via CRAN: http://cran.r-project.org/other-docs.html"
+  },
+  {
+    "objectID": "slides/Introduction/index.html#what-does-r-look-like",
+    "href": "slides/Introduction/index.html#what-does-r-look-like",
+    "title": "R course - Day 1",
+    "section": "What does R look like ?",
+    "text": "What does R look like ?"
+  },
+  {
+    "objectID": "slides/Introduction/index.html#a-brief-history-of-r",
+    "href": "slides/Introduction/index.html#a-brief-history-of-r",
+    "title": "R course - Day 1",
+    "section": "A brief history of R",
+    "text": "A brief history of R\n\n1993: University of Auckland, New Zealand by Ross Ihaka and Robert Gentleman\n1997: R core Team was formed (20 members)\n2000: R 1.0.0 released\n2004: First international user conference in Vienna\n2013: 5,026 packages available\n2017: 10,875 packages available\nNow: 20,777 packages available"
+  },
+  {
+    "objectID": "slides/Introduction/index.html#why-learn-r",
+    "href": "slides/Introduction/index.html#why-learn-r",
+    "title": "R course - Day 1",
+    "section": "Why learn R ?",
+    "text": "Why learn R ?\n\nR is a free software environment for statistical computing and graphics\nIt compiles and runs on LINUX, Windows and MacOS\nOpen source language\nUsers are allowed to modify and redistribute the code\nAdvanced statistical language\nSupports extensions\nInterfaces to other languages\nFlexible and fun!"
+  },
+  {
+    "objectID": "slides/Introduction/index.html#where-do-i-get-r",
+    "href": "slides/Introduction/index.html#where-do-i-get-r",
+    "title": "R course - Day 1",
+    "section": "Where do I get R ?",
+    "text": "Where do I get R ?\n\nhttp://cran.r-project.org\nchoose your platform, e.g., Windows, Linux\n\ne.g., for Windows: Windows \\(\\rightarrow\\) base \\(\\rightarrow\\) Download R 4.4.3 for Windows\nInstall"
+  },
+  {
+    "objectID": "slides/Introduction/index.html#packages",
+    "href": "slides/Introduction/index.html#packages",
+    "title": "R course - Day 1",
+    "section": "Packages",
+    "text": "Packages\n\nPackages built for specific tasks\nDownload R packages from the CRAN web site \\(\\rightarrow\\) within R\n\nPackages\nInstall package(s)*\nMake you choice(s)\nLoad the package using library().  \n\n\n(note: install does not mean load)\n\n\n\nalternatively use use install.packages()"
+  },
+  {
+    "objectID": "slides/Introduction/index.html#how-to-get-help-in-r",
+    "href": "slides/Introduction/index.html#how-to-get-help-in-r",
+    "title": "R course - Day 1",
+    "section": "How to get help in R",
+    "text": "How to get help in R\n\nWithin R \n\nhelp() or `? invoke the on-line help file for the specified function\nchecking the FAQ\nhelp.search(\"topic\") or ??\"topic\" (depends on the installed packages)\nRSiteSearch(\"topic\") (requires internet connection)"
+  },
+  {
+    "objectID": "slides/Introduction/index.html#how-to-get-help-in-r-contd",
+    "href": "slides/Introduction/index.html#how-to-get-help-in-r-contd",
+    "title": "R course - Day 1",
+    "section": "How to get help in R (cont’d)",
+    "text": "How to get help in R (cont’d)\n\n\nOnline\n\nR-help (https://stat.ethz.ch/mailman/listinfo/r-help – mailing list)\nR-seek (http://www.rseek.org – Google-like searched engine)\nCRAN Task Views (http://cran.r-project.org/web/views/ – categorization of packages)\nR related Blogs (http://www.r-bloggers.com/ – many useful illustrations of R and R packages)\nstackoverflow Open community for developers (https://stackoverflow.com/ – ask/answer a question)\nBig Book of R (https://www.bigbookofr.com/ collection of R books)"
+  },
+  {
+    "objectID": "slides/Introduction/index.html#disadvantages-of-r",
+    "href": "slides/Introduction/index.html#disadvantages-of-r",
+    "title": "R course - Day 1",
+    "section": "Disadvantages of R",
+    "text": "Disadvantages of R\n\nAppears intimidating to the first-time user\nDefault Output is not so nice looking (but wait ultil Day 4)\nExporting output is more difficult (we will also discuss this on Day 4)\nCannot easily handle very big data sets (depends on the installed RAM)\nA lot of things are available but they are sometimes hard to find\nThe quality of the available packages is greatly varying\nBy default uses only one CPU at a time for most tasks (can be changed using packages))"
+  },
+  {
+    "objectID": "slides/Introduction/index.html#summary",
+    "href": "slides/Introduction/index.html#summary",
+    "title": "R course - Day 1",
+    "section": "Summary",
+    "text": "Summary\n\nR is a great tool to explore and analyse data\nSeveral statistical methods can be performed with R\nIt is important to understand the methods before applying them in R\n\n\n\n How to use R\n\n\n\n\nR uses packages that perform specific tasks\n\n\nInstall package only once\n\n\nLoad package every time you open R"
+  },
+  {
+    "objectID": "slides/Introduction/index.html#in-this-section",
+    "href": "slides/Introduction/index.html#in-this-section",
+    "title": "R course - Day 1",
+    "section": "In this Section",
+    "text": "In this Section\n\nUsing R / RStudio\nExamples with Data\nGetting Familiar with R\nImporting data and saving your work\nA lot of practice"
+  },
+  {
+    "objectID": "slides/Introduction/index.html#using-r",
+    "href": "slides/Introduction/index.html#using-r",
+    "title": "R course - Day 1",
+    "section": "Using R",
+    "text": "Using R\n\nR is a command-based procedural language\n\nwrite and execute commands\nuse and define functions\n\nYou may write the commands in the R console (Windows) or in a shell (Linux)\n\n\n\nYou will become more familiar with the syntax as you use it"
+  },
+  {
+    "objectID": "slides/Introduction/index.html#popular-ides-guis",
+    "href": "slides/Introduction/index.html#popular-ides-guis",
+    "title": "R course - Day 1",
+    "section": "Popular IDEs / GUIs",
+    "text": "Popular IDEs / GUIs\n\nStrongly advisable to use a suitable text editor or GUI- Some available options:\n\nRstudio (all major platforms; http://www.rstudio.org/)\nVisual Studio Code (all platforms)\nPositron (all platforms)\nJupyter (all platforms)\nEmacs (w. ESS, all platforms)\nfor more check https://r-dir.com/blog/2013/01/list-of-r-editors.html"
+  },
+  {
+    "objectID": "slides/Introduction/index.html#using-r-rstudio",
+    "href": "slides/Introduction/index.html#using-r-rstudio",
+    "title": "R course - Day 1",
+    "section": "Using R / RStudio",
+    "text": "Using R / RStudio\n\n\nFor this course: Rstudio (http://www.rstudio.org/)\n\nfree\nworks fine in Windows, MacOS and Linux\nmakes working with R a lot more user friendly\nhelpful with errors\nalternative output options"
+  },
+  {
+    "objectID": "slides/Introduction/index.html#using-r-rstudio-1",
+    "href": "slides/Introduction/index.html#using-r-rstudio-1",
+    "title": "R course - Day 1",
+    "section": "Using R / RStudio",
+    "text": "Using R / RStudio\n \n\nCan I use R without Rstudio?\n\n\n\nCan I use Rstudio without R?"
+  },
+  {
+    "objectID": "slides/Introduction/index.html#r-commands",
+    "href": "slides/Introduction/index.html#r-commands",
+    "title": "R course - Day 1",
+    "section": "R commands",
+    "text": "R commands\n\nElementary commands: expressions and assignments\nAn expression given as command is evaluated printed and discarded\nAn assignments evaluates an expression and passes the value to a variable - the result is not automatically printed"
+  },
+  {
+    "objectID": "slides/Introduction/index.html#r-commands-1",
+    "href": "slides/Introduction/index.html#r-commands-1",
+    "title": "R course - Day 1",
+    "section": "R commands",
+    "text": "R commands\nexpression is given as a command,\n\n1 + 1\n\n[1] 2\n\n\n\nThe result is lost after execution\nIt cannot be viewed again unless the command is rerun.\n\n\nIn order to store information, the expression should assign the result of the command to a variable\n\nx &lt;- 1 + 1\nx\n\n[1] 2"
+  },
+  {
+    "objectID": "slides/Introduction/index.html#basic-calculations",
+    "href": "slides/Introduction/index.html#basic-calculations",
+    "title": "R course - Day 1",
+    "section": "Basic calculations",
+    "text": "Basic calculations\n\nYou can use R as a calculator!\n\n\nBasic arithmetics\n\n\n+, -, *, /, ^\n\n\ny &lt;- 103473 + 100000\ny\n\n[1] 203473\n\n\n\nComplicated arithmetics\n\n\ny &lt;- sqrt(log(5) + exp(1))\ny\n\n[1] 2.080317\n\n\n\nMany functions exist can we can even define our own"
+  },
+  {
+    "objectID": "slides/Introduction/index.html#practical-examples",
+    "href": "slides/Introduction/index.html#practical-examples",
+    "title": "R course - Day 1",
+    "section": "Practical Examples",
+    "text": "Practical Examples\n\nIn practice we often work with data sets and other data structures\nPackage survival - pbc data set\n\n\n\n\n\n\nid\ntime\nstatus\ntrt\nage\nsex\nbili\nchol\n\n\n\n\n1\n400\n2\n1\n58.76523\nf\n14.5\n261\n\n\n2\n4500\n0\n1\n56.44627\nf\n1.1\n302\n\n\n3\n1012\n2\n1\n70.07255\nm\n1.4\n176\n\n\n4\n1925\n2\n1\n54.74059\nf\n1.8\n244\n\n\n5\n1504\n1\n2\n38.10541\nf\n3.4\n279"
+  },
+  {
+    "objectID": "slides/Introduction/index.html#practical-examples-1",
+    "href": "slides/Introduction/index.html#practical-examples-1",
+    "title": "R course - Day 1",
+    "section": "Practical Examples",
+    "text": "Practical Examples\n\nid: case number\ntime: number of days between registration and the earlier of death, transplantation, or study analysis in July, 1986\nstatus: status at endpoint, 0/1/2 for censored, transplant, dead\ntrt: 1/2/NA for D-penicillamine, placebo, not randomised\nage: in years\nsex: m/f\nbili: serum bilirunbin (mg/dl)\nchol: serum cholesterol (mg/dl)\n\n\n\nMore details: https://stat.ethz.ch/R-manual/R-devel/library/survival/html/pbc.html"
+  },
+  {
+    "objectID": "slides/Introduction/index.html#practical-examples-2",
+    "href": "slides/Introduction/index.html#practical-examples-2",
+    "title": "R course - Day 1",
+    "section": "Practical Examples",
+    "text": "Practical Examples\n\nWhat is a scalar/vector/matrix\n\n\n\n\n\n\nid\ntime\nstatus\ntrt\nage\nsex\nbili\nchol\ndt\n\n\n\n\n1\n 400\n2\n1\n58.76523\nf\n14.5\n261\n1\n\n\n2\n4500\n0\n1\n56.44627\nf\n 1.1\n302\n2\n\n\n3\n1012\n2\n1\n70.07255\nm\n 1.4\n176\n3\n\n\n4\n1925\n2\n1\n54.74059\nf\n 1.8\n244\n4\n\n\n5\n1504\n1\n2\n38.10541\nf\n 3.4\n279\n5"
+  },
+  {
+    "objectID": "slides/Introduction/index.html#practical-examples-3",
+    "href": "slides/Introduction/index.html#practical-examples-3",
+    "title": "R course - Day 1",
+    "section": "Practical Examples",
+    "text": "Practical Examples\n\nWhat is a scalar/vector/matrix\n\n\n\n\n\n\nid\ntime\nstatus\ntrt\nage\nsex\nbili\nchol\n\n\n\n\n1\n400\n2\n1\n58.76523\nf\n14.5\n261\n\n\n2\n4500\n0\n1\n56.44627\nf\n1.1\n302\n\n\n3\n1012\n2\n1\n70.07255\nm\n1.4\n176\n\n\n4\n1925\n2\n1\n54.74059\nf\n1.8\n244\n\n\n5\n1504\n1\n2\n38.10541\nf\n3.4\n279"
+  },
+  {
+    "objectID": "slides/Introduction/index.html#practical-examples-4",
+    "href": "slides/Introduction/index.html#practical-examples-4",
+    "title": "R course - Day 1",
+    "section": "Practical Examples",
+    "text": "Practical Examples\n\nWhat is a scalar/vector/matrix\n\n\n\n\n\n\nid\ntime\nstatus\ntrt\nage\nsex\nbili\nchol\n\n\n\n\n1\n400\n2\n1\n58.76523\nf\n14.5\n261\n\n\n2\n4500\n0\n1\n56.44627\nf\n1.1\n302\n\n\n3\n1012\n2\n1\n70.07255\nm\n1.4\n176\n\n\n4\n1925\n2\n1\n54.74059\nf\n1.8\n244\n\n\n5\n1504\n1\n2\n38.10541\nf\n3.4\n279"
+  },
+  {
+    "objectID": "slides/Introduction/index.html#practical-examples-5",
+    "href": "slides/Introduction/index.html#practical-examples-5",
+    "title": "R course - Day 1",
+    "section": "Practical Examples",
+    "text": "Practical Examples\n\nWhat is a scalar/vector/matrix\n\n\n\n\n\n\nid\ntime\nstatus\ntrt\nage\nsex\nbili\nchol\n\n\n\n\n1\n400\n2\n1\n58.76523\nf\n14.5\n261\n\n\n2\n4500\n0\n1\n56.44627\nf\n1.1\n302\n\n\n3\n1012\n2\n1\n70.07255\nm\n1.4\n176\n\n\n4\n1925\n2\n1\n54.74059\nf\n1.8\n244\n\n\n5\n1504\n1\n2\n38.10541\nf\n3.4\n279"
+  },
+  {
+    "objectID": "slides/Introduction/index.html#practical-examples-6",
+    "href": "slides/Introduction/index.html#practical-examples-6",
+    "title": "R course - Day 1",
+    "section": "Practical Examples",
+    "text": "Practical Examples\n\nWhat is a scalar/vector/matrix\n\n\n\n\n\n\nid\ntime\nstatus\ntrt\nage\nsex\nbili\nchol\n\n\n\n\n1\n400\n2\n1\n58.76523\nf\n14.5\n261\n\n\n2\n4500\n0\n1\n56.44627\nf\n1.1\n302\n\n\n3\n1012\n2\n1\n70.07255\nm\n1.4\n176\n\n\n4\n1925\n2\n1\n54.74059\nf\n1.8\n244\n\n\n5\n1504\n1\n2\n38.10541\nf\n3.4\n279"
+  },
+  {
+    "objectID": "slides/Introduction/index.html#practical-examples-7",
+    "href": "slides/Introduction/index.html#practical-examples-7",
+    "title": "R course - Day 1",
+    "section": "Practical Examples",
+    "text": "Practical Examples\n\nCommon questions\n\nWhat is the average age?\nWhat is the average serum bilirubin?\nWhat is the average serum cholesterol?\nWhat is the percentage of females?\nHow many missing values do we have for serum cholesterol?\n\n\n\n\nAll these questions can be answered using R!"
+  },
+  {
+    "objectID": "slides/Introduction/index.html#tips",
+    "href": "slides/Introduction/index.html#tips",
+    "title": "R course - Day 1",
+    "section": "Tips",
+    "text": "Tips\n\n\nR is case sensitive, e.g.,\n\nsex is different than Sex\n\nCommands are separated by a semi-colon or by a newline\nComments can be put anywhere, starting with a hashmark #: everything to the end of the line is a comment\nAssign a value to an object by &lt;- (or =)\nWorking directory: get with getwd() and set with setwd()"
+  },
+  {
+    "objectID": "slides/Introduction/index.html#getting-familiar-with-r",
+    "href": "slides/Introduction/index.html#getting-familiar-with-r",
+    "title": "R course - Day 1",
+    "section": "Getting Familiar with R",
+    "text": "Getting Familiar with R\n\nMissing values\n\nare coded as NA (i.e., not available)\ncheck for missingness is.na() \n\n\nInfinity\n\nis coded as Inf (plus infinity) or -Inf (minus infinity)\ntest: is.finite()"
+  },
+  {
+    "objectID": "slides/Introduction/index.html#getting-familiar-with-r-1",
+    "href": "slides/Introduction/index.html#getting-familiar-with-r-1",
+    "title": "R course - Day 1",
+    "section": "Getting Familiar with R",
+    "text": "Getting Familiar with R\n\nNull objects\n\nare coded as NULL\ntest: is.null() \n\n\nNot a number\n\nis coded as NaN (Not a Number). Example:\n\n\n\n0/0\n\n[1] NaN"
+  },
+  {
+    "objectID": "slides/Introduction/index.html#importing-data",
+    "href": "slides/Introduction/index.html#importing-data",
+    "title": "R course - Day 1",
+    "section": "Importing Data",
+    "text": "Importing Data\n\n\nfunction: read.table(), read.csv() and its variants\n\n\n\n\n\n\n\nNote\n\n\nuse forward slashes or double backward slashes in the file names, e.g.,\n\"C:/Documents and Settings/User/Data/file.txt\" or\n\"C:\\\\Documents and Settings\\\\User\\\\Data\\\\file.txt\"\nor use raw character constants\nr\"(C:\\\\Documents and Settings\\\\User\\\\Data\\\\file.txt)\""
+  },
+  {
+    "objectID": "slides/Introduction/index.html#importing-data-contd",
+    "href": "slides/Introduction/index.html#importing-data-contd",
+    "title": "R course - Day 1",
+    "section": "Importing Data (cont’d)",
+    "text": "Importing Data (cont’d)\n\nSpecialized functions for importing data from other programs\n\npackage: foreign, function: read.spss(), read.dta()\npackage: Hmisc, function: sas.get()\npackage: openxlsx, function: read.xlsx()\n\npackage: readxl, function: read_excel()\npackage: haven, function: read_spss()\netc"
+  },
+  {
+    "objectID": "slides/Introduction/index.html#exporting-data",
+    "href": "slides/Introduction/index.html#exporting-data",
+    "title": "R course - Day 1",
+    "section": "Exporting Data",
+    "text": "Exporting Data\n\n\nSpecialized functions for exporting data to other programs\n\nfunction: write.table(), write.csv()\npackage: foreign, function: write.spss(), write.dta()\npackage: openxlsx, function: write.xlsx()\netc"
+  },
+  {
+    "objectID": "slides/Introduction/index.html#saving-and-loading-your-work",
+    "href": "slides/Introduction/index.html#saving-and-loading-your-work",
+    "title": "R course - Day 1",
+    "section": "Saving and Loading your Work",
+    "text": "Saving and Loading your Work\nMultiple objects:\n\nYou can save your R objects using save()\n\nbe careful about overwriting\n\nYou can load your saved R objects using load()\n\nSingle object:\n\nUsing saveRDS() you can save a single R object\nUsing readRDS() you can load a single R object\n\nwe will need an assignment statement to store the results"
+  },
+  {
+    "objectID": "slides/Introduction/index.html#saving-and-loading-your-work-contd",
+    "href": "slides/Introduction/index.html#saving-and-loading-your-work-contd",
+    "title": "R course - Day 1",
+    "section": "Saving and Loading your Work (cont’d)",
+    "text": "Saving and Loading your Work (cont’d)\n\n\nSave your code by using the tab File in Rstudio!"
+  },
+  {
+    "objectID": "slides/Introduction/index.html#saving-and-loading-your-work-1",
+    "href": "slides/Introduction/index.html#saving-and-loading-your-work-1",
+    "title": "R course - Day 1",
+    "section": "Saving and Loading your Work",
+    "text": "Saving and Loading your Work\nTips:\n\nUse short but descriptive names\nAvoid using names that contain symbols\nAvoid spaces in names\nMake sure that any missing values in your data set are indicated with the same value (or no value), missingness should be documented!"
+  },
+  {
+    "objectID": "slides/Introduction/index.html#summary-1",
+    "href": "slides/Introduction/index.html#summary-1",
+    "title": "R course - Day 1",
+    "section": "Summary",
+    "text": "Summary\n\n\nBasic functions\n\ngetwd(), setwd(),\nis.na(), is.finite(), is.null()\n\n\n\n\nImport/Export\n\nread.csv(), write.csv()\nread.xlsx(), write.xlsx()\nread.table(), write.table()\n\n\n\n\n\nSave/Load\n\nsave(), saveRDS()\nload(), readRDS()"
+  },
+  {
+    "objectID": "slides/Introduction/index.html#in-this-section-1",
+    "href": "slides/Introduction/index.html#in-this-section-1",
+    "title": "R course - Day 1",
+    "section": "In this Section",
+    "text": "In this Section\n\n\nObjects in R\nData types\nData structures"
+  },
+  {
+    "objectID": "slides/Introduction/index.html#objects-in-r",
+    "href": "slides/Introduction/index.html#objects-in-r",
+    "title": "R course - Day 1",
+    "section": "Objects in R",
+    "text": "Objects in R\n\nIn R Everything (data, results, …) is an object\nIn order to list the created objects use the following functions\n\n\nobjects()\nls()\n\n\n\n\nWhen you want to remove objects\n\n\nrm()\nrm(list=ls(all=TRUE))"
+  },
+  {
+    "objectID": "slides/Introduction/index.html#objects-in-r-1",
+    "href": "slides/Introduction/index.html#objects-in-r-1",
+    "title": "R course - Day 1",
+    "section": "Objects in R",
+    "text": "Objects in R\n\nTo investigate a specific object (e.g. pbc)\n\n\nstr(pbc[,c(\"id\", \"time\", \"status\", \"trt\", \"age\", \"sex\", \"bili\", \"chol\")])\n\n'data.frame':   418 obs. of  8 variables:\n $ id    : int  1 2 3 4 5 6 7 8 9 10 ...\n $ time  : int  400 4500 1012 1925 1504 2503 1832 2466 2400 51 ...\n $ status: int  2 0 2 2 1 2 0 2 2 2 ...\n $ trt   : int  1 1 1 1 2 2 2 2 1 2 ...\n $ age   : num  58.8 56.4 70.1 54.7 38.1 ...\n $ sex   : Factor w/ 2 levels \"m\",\"f\": 2 2 1 2 2 2 2 2 2 2 ...\n $ bili  : num  14.5 1.1 1.4 1.8 3.4 0.8 1 0.3 3.2 12.6 ...\n $ chol  : int  261 302 176 244 279 248 322 280 562 200 ..."
+  },
+  {
+    "objectID": "slides/Introduction/index.html#data-types",
+    "href": "slides/Introduction/index.html#data-types",
+    "title": "R course - Day 1",
+    "section": "Data Types",
+    "text": "Data Types\nThe simplest data types are:\n\nnumeric : quantitative data\ncharacter : qualitative data (text)\ninteger : whole numbers\nlogical : TRUE or FALSE"
+  },
+  {
+    "objectID": "slides/Introduction/index.html#data-types-1",
+    "href": "slides/Introduction/index.html#data-types-1",
+    "title": "R course - Day 1",
+    "section": "Data Types",
+    "text": "Data Types\n\nThere is a special data type factors that is often used for qualitative data\n\nThat is data with a distinct small and fixed number of levels\nNote that factors internaly are stored as integers"
+  },
+  {
+    "objectID": "slides/Introduction/index.html#data-types-in-r",
+    "href": "slides/Introduction/index.html#data-types-in-r",
+    "title": "R course - Day 1",
+    "section": "Data Types in R",
+    "text": "Data Types in R\nTo find out what type of object you have, you can use the following function\n\nmode(pbc$age)\n\n[1] \"numeric\"\n\n\n\nstr(pbc$age)\n\n num [1:418] 58.8 56.4 70.1 54.7 38.1 ..."
+  },
+  {
+    "objectID": "slides/Introduction/index.html#data-structures",
+    "href": "slides/Introduction/index.html#data-structures",
+    "title": "R course - Day 1",
+    "section": "Data Structures",
+    "text": "Data Structures\nThe most important data structures are:\n\nVectors: have the same type of elements\nMatrices: have the same type of elements with the same length\nArrays have the same type of elements with the same length but can store the data in more than two dimensions\nData frames: have elements of different type with the same length\nLists: have elements of different type and length"
+  },
+  {
+    "objectID": "slides/Introduction/index.html#data-structures-1",
+    "href": "slides/Introduction/index.html#data-structures-1",
+    "title": "R course - Day 1",
+    "section": "Data Structures",
+    "text": "Data Structures\n\n\n\n\n\n\nNote\n\n\nThere is no seperate data structure for scalars. Even single numbers are considered vectors! However sometimes a single number is still required!"
+  },
+  {
+    "objectID": "slides/Introduction/index.html#data-structures-2",
+    "href": "slides/Introduction/index.html#data-structures-2",
+    "title": "R course - Day 1",
+    "section": "Data Structures",
+    "text": "Data Structures\n \n\nWhat do these data structures look like?"
+  },
+  {
+    "objectID": "slides/Introduction/index.html#data-structures-3",
+    "href": "slides/Introduction/index.html#data-structures-3",
+    "title": "R course - Day 1",
+    "section": "Data Structures",
+    "text": "Data Structures\n\nDifferences between vector, matrix, array, data.frame and list\n\n\npbc[1:6, c(\"age\")]\n\n[1] 58.76523 56.44627 70.07255 54.74059 38.10541 66.25873"
+  },
+  {
+    "objectID": "slides/Introduction/index.html#data-structures-4",
+    "href": "slides/Introduction/index.html#data-structures-4",
+    "title": "R course - Day 1",
+    "section": "Data Structures",
+    "text": "Data Structures\n\nDifferences between vector, matrix, array, data.frame and list\n\n\ncbind(pbc[1:6, c(\"age\")],\n   pbc[1:6, c(\"bili\", \"chol\")])\n\n  pbc[1:6, c(\"age\")] bili chol\n1           58.76523 14.5  261\n2           56.44627  1.1  302\n3           70.07255  1.4  176\n4           54.74059  1.8  244\n5           38.10541  3.4  279\n6           66.25873  0.8  248"
+  },
+  {
+    "objectID": "slides/Introduction/index.html#data-structures-5",
+    "href": "slides/Introduction/index.html#data-structures-5",
+    "title": "R course - Day 1",
+    "section": "Data Structures",
+    "text": "Data Structures\n\nDifferences between vector, matrix, array, data.frame and list\n\n\npbc[1:3, c(\"age\", \"bili\", \"chol\")]\n\n       age bili chol\n1 58.76523 14.5  261\n2 56.44627  1.1  302\n3 70.07255  1.4  176\n\npbc[4:6, c(\"age\", \"bili\", \"chol\")]\n\n       age bili chol\n4 54.74059  1.8  244\n5 38.10541  3.4  279\n6 66.25873  0.8  248"
+  },
+  {
+    "objectID": "slides/Introduction/index.html#data-structures-6",
+    "href": "slides/Introduction/index.html#data-structures-6",
+    "title": "R course - Day 1",
+    "section": "Data Structures",
+    "text": "Data Structures\n\nDifferences between vector, matrix, array, data.frame and list\n\n\npbc[1:2, c(\"protime\", \"time\")]\n\n  protime time\n1    12.2  400\n2    10.6 4500\n\npbc[3:4, c(\"protime\", \"time\")]\n\n  protime time\n3    12.0 1012\n4    10.3 1925"
+  },
+  {
+    "objectID": "slides/Introduction/index.html#data-structures-7",
+    "href": "slides/Introduction/index.html#data-structures-7",
+    "title": "R course - Day 1",
+    "section": "Data Structures",
+    "text": "Data Structures\n\nDifferences between vector, matrix, array, data.frame and list\n\n\npbc[1:6, c(\"id\", \"sex\", \"bili\", \"chol\")]\n\n  id sex bili chol\n1  1   f 14.5  261\n2  2   f  1.1  302\n3  3   m  1.4  176\n4  4   f  1.8  244\n5  5   f  3.4  279\n6  6   f  0.8  248"
+  },
+  {
+    "objectID": "slides/Introduction/index.html#data-structures-8",
+    "href": "slides/Introduction/index.html#data-structures-8",
+    "title": "R course - Day 1",
+    "section": "Data Structures",
+    "text": "Data Structures\n\nDifferences between vector, matrix, array, data.frame and list\n\n\npbc[1:6, c(\"sex\")]\n\n[1] f f m f f f\nLevels: m f\n\npbc[1:2, c(\"sex\", \"bili\")]\n\n  sex bili\n1   f 14.5\n2   f  1.1\n\npbc[1:4, c(\"age\")]\n\n[1] 58.76523 56.44627 70.07255 54.74059"
+  },
+  {
+    "objectID": "slides/Introduction/index.html#data-structures-in-r",
+    "href": "slides/Introduction/index.html#data-structures-in-r",
+    "title": "R course - Day 1",
+    "section": "Data Structures in R",
+    "text": "Data Structures in R\n \n\nLet’s now create different data structures in R!"
+  },
+  {
+    "objectID": "slides/Introduction/index.html#data-structures-in-r-1",
+    "href": "slides/Introduction/index.html#data-structures-in-r-1",
+    "title": "R course - Day 1",
+    "section": "Data Structures in R",
+    "text": "Data Structures in R\nCreate a vector\n\nvec &lt;- c(1, 2, 3, 4, 5)\nvec\n\n[1] 1 2 3 4 5\n\n\n\nvec &lt;- 1:5\nvec\n\n[1] 1 2 3 4 5"
+  },
+  {
+    "objectID": "slides/Introduction/index.html#data-structures-in-r-2",
+    "href": "slides/Introduction/index.html#data-structures-in-r-2",
+    "title": "R course - Day 1",
+    "section": "Data Structures in R",
+    "text": "Data Structures in R\nCreate a matrix\n\n\n\nvec &lt;- c(1, 2, 3, 4, 5,\n         6, 7, 8, 9)\nmat &lt;- matrix(data = vec, \n              nrow = 3,\n              ncol = 3)\nmat \n\n     [,1] [,2] [,3]\n[1,]    1    4    7\n[2,]    2    5    8\n[3,]    3    6    9\n\n\n\n\nvec &lt;- c(1, 2, 3, 4, 5,\n         6, 7, 8, 9)\nmat &lt;- matrix(data = vec, \n              nrow = 3,\n              ncol = 3, \n              byrow = TRUE)\nmat\n\n     [,1] [,2] [,3]\n[1,]    1    2    3\n[2,]    4    5    6\n[3,]    7    8    9"
+  },
+  {
+    "objectID": "slides/Introduction/index.html#data-structures-in-r-3",
+    "href": "slides/Introduction/index.html#data-structures-in-r-3",
+    "title": "R course - Day 1",
+    "section": "Data Structures in R",
+    "text": "Data Structures in R\nCreate an array\n\nar &lt;- array(data = c(1, 2, 3, 4, 5, 6, 7, 8), dim = c(2, 2, 2))\nar\n\n, , 1\n\n     [,1] [,2]\n[1,]    1    3\n[2,]    2    4\n\n, , 2\n\n     [,1] [,2]\n[1,]    5    7\n[2,]    6    8"
+  },
+  {
+    "objectID": "slides/Introduction/index.html#data-structures-in-r-4",
+    "href": "slides/Introduction/index.html#data-structures-in-r-4",
+    "title": "R course - Day 1",
+    "section": "Data Structures in R",
+    "text": "Data Structures in R\nCreate an array\n\nar &lt;- array(data = c(1, 2, 3, 4), dim = c(2, 2, 1))\nar\n\n, , 1\n\n     [,1] [,2]\n[1,]    1    3\n[2,]    2    4"
+  },
+  {
+    "objectID": "slides/Introduction/index.html#data-structures-in-r-5",
+    "href": "slides/Introduction/index.html#data-structures-in-r-5",
+    "title": "R course - Day 1",
+    "section": "Data Structures in R",
+    "text": "Data Structures in R\nCreate a data frame\n\n\n\ndtf &lt;- data.frame(pbc[, \"sex\"], \n                  pbc[, \"age\"])\ndtf[1:3, ]\n\n  pbc....sex.. pbc....age..\n1            f     58.76523\n2            f     56.44627\n3            m     70.07255\n\n\n\n\ndtf &lt;- data.frame(\n            Gender = pbc[, \"sex\"], \n            Age = pbc[, \"age\"])\ndtf[1:3, ]\n\n  Gender      Age\n1      f 58.76523\n2      f 56.44627\n3      m 70.07255"
+  },
+  {
+    "objectID": "slides/Introduction/index.html#data-structures-in-r-6",
+    "href": "slides/Introduction/index.html#data-structures-in-r-6",
+    "title": "R course - Day 1",
+    "section": "Data Structures in R",
+    "text": "Data Structures in R\nCreate a list\n\nlist1 &lt;- list(vec = c(1:5), mat = pbc[1:2, c(\"age\", \"sex\")])\nlist1\n\n$vec\n[1] 1 2 3 4 5\n\n$mat\n       age sex\n1 58.76523   f\n2 56.44627   f"
+  },
+  {
+    "objectID": "slides/Introduction/index.html#class",
+    "href": "slides/Introduction/index.html#class",
+    "title": "R course - Day 1",
+    "section": "Class",
+    "text": "Class\n\n\nIn addition to a type objects have a class\n\n\n\nIt indicates how the object can be used\n\n\n\nThe behaviour of functions when used on the object may depend on the class"
+  },
+  {
+    "objectID": "slides/Introduction/index.html#summary-2",
+    "href": "slides/Introduction/index.html#summary-2",
+    "title": "R course - Day 1",
+    "section": "Summary",
+    "text": "Summary\n\n\n\nData types\n\nnumeric\ncharacter\ninteger\nlogical\nfactors\n\n\nData structures\n\nc()\nmatrix()\narray()\ndata.frame()\nlist()\n\n\n\n\nOther\n\nmode()\nstr()\n\n\n \n\nls()\nobjects()"
+  },
+  {
+    "objectID": "slides/Introduction/index.html#indexingsubsetting",
+    "href": "slides/Introduction/index.html#indexingsubsetting",
+    "title": "R course - Day 1",
+    "section": "Indexing/Subsetting",
+    "text": "Indexing/Subsetting\n\n\nWhen transforming and analyzing data we often need to select specific observations or variables\n\nExamples: Select …\n\nthe age of the patient with the name ‘John Harvey’\nthe 3rd element of vector age\nthe 3rd column of the pbc data set\nthe sex of the 10th patient\nall information of the 5th patient\nthe serum cholesterol for all males\nthe age for male patients or patients that have serum billirubin &gt; 3\nthe first measurement per patient"
+  },
+  {
+    "objectID": "slides/Introduction/index.html#indexingsubsetting-1",
+    "href": "slides/Introduction/index.html#indexingsubsetting-1",
+    "title": "R course - Day 1",
+    "section": "Indexing/Subsetting",
+    "text": "Indexing/Subsetting"
+  },
+  {
+    "objectID": "slides/Introduction/index.html#indexingsubsetting-2",
+    "href": "slides/Introduction/index.html#indexingsubsetting-2",
+    "title": "R course - Day 1",
+    "section": "Indexing/Subsetting",
+    "text": "Indexing/Subsetting\n\n\nThis can be done using square brackets ([ ]) notation and indices\nThree basic types\n\nposition indexing\nlogical indexing\nname indexing"
+  },
+  {
+    "objectID": "slides/Introduction/index.html#indexing-with-vectors",
+    "href": "slides/Introduction/index.html#indexing-with-vectors",
+    "title": "R course - Day 1",
+    "section": "Indexing with vectors",
+    "text": "Indexing with vectors\n\nFor position indexing, use a positive value to select an element\n\n\nx &lt;- c(6:17)\nx\n\n [1]  6  7  8  9 10 11 12 13 14 15 16 17\n\nx[2]\n\n[1] 7\n\n\n\nUse multiple positive values to select multiple elements\n\n\nx[c(2,3,4)]\n\n[1] 7 8 9"
+  },
+  {
+    "objectID": "slides/Introduction/index.html#indexing-with-vectors-1",
+    "href": "slides/Introduction/index.html#indexing-with-vectors-1",
+    "title": "R course - Day 1",
+    "section": "Indexing with vectors",
+    "text": "Indexing with vectors\n\n\nFor position indexing, use duplicated positive values to select the same elements\n\n\nx &lt;- c(6:17)\nx\n\n [1]  6  7  8  9 10 11 12 13 14 15 16 17\n\nx[c(2,2,2)]\n\n[1] 7 7 7"
+  },
+  {
+    "objectID": "slides/Introduction/index.html#indexing-with-vectors-2",
+    "href": "slides/Introduction/index.html#indexing-with-vectors-2",
+    "title": "R course - Day 1",
+    "section": "Indexing with vectors",
+    "text": "Indexing with vectors\n\nFor position indexing, use a negative value to remove an element\n\n\nx &lt;- c(6:17)\nx\n\n [1]  6  7  8  9 10 11 12 13 14 15 16 17\n\nx[-5]\n\n [1]  6  7  8  9 11 12 13 14 15 16 17\n\n\n\n\nPositive and negative indices cannot be combined"
+  },
+  {
+    "objectID": "slides/Introduction/index.html#indexing-with-vectors-3",
+    "href": "slides/Introduction/index.html#indexing-with-vectors-3",
+    "title": "R course - Day 1",
+    "section": "Indexing with vectors",
+    "text": "Indexing with vectors\n\nUse logical index of the same length to select elements where the value is TRUE\n\n\nx &lt;- c(6:10)\ny &lt;- c(TRUE, FALSE, FALSE, FALSE, FALSE)\nx[y]\n\n[1] 6"
+  },
+  {
+    "objectID": "slides/Introduction/index.html#indexing-with-vectors-4",
+    "href": "slides/Introduction/index.html#indexing-with-vectors-4",
+    "title": "R course - Day 1",
+    "section": "Indexing with vectors",
+    "text": "Indexing with vectors\n\nUse logical indexing in combination with conditions\n\n\nx &lt;- c(6:10)\nx[x &gt; 7]\n\n[1]  8  9 10\n\nx[x &gt; 7 & x &gt; 9]\n\n[1] 10\n\nx[x &gt; 7 | x &gt; 9]\n\n[1]  8  9 10"
+  },
+  {
+    "objectID": "slides/Introduction/index.html#indexing-with-vectors-5",
+    "href": "slides/Introduction/index.html#indexing-with-vectors-5",
+    "title": "R course - Day 1",
+    "section": "Indexing with vectors",
+    "text": "Indexing with vectors\n\nFor name/character indexing, use the name of the element\n\n\nx &lt;- c(foo=5, bar=4, one=7, two=12, three=2)\nx[c('foo', 'one')]\n\nfoo one \n  5   7 \n\n\n\nUse the function names to obtain the names"
+  },
+  {
+    "objectID": "slides/Introduction/index.html#indexing-with-a-matrix",
+    "href": "slides/Introduction/index.html#indexing-with-a-matrix",
+    "title": "R course - Day 1",
+    "section": "Indexing with a matrix",
+    "text": "Indexing with a matrix\n\nIndexing matrices is similar to indexing vectors but with double index\n\nThe first position denotes the rows [\"index\", ]\nThe first position denotes the columns [ , \"index\"]\n\n\n\n\n\nExample: select M[3, 2]\n\n3rd row, second column\n\n\\[\n\\begin{pmatrix}\n11 & \\color{blue}{\\mathbf{12}} & 13 & 14 & 15 \\\\[6pt]\n21 & \\color{blue}{\\mathbf{22}} & 23 & 24 & 25 \\\\[6pt]\n\\color{blue}{\\mathbf{31}} & \\color{red}{\\mathbf{32}} & \\color{blue}{\\mathbf{33}} & \\color{blue}{\\mathbf{34}} & \\color{blue}{\\mathbf{35}} \\\\[6pt]\n41 & \\color{blue}{\\mathbf{42}} & 43 & 44 & 45 \\\\[6pt]\n51 & \\color{blue}{\\mathbf{52}} & 53 & 54 & 55\n\\end{pmatrix}\n\\]"
+  },
+  {
+    "objectID": "slides/Introduction/index.html#indexing-with-a-matrix-1",
+    "href": "slides/Introduction/index.html#indexing-with-a-matrix-1",
+    "title": "R course - Day 1",
+    "section": "Indexing with a matrix",
+    "text": "Indexing with a matrix\n\n\n\nmat &lt;- matrix(data = 1:4, \n              nrow = 2, ncol = 2)\nmat\n\n     [,1] [,2]\n[1,]    1    3\n[2,]    2    4\n\n\n\nUse position indexing as:\n\n\nmat &lt;- matrix(data = 1:4, \n              nrow = 2, ncol = 2)\nmat[2, 2]\n\n[1] 4\n\n\n\n\nCan use names:\n\n\nrownames(mat) &lt;- c(\"Patient1\", \"Patient2\")\ncolnames(mat) &lt;- c(\"Height\", \"Weight\")\nmat # display\n\n         Height Weight\nPatient1      1      3\nPatient2      2      4\n\n\n\nTo access the Weight of Patient2:\n\n\nmat[\"Patient2\", \"Weight\"]\n\n[1] 4"
+  },
+  {
+    "objectID": "slides/Introduction/index.html#indexing-with-a-matrix-2",
+    "href": "slides/Introduction/index.html#indexing-with-a-matrix-2",
+    "title": "R course - Day 1",
+    "section": "Indexing with a matrix",
+    "text": "Indexing with a matrix\n\n\n\n\n\n\n\nUsing a single index on a matrix\n\n\nBe cautious, it also works with a single index. In this case, the matrix is treated as a vector.\n\n\n\n\n\nmat &lt;- matrix(data = 1:4, \n              nrow = 2,\n              ncol = 2)\nmat[2]\n\n[1] 2\n\nmat[[2]]\n\n[1] 2"
+  },
+  {
+    "objectID": "slides/Introduction/index.html#indexing-with-a-matrix-3",
+    "href": "slides/Introduction/index.html#indexing-with-a-matrix-3",
+    "title": "R course - Day 1",
+    "section": "Indexing with a matrix",
+    "text": "Indexing with a matrix\n\nWhen we leave a position blank all elements are selected\n\n\nmat &lt;- matrix(data = 1:4, \n              nrow = 2,\n              ncol = 2)\nmat\n\n     [,1] [,2]\n[1,]    1    3\n[2,]    2    4\n\nmat[2, ]\n\n[1] 2 4\n\n\n\nExample with a logical index: select rows where first column &gt; 1\n\n\nlogical_row_index &lt;- mat[,1] &gt; 1\nlogical_row_index\n\n[1] FALSE  TRUE\n\n\n\nmat[logical_row_index, ]\n\n[1] 2 4"
+  },
+  {
+    "objectID": "slides/Introduction/index.html#indexing-with-a-matrix-4",
+    "href": "slides/Introduction/index.html#indexing-with-a-matrix-4",
+    "title": "R course - Day 1",
+    "section": "Indexing with a matrix",
+    "text": "Indexing with a matrix\n\nBe careful, when a single row or column is selected the result is converted to a vector\n\n\nmat &lt;- matrix(data = 1:4, \n              nrow = 2,\n              ncol = 2)\nmat[2, ]\n\n[1] 2 4\n\n\n\nuse drop=FALSE to prevent this\n\n\nmat &lt;- matrix(data = 1:4, \n              nrow = 2,\n              ncol = 2)\nmat[2, , drop=FALSE]\n\n     [,1] [,2]\n[1,]    2    4"
+  },
+  {
+    "objectID": "slides/Introduction/index.html#indexing-with-array",
+    "href": "slides/Introduction/index.html#indexing-with-array",
+    "title": "R course - Day 1",
+    "section": "Indexing with array",
+    "text": "Indexing with array\n\n\n\nar &lt;- array(data = 1:4, \n            dim = c(1, 2, 2))\nar\n\n, , 1\n\n     [,1] [,2]\n[1,]    1    2\n\n, , 2\n\n     [,1] [,2]\n[1,]    3    4\n\n\n\n\nar[1, 1, ]\n\n[1] 1 3"
+  },
+  {
+    "objectID": "slides/Introduction/index.html#indexing-with-data.frame",
+    "href": "slides/Introduction/index.html#indexing-with-data.frame",
+    "title": "R course - Day 1",
+    "section": "Indexing with data.frame",
+    "text": "Indexing with data.frame\n\nWorks with single and double index\n\n\n\n\nDF &lt;- data.frame(x = 1:3, \n      y = c(\"male\", \n            \"male\",\n            \"female\"))\nDF\n\n  x      y\n1 1   male\n2 2   male\n3 3 female\n\n\n\n\nUse position single indexing\n\n\nDF[2]\n\n       y\n1   male\n2   male\n3 female\n\nDF[[2]]\n\n[1] \"male\"   \"male\"   \"female\""
+  },
+  {
+    "objectID": "slides/Introduction/index.html#indexing-with-data.frame-1",
+    "href": "slides/Introduction/index.html#indexing-with-data.frame-1",
+    "title": "R course - Day 1",
+    "section": "Indexing with data.frame",
+    "text": "Indexing with data.frame\n\n\n\nWhen using double index, indexing works like a matrix\n\n\nDF &lt;- data.frame(x = 1:3, \n      y = c(\"male\", \n            \"male\", \n            \"female\"))\nDF\n\n  x      y\n1 1   male\n2 2   male\n3 3 female\n\n\n\n\nUse position indexing\n\n\nDF[2, ]\n\n  x    y\n2 2 male\n\n\n\nUse logical indexing\n\n\nDF[DF$x &lt; 2, ]\n\n  x    y\n1 1 male"
+  },
+  {
+    "objectID": "slides/Introduction/index.html#indexing-with-data.frame-2",
+    "href": "slides/Introduction/index.html#indexing-with-data.frame-2",
+    "title": "R course - Day 1",
+    "section": "Indexing with data.frame",
+    "text": "Indexing with data.frame\n\n$ provides a convenient notation to extract an element by name\n\n\nhead(pbc$time)\n\n[1]  400 4500 1012 1925 1504 2503\n\nhead(pbc[ ,\"time\"])\n\n[1]  400 4500 1012 1925 1504 2503"
+  },
+  {
+    "objectID": "slides/Introduction/index.html#indexing-with-data.frames",
+    "href": "slides/Introduction/index.html#indexing-with-data.frames",
+    "title": "R course - Day 1",
+    "section": "Indexing with data.frames",
+    "text": "Indexing with data.frames\n\nCombine logical and position indexing in data frame\n\n\nhead(pbc[pbc$sex == \"m\", 1:7])\n\n   id time status trt      age sex ascites\n3   3 1012      2   1 70.07255   m       0\n14 14 1217      2   2 56.22177   m       1\n21 21 3445      0   2 64.18891   m       0\n24 24 4079      2   1 44.52019   m       0\n48 48 4427      0   2 49.13621   m       0\n52 52 2386      2   1 50.54073   m       0"
+  },
+  {
+    "objectID": "slides/Introduction/index.html#indexing-with-data.frames-1",
+    "href": "slides/Introduction/index.html#indexing-with-data.frames-1",
+    "title": "R course - Day 1",
+    "section": "Indexing with data.frames",
+    "text": "Indexing with data.frames\n\nCombine logical and position indexing in data frame\n\n\nhead(pbc[pbc$age &gt; 30 | \n         pbc$sex == \"f\",\n         1:7])\n\n  id time status trt      age sex ascites\n1  1  400      2   1 58.76523   f       1\n2  2 4500      0   1 56.44627   f       0\n3  3 1012      2   1 70.07255   m       0\n4  4 1925      2   1 54.74059   f       0\n5  5 1504      1   2 38.10541   f       0\n6  6 2503      2   2 66.25873   f       0"
+  },
+  {
+    "objectID": "slides/Introduction/index.html#indexing-with-data.frames-2",
+    "href": "slides/Introduction/index.html#indexing-with-data.frames-2",
+    "title": "R course - Day 1",
+    "section": "Indexing with data.frames",
+    "text": "Indexing with data.frames\n\nCombine logical and position indexing in data frame\n\n\nhead(pbc[pbc$age &gt; 30 & \n         pbc$sex == \"f\",\n         1:7])\n\n  id time status trt      age sex ascites\n1  1  400      2   1 58.76523   f       1\n2  2 4500      0   1 56.44627   f       0\n4  4 1925      2   1 54.74059   f       0\n5  5 1504      1   2 38.10541   f       0\n6  6 2503      2   2 66.25873   f       0\n7  7 1832      0   2 55.53457   f       0"
+  },
+  {
+    "objectID": "slides/Introduction/index.html#indexing-with-lists",
+    "href": "slides/Introduction/index.html#indexing-with-lists",
+    "title": "R course - Day 1",
+    "section": "Indexing with lists",
+    "text": "Indexing with lists\n\nLists can be subsetted in the same way as vectors using single brackets - Note that the output is a list\n\n\n\nUse position indexing\n\n\nmylist &lt;- list(y = c(14, 45), z = c(\"m\", \"f\", \"f\"))\nmylist[2]\n\n$z\n[1] \"m\" \"f\" \"f\""
+  },
+  {
+    "objectID": "slides/Introduction/index.html#indexing-with-lists-1",
+    "href": "slides/Introduction/index.html#indexing-with-lists-1",
+    "title": "R course - Day 1",
+    "section": "Indexing with lists",
+    "text": "Indexing with lists\n\nDouble square brackets can be also used - Note that the output is a vector\n\n\n\nUse position indexing\n\n\nmylist &lt;- list(y = c(14, 45),\n               z = c(\"m\", \"f\", \"f\"))\nmylist[[2]]\n\n[1] \"m\" \"f\" \"f\""
+  },
+  {
+    "objectID": "slides/Introduction/index.html#indexing-with-lists-2",
+    "href": "slides/Introduction/index.html#indexing-with-lists-2",
+    "title": "R course - Day 1",
+    "section": "Indexing with lists",
+    "text": "Indexing with lists\n\n$ provides a convenient notation to extract an element by name - Note that the output is a vector\n\n\nmylist &lt;- list(y = c(14, 45),\n               z = c(\"m\", \"f\", \"f\"))\nmylist\n\n$y\n[1] 14 45\n\n$z\n[1] \"m\" \"f\" \"f\"\n\nmylist$y\n\n[1] 14 45"
+  },
+  {
+    "objectID": "slides/Introduction/index.html#summary-3",
+    "href": "slides/Introduction/index.html#summary-3",
+    "title": "R course - Day 1",
+    "section": "Summary",
+    "text": "Summary\n\n\nVectors\n\n[]\n[\"\"] - for categorical variables\n\n\nMatrices\n\n[ , ]\n[[]], []\n\n\n\n\nArrays\n\n[ , , ]\n\n\nData frames\n\n[,]\n[[]], []\n$\n\n\nLists\n\n[]\n[[]]\n$"
+  },
+  {
     "objectID": "slides/Plotting/index.html#basic-plotting",
     "href": "slides/Plotting/index.html#basic-plotting",
     "title": "R Course - Day 2",
@@ -224,6 +847,678 @@
     "text": "Saving Plots\n\npng(\"plot1.png\", units = \"in\", res = 300,\n  width = 6, height = 9)\n\nboxplot(ToothGrowth$len~ToothGrowth$supp,\n  col = c(\"darkgreen\", \"purple\"),\n  xlab = \"Supplement Type\", ylab = \"Tooth Length\",\n  ylim = c(0, 40), horizontal = TRUE)\n\ndev.off()"
   },
   {
+    "objectID": "slides/ggplot2/index.html#what-is-ggplot2",
+    "href": "slides/ggplot2/index.html#what-is-ggplot2",
+    "title": "R Course - Day 2",
+    "section": "What is ggplot2?",
+    "text": "What is ggplot2?\n\n\n\nBasic plotting: quick look\nPretty graphs: ggplot2\nCreated by Hadley Wickham\n“Grammar of Graphics” GGplot2\n\n\nhttp://ggplot2.tidyverse.org/reference/index.html\n\n\n\ninstall.packages(\"ggplot2\")\nlibrary(ggplot2)"
+  },
+  {
+    "objectID": "slides/ggplot2/index.html#grammar-of-graphics",
+    "href": "slides/ggplot2/index.html#grammar-of-graphics",
+    "title": "R Course - Day 2",
+    "section": "Grammar of graphics",
+    "text": "Grammar of graphics\n\nData\nAesthetics\nGeometries\nFacets\nScales\nThemes"
+  },
+  {
+    "objectID": "slides/ggplot2/index.html#data",
+    "href": "slides/ggplot2/index.html#data",
+    "title": "R Course - Day 2",
+    "section": "Data",
+    "text": "Data\n\n\nClass: data.frame\nSeparate plotting variables per column\n\nExample of a good dataset:\n\nhead(Indometh, 25)\n\n   Subject time conc\n1        1 0.25 1.50\n2        1 0.50 0.94\n3        1 0.75 0.78\n4        1 1.00 0.48\n5        1 1.25 0.37\n6        1 2.00 0.19\n7        1 3.00 0.12\n8        1 4.00 0.11\n9        1 5.00 0.08\n10       1 6.00 0.07\n11       1 8.00 0.05\n12       2 0.25 2.03\n13       2 0.50 1.63\n14       2 0.75 0.71\n15       2 1.00 0.70\n16       2 1.25 0.64\n17       2 2.00 0.36\n18       2 3.00 0.32\n19       2 4.00 0.20\n20       2 5.00 0.25\n21       2 6.00 0.12\n22       2 8.00 0.08\n23       3 0.25 2.72\n24       3 0.50 1.49\n25       3 0.75 1.16"
+  },
+  {
+    "objectID": "slides/ggplot2/index.html#example-of-a-bad-data-set",
+    "href": "slides/ggplot2/index.html#example-of-a-bad-data-set",
+    "title": "R Course - Day 2",
+    "section": "Example of a Bad Data Set",
+    "text": "Example of a Bad Data Set\n\n\nNot a data.frame\nSeparated data by Male/Female sex\nYear as rownames and month as column names\n\nExample of bad dataset:\n\n\n      Jan  Feb  Mar  Apr  May  Jun  Jul  Aug  Sep  Oct  Nov  Dec\n1974 2134 1863 1877 1877 1492 1249 1280 1131 1209 1492 1621 1846\n1975 2103 2137 2153 1833 1403 1288 1186 1133 1053 1347 1545 2066\n1976 2020 2750 2283 1479 1189 1160 1113  970  999 1208 1467 2059\n1977 2240 1634 1722 1801 1246 1162 1087 1013  959 1179 1229 1655\n1978 2019 2284 1942 1423 1340 1187 1098 1004  970 1140 1110 1812\n1979 2263 1820 1846 1531 1215 1075 1056  975  940 1081 1294 1341\n\n\n      Jan  Feb  Mar  Apr  May  Jun  Jul  Aug  Sep  Oct  Nov  Dec\n1974  901  689  827  677  522  406  441  393  387  582  578  666\n1975  830  752  785  664  467  438  421  412  343  440  531  771\n1976  767 1141  896  532  447  420  376  330  357  445  546  764\n1977  862  660  663  643  502  392  411  348  387  385  411  638\n1978  796  853  737  546  530  446  431  362  387  430  425  679\n1979  821  785  727  612  478  429  405  379  393  411  487  574"
+  },
+  {
+    "objectID": "slides/ggplot2/index.html#reformat-to-one-variable-one-column",
+    "href": "slides/ggplot2/index.html#reformat-to-one-variable-one-column",
+    "title": "R Course - Day 2",
+    "section": "Reformat to One variable One Column",
+    "text": "Reformat to One variable One Column\n\n\n\n\n    Deaths Year Month    Sex\n1      901 1974   Jan female\n2      689 1974   Feb female\n3      827 1974   Mar female\n4      677 1974   Apr female\n5      522 1974   May female\n6      406 1974   Jun female\n7      441 1974   Jul female\n8      393 1974   Aug female\n9      387 1974   Sep female\n10     582 1974   Oct female\n11     578 1974   Nov female\n12     666 1974   Dec female\n13     830 1975   Jan female\n14     752 1975   Feb female\n15     785 1975   Mar female\n16     664 1975   Apr female\n17     467 1975   May female\n18     438 1975   Jun female\n19     421 1975   Jul female\n20     412 1975   Aug female\n21     343 1975   Sep female\n22     440 1975   Oct female\n23     531 1975   Nov female\n24     771 1975   Dec female\n25     767 1976   Jan female\n26    1141 1976   Feb female\n27     896 1976   Mar female\n28     532 1976   Apr female\n29     447 1976   May female\n30     420 1976   Jun female\n31     376 1976   Jul female\n32     330 1976   Aug female\n33     357 1976   Sep female\n34     445 1976   Oct female\n35     546 1976   Nov female\n36     764 1976   Dec female\n37     862 1977   Jan female\n38     660 1977   Feb female\n39     663 1977   Mar female\n40     643 1977   Apr female\n41     502 1977   May female\n42     392 1977   Jun female\n43     411 1977   Jul female\n44     348 1977   Aug female\n45     387 1977   Sep female\n46     385 1977   Oct female\n47     411 1977   Nov female\n48     638 1977   Dec female\n49     796 1978   Jan female\n50     853 1978   Feb female\n51     737 1978   Mar female\n52     546 1978   Apr female\n53     530 1978   May female\n54     446 1978   Jun female\n55     431 1978   Jul female\n56     362 1978   Aug female\n57     387 1978   Sep female\n58     430 1978   Oct female\n59     425 1978   Nov female\n60     679 1978   Dec female\n61     821 1979   Jan female\n62     785 1979   Feb female\n63     727 1979   Mar female\n64     612 1979   Apr female\n65     478 1979   May female\n66     429 1979   Jun female\n67     405 1979   Jul female\n68     379 1979   Aug female\n69     393 1979   Sep female\n70     411 1979   Oct female\n71     487 1979   Nov female\n72     574 1979   Dec female\n73    2134 1974   Jan   male\n74    1863 1974   Feb   male\n75    1877 1974   Mar   male\n76    1877 1974   Apr   male\n77    1492 1974   May   male\n78    1249 1974   Jun   male\n79    1280 1974   Jul   male\n80    1131 1974   Aug   male\n81    1209 1974   Sep   male\n82    1492 1974   Oct   male\n83    1621 1974   Nov   male\n84    1846 1974   Dec   male\n85    2103 1975   Jan   male\n86    2137 1975   Feb   male\n87    2153 1975   Mar   male\n88    1833 1975   Apr   male\n89    1403 1975   May   male\n90    1288 1975   Jun   male\n91    1186 1975   Jul   male\n92    1133 1975   Aug   male\n93    1053 1975   Sep   male\n94    1347 1975   Oct   male\n95    1545 1975   Nov   male\n96    2066 1975   Dec   male\n97    2020 1976   Jan   male\n98    2750 1976   Feb   male\n99    2283 1976   Mar   male\n100   1479 1976   Apr   male\n101   1189 1976   May   male\n102   1160 1976   Jun   male\n103   1113 1976   Jul   male\n104    970 1976   Aug   male\n105    999 1976   Sep   male\n106   1208 1976   Oct   male\n107   1467 1976   Nov   male\n108   2059 1976   Dec   male\n109   2240 1977   Jan   male\n110   1634 1977   Feb   male\n111   1722 1977   Mar   male\n112   1801 1977   Apr   male\n113   1246 1977   May   male\n114   1162 1977   Jun   male\n115   1087 1977   Jul   male\n116   1013 1977   Aug   male\n117    959 1977   Sep   male\n118   1179 1977   Oct   male\n119   1229 1977   Nov   male\n120   1655 1977   Dec   male\n121   2019 1978   Jan   male\n122   2284 1978   Feb   male\n123   1942 1978   Mar   male\n124   1423 1978   Apr   male\n125   1340 1978   May   male\n126   1187 1978   Jun   male\n127   1098 1978   Jul   male\n128   1004 1978   Aug   male\n129    970 1978   Sep   male\n130   1140 1978   Oct   male\n131   1110 1978   Nov   male\n132   1812 1978   Dec   male\n133   2263 1979   Jan   male\n134   1820 1979   Feb   male\n135   1846 1979   Mar   male\n136   1531 1979   Apr   male\n137   1215 1979   May   male\n138   1075 1979   Jun   male\n139   1056 1979   Jul   male\n140    975 1979   Aug   male\n141    940 1979   Sep   male\n142   1081 1979   Oct   male\n143   1294 1979   Nov   male\n144   1341 1979   Dec   male\n\n\n\n\nggplot(data) + geom_point(aes(x=Month, y=Deaths, color=Sex))"
+  },
+  {
+    "objectID": "slides/ggplot2/index.html#aesthetics",
+    "href": "slides/ggplot2/index.html#aesthetics",
+    "title": "R Course - Day 2",
+    "section": "Aesthetics",
+    "text": "Aesthetics\n\nAvailable aesthetics:\n\nx\ny\ncolor\nfill\nsize\nalpha\nlinetype\nlabels\nshape\ngroup"
+  },
+  {
+    "objectID": "slides/ggplot2/index.html#geometries",
+    "href": "slides/ggplot2/index.html#geometries",
+    "title": "R Course - Day 2",
+    "section": "Geometries",
+    "text": "Geometries\ngeom_… - the thing you want to plot\n30+ different geoms: https://ggplot2.tidyverse.org/reference/\n\n\n\ngeom_point() \ngeom_line() \ngeom_bar() \n\n\n\ngeom_histogram() \ngeom_boxplot() \ngeom_heatmap()"
+  },
+  {
+    "objectID": "slides/ggplot2/index.html#scatter-plots",
+    "href": "slides/ggplot2/index.html#scatter-plots",
+    "title": "R Course - Day 2",
+    "section": "Scatter Plots",
+    "text": "Scatter Plots\n\n\nBase Rggplot2\n\n\n\nToothGrowth$index &lt;- as.numeric(rownames(ToothGrowth))\nplot(ToothGrowth$len)\n\n\n\n\n\n\n\n\n\n\n\nggplot(ToothGrowth) + \n  geom_point(aes(x=index, y=len), size=2)"
+  },
+  {
+    "objectID": "slides/ggplot2/index.html#line-graphs",
+    "href": "slides/ggplot2/index.html#line-graphs",
+    "title": "R Course - Day 2",
+    "section": "Line Graphs",
+    "text": "Line Graphs\n\n\nBase Rggplot2\n\n\n\nplot(ToothGrowth$len, type = \"l\")\n\n\n\n\n\n\n\n\n\n\n\nggplot(ToothGrowth) + \n  geom_line(aes(x=index, y=len))"
+  },
+  {
+    "objectID": "slides/ggplot2/index.html#bar-charts",
+    "href": "slides/ggplot2/index.html#bar-charts",
+    "title": "R Course - Day 2",
+    "section": "Bar Charts",
+    "text": "Bar Charts\n\n\nBase Rggplot2\n\n\n\nbarplot(table(ToothGrowth$dose))\n\n\n\n\n\n\n\n\n\n\n\nggplot(ToothGrowth) + \n  geom_bar(aes(x=as.factor(dose)))"
+  },
+  {
+    "objectID": "slides/ggplot2/index.html#histograms",
+    "href": "slides/ggplot2/index.html#histograms",
+    "title": "R Course - Day 2",
+    "section": "Histograms",
+    "text": "Histograms\n\n\nBase Rggplot2\n\n\n\nhist(ToothGrowth$len,breaks = 50)\n\n\n\n\n\n\n\n\n\n\n\nggplot(ToothGrowth) + \n  geom_histogram(aes(x=len), binwidth = 0.5)"
+  },
+  {
+    "objectID": "slides/ggplot2/index.html#box-plots",
+    "href": "slides/ggplot2/index.html#box-plots",
+    "title": "R Course - Day 2",
+    "section": "Box Plots",
+    "text": "Box Plots\n\n\nBase Rggplot2\n\n\n\nboxplot(ToothGrowth$len~ToothGrowth$supp)\n\n\n\n\n\n\n\n\n\n\n\nggplot(ToothGrowth) + \n  stat_boxplot(aes(x=supp,y=len), geom=\"errorbar\", width=0.5) + \n    geom_boxplot(aes(x=supp,y=len))"
+  },
+  {
+    "objectID": "slides/ggplot2/index.html#heatmaps",
+    "href": "slides/ggplot2/index.html#heatmaps",
+    "title": "R Course - Day 2",
+    "section": "Heatmaps",
+    "text": "Heatmaps\n\nggplot(ToothGrowth) + \n  geom_tile(aes(x = supp, y = as.factor(dose), fill = len), color=\"black\")"
+  },
+  {
+    "objectID": "slides/ggplot2/index.html#facets",
+    "href": "slides/ggplot2/index.html#facets",
+    "title": "R Course - Day 2",
+    "section": "Facets",
+    "text": "Facets\n\nSeparate plots (facets) to compare groups of data\n\nBase Rggplot2\n\n\n\n\n\npar(mfrow = c(1, 3))\n\nlow &lt;- ToothGrowth[\n  which(ToothGrowth$dose==0.5),]\n\nmed &lt;- ToothGrowth[\n  which(ToothGrowth$dose==1),]\n\nhigh &lt;- ToothGrowth[\n  which(ToothGrowth$dose==2),]\n\nboxplot(low$len~low$supp, \n        main = \"Low dose\", \n        xlab = \"Supplement Type\")\nboxplot(med$len~med$supp, \n        main = \"Medium dose\", \n        xlab = \"Supplement Type\")\nboxplot(high$len~high$supp, \n        main = \"High dose\", \n        xlab = \"Supplement Type\")\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nggplot(ToothGrowth, aes(x=supp,y=len)) + \n    stat_boxplot(geom=\"errorbar\", width=0.5) + \n    geom_boxplot() + geom_point(color=\"red\") + \n    facet_grid(. ~ as.factor(dose))"
+  },
+  {
+    "objectID": "slides/ggplot2/index.html#scales",
+    "href": "slides/ggplot2/index.html#scales",
+    "title": "R Course - Day 2",
+    "section": "Scales",
+    "text": "Scales\n\nScale can be changed for each Aesthetic with corresponding scale_...\n\nggplot(ToothGrowth, aes(x=index, y=as.factor(dose), color=len)) + \n    geom_point() + \n    scale_x_continuous(limits=c(1,100), trans = \"log2\", \n        breaks=c(2,4,8,16,32,64), \n        label=c(\"two\",\"four\",\"eight\",\"sixteen\",\"thirtytwo\",\"sixtyfour\")) + \n    scale_y_discrete(label=c(\"low\",\"medium\",\"high\")) + \n    scale_color_gradient2(limits=c(0,40), low = \"green\", mid = \"black\", high = \"red\", \n        midpoint = 20)\n\n\n\n\n\n\n\n\nAll available scales with examples: http://ggplot2.tidyverse.org/reference/"
+  },
+  {
+    "objectID": "slides/ggplot2/index.html#themes",
+    "href": "slides/ggplot2/index.html#themes",
+    "title": "R Course - Day 2",
+    "section": "Themes",
+    "text": "Themes\n\n\nThe standard themes available in the ggplot package are:\n\ntheme_gray\ntheme_bw\ntheme_linedraw\ntheme_light\ntheme_dark\ntheme_minimal\ntheme_classic\ntheme_void\n\n\n\np &lt;- ggplot(ToothGrowth)\np + geom_point(aes(x = index, y = len, \n                   color = supp, size = dose)) + \n  theme_light()"
+  },
+  {
+    "objectID": "slides/ggplot2/index.html#custom-themes",
+    "href": "slides/ggplot2/index.html#custom-themes",
+    "title": "R Course - Day 2",
+    "section": "Custom Themes",
+    "text": "Custom Themes\n\nTheme parameters: http://ggplot2.tidyverse.org/reference/theme.html\nCustomize labels with labs()\n\nCodeResult\n\n\n\np &lt;- ggplot(ToothGrowth)\np + geom_point(aes(x = index, y = len, color = supp, size = dose)) + \n    theme(text = element_text(family = \"serif\", colour = \"#6f898e\"), \n      line = element_line(color = \"#163f47\"), \n      rect = element_rect(fill = \"#163f47\", color = \"#163f47\"),\n        axis.text.x = element_text(color=\"black\"), \n        axis.text.y = element_text(color=\"white\"), \n      axis.ticks = element_line(color = \"#6f898e\"), \n      axis.line = element_line(color = \"#163f47\", linetype = 1),\n        legend.background = element_blank(), \n        legend.key = element_blank(), \n        panel.background = element_rect(fill = \"#215c68\", colour = \"#163f47\"), \n        panel.border = element_blank(), \n      panel.grid = element_line(color = \"#163f47\"), \n      panel.grid.major = element_line(color = \"#163f47\"), \n      panel.grid.minor = element_line(color = \"#163f47\"), \n      plot.background = element_rect(fill = NULL, colour = NA, linetype = 0)\n    ) + \n    labs(title=\"Toothgrowth\", \n        subtitle = \"Orange juice or Vitamin C?\", x=\"Index\", y=\"Toothlength\", \n        size=\"Dose\", color=\"Supplement\") +\n    scale_color_manual(label=c(\"Orange juice\",\"Vitamin C\"), \n        values = c(\"VC\"=\"green\",\"OJ\"=\"orange\"))"
+  },
+  {
+    "objectID": "slides/ggplot2/index.html#saving-ggplots",
+    "href": "slides/ggplot2/index.html#saving-ggplots",
+    "title": "R Course - Day 2",
+    "section": "Saving ggplots",
+    "text": "Saving ggplots\nSave plot with ggsave() function\nEnter plot object and file to save ggsave(p, \"myplot.png\")\nPossible file extensions: “eps”, “ps”, “tex”, “pdf”, “jpeg”, “tiff”, “png”, “bmp”, “svg” or “wmf”"
+  },
+  {
+    "objectID": "slides/ggplot2/index.html#extensions",
+    "href": "slides/ggplot2/index.html#extensions",
+    "title": "R Course - Day 2",
+    "section": "Extensions",
+    "text": "Extensions\nhttps://exts.ggplot2.tidyverse.org/gallery/"
+  },
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "BasicRCourseEMC_Slides",
+    "section": "",
+    "text": "R Course - Day 2\n\n\n\nDay2\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nR Course - Day 3\n\n\n\nDay3\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nR Course - Day 2\n\n\n\nDay2\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nR Course - Day 3\n\n\n\nDay3\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nR course - Day 4\n\n\n\nDay4\n\n\n\n\n\n\n\nSten Willemsen\n\n\nNov 20, 2025\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nR course - Day 1\n\n\n\nDay1\n\n\n\n\n\n\n\nSten Willemsen\n\n\nOct 17, 2025\n\n\n\n\n\n\n\n\nNo matching items"
+  },
+  {
+    "objectID": "slides/Rmarkdown/index.html#r-course---programme",
+    "href": "slides/Rmarkdown/index.html#r-course---programme",
+    "title": "R course - Day 4",
+    "section": "R Course - Programme",
+    "text": "R Course - Programme\n\nDay 1: Introduction\nDay 2: Data management and visualization\nDay 3: Functions and Analysis\nDay 4: Additional topics"
+  },
+  {
+    "objectID": "slides/Rmarkdown/index.html#program-this-morning",
+    "href": "slides/Rmarkdown/index.html#program-this-morning",
+    "title": "R course - Day 4",
+    "section": "Program this morning",
+    "text": "Program this morning\n\n\nQuarto / Rmarkdown\nShiny\nTidyverse\nR in Erasmus MC"
+  },
+  {
+    "objectID": "slides/Rmarkdown/index.html#problems",
+    "href": "slides/Rmarkdown/index.html#problems",
+    "title": "R course - Day 4",
+    "section": "Problems",
+    "text": "Problems\n\nWhen doing research you often want to discuss things with collaborators (for example your supervisor)\nResults from R need to be copied to word or powerpoint.\n\nOften this does not look good without formatting\nErrors can be introduced\nMaking small changes means you have to do everything again\n\nIt is convenient to have code, output and documentation together"
+  },
+  {
+    "objectID": "slides/Rmarkdown/index.html#problem-2",
+    "href": "slides/Rmarkdown/index.html#problem-2",
+    "title": "R course - Day 4",
+    "section": "Problem (2)",
+    "text": "Problem (2)\n\nAuthors need to invest effort to create a aesthetically pleasing document (presentation, web, report)\nReaders that want to reproduce results must obtain different files must puzzle out which results are produced by which code\nOften there is no single comprehensive document that integrates data analysis witch documentation and discussion of results\n\nData, Code, Documentation and Results lack proper linkage\n\nHard to update analyses when there are small changes to data or methods"
+  },
+  {
+    "objectID": "slides/Rmarkdown/index.html#goals",
+    "href": "slides/Rmarkdown/index.html#goals",
+    "title": "R course - Day 4",
+    "section": "Goals",
+    "text": "Goals\n\n\nWe want our scientific documents to be:\n\nReproducible\nTransparent\nShareable\nUnderstandable\nEfficient to produce and maintain"
+  },
+  {
+    "objectID": "slides/Rmarkdown/index.html#literate-programming",
+    "href": "slides/Rmarkdown/index.html#literate-programming",
+    "title": "R course - Day 4",
+    "section": "Literate Programming",
+    "text": "Literate Programming\n\nOrigin of the Concept: Don Knuth\nDocument is a stream of text and code (“chunks”)\nPresentation code formats results (tables, figures)\nText explains what is done\n\nSelf documenting\n\nLiterate programs are weaved to produce human readable documents and tangled to produce machine readable documents"
+  },
+  {
+    "objectID": "slides/Rmarkdown/index.html#two-parts",
+    "href": "slides/Rmarkdown/index.html#two-parts",
+    "title": "R course - Day 4",
+    "section": "Two parts",
+    "text": "Two parts\n\n\nWe need:\n\na documentation language\n\nTo write our program / analysis script\n\na programming language\n\nTo write and format the text that explains what is done"
+  },
+  {
+    "objectID": "slides/Rmarkdown/index.html#quarto",
+    "href": "slides/Rmarkdown/index.html#quarto",
+    "title": "R course - Day 4",
+    "section": "Quarto",
+    "text": "Quarto\n\nQuarto is a format for writing \nKeeps code, output, documentation and results together\nUse it to embed R code and results into various formats"
+  },
+  {
+    "objectID": "slides/Rmarkdown/index.html#history",
+    "href": "slides/Rmarkdown/index.html#history",
+    "title": "R course - Day 4",
+    "section": "History",
+    "text": "History\n\n\n\n\n\n2002: Sweave\n\n\nFriedrich Leish\n\n\n\n\n\n\n\n\n\n\ntest\n\n\n\n\n\n\n2012: Knitr / rmarkdown\n\n\nby Yihui Xie\n\n\n\n\n\n\n\n\n2022: Quarto\n\n\nby Carlos Scheidegger et. al."
+  },
+  {
+    "objectID": "slides/Rmarkdown/index.html#formats",
+    "href": "slides/Rmarkdown/index.html#formats",
+    "title": "R course - Day 4",
+    "section": "Formats",
+    "text": "Formats\n\nQuarto can produce output in various formats such as:\n\nslideshows (e.g. powerpoint),\npdfs,\nbooks,\nhtml documents,\nblogs,\ndashboards,\netc"
+  },
+  {
+    "objectID": "slides/Rmarkdown/index.html#minimal-quarto-document",
+    "href": "slides/Rmarkdown/index.html#minimal-quarto-document",
+    "title": "R course - Day 4",
+    "section": "Minimal Quarto document",
+    "text": "Minimal Quarto document\n---\ntitle: \"Example document\"              # YAML metadata header\noutput: html                           # YAML metadata header    \n---\n\n## Introduction\n\n\nWe are going to look at the pbc data  &lt;!-- documentation --&gt;\n\n## Results\n\n```{r analysis}\nlibrary(survival)                       # R code chunk  \nmean(pbc$age)\n```\n\nVery interesting!"
+  },
+  {
+    "objectID": "slides/Rmarkdown/index.html#minimal-quarto-document-results",
+    "href": "slides/Rmarkdown/index.html#minimal-quarto-document-results",
+    "title": "R course - Day 4",
+    "section": "Minimal Quarto document results",
+    "text": "Minimal Quarto document results\n\nResulting html document"
+  },
+  {
+    "objectID": "slides/Rmarkdown/index.html#markdown-contd",
+    "href": "slides/Rmarkdown/index.html#markdown-contd",
+    "title": "R course - Day 4",
+    "section": "Markdown (cont’d)",
+    "text": "Markdown (cont’d)\n\n\nIn Rstudio\n\nFile \\(\\rightarrow\\) New File \\(\\rightarrow\\) Quarto…\nInsert title and author\nSelect format"
+  },
+  {
+    "objectID": "slides/Rmarkdown/index.html#advantages-and-disadvantages",
+    "href": "slides/Rmarkdown/index.html#advantages-and-disadvantages",
+    "title": "R course - Day 4",
+    "section": "Advantages and disadvantages",
+    "text": "Advantages and disadvantages\n\n\n\nAdvantages\n\n\n✔︎ Everything in one place\n✔  Everything updates to reflect external changes\n✔ Rebuilding the document functions as a “regression test”\n\n\n\nDisadvantages\n\n\n\n❌ When you put everything in a single document it may be difficult to read and edit\n❌ May be slow"
+  },
+  {
+    "objectID": "slides/Rmarkdown/index.html#headers",
+    "href": "slides/Rmarkdown/index.html#headers",
+    "title": "R course - Day 4",
+    "section": "Headers",
+    "text": "Headers\n\n\n\n\nCode\n\n\n# Results\n## Primary Outcome\n## Secondary outcomes\n\n\n\nOutput\n\n\nResults\n\n\nPrimary Outcome\n\n\nSecondary Outcomes"
+  },
+  {
+    "objectID": "slides/Rmarkdown/index.html#emphasis",
+    "href": "slides/Rmarkdown/index.html#emphasis",
+    "title": "R course - Day 4",
+    "section": "Emphasis",
+    "text": "Emphasis\n\n\n\nCode\n\n\n*Methods*  \n_Methods_\n**Methods**\n__Methods__\n\n\noutput\n\nMethods\nMethods Methods Methods"
+  },
+  {
+    "objectID": "slides/Rmarkdown/index.html#bullets",
+    "href": "slides/Rmarkdown/index.html#bullets",
+    "title": "R course - Day 4",
+    "section": "Bullets",
+    "text": "Bullets\n\n\nCode\n\n* Method 1\n- Method 2\n+ Method 3\n\n* Results\n  * Method 1\n  * Method 2\n\n\n\noutput\n\n\nMethod 1\nMethod 2\nMethod 3\nResults\n\nMethod 1\nMethod 2"
+  },
+  {
+    "objectID": "slides/Rmarkdown/index.html#links",
+    "href": "slides/Rmarkdown/index.html#links",
+    "title": "R course - Day 4",
+    "section": "Links",
+    "text": "Links\n\n\n\nCode\n\n\n[link](http://example.com)\n\n\noutput\n\nlink"
+  },
+  {
+    "objectID": "slides/Rmarkdown/index.html#images",
+    "href": "slides/Rmarkdown/index.html#images",
+    "title": "R course - Day 4",
+    "section": "Images",
+    "text": "Images\n\n\n\nCode\n\n\n![Rsymbol](https://upload.wikimedia.org/\n                wikipedia/commons/1/12/\n                R_logo_2000.png)\nOptionally attributes for width, height and alignment can be set (see documentation for details)\n\n![Rsymbol](https://upload.wikimedia.org/\n                wikipedia/commons/1/12/\n                R_logo_2000.png){\n                width=4cm}\n\n\noutput\n\n\n\n\nRsymbol\n\n\n\n\n\nMore on plots below"
+  },
+  {
+    "objectID": "slides/Rmarkdown/index.html#tables",
+    "href": "slides/Rmarkdown/index.html#tables",
+    "title": "R course - Day 4",
+    "section": "Tables",
+    "text": "Tables\n\n\n\nCode\n\n\n| Default | Left | Right | Center |\n|---------|:-----|------:|:------:|\n| 12      | 12   |    12 |   12   |\n| 123     | 123  |   123 |  123   |\n| 1       | 1    |     1 |   1    |\n\n: Optional label\n\n\nOutput\n\n\n\n\nOptional label\n\n\nDefault\nLeft\nRight\nCenter\n\n\n\n\n12\n12\n12\n12\n\n\n123\n123\n123\n123\n\n\n1\n1\n1\n1\n\n\n\n\n\n\n\n\nMore on tables below"
+  },
+  {
+    "objectID": "slides/Rmarkdown/index.html#escaping",
+    "href": "slides/Rmarkdown/index.html#escaping",
+    "title": "R course - Day 4",
+    "section": "Escaping",
+    "text": "Escaping\n\n\n\nCode\n\n\n\\*Method\\*\n\n\nOutput\n\n*Method*\n\nEscaping Markdown characters with a back-slash allows you to use any characters which might be getting accidentally interpreted as HTML/TeX"
+  },
+  {
+    "objectID": "slides/Rmarkdown/index.html#code-1",
+    "href": "slides/Rmarkdown/index.html#code-1",
+    "title": "R course - Day 4",
+    "section": "Code",
+    "text": "Code\n\n\n\nCode\n\n\n`Methods`\n\n\nOutput\n\nMethods"
+  },
+  {
+    "objectID": "slides/Rmarkdown/index.html#latex-equations",
+    "href": "slides/Rmarkdown/index.html#latex-equations",
+    "title": "R course - Day 4",
+    "section": "LaTeX equations",
+    "text": "LaTeX equations\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nCategory\nSyntax\nResult\nCategory\nSyntax\nResult\n\n\n\n\nFractions\n\\frac{a}{b}\n\\(\\frac{a}{b}\\)\nBold\n\\mathbf{x}\n\\(\\mathbf{x}\\)\n\n\nGreek\n\\alpha \\Omega\n\\(\\alpha \\quad \\Omega\\)\nLess or equal\nx \\leq y\n\\(x \\leq y\\)\n\n\nSquare root\n\\sqrt{x}\n\\(\\sqrt{x}\\)\nGreater or equal\nx \\geq y\n\\(x \\geq y\\)\n\n\nSum\n\\sum_{i=1}^n\n\\(\\sum_{i=1}^n\\)\nElement of\nx \\in A\n\\(x \\in A\\)\n\n\nProduct\n\\prod_{i=1}^n\n\\(\\prod_{i=1}^n\\)\nPlus/minus\n\\pm\n\\(\\pm\\)\n\n\nIntegral\n\\int_a^b\n\\(\\int_a^b\\)\nTimes\n\\times\n\\(\\times\\)\n\n\nLimit\n\\lim_{x \\to \\infty}\n\\(\\lim_{x \\to \\infty}\\)\nMultiply dot\n\\cdot\n\\(\\cdot\\)"
+  },
+  {
+    "objectID": "slides/Rmarkdown/index.html#references",
+    "href": "slides/Rmarkdown/index.html#references",
+    "title": "R course - Day 4",
+    "section": "References",
+    "text": "References\n\nA list of most common R markdown commands can be found on:\nR markdown cheatsheet\nrmarkdown.rstudio.com/authoring_basics.html and\nquarto.org/docs/authoring/markdown-basics.html (specifically for quarto)"
+  },
+  {
+    "objectID": "slides/Rmarkdown/index.html#code-chunks",
+    "href": "slides/Rmarkdown/index.html#code-chunks",
+    "title": "R course - Day 4",
+    "section": "Code chunks",
+    "text": "Code chunks\n\nQuarto allows us to include code blocks\nThey will be executed during rendering\n\n\n\n\nCode\n\n\n```\n1+1\n```\n\n\nOutput\n\n\n\n[1] 2\n\n\n\n\nNB: inline R can be included using something like `R NROW(x)`"
+  },
+  {
+    "objectID": "slides/Rmarkdown/index.html#plots",
+    "href": "slides/Rmarkdown/index.html#plots",
+    "title": "R course - Day 4",
+    "section": "Plots",
+    "text": "Plots\n\nPlots that are produced in an R code chunk are included in the document\n\n\n\n\nCode\n\n\n```\n\nplot(x=c(1, 2),\n     y=c(1, 2))\n     \n\n```\n\n\n\n\nOutput"
+  },
+  {
+    "objectID": "slides/Rmarkdown/index.html#plots-continued",
+    "href": "slides/Rmarkdown/index.html#plots-continued",
+    "title": "R course - Day 4",
+    "section": "Plots (continued)",
+    "text": "Plots (continued)\n\nSometimes it can be useful to save the plot to file and then include it in the document using markdown\n\n\n\n\nCode\n\n\n```\njpeg(\"example.jpg\")\nplot(x=c(1, 2),\n     y=c(1, 2))\ndev.off()     \n\n```\n![A plot](example.jpg)\n\n\n\nOutput\n\n\n\n\nA plot"
+  },
+  {
+    "objectID": "slides/Rmarkdown/index.html#tables-1",
+    "href": "slides/Rmarkdown/index.html#tables-1",
+    "title": "R course - Day 4",
+    "section": "Tables",
+    "text": "Tables\n\nAbove we showed how to create markdown based tables\nSometimes we want to use R.\nUse the kable function to display tables nicely\n\n\n\n\nCode\n\n\n```\n\nknitr::kable(data.frame(a=c(1,2),\n  b=c(3,4)))\n     \n\n```\n\n\n\n\nOutput\n\n\n\n\n\n\na\nb\n\n\n\n\n1\n3\n\n\n2\n4\n\n\n\n\n\n\n\n\nThe flextable and kableExtra packages can also be useful"
+  },
+  {
+    "objectID": "slides/Rmarkdown/index.html#yaml-header",
+    "href": "slides/Rmarkdown/index.html#yaml-header",
+    "title": "R course - Day 4",
+    "section": "YAML header",
+    "text": "YAML header\n\nYAML: YAML Ain’t Markup Language\nA YAML header contains YAML keywords, such as “title”, “author”, and “date”\npreceded and ended by three dashes (—)\n\n---\ntitle: \"R course - Day 4\"\nsubtitle: Introduction\nauthor: Sten Willemsen\ndate: \"16 November 2023\"\n---\n\nConverted to title, author, etc in document\nReceives formatting"
+  },
+  {
+    "objectID": "slides/Rmarkdown/index.html#yaml-header-2",
+    "href": "slides/Rmarkdown/index.html#yaml-header-2",
+    "title": "R course - Day 4",
+    "section": "YAML header (2)",
+    "text": "YAML header (2)\n\nAlso used to set various options\n\nformat of output\nThemes and templates\nInclusion of TOC (table-of-contents)\netc"
+  },
+  {
+    "objectID": "slides/Rmarkdown/index.html#popular-output-formats",
+    "href": "slides/Rmarkdown/index.html#popular-output-formats",
+    "title": "R course - Day 4",
+    "section": "Popular Output formats",
+    "text": "Popular Output formats\n\n\n\n\nOutput Type\nQuarto Format\n\n\n\n\nHTML Document\nformat: html\n\n\nPDF Document\nformat: pdf\n\n\nWord Document\nformat: docx\n\n\nReveal.js Presentation\nformat: revealjs\n\n\nBeamer Presentation\nformat: beamer"
+  },
+  {
+    "objectID": "slides/Rmarkdown/index.html#chunk-options",
+    "href": "slides/Rmarkdown/index.html#chunk-options",
+    "title": "R course - Day 4",
+    "section": "Chunk options",
+    "text": "Chunk options\n\n\nCode chunks can have various options `\nOptions are set as a comma separated list of key=value pairs\nIn Quarto, code chunk options are either included in the header ()\nOr set using #| followed by key: value pairs\n\nNB: When using comments use true and false instead of TRUE and FALSE"
+  },
+  {
+    "objectID": "slides/Rmarkdown/index.html#chunk-options-1",
+    "href": "slides/Rmarkdown/index.html#chunk-options-1",
+    "title": "R course - Day 4",
+    "section": "Chunk options",
+    "text": "Chunk options\n\neval: If FALSE, code chunk is not run\ninclude: If FALSE, code is run but not included the chunk in the final document\necho: If FALSE, code is not shown (but results are)\nresults: If hide, results are not shown. If hold, knitr will delay displaying all output until the end of the chunk. If asis, knitr will pass through results without reformatting them (useful if results return raw HTML, etc.)"
+  },
+  {
+    "objectID": "slides/Rmarkdown/index.html#chunk-options-contd",
+    "href": "slides/Rmarkdown/index.html#chunk-options-contd",
+    "title": "R course - Day 4",
+    "section": "Chunk options (cont’d)",
+    "text": "Chunk options (cont’d)\n\nerror: If FALSE, knitr will not display any error messages generated by the code\nmessage: If FALSE, knitr will not display any messages\nwarning: If FALSE, knitr will not display any warning messages\ncache: If TRUE, knitr will cache the results to reuse in future knits. Knitr will reuse the results until the code chunk is altered.\ncache.comments: If FALSE, knitr will not rerun the chunk if only a code comment has changed"
+  },
+  {
+    "objectID": "slides/Rmarkdown/index.html#chunk-options-contd-1",
+    "href": "slides/Rmarkdown/index.html#chunk-options-contd-1",
+    "title": "R course - Day 4",
+    "section": "Chunk options (cont’d)",
+    "text": "Chunk options (cont’d)\n\nfig.cap: A character string to be used as a figure caption in html\nfig.height, fig.width: The width and height to use in R for plots created by the chunk (in inches)"
+  },
+  {
+    "objectID": "slides/Rmarkdown/index.html#r-markdown-gallery",
+    "href": "slides/Rmarkdown/index.html#r-markdown-gallery",
+    "title": "R course - Day 4",
+    "section": "R markdown Gallery",
+    "text": "R markdown Gallery\n\n\nWe normally use quarto to transform .qmd files to a documents,\nWe can also transform (special) R scripts to .qmd (and html/pdf etc…)\n\nThis is called spinning\n\nAll normal text should be written after a #' comment\nCode is split in chunks by markdown content\nCode chunk options are preceded by #|\nSee the demos from the first day as examples"
+  },
+  {
+    "objectID": "slides/Rmarkdown/index.html#spin-example",
+    "href": "slides/Rmarkdown/index.html#spin-example",
+    "title": "R course - Day 4",
+    "section": "Spin: example",
+    "text": "Spin: example\n#' ---\n#' title: \"Example document\"              \n#'output: html                             \n#'---\n\n#' ## Introduction\n\n#' We are going to look at the pbc data  \n\n#' ## Results\n\n#| label firstchunk\nlibrary(survival)                       # R code chunk  \nmean(pbc$age)\n\n\n#' Very interesting!\n\nSee the demos from the first day as examples"
+  },
+  {
+    "objectID": "slides/Rmarkdown/index.html#visual-editor",
+    "href": "slides/Rmarkdown/index.html#visual-editor",
+    "title": "R course - Day 4",
+    "section": "Visual editor",
+    "text": "Visual editor\n\nRstudio has a visual editor for Quarto\nUse CTRL-/ to insert a new structure (list, equation, image, etc)\nR-Studio promises seamless switching between visual and source mode but your mileage may vary."
+  },
+  {
+    "objectID": "slides/Rmarkdown/index.html#if-you-want-to-know-more",
+    "href": "slides/Rmarkdown/index.html#if-you-want-to-know-more",
+    "title": "R course - Day 4",
+    "section": "If you want to know more",
+    "text": "If you want to know more\n\n\n\n\n\n\n\n\n\nR Markdown: The Definitive Guide\n\n\n\n\n\n\n\nR markdown-cookbook"
+  },
+  {
+    "objectID": "slides/Rmarkdown/index.html#introduction",
+    "href": "slides/Rmarkdown/index.html#introduction",
+    "title": "R course - Day 4",
+    "section": "Introduction",
+    "text": "Introduction\n\nShiny is an R package that makes it easy to build interactive web apps straight from R\nShiny combines the computational power of with the interactivity of the modern web\nShiny apps are easy to write - No web development skills are required"
+  },
+  {
+    "objectID": "slides/Rmarkdown/index.html#shiny-in-rstudio",
+    "href": "slides/Rmarkdown/index.html#shiny-in-rstudio",
+    "title": "R course - Day 4",
+    "section": "Shiny in Rstudio",
+    "text": "Shiny in Rstudio\n\nFile \\(\\rightarrow\\) New File \\(\\rightarrow\\) Shiny Web App…\nInsert application name\nLet’s try an example"
+  },
+  {
+    "objectID": "slides/Rmarkdown/index.html#structure",
+    "href": "slides/Rmarkdown/index.html#structure",
+    "title": "R course - Day 4",
+    "section": "Structure",
+    "text": "Structure\n\nShiny applications consist of:\n\na user interface object (ui): layout and appearance of your app\na server function: instructions that your computer needs to build your app\na call to the shinyApp function: creates Shiny app objects"
+  },
+  {
+    "objectID": "slides/Rmarkdown/index.html#structure-in-code",
+    "href": "slides/Rmarkdown/index.html#structure-in-code",
+    "title": "R course - Day 4",
+    "section": "Structure in code",
+    "text": "Structure in code\nlibrary(shiny)\n\n# Define UI ----\n ui &lt;- fluidPage(\n)\n                \n# Define server logic ----\n server &lt;- function(input, output) {\n}\n                \n# Run the app ----\nshinyApp(ui = ui, server = server)"
+  },
+  {
+    "objectID": "slides/Rmarkdown/index.html#user-interface",
+    "href": "slides/Rmarkdown/index.html#user-interface",
+    "title": "R course - Day 4",
+    "section": "User Interface",
+    "text": "User Interface\n\nConsist of a layout function that defines the layout of the app\n\nfluidPage(), fillPage(), fixedPage(), etc\n\n\nFurther layout functions can further structure the layout:\n\nsidebarLayout, sidebarPanel, mainPanel, etc"
+  },
+  {
+    "objectID": "slides/Rmarkdown/index.html#user-interface-2",
+    "href": "slides/Rmarkdown/index.html#user-interface-2",
+    "title": "R course - Day 4",
+    "section": "User Interface (2)",
+    "text": "User Interface (2)\n\nThe interface may contain various elements to display different things to the user\ntitlePanel(\"Old Faithful Geyser Data\")\ninput controls\n\n            sliderInput(\"bins\",\n                        \"Number of bins:\",\n                        min = 1, max = 50, value = = 30)\n\nOutput:\n\nplotOutput(\"distPlot\")"
+  },
+  {
+    "objectID": "slides/Rmarkdown/index.html#server-function",
+    "href": "slides/Rmarkdown/index.html#server-function",
+    "title": "R course - Day 4",
+    "section": "Server function",
+    "text": "Server function\n\ninforms how the output should be calculated based on the inputs\n\n    output$distPlot &lt;- renderPlot({\n        x    &lt;- faithful[, 2]\n        bins &lt;- seq(min(x), max(x), length.out = input$bins + 1)\n        hist(x, breaks = bins, col = 'darkgray', border = 'white',\n             xlab = 'Waiting time to next eruption (in mins)',\n             main = 'Histogram of waiting times')\n    })\n\nUses different render functions"
+  },
+  {
+    "objectID": "slides/Rmarkdown/index.html#what-is-the-tidyverse",
+    "href": "slides/Rmarkdown/index.html#what-is-the-tidyverse",
+    "title": "R course - Day 4",
+    "section": "What is the tidyverse",
+    "text": "What is the tidyverse\n\n\nCollection of packages from same people that made RStudio\nDuplicate some functionality of base R\nConsistent and designed to work together\nMore intuitive (?)\n\n\n\n\nThere are also disadvantages to the tidyverse. For example it is less stable in the sense that it develops faster"
+  },
+  {
+    "objectID": "slides/Rmarkdown/index.html#tidyverse-packages",
+    "href": "slides/Rmarkdown/index.html#tidyverse-packages",
+    "title": "R course - Day 4",
+    "section": "Tidyverse packages",
+    "text": "Tidyverse packages\n\n\ntibble\n\nReplacement for data.frames\n\ndplyr\n\nGrammar of data manipulation (select, filter, mutate, summarise, arrange)\n\ntidyr\n\nTidy messy data (also let’s you pivot data)\n\nggplot2\n\nReplaces for base plots. Discussed before\n\nreadr\n\nImport data\n\npurrr\n\nTools for functional programming\n\nforcats\n\nTools for categorical data\n\nstringr\n\nTools for character data\n\n\n\n\n\nThere are many more packages that although not formally part of the tidyverse follow the same design principles"
+  },
+  {
+    "objectID": "slides/Rmarkdown/index.html#pipe-operation",
+    "href": "slides/Rmarkdown/index.html#pipe-operation",
+    "title": "R course - Day 4",
+    "section": "Pipe operation",
+    "text": "Pipe operation\n\nPipe operator in tidyverse is %&gt;%\nTakes the output of a function on the left-hand-side\nUses it as input for a function on the right\n\nby default as the fist argument\n\nOften make long sequences of transformations more readable. \nNow also included in base R |&gt; (sometimes rendered as |&gt;)"
+  },
+  {
+    "objectID": "slides/Rmarkdown/index.html#tible",
+    "href": "slides/Rmarkdown/index.html#tible",
+    "title": "R course - Day 4",
+    "section": "tible",
+    "text": "tible\n\nThe tibble package introduces the tible a replacement for the data.frame\nDoes not print all rows and columns by default\nMostly works as a data.frame but if you get a strange error convert it using as.data.frame.tbl_df"
+  },
+  {
+    "objectID": "slides/Rmarkdown/index.html#dplyr",
+    "href": "slides/Rmarkdown/index.html#dplyr",
+    "title": "R course - Day 4",
+    "section": "dplyr",
+    "text": "dplyr\n\nKey functions:\n\nselect\nfilter\ngroup_by\nsummarise\narrange\n\n\n\n\nSee dplyr cheatsheet/"
+  },
+  {
+    "objectID": "slides/Rmarkdown/index.html#example",
+    "href": "slides/Rmarkdown/index.html#example",
+    "title": "R course - Day 4",
+    "section": "Example",
+    "text": "Example\n\nd &lt;- d[, c('id', 'GA_weeks', 'GA_days', 'BW')]\nd &lt;- d[d$GA_weeks &gt; 30, ]\nd$GA_tot &lt;- d$GA_weeks * 7 + d$GA_days\nd &lt;- d[order(d$id), ]\n\nd_merged &lt;- merge(d, d_grp, by='id')\naggregate(BW ~ grp, data=d_merged, mean)\n\n\n\nBase R syntax can be made shorter by nesting expressions\nE.g.: aggregate(BW ~ grp, data=merge(d, d_grp, by='id'), mean)\nDoes not help readability"
+  },
+  {
+    "objectID": "slides/Rmarkdown/index.html#example-contd",
+    "href": "slides/Rmarkdown/index.html#example-contd",
+    "title": "R course - Day 4",
+    "section": "Example (cont’d)",
+    "text": "Example (cont’d)\n\nd %&gt;% \n  select(id, GA_weeks, GA_days, BW) %&gt;% \n  filter(GA_weeks &gt; 30) %&gt;%\n  mutate(GA_tot = GA_weeks * 7 + GA_days) %&gt;% \n  arrange(id)\n  \nd %&gt;% \n  inner_join(d_grp, by='id') %&gt;% \n  group_by(grp) %&gt;% \n  summarise(meanBW = mean(BW))\n\n\n\n\nThe pipe operator makes the code more readable"
+  },
+  {
+    "objectID": "slides/Rmarkdown/index.html#local-installation",
+    "href": "slides/Rmarkdown/index.html#local-installation",
+    "title": "R course - Day 4",
+    "section": "Local installation",
+    "text": "Local installation\n\n\nMost flexible\n\n\n\nDoes not make IT happy 😒"
+  },
+  {
+    "objectID": "slides/Rmarkdown/index.html#central-installation",
+    "href": "slides/Rmarkdown/index.html#central-installation",
+    "title": "R course - Day 4",
+    "section": "Central Installation",
+    "text": "Central Installation\n\nGo to Service portal and search for RStudio\nYou will find a form to request addition to the R-users group\nEmployees of several departments / groups are added automatically\nAvailable in mijnwerkplek.erasmusmc.nl"
+  },
+  {
+    "objectID": "slides/Rmarkdown/index.html#packages",
+    "href": "slides/Rmarkdown/index.html#packages",
+    "title": "R course - Day 4",
+    "section": "Packages",
+    "text": "Packages\n\nBy default saved in ‘my documents’\nvery limited space\nIf you use the central installation you gain access to a network drive p: which has many packages pre-installed\nYou can choose location using .libPaths() function\nYou can make this permanent by using .Renviron file\n\nR_LIBS_USER=v:/homedir/959750/tools/Rlibs/%p%V-library/%v"
+  },
+  {
+    "objectID": "slides/Rmarkdown/index.html#digital-research-environment-dre",
+    "href": "slides/Rmarkdown/index.html#digital-research-environment-dre",
+    "title": "R course - Day 4",
+    "section": "Digital Research Environment (DRE)",
+    "text": "Digital Research Environment (DRE)\n\nDRE runs on virtual machines using Microsoft Azure\nConfigured data management, processing and sharing can been done securely\nVarious computational software (including R and Rstudio) can be used\nCollaboration with external parties is possible\nMore computational power is available when needed\nSee https://andrea-cloud.com/ and support.mydre.org"
+  },
+  {
+    "objectID": "slides/Functions1/index.html#built-in-named-functions",
+    "href": "slides/Functions1/index.html#built-in-named-functions",
+    "title": "R Course - Day 3",
+    "section": "Built-in Named Functions",
+    "text": "Built-in Named Functions\n\nhead() #Print the first 6 lines of a dataframe\n\ntail() #Print the last 6 lines of a dataframe\n\nseq(from=1, to=10, by=2) #Create a sequence from 1 to 10 with steps of 2\n\nas.numeric(c(\"1\",\"2\",\"3\",\"4\")) #Turn string into numbers\n\nsort(c(3,4,2,5,1)) #Sort numbers or letters numerically or alphabetically\n\nmax(c(111,333,444,55,6,777,999)) #Determine the maximum value of a vector\n\nrnorm(10) #Sample 10 values from a r(andom) norm(al) distribution between 0 and 1\n\nBuilt-in functions in base-R :\nhttps://stat.ethz.ch/R-manual/R-patched/library/base/html/00Index.html"
+  },
+  {
+    "objectID": "slides/Functions1/index.html#function-arguments",
+    "href": "slides/Functions1/index.html#function-arguments",
+    "title": "R Course - Day 3",
+    "section": "Function arguments",
+    "text": "Function arguments\narguments, the object in the parentheses ( ):\n\nsqrt(2)\n\n[1] 1.414214\n\n\nor\n\nx &lt;- 2\nsqrt(x)\n\n[1] 1.414214\n\n\nor\n\nsqrt(x^2 + 5)\n\n[1] 3"
+  },
+  {
+    "objectID": "slides/Functions1/index.html#functions-with-multiple-arguments",
+    "href": "slides/Functions1/index.html#functions-with-multiple-arguments",
+    "title": "R Course - Day 3",
+    "section": "Functions with multiple arguments",
+    "text": "Functions with multiple arguments\n\nargs(round)\n\nfunction (x, digits = 0) \nNULL\n\nround(4.679, 2)\n\n[1] 4.68\n\n\ndigits is optional and defaults to 0:\n\nround(4.679)\n\n[1] 5"
+  },
+  {
+    "objectID": "slides/Functions1/index.html#named-argument-matching",
+    "href": "slides/Functions1/index.html#named-argument-matching",
+    "title": "R Course - Day 3",
+    "section": "Named Argument Matching",
+    "text": "Named Argument Matching\n\nround(x = 4.679, digits = 2)\n\n[1] 4.68\n\nround(digits = 2, x = 4.679)\n\n[1] 4.68\n\n\nMixing is possible:\n\nround(4.679, digits=2)\n\n[1] 4.68\n\nround(digits=2, 4.679)\n\n[1] 4.68"
+  },
+  {
+    "objectID": "slides/Functions1/index.html#creating-your-own-functions",
+    "href": "slides/Functions1/index.html#creating-your-own-functions",
+    "title": "R Course - Day 3",
+    "section": "Creating your own functions",
+    "text": "Creating your own functions\n\nmyFun &lt;- function(arg1, arg2) {\n  ## Here you type expressions that use the arguments\n}\n\nmyFun(arg1, arg2)"
+  },
+  {
+    "objectID": "slides/Functions1/index.html#example-of-a-custom-function",
+    "href": "slides/Functions1/index.html#example-of-a-custom-function",
+    "title": "R Course - Day 3",
+    "section": "Example of a custom function",
+    "text": "Example of a custom function\n\nmean_xy &lt;- function(x, y){\n  (x + y)/2\n}\n\nWe can us it like this:\n\nmean_xy(2,6)\n\n[1] 4\n\n\nor\n\nmean_xy(x = 2,y = 6)\n\n[1] 4"
+  },
+  {
+    "objectID": "slides/Functions1/index.html#use-return-in-a-function",
+    "href": "slides/Functions1/index.html#use-return-in-a-function",
+    "title": "R Course - Day 3",
+    "section": "Use return() in a function",
+    "text": "Use return() in a function\n\nmean_xy &lt;- function(x, y){\n  z &lt;- (x + y)/2\n  return(z)\n}\n\nmean_xy(x = 2, y = 6)\n\n[1] 4"
+  },
+  {
+    "objectID": "slides/Functions1/index.html#default-return-value",
+    "href": "slides/Functions1/index.html#default-return-value",
+    "title": "R Course - Day 3",
+    "section": "Default return value",
+    "text": "Default return value\n\nmean_xy_2 &lt;- function(x, y){\n  z &lt;- (x + y)/2\n  x\n  z\n}\n\nmean_xy_2(x = 1, y = 3)\n\n[1] 2\n\n\nx is not returned!\n\nmean_xy_3 &lt;- function(x, y){\n  z &lt;- x + y \n  return(x)\n  z\n}\n\nmean_xy_3(x = 1, y = 3)\n\n[1] 1\n\n\nz is not returned!"
+  },
+  {
+    "objectID": "slides/Functions1/index.html#function-with-multiple-input-values",
+    "href": "slides/Functions1/index.html#function-with-multiple-input-values",
+    "title": "R Course - Day 3",
+    "section": "Function with multiple input values",
+    "text": "Function with multiple input values\n\nmean_vector &lt;- function(...){ \n  z &lt;- mean(c(...))\n  return(z)\n} \n\nmean_vector(1,2,3)\n\n[1] 2\n\n\nNo limit to number of inputs:\n\nmean_vector(1,2,3,4,5,6,7,8,9,10) \n\n[1] 5.5"
+  },
+  {
+    "objectID": "slides/Functions1/index.html#vector-as-an-input-to-a-function",
+    "href": "slides/Functions1/index.html#vector-as-an-input-to-a-function",
+    "title": "R Course - Day 3",
+    "section": "Vector as an input to a function",
+    "text": "Vector as an input to a function\n\nmean_x &lt;- function(x){ \n  z &lt;- mean(x)\n  return(z)\n} \nx &lt;- c(1,2,3,4,5)\nmean_x(x)\n\n[1] 3"
+  },
+  {
+    "objectID": "slides/Functions1/index.html#build-a-custom-function-to-clean-data",
+    "href": "slides/Functions1/index.html#build-a-custom-function-to-clean-data",
+    "title": "R Course - Day 3",
+    "section": "Build a custom function to clean data",
+    "text": "Build a custom function to clean data\nCalculate mean of only the positive values (data cleaning)\n\nmy_descriptives &lt;- function(x){\n  x.trim &lt;- x[x &gt;= 0]\n  out &lt;- mean(x.trim)\n  return(out)\n}\n\nPatient data:\n\ndata$Ages\n\n [1]  30  45  56  50  35  46  28  41  37  44  46  52  59  46  46 -50  26  44  51\n[20]  20  56  43  52  26  46\n\n\n-50 is clearly wrong"
+  },
+  {
+    "objectID": "slides/Functions1/index.html#build-a-custom-function-to-clean-data-1",
+    "href": "slides/Functions1/index.html#build-a-custom-function-to-clean-data-1",
+    "title": "R Course - Day 3",
+    "section": "Build a custom function to clean data",
+    "text": "Build a custom function to clean data\n\nmy_descriptives(data$Ages)\n\n[1] 42.70833\n\n\nIn stead of:\n\nmean(data$Ages)\n\n[1] 39"
+  },
+  {
+    "objectID": "slides/Functions1/index.html#returning-vectors",
+    "href": "slides/Functions1/index.html#returning-vectors",
+    "title": "R Course - Day 3",
+    "section": "Returning vectors",
+    "text": "Returning vectors\n\nmy_descriptives &lt;- function(x){\n  x.trim &lt;- x[x&gt;=0]\n  out &lt;- summary(x.trim)\n  return(out)\n}\n\nmy_descriptives(data$Ages)\n\n   Min. 1st Qu.  Median    Mean 3rd Qu.    Max. \n  20.00   36.50   45.50   42.71   50.25   59.00"
+  },
+  {
+    "objectID": "slides/Functions1/index.html#returning-multiple-values",
+    "href": "slides/Functions1/index.html#returning-multiple-values",
+    "title": "R Course - Day 3",
+    "section": "Returning multiple values",
+    "text": "Returning multiple values\nIt is not possible to use return(x,y)\n\nmy_descriptives2_wrong &lt;- function(x){\n  x.trim &lt;- x[x&gt;0]\n  below0 &lt;- sum(x&lt;0)\n  meanX &lt;- mean(x.trim)\n  return(below0, meanX)\n}\n\nmy_descriptives2_wrong(data$Ages)\n\nError in return(below0, meanX): multi-argument returns are not permitted"
+  },
+  {
+    "objectID": "slides/Functions1/index.html#returning-multiple-values-1",
+    "href": "slides/Functions1/index.html#returning-multiple-values-1",
+    "title": "R Course - Day 3",
+    "section": "Returning multiple values",
+    "text": "Returning multiple values\nTo return multiple values we use: return(c(x,y)) or return(list(x,y))\n\nmy_descriptives2 &lt;- function(x){\n  x.trim &lt;- x[x&gt;0]\n  below0 &lt;- sum(x&lt;0)\n  meanX &lt;- mean(x.trim)\n  return(list(below0, meanX))\n}\n\nmy_descriptives2(data$Ages)\n\n[[1]]\n[1] 1\n\n[[2]]\n[1] 42.70833"
+  },
+  {
+    "objectID": "slides/Functions1/index.html#function-environments-and-scoping",
+    "href": "slides/Functions1/index.html#function-environments-and-scoping",
+    "title": "R Course - Day 3",
+    "section": "Function environments and scoping",
+    "text": "Function environments and scoping\nThe Top-Level (or Global) Environment\n\nw &lt;- 2\nf &lt;- function(y) {\n  d &lt;- 3\n  return(d * (w + y))\n}\nenvironment(f)\n\n&lt;environment: R_GlobalEnv&gt;\n\n\nObjects in the Global Environment:\n\nobjects()\n\n [1] \"Ages\"                   \"data\"                   \"f\"                     \n [4] \"mean_vector\"            \"mean_x\"                 \"mean_xy\"               \n [7] \"mean_xy_2\"              \"mean_xy_3\"              \"my_descriptives\"       \n[10] \"my_descriptives2\"       \"my_descriptives2_wrong\" \"PatientID\"             \n[13] \"w\"                      \"x\""
+  },
+  {
+    "objectID": "slides/Functions1/index.html#global-and-local-variables",
+    "href": "slides/Functions1/index.html#global-and-local-variables",
+    "title": "R Course - Day 3",
+    "section": "Global and Local Variables",
+    "text": "Global and Local Variables\nw is a global variable\nd is a local variable to f()\n\nf &lt;- function(y) {\n  d &lt;- 3\n  return(d * (w + y))\n}\n\nf(y = 1)\n\n[1] 9\n\nd\n\nError in eval(expr, envir, enclos): object 'd' not found"
+  },
+  {
+    "objectID": "slides/Functions1/index.html#local-preference-over-global",
+    "href": "slides/Functions1/index.html#local-preference-over-global",
+    "title": "R Course - Day 3",
+    "section": "Local preference over Global",
+    "text": "Local preference over Global\n\nw &lt;- 2\nd &lt;- 4\n\nf &lt;- function(y) {\n  d &lt;- 3\n  return(d * (w + y))\n}\n\nf(y = 1)\n\n[1] 9"
+  },
+  {
+    "objectID": "slides/Functions1/index.html#local-assignment-of-variables",
+    "href": "slides/Functions1/index.html#local-assignment-of-variables",
+    "title": "R Course - Day 3",
+    "section": "Local assignment of variables",
+    "text": "Local assignment of variables\n\nw &lt;- 2\nd &lt;- 4 # This value of d will remain unchanged.\n\nf &lt;- function(y) {\n  d &lt;- 3 # This doesnt affect the value of d in the global environment\n  return(d * (w + y))\n}\n\nf(y = 1)\n\n[1] 9\n\nd\n\n[1] 4"
+  },
+  {
     "objectID": "slides/Functions2/index.html#if-then-else",
     "href": "slides/Functions2/index.html#if-then-else",
     "title": "R Course - Day 3",
@@ -404,299 +1699,5 @@
     "title": "R Course - Day 3",
     "section": "Multiple grouping variables possible",
     "text": "Multiple grouping variables possible\n\npatients &lt;- data.frame(\"group\"=paste('grp',c(1,1,1,1,1,2,2,2,2,2),sep='-'),\n                       \"serotype\"=c(\"A\",\"B\",\"A\",\"B\",\"A\",\"B\",\"A\",\"B\",\"A\",\"B\"),\n                       \"outcome\"=rnorm(10))\n\ntapply(patients$outcome, list(patients$group, patients$serotype), mean)\n\n                A         B\ngrp-1  0.09293757 1.6339488\ngrp-2 -0.75751287 0.1602559"
-  },
-  {
-    "objectID": "index.html",
-    "href": "index.html",
-    "title": "BasicRCourseEMC_Slides",
-    "section": "",
-    "text": "R Course - Day 3\n\n\n\nDay3\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nR Course - Day 3\n\n\n\nDay3\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nR Course - Day 2\n\n\n\nDay2\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nR Course - Day 2\n\n\n\nDay2\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nNo matching items"
-  },
-  {
-    "objectID": "slides/Functions1/index.html#built-in-named-functions",
-    "href": "slides/Functions1/index.html#built-in-named-functions",
-    "title": "R Course - Day 3",
-    "section": "Built-in Named Functions",
-    "text": "Built-in Named Functions\n\nhead() #Print the first 6 lines of a dataframe\n\ntail() #Print the last 6 lines of a dataframe\n\nseq(from=1, to=10, by=2) #Create a sequence from 1 to 10 with steps of 2\n\nas.numeric(c(\"1\",\"2\",\"3\",\"4\")) #Turn string into numbers\n\nsort(c(3,4,2,5,1)) #Sort numbers or letters numerically or alphabetically\n\nmax(c(111,333,444,55,6,777,999)) #Determine the maximum value of a vector\n\nrnorm(10) #Sample 10 values from a r(andom) norm(al) distribution between 0 and 1\n\nBuilt-in functions in base-R :\nhttps://stat.ethz.ch/R-manual/R-patched/library/base/html/00Index.html"
-  },
-  {
-    "objectID": "slides/Functions1/index.html#function-arguments",
-    "href": "slides/Functions1/index.html#function-arguments",
-    "title": "R Course - Day 3",
-    "section": "Function arguments",
-    "text": "Function arguments\narguments, the object in the parentheses ( ):\n\nsqrt(2)\n\n[1] 1.414214\n\n\nor\n\nx &lt;- 2\nsqrt(x)\n\n[1] 1.414214\n\n\nor\n\nsqrt(x^2 + 5)\n\n[1] 3"
-  },
-  {
-    "objectID": "slides/Functions1/index.html#functions-with-multiple-arguments",
-    "href": "slides/Functions1/index.html#functions-with-multiple-arguments",
-    "title": "R Course - Day 3",
-    "section": "Functions with multiple arguments",
-    "text": "Functions with multiple arguments\n\nargs(round)\n\nfunction (x, digits = 0) \nNULL\n\nround(4.679, 2)\n\n[1] 4.68\n\n\ndigits is optional and defaults to 0:\n\nround(4.679)\n\n[1] 5"
-  },
-  {
-    "objectID": "slides/Functions1/index.html#named-argument-matching",
-    "href": "slides/Functions1/index.html#named-argument-matching",
-    "title": "R Course - Day 3",
-    "section": "Named Argument Matching",
-    "text": "Named Argument Matching\n\nround(x = 4.679, digits = 2)\n\n[1] 4.68\n\nround(digits = 2, x = 4.679)\n\n[1] 4.68\n\n\nMixing is possible:\n\nround(4.679, digits=2)\n\n[1] 4.68\n\nround(digits=2, 4.679)\n\n[1] 4.68"
-  },
-  {
-    "objectID": "slides/Functions1/index.html#creating-your-own-functions",
-    "href": "slides/Functions1/index.html#creating-your-own-functions",
-    "title": "R Course - Day 3",
-    "section": "Creating your own functions",
-    "text": "Creating your own functions\n\nmyFun &lt;- function(arg1, arg2) {\n  ## Here you type expressions that use the arguments\n}\n\nmyFun(arg1, arg2)"
-  },
-  {
-    "objectID": "slides/Functions1/index.html#example-of-a-custom-function",
-    "href": "slides/Functions1/index.html#example-of-a-custom-function",
-    "title": "R Course - Day 3",
-    "section": "Example of a custom function",
-    "text": "Example of a custom function\n\nmean_xy &lt;- function(x, y){\n  (x + y)/2\n}\n\nWe can us it like this:\n\nmean_xy(2,6)\n\n[1] 4\n\n\nor\n\nmean_xy(x = 2,y = 6)\n\n[1] 4"
-  },
-  {
-    "objectID": "slides/Functions1/index.html#use-return-in-a-function",
-    "href": "slides/Functions1/index.html#use-return-in-a-function",
-    "title": "R Course - Day 3",
-    "section": "Use return() in a function",
-    "text": "Use return() in a function\n\nmean_xy &lt;- function(x, y){\n  z &lt;- (x + y)/2\n  return(z)\n}\n\nmean_xy(x = 2, y = 6)\n\n[1] 4"
-  },
-  {
-    "objectID": "slides/Functions1/index.html#default-return-value",
-    "href": "slides/Functions1/index.html#default-return-value",
-    "title": "R Course - Day 3",
-    "section": "Default return value",
-    "text": "Default return value\n\nmean_xy_2 &lt;- function(x, y){\n  z &lt;- (x + y)/2\n  x\n  z\n}\n\nmean_xy_2(x = 1, y = 3)\n\n[1] 2\n\n\nx is not returned!\n\nmean_xy_3 &lt;- function(x, y){\n  z &lt;- x + y \n  return(x)\n  z\n}\n\nmean_xy_3(x = 1, y = 3)\n\n[1] 1\n\n\nz is not returned!"
-  },
-  {
-    "objectID": "slides/Functions1/index.html#function-with-multiple-input-values",
-    "href": "slides/Functions1/index.html#function-with-multiple-input-values",
-    "title": "R Course - Day 3",
-    "section": "Function with multiple input values",
-    "text": "Function with multiple input values\n\nmean_vector &lt;- function(...){ \n  z &lt;- mean(c(...))\n  return(z)\n} \n\nmean_vector(1,2,3)\n\n[1] 2\n\n\nNo limit to number of inputs:\n\nmean_vector(1,2,3,4,5,6,7,8,9,10) \n\n[1] 5.5"
-  },
-  {
-    "objectID": "slides/Functions1/index.html#vector-as-an-input-to-a-function",
-    "href": "slides/Functions1/index.html#vector-as-an-input-to-a-function",
-    "title": "R Course - Day 3",
-    "section": "Vector as an input to a function",
-    "text": "Vector as an input to a function\n\nmean_x &lt;- function(x){ \n  z &lt;- mean(x)\n  return(z)\n} \nx &lt;- c(1,2,3,4,5)\nmean_x(x)\n\n[1] 3"
-  },
-  {
-    "objectID": "slides/Functions1/index.html#build-a-custom-function-to-clean-data",
-    "href": "slides/Functions1/index.html#build-a-custom-function-to-clean-data",
-    "title": "R Course - Day 3",
-    "section": "Build a custom function to clean data",
-    "text": "Build a custom function to clean data\nCalculate mean of only the positive values (data cleaning)\n\nmy_descriptives &lt;- function(x){\n  x.trim &lt;- x[x &gt;= 0]\n  out &lt;- mean(x.trim)\n  return(out)\n}\n\nPatient data:\n\ndata$Ages\n\n [1]  30  45  56  50  35  46  28  41  37  44  46  52  59  46  46 -50  26  44  51\n[20]  20  56  43  52  26  46\n\n\n-50 is clearly wrong"
-  },
-  {
-    "objectID": "slides/Functions1/index.html#build-a-custom-function-to-clean-data-1",
-    "href": "slides/Functions1/index.html#build-a-custom-function-to-clean-data-1",
-    "title": "R Course - Day 3",
-    "section": "Build a custom function to clean data",
-    "text": "Build a custom function to clean data\n\nmy_descriptives(data$Ages)\n\n[1] 42.70833\n\n\nIn stead of:\n\nmean(data$Ages)\n\n[1] 39"
-  },
-  {
-    "objectID": "slides/Functions1/index.html#returning-vectors",
-    "href": "slides/Functions1/index.html#returning-vectors",
-    "title": "R Course - Day 3",
-    "section": "Returning vectors",
-    "text": "Returning vectors\n\nmy_descriptives &lt;- function(x){\n  x.trim &lt;- x[x&gt;=0]\n  out &lt;- summary(x.trim)\n  return(out)\n}\n\nmy_descriptives(data$Ages)\n\n   Min. 1st Qu.  Median    Mean 3rd Qu.    Max. \n  20.00   36.50   45.50   42.71   50.25   59.00"
-  },
-  {
-    "objectID": "slides/Functions1/index.html#returning-multiple-values",
-    "href": "slides/Functions1/index.html#returning-multiple-values",
-    "title": "R Course - Day 3",
-    "section": "Returning multiple values",
-    "text": "Returning multiple values\nIt is not possible to use return(x,y)\n\nmy_descriptives2_wrong &lt;- function(x){\n  x.trim &lt;- x[x&gt;0]\n  below0 &lt;- sum(x&lt;0)\n  meanX &lt;- mean(x.trim)\n  return(below0, meanX)\n}\n\nmy_descriptives2_wrong(data$Ages)\n\nError in return(below0, meanX): multi-argument returns are not permitted"
-  },
-  {
-    "objectID": "slides/Functions1/index.html#returning-multiple-values-1",
-    "href": "slides/Functions1/index.html#returning-multiple-values-1",
-    "title": "R Course - Day 3",
-    "section": "Returning multiple values",
-    "text": "Returning multiple values\nTo return multiple values we use: return(c(x,y)) or return(list(x,y))\n\nmy_descriptives2 &lt;- function(x){\n  x.trim &lt;- x[x&gt;0]\n  below0 &lt;- sum(x&lt;0)\n  meanX &lt;- mean(x.trim)\n  return(list(below0, meanX))\n}\n\nmy_descriptives2(data$Ages)\n\n[[1]]\n[1] 1\n\n[[2]]\n[1] 42.70833"
-  },
-  {
-    "objectID": "slides/Functions1/index.html#function-environments-and-scoping",
-    "href": "slides/Functions1/index.html#function-environments-and-scoping",
-    "title": "R Course - Day 3",
-    "section": "Function environments and scoping",
-    "text": "Function environments and scoping\nThe Top-Level (or Global) Environment\n\nw &lt;- 2\nf &lt;- function(y) {\n  d &lt;- 3\n  return(d * (w + y))\n}\nenvironment(f)\n\n&lt;environment: R_GlobalEnv&gt;\n\n\nObjects in the Global Environment:\n\nobjects()\n\n [1] \"Ages\"                   \"data\"                   \"f\"                     \n [4] \"mean_vector\"            \"mean_x\"                 \"mean_xy\"               \n [7] \"mean_xy_2\"              \"mean_xy_3\"              \"my_descriptives\"       \n[10] \"my_descriptives2\"       \"my_descriptives2_wrong\" \"PatientID\"             \n[13] \"w\"                      \"x\""
-  },
-  {
-    "objectID": "slides/Functions1/index.html#global-and-local-variables",
-    "href": "slides/Functions1/index.html#global-and-local-variables",
-    "title": "R Course - Day 3",
-    "section": "Global and Local Variables",
-    "text": "Global and Local Variables\nw is a global variable\nd is a local variable to f()\n\nf &lt;- function(y) {\n  d &lt;- 3\n  return(d * (w + y))\n}\n\nf(y = 1)\n\n[1] 9\n\nd\n\nError in eval(expr, envir, enclos): object 'd' not found"
-  },
-  {
-    "objectID": "slides/Functions1/index.html#local-preference-over-global",
-    "href": "slides/Functions1/index.html#local-preference-over-global",
-    "title": "R Course - Day 3",
-    "section": "Local preference over Global",
-    "text": "Local preference over Global\n\nw &lt;- 2\nd &lt;- 4\n\nf &lt;- function(y) {\n  d &lt;- 3\n  return(d * (w + y))\n}\n\nf(y = 1)\n\n[1] 9"
-  },
-  {
-    "objectID": "slides/Functions1/index.html#local-assignment-of-variables",
-    "href": "slides/Functions1/index.html#local-assignment-of-variables",
-    "title": "R Course - Day 3",
-    "section": "Local assignment of variables",
-    "text": "Local assignment of variables\n\nw &lt;- 2\nd &lt;- 4 # This value of d will remain unchanged.\n\nf &lt;- function(y) {\n  d &lt;- 3 # This doesnt affect the value of d in the global environment\n  return(d * (w + y))\n}\n\nf(y = 1)\n\n[1] 9\n\nd\n\n[1] 4"
-  },
-  {
-    "objectID": "slides/Functions1/index.html#nested-functions-and-the-scope-hierarchy",
-    "href": "slides/Functions1/index.html#nested-functions-and-the-scope-hierarchy",
-    "title": "R Course - Day 3",
-    "section": "Nested Functions and the Scope Hierarchy",
-    "text": "Nested Functions and the Scope Hierarchy\nExample:\n\nw &lt;- 2\nf &lt;- function(y) {\n  d &lt;- 3\n  h &lt;- function() {\n    b &lt;- 5\n    return(d * (w + y))\n  }\n  return(h())\n}\n\n\nw is a global environment variable to f() and also to h()\ny and d are local variables to f(), but “global” to h()\nb is local to h()"
-  },
-  {
-    "objectID": "slides/Functions1/index.html#check-local-variables-with-ls",
-    "href": "slides/Functions1/index.html#check-local-variables-with-ls",
-    "title": "R Course - Day 3",
-    "section": "Check local variables with ls()",
-    "text": "Check local variables with ls()\n\nw &lt;- 2\nf &lt;- function(y) {\n  d &lt;- 3\n  h &lt;- function() {\n    b &lt;- 5\n    return(d * (w + y))\n  }\n  print(ls())\n  return(h())\n}\n\nf(y = 2)\n\n[1] \"d\" \"h\" \"y\"\n\n\n[1] 12\n\n\nNote that b is not printed, as it is local to h(), but not to f()."
-  },
-  {
-    "objectID": "slides/Functions1/index.html#view-environment-environment",
-    "href": "slides/Functions1/index.html#view-environment-environment",
-    "title": "R Course - Day 3",
-    "section": "View environment: environment()",
-    "text": "View environment: environment()\n\nw &lt;- 2\nf &lt;- function(y) {\n  d &lt;- 3\n  h &lt;- function() {\n    b &lt;- 5\n    return(d * (w + y))\n  }\n  print(environment(h))\n  return(h())\n}\nf(y = 2)\n\n&lt;environment: 0x000001cc7b1631c0&gt;\n\n\n[1] 12\n\n\nShows location in computer memory"
-  },
-  {
-    "objectID": "slides/ggplot2/index.html#what-is-ggplot2",
-    "href": "slides/ggplot2/index.html#what-is-ggplot2",
-    "title": "R Course - Day 2",
-    "section": "What is ggplot2?",
-    "text": "What is ggplot2?\n\n\n\nBasic plotting: quick look\nPretty graphs: ggplot2\nCreated by Hadley Wickham\n“Grammar of Graphics” GGplot2\n\n\nhttp://ggplot2.tidyverse.org/reference/index.html\n\n\n\ninstall.packages(\"ggplot2\")\nlibrary(ggplot2)"
-  },
-  {
-    "objectID": "slides/ggplot2/index.html#grammar-of-graphics",
-    "href": "slides/ggplot2/index.html#grammar-of-graphics",
-    "title": "R Course - Day 2",
-    "section": "Grammar of graphics",
-    "text": "Grammar of graphics\n\nData\nAesthetics\nGeometries\nFacets\nScales\nThemes"
-  },
-  {
-    "objectID": "slides/ggplot2/index.html#data",
-    "href": "slides/ggplot2/index.html#data",
-    "title": "R Course - Day 2",
-    "section": "Data",
-    "text": "Data\n\n\nClass: data.frame\nSeparate plotting variables per column\n\nExample of a good dataset:\n\nhead(Indometh, 25)\n\n   Subject time conc\n1        1 0.25 1.50\n2        1 0.50 0.94\n3        1 0.75 0.78\n4        1 1.00 0.48\n5        1 1.25 0.37\n6        1 2.00 0.19\n7        1 3.00 0.12\n8        1 4.00 0.11\n9        1 5.00 0.08\n10       1 6.00 0.07\n11       1 8.00 0.05\n12       2 0.25 2.03\n13       2 0.50 1.63\n14       2 0.75 0.71\n15       2 1.00 0.70\n16       2 1.25 0.64\n17       2 2.00 0.36\n18       2 3.00 0.32\n19       2 4.00 0.20\n20       2 5.00 0.25\n21       2 6.00 0.12\n22       2 8.00 0.08\n23       3 0.25 2.72\n24       3 0.50 1.49\n25       3 0.75 1.16"
-  },
-  {
-    "objectID": "slides/ggplot2/index.html#example-of-a-bad-data-set",
-    "href": "slides/ggplot2/index.html#example-of-a-bad-data-set",
-    "title": "R Course - Day 2",
-    "section": "Example of a Bad Data Set",
-    "text": "Example of a Bad Data Set\n\n\nNot a data.frame\nSeparated data by Male/Female sex\nYear as rownames and month as column names\n\nExample of bad dataset:\n\n\n      Jan  Feb  Mar  Apr  May  Jun  Jul  Aug  Sep  Oct  Nov  Dec\n1974 2134 1863 1877 1877 1492 1249 1280 1131 1209 1492 1621 1846\n1975 2103 2137 2153 1833 1403 1288 1186 1133 1053 1347 1545 2066\n1976 2020 2750 2283 1479 1189 1160 1113  970  999 1208 1467 2059\n1977 2240 1634 1722 1801 1246 1162 1087 1013  959 1179 1229 1655\n1978 2019 2284 1942 1423 1340 1187 1098 1004  970 1140 1110 1812\n1979 2263 1820 1846 1531 1215 1075 1056  975  940 1081 1294 1341\n\n\n      Jan  Feb  Mar  Apr  May  Jun  Jul  Aug  Sep  Oct  Nov  Dec\n1974  901  689  827  677  522  406  441  393  387  582  578  666\n1975  830  752  785  664  467  438  421  412  343  440  531  771\n1976  767 1141  896  532  447  420  376  330  357  445  546  764\n1977  862  660  663  643  502  392  411  348  387  385  411  638\n1978  796  853  737  546  530  446  431  362  387  430  425  679\n1979  821  785  727  612  478  429  405  379  393  411  487  574"
-  },
-  {
-    "objectID": "slides/ggplot2/index.html#reformat-to-one-variable-one-column",
-    "href": "slides/ggplot2/index.html#reformat-to-one-variable-one-column",
-    "title": "R Course - Day 2",
-    "section": "Reformat to One variable One Column",
-    "text": "Reformat to One variable One Column\n\n\n\n\n    Deaths Year Month    Sex\n1      901 1974   Jan female\n2      689 1974   Feb female\n3      827 1974   Mar female\n4      677 1974   Apr female\n5      522 1974   May female\n6      406 1974   Jun female\n7      441 1974   Jul female\n8      393 1974   Aug female\n9      387 1974   Sep female\n10     582 1974   Oct female\n11     578 1974   Nov female\n12     666 1974   Dec female\n13     830 1975   Jan female\n14     752 1975   Feb female\n15     785 1975   Mar female\n16     664 1975   Apr female\n17     467 1975   May female\n18     438 1975   Jun female\n19     421 1975   Jul female\n20     412 1975   Aug female\n21     343 1975   Sep female\n22     440 1975   Oct female\n23     531 1975   Nov female\n24     771 1975   Dec female\n25     767 1976   Jan female\n26    1141 1976   Feb female\n27     896 1976   Mar female\n28     532 1976   Apr female\n29     447 1976   May female\n30     420 1976   Jun female\n31     376 1976   Jul female\n32     330 1976   Aug female\n33     357 1976   Sep female\n34     445 1976   Oct female\n35     546 1976   Nov female\n36     764 1976   Dec female\n37     862 1977   Jan female\n38     660 1977   Feb female\n39     663 1977   Mar female\n40     643 1977   Apr female\n41     502 1977   May female\n42     392 1977   Jun female\n43     411 1977   Jul female\n44     348 1977   Aug female\n45     387 1977   Sep female\n46     385 1977   Oct female\n47     411 1977   Nov female\n48     638 1977   Dec female\n49     796 1978   Jan female\n50     853 1978   Feb female\n51     737 1978   Mar female\n52     546 1978   Apr female\n53     530 1978   May female\n54     446 1978   Jun female\n55     431 1978   Jul female\n56     362 1978   Aug female\n57     387 1978   Sep female\n58     430 1978   Oct female\n59     425 1978   Nov female\n60     679 1978   Dec female\n61     821 1979   Jan female\n62     785 1979   Feb female\n63     727 1979   Mar female\n64     612 1979   Apr female\n65     478 1979   May female\n66     429 1979   Jun female\n67     405 1979   Jul female\n68     379 1979   Aug female\n69     393 1979   Sep female\n70     411 1979   Oct female\n71     487 1979   Nov female\n72     574 1979   Dec female\n73    2134 1974   Jan   male\n74    1863 1974   Feb   male\n75    1877 1974   Mar   male\n76    1877 1974   Apr   male\n77    1492 1974   May   male\n78    1249 1974   Jun   male\n79    1280 1974   Jul   male\n80    1131 1974   Aug   male\n81    1209 1974   Sep   male\n82    1492 1974   Oct   male\n83    1621 1974   Nov   male\n84    1846 1974   Dec   male\n85    2103 1975   Jan   male\n86    2137 1975   Feb   male\n87    2153 1975   Mar   male\n88    1833 1975   Apr   male\n89    1403 1975   May   male\n90    1288 1975   Jun   male\n91    1186 1975   Jul   male\n92    1133 1975   Aug   male\n93    1053 1975   Sep   male\n94    1347 1975   Oct   male\n95    1545 1975   Nov   male\n96    2066 1975   Dec   male\n97    2020 1976   Jan   male\n98    2750 1976   Feb   male\n99    2283 1976   Mar   male\n100   1479 1976   Apr   male\n101   1189 1976   May   male\n102   1160 1976   Jun   male\n103   1113 1976   Jul   male\n104    970 1976   Aug   male\n105    999 1976   Sep   male\n106   1208 1976   Oct   male\n107   1467 1976   Nov   male\n108   2059 1976   Dec   male\n109   2240 1977   Jan   male\n110   1634 1977   Feb   male\n111   1722 1977   Mar   male\n112   1801 1977   Apr   male\n113   1246 1977   May   male\n114   1162 1977   Jun   male\n115   1087 1977   Jul   male\n116   1013 1977   Aug   male\n117    959 1977   Sep   male\n118   1179 1977   Oct   male\n119   1229 1977   Nov   male\n120   1655 1977   Dec   male\n121   2019 1978   Jan   male\n122   2284 1978   Feb   male\n123   1942 1978   Mar   male\n124   1423 1978   Apr   male\n125   1340 1978   May   male\n126   1187 1978   Jun   male\n127   1098 1978   Jul   male\n128   1004 1978   Aug   male\n129    970 1978   Sep   male\n130   1140 1978   Oct   male\n131   1110 1978   Nov   male\n132   1812 1978   Dec   male\n133   2263 1979   Jan   male\n134   1820 1979   Feb   male\n135   1846 1979   Mar   male\n136   1531 1979   Apr   male\n137   1215 1979   May   male\n138   1075 1979   Jun   male\n139   1056 1979   Jul   male\n140    975 1979   Aug   male\n141    940 1979   Sep   male\n142   1081 1979   Oct   male\n143   1294 1979   Nov   male\n144   1341 1979   Dec   male\n\n\n\n\nggplot(data) + geom_point(aes(x=Month, y=Deaths, color=Sex))"
-  },
-  {
-    "objectID": "slides/ggplot2/index.html#aesthetics",
-    "href": "slides/ggplot2/index.html#aesthetics",
-    "title": "R Course - Day 2",
-    "section": "Aesthetics",
-    "text": "Aesthetics\n\nAvailable aesthetics:\n\nx\ny\ncolor\nfill\nsize\nalpha\nlinetype\nlabels\nshape\ngroup"
-  },
-  {
-    "objectID": "slides/ggplot2/index.html#geometries",
-    "href": "slides/ggplot2/index.html#geometries",
-    "title": "R Course - Day 2",
-    "section": "Geometries",
-    "text": "Geometries\ngeom_… - the thing you want to plot\n30+ different geoms: https://ggplot2.tidyverse.org/reference/\n\n\n\ngeom_point() \ngeom_line() \ngeom_bar() \n\n\n\ngeom_histogram() \ngeom_boxplot() \ngeom_heatmap()"
-  },
-  {
-    "objectID": "slides/ggplot2/index.html#scatter-plots",
-    "href": "slides/ggplot2/index.html#scatter-plots",
-    "title": "R Course - Day 2",
-    "section": "Scatter Plots",
-    "text": "Scatter Plots\n\n\nBase Rggplot2\n\n\n\nToothGrowth$index &lt;- as.numeric(rownames(ToothGrowth))\nplot(ToothGrowth$len)\n\n\n\n\n\n\n\n\n\n\n\nggplot(ToothGrowth) + \n  geom_point(aes(x=index, y=len), size=2)"
-  },
-  {
-    "objectID": "slides/ggplot2/index.html#line-graphs",
-    "href": "slides/ggplot2/index.html#line-graphs",
-    "title": "R Course - Day 2",
-    "section": "Line Graphs",
-    "text": "Line Graphs\n\n\nBase Rggplot2\n\n\n\nplot(ToothGrowth$len, type = \"l\")\n\n\n\n\n\n\n\n\n\n\n\nggplot(ToothGrowth) + \n  geom_line(aes(x=index, y=len))"
-  },
-  {
-    "objectID": "slides/ggplot2/index.html#bar-charts",
-    "href": "slides/ggplot2/index.html#bar-charts",
-    "title": "R Course - Day 2",
-    "section": "Bar Charts",
-    "text": "Bar Charts\n\n\nBase Rggplot2\n\n\n\nbarplot(table(ToothGrowth$dose))\n\n\n\n\n\n\n\n\n\n\n\nggplot(ToothGrowth) + \n  geom_bar(aes(x=as.factor(dose)))"
-  },
-  {
-    "objectID": "slides/ggplot2/index.html#histograms",
-    "href": "slides/ggplot2/index.html#histograms",
-    "title": "R Course - Day 2",
-    "section": "Histograms",
-    "text": "Histograms\n\n\nBase Rggplot2\n\n\n\nhist(ToothGrowth$len,breaks = 50)\n\n\n\n\n\n\n\n\n\n\n\nggplot(ToothGrowth) + \n  geom_histogram(aes(x=len), binwidth = 0.5)"
-  },
-  {
-    "objectID": "slides/ggplot2/index.html#box-plots",
-    "href": "slides/ggplot2/index.html#box-plots",
-    "title": "R Course - Day 2",
-    "section": "Box Plots",
-    "text": "Box Plots\n\n\nBase Rggplot2\n\n\n\nboxplot(ToothGrowth$len~ToothGrowth$supp)\n\n\n\n\n\n\n\n\n\n\n\nggplot(ToothGrowth) + \n  stat_boxplot(aes(x=supp,y=len), geom=\"errorbar\", width=0.5) + \n    geom_boxplot(aes(x=supp,y=len))"
-  },
-  {
-    "objectID": "slides/ggplot2/index.html#heatmaps",
-    "href": "slides/ggplot2/index.html#heatmaps",
-    "title": "R Course - Day 2",
-    "section": "Heatmaps",
-    "text": "Heatmaps\n\nggplot(ToothGrowth) + \n  geom_tile(aes(x = supp, y = as.factor(dose), fill = len), color=\"black\")"
-  },
-  {
-    "objectID": "slides/ggplot2/index.html#facets",
-    "href": "slides/ggplot2/index.html#facets",
-    "title": "R Course - Day 2",
-    "section": "Facets",
-    "text": "Facets\n\nSeparate plots (facets) to compare groups of data\n\nBase Rggplot2\n\n\n\n\n\npar(mfrow = c(1, 3))\n\nlow &lt;- ToothGrowth[\n  which(ToothGrowth$dose==0.5),]\n\nmed &lt;- ToothGrowth[\n  which(ToothGrowth$dose==1),]\n\nhigh &lt;- ToothGrowth[\n  which(ToothGrowth$dose==2),]\n\nboxplot(low$len~low$supp, \n        main = \"Low dose\", \n        xlab = \"Supplement Type\")\nboxplot(med$len~med$supp, \n        main = \"Medium dose\", \n        xlab = \"Supplement Type\")\nboxplot(high$len~high$supp, \n        main = \"High dose\", \n        xlab = \"Supplement Type\")\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nggplot(ToothGrowth, aes(x=supp,y=len)) + \n    stat_boxplot(geom=\"errorbar\", width=0.5) + \n    geom_boxplot() + geom_point(color=\"red\") + \n    facet_grid(. ~ as.factor(dose))"
-  },
-  {
-    "objectID": "slides/ggplot2/index.html#scales",
-    "href": "slides/ggplot2/index.html#scales",
-    "title": "R Course - Day 2",
-    "section": "Scales",
-    "text": "Scales\n\nScale can be changed for each Aesthetic with corresponding scale_...\n\nggplot(ToothGrowth, aes(x=index, y=as.factor(dose), color=len)) + \n    geom_point() + \n    scale_x_continuous(limits=c(1,100), trans = \"log2\", \n        breaks=c(2,4,8,16,32,64), \n        label=c(\"two\",\"four\",\"eight\",\"sixteen\",\"thirtytwo\",\"sixtyfour\")) + \n    scale_y_discrete(label=c(\"low\",\"medium\",\"high\")) + \n    scale_color_gradient2(limits=c(0,40), low = \"green\", mid = \"black\", high = \"red\", \n        midpoint = 20)\n\n\n\n\n\n\n\n\nAll available scales with examples: http://ggplot2.tidyverse.org/reference/"
-  },
-  {
-    "objectID": "slides/ggplot2/index.html#themes",
-    "href": "slides/ggplot2/index.html#themes",
-    "title": "R Course - Day 2",
-    "section": "Themes",
-    "text": "Themes\n\n\nThe standard themes available in the ggplot package are:\n\ntheme_gray\ntheme_bw\ntheme_linedraw\ntheme_light\ntheme_dark\ntheme_minimal\ntheme_classic\ntheme_void\n\n\n\np &lt;- ggplot(ToothGrowth)\np + geom_point(aes(x = index, y = len, \n                   color = supp, size = dose)) + \n  theme_light()"
-  },
-  {
-    "objectID": "slides/ggplot2/index.html#custom-themes",
-    "href": "slides/ggplot2/index.html#custom-themes",
-    "title": "R Course - Day 2",
-    "section": "Custom Themes",
-    "text": "Custom Themes\n\nTheme parameters: http://ggplot2.tidyverse.org/reference/theme.html\nCustomize labels with labs()\n\nCodeResult\n\n\n\np &lt;- ggplot(ToothGrowth)\np + geom_point(aes(x = index, y = len, color = supp, size = dose)) + \n    theme(text = element_text(family = \"serif\", colour = \"#6f898e\"), \n      line = element_line(color = \"#163f47\"), \n      rect = element_rect(fill = \"#163f47\", color = \"#163f47\"),\n        axis.text.x = element_text(color=\"black\"), \n        axis.text.y = element_text(color=\"white\"), \n      axis.ticks = element_line(color = \"#6f898e\"), \n      axis.line = element_line(color = \"#163f47\", linetype = 1),\n        legend.background = element_blank(), \n        legend.key = element_blank(), \n        panel.background = element_rect(fill = \"#215c68\", colour = \"#163f47\"), \n        panel.border = element_blank(), \n      panel.grid = element_line(color = \"#163f47\"), \n      panel.grid.major = element_line(color = \"#163f47\"), \n      panel.grid.minor = element_line(color = \"#163f47\"), \n      plot.background = element_rect(fill = NULL, colour = NA, linetype = 0)\n    ) + \n    labs(title=\"Toothgrowth\", \n        subtitle = \"Orange juice or Vitamin C?\", x=\"Index\", y=\"Toothlength\", \n        size=\"Dose\", color=\"Supplement\") +\n    scale_color_manual(label=c(\"Orange juice\",\"Vitamin C\"), \n        values = c(\"VC\"=\"green\",\"OJ\"=\"orange\"))"
-  },
-  {
-    "objectID": "slides/ggplot2/index.html#saving-ggplots",
-    "href": "slides/ggplot2/index.html#saving-ggplots",
-    "title": "R Course - Day 2",
-    "section": "Saving ggplots",
-    "text": "Saving ggplots\nSave plot with ggsave() function\nEnter plot object and file to save ggsave(p, \"myplot.png\")\nPossible file extensions: “eps”, “ps”, “tex”, “pdf”, “jpeg”, “tiff”, “png”, “bmp”, “svg” or “wmf”"
-  },
-  {
-    "objectID": "slides/ggplot2/index.html#extensions",
-    "href": "slides/ggplot2/index.html#extensions",
-    "title": "R Course - Day 2",
-    "section": "Extensions",
-    "text": "Extensions\nhttps://exts.ggplot2.tidyverse.org/gallery/"
   }
 ]

@@ -1,0 +1,19 @@
+<svg viewBox="0 0 1280 800" xmlns="http://www.w3.org/2000/svg">
+     <g>
+    <title>Layer 1</title>
+    <polygon points="0,0 80,0 0, 80" stroke="#cfedf8" fill="#cfedf8"/>
+    </g>
+
+<g transform="translate(1180, 20)">
+    <!-- Cap board (flat top) -->
+    <polygon points="32,15 10,20 32,25 54,20" fill="#2c3e50" stroke="#1a252f" stroke-width="1"/>
+    
+    <!-- Cap base (rounded part) -->
+    <ellipse cx="32" cy="22" rx="18" ry="6" fill="#34495e" stroke="#1a252f" stroke-width="1"/>
+    <path d="M 14,22 Q 14,30 32,32 Q 50,30 50,22" fill="#34495e" stroke="#1a252f" stroke-width="1"/>
+    
+    <!-- Tassel -->
+    <line x1="54" y1="20" x2="58" y2="28" stroke="#e74c3c" stroke-width="1.5"/>
+    <circle cx="58" cy="30" r="2" fill="#e74c3c"/>
+  </g>
+ </svg>

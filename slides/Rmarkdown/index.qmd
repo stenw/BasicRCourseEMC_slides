@@ -1,0 +1,1171 @@
+---
+title: "R course - Day 4"
+subtitle: Additional topics
+author:
+  name: Sten Willemsen
+  affiliation: 
+    - name: Erasmus MC
+      department: Epidemiology
+  orcid: 0000-0002-1675-2931
+  email: s.willemsen@erasmusmc.nl
+date: " 20 November 2025"
+categories: [Day4]
+image: "image.png"
+format:
+  emctemplatereveal-revealjs:
+    css: extra.css
+    toc-depth: 1
+    chalkboard: true
+    menu: true
+---
+
+```{r setup, include=FALSE}
+
+library(survival)
+library(knitr)
+library(kableExtra)
+library(dplyr)
+
+
+pbc <- survival::pbc
+pbcseq <- survival::pbcseq
+```
+
+## R Course - Programme {data-background="./templateassets/lbback.svg" class="center"} 
+
+```{css, echo=FALSE, include=FALSE}
+<style>
+    .red-cross {
+      color: red;
+    }
+</style>
+<style>
+    .green-checkmark {
+      color: green;
+    }
+</style>  
+}
+```
+
+
+-   Day 1: Introduction
+-   Day 2: Data management and visualization
+-   Day 3: Functions and Analysis
+-   <b>Day 4: Additional topics</b>
+
+## Program this morning
+
+<br>
+
+- Quarto / Rmarkdown
+- Shiny
+- Tidyverse
+- R in Erasmus MC
+
+
+# Quarto / Rmarkdown {data-background="./templateassets/lbback.svg" class="center"} 
+
+## Problems {.triangledb}
+
+* When doing research you often want to discuss things with collaborators (for example your supervisor)
+
+* Results from R need to be copied to word or powerpoint. 
+  - Often this [**does not look good**]{color="#b281e2"} without formatting
+  - [**Errors**]{color="#e84720"} can be introduced
+  - Making small changes means you have to do everything again
+  
+* It is convenient to have code, output and documentation [**together**]{color="#afcc46"}
+  
+## Problem (2) {.triangledb}
+
+
+* [**Authors**]{color="#e84720"} need to invest effort to create a [**aesthetically pleasing**]{color="#0c2074"} document (presentation, web, report)
+* [**Readers**]{color="#afcc46"} that want to reproduce results must obtain different files must puzzle out which results are produced by which code
+* Often there is no single comprehensive document that integrates data analysis witch documentation and discussion of results 
+  - **Data**, **Code**, **Documentation** and **Results** [**lack proper linkage**]{color="#e84720"}
+* Hard to [**update**]{color="#AFA4F6"} analyses when there are small changes to data or methods
+
+## Goals {.triangledb}
+
+<br>
+  
+* We want our scientific documents to be:
+  - **Reproducible**
+  - **Transparent**
+  - **Shareable**
+  - **Understandable**
+  - **Efficient to produce and maintain**
+  
+## Literate Programming {.triangledb}
+
+* [**Origin of the Concept:**]{color="#0c2074"}  Don Knuth
+* Document is a stream of [**text**]{color="df4512"} and [**code** ("**chunks**")]{color="#afcc46"}
+* Presentation code formats results (tables, figures)
+* Text explains what is done 
+  - Self documenting
+* Literate programs are [**weaved**]{color="#b281e2"} to produce human readable documents and [**tangled**]{color="#0078d1"} to produce machine readable documents
+
+## Two parts  {.triangledb}
+
+<br>
+
+* We need:
+
+  - a [**documentation language**]{color="#e84720"}
+    * To write our program / analysis script
+  
+  - a [**programming language**]{color="#afcc46"}
+    * To write and format the text that explains what is done
+
+## Quarto  {.triangledb}
+
+*	Quarto is a format for writing \alert{reproducible, dynamic reports} 
+* Keeps **code**, **output**, **documentation** and **results** [**together**]{color="#e84720"}
+* Use it to [**embed R code and results**]{color="#0c2074"} into **various formats**
+
+:::: {.columns}
+
+::: {.column  style="background-color: #fafafa; width:55%;"}
+
+![](assets-day4\Quartoprocess.png){width="65%"}
+
+:::
+
+::: {.column style="background-color: #fafafa; width:10%;"}
+
+:::
+
+::: {.column  style="background-color: #fafafa; width:15%;"}
+
+<br>
+<br>
+
+![](assets-day4\quarto.svg){style="width:60%;"}
+
+:::
+
+::::
+
+## History {background-image="triangledb-bg.svg" background-size="cover" .smaller}
+  
+::: {.timeline}
+
+<div class="side-by-side-container">
+<div class="container left">
+
+<div class="content">
+<h5>2002: Sweave</h5>
+<p>Friedrich Leish</p>
+</div>
+</div>
+<div class="extrabox">
+<img src="assets-day4/sweaveicon.png" alt="sweave sticker" style="width:128px;">
+
+</div>
+</div>
+<div class="side-by-side-container">
+<div class="extrabox">
+<p>test</p>
+
+<img src="https://upload.wikimedia.org/wikipedia/commons/3/34/Knitr_hex_logo.svg" alt="knitr sticker" style="width:64px;height:64px;">
+</div>
+<div class="container right2">
+<div class="content">
+<h5>2012: Knitr / rmarkdown </h5>
+<p>by Yihui Xie</p>
+</div>
+</div>
+</div>
+
+<div class="side-by-side-container">
+
+<div class="container left">
+
+<div class="content">
+<h5>2022: Quarto</h5>
+<p>by Carlos Scheidegger et. al.</p>
+</div>
+</div>
+
+<div class="extrabox">
+<img src="assets-day4/quarto.svg" alt="quarto sticker" style="width:64px">
+</div>
+
+</div>
+:::
+
+
+## Formats {.triangledb}
+
+* Quarto can produce output in [**various formats**]{color="#e84720"} such as:
+  - slideshows (e.g. powerpoint), 
+  - pdfs, 
+  - books,
+  - html documents,
+  - blogs,
+  - dashboards,
+  - etc
+  
+## Minimal Quarto document {.triangledb}
+
+{{< include assets-day4/examplemd.qmd >}}
+
+
+
+
+
+## Minimal Quarto document results {.triangledb}
+
+![Resulting html document](assets-day4/compileddocument.png)
+
+
+
+## Markdown (cont'd) {.triangledb}
+
+<br>
+
+* In **Rstudio**
+   * File $\rightarrow$ New File $\rightarrow$ Quarto...
+   * Insert title and author
+   * Select format
+   
+## Advantages and disadvantages {.triangledb}
+
+::: columns
+
+:::: {.column width="47%"}
+
+<h3>Advantages</h3>
+
+* <span class="green-checkmark" style="color:MediumSeaGreen;">&#10004;&#xfe0e;</span> Everything in one place
+* <span class="green-checkmark" style="color:MediumSeaGreen;">&#10004;
+</span> Everything updates to reflect external changes
+* <span class="green-checkmark" style="color:MediumSeaGreen;">&#10004;</span> Rebuilding the document functions as a "regression test"
+
+::::
+
+:::: {.column width="47%"}
+
+<h3>Disadvantages</h3>
+
+<p>
+* ❌ When you put everything in a single document it may be difficult to read and edit
+* ❌ May be slow
+<br>
+<br>
+<br>
+</p>
+::::
+
+:::   
+   
+# Markdown basics {data-background="./templateassets/lbback.svg" class="center"}   
+   
+
+## Headers {.triangledb}
+
+<br>
+
+::: columns
+
+
+:::: {.column width="47%"}
+
+<h3>Code</h3>
+
+```{.markdown}
+
+# Results
+## Primary Outcome
+## Secondary outcomes
+
+```
+<br>
+
+::::
+
+:::: {.column width="47%"}
+
+<h3>Output</h3>
+
+<h4>Results</h4>
+<h5><small>Primary Outcome</small></h5>
+<h5><small>Secondary Outcomes</small></h5>
+::::
+
+:::
+
+## Emphasis {.triangledb}
+
+::: columns
+
+
+:::: {.column width="47%"}
+
+<h3>Code</h3>
+
+```{.markdown code-line-numbers="false"}
+
+*Methods*  
+_Methods_
+**Methods**
+__Methods__
+
+```
+
+
+::::
+
+:::: {.column width="47%"}
+
+<h3>output</h3>
+
+*Methods*  
+_Methods_<br>
+**Methods**<br>
+__Methods__<br>
+
+::::
+
+:::
+
+## Bullets {.triangledb}
+
+::: columns
+
+
+:::: {.column width="47%"}
+
+### Code 
+
+```{.markdown code-line-numbers="false"}
+
+* Method 1
+- Method 2
++ Method 3
+
+* Results
+  * Method 1
+  * Method 2
+
+
+```
+
+::::
+
+:::: {.column width="47%"}
+
+<h3>output</h3>
+
+* Method 1
+- Method 2
++ Method 3
+
+* Results
+  * Method 1
+  * Method 2
+
+::::
+
+:::
+
+## Links {.triangledb}
+
+::: columns
+
+
+:::: {.column width="47%"}
+
+<h3>Code</h3>
+
+```{.markdown code-line-numbers="false"}
+
+[link](http://example.com)
+
+```
+
+::::
+
+:::: {.column width="47%"}
+
+<h3>output</h3>
+
+[link](http://example.com)
+
+::::
+
+:::
+
+## Images {.triangledb}
+
+::: columns
+
+
+:::: {.column width="47%"}
+
+<h3>Code</h3>
+
+```{.markdown code-line-numbers="false"}
+
+![Rsymbol](https://upload.wikimedia.org/
+				wikipedia/commons/1/12/
+				R_logo_2000.png)
+
+```
+
+<small>Optionally attributes for width, height and alignment can be set (see documentation for details)</small>
+
+```{.markdown code-line-numbers="false"}
+
+![Rsymbol](https://upload.wikimedia.org/
+				wikipedia/commons/1/12/
+				R_logo_2000.png){
+				width=4cm}
+
+```
+
+::::
+
+:::: {.column width="47%"}
+
+<h3>output</h3>
+
+
+![Rsymbol](https://upload.wikimedia.org/wikipedia/commons/1/12/R_logo_2000.png) 
+
+::::
+
+:::
+
+::: aside
+
+More on plots below</small>
+
+:::
+
+## Tables {.triangledb}
+
+::: columns
+
+:::: {.column width="47%"}
+
+<h3>Code</h3>
+
+```{.markdown}
+
+| Default | Left | Right | Center |
+|---------|:-----|------:|:------:|
+| 12      | 12   |    12 |   12   |
+| 123     | 123  |   123 |  123   |
+| 1       | 1    |     1 |   1    |
+
+: Optional label
+
+```
+
+::::
+
+:::: {.column width="47%"}
+
+<h3>Output</h3>
+
+<small>
+
+::::: {.spwtable }
+
+| Default | Left | Right | Center |
+|---------|:-----|------:|:------:|
+| 12      | 12   |    12 |   12   |
+| 123     | 123  |   123 |  123   |
+| 1       | 1    |     1 |   1    |
+
+: Optional label
+
+:::::
+
+</small>
+
+::::
+
+:::
+
+::: aside
+
+More on tables below</small>
+
+:::
+
+## Escaping {.triangledb}
+
+::: columns
+
+
+:::: {.column width="47%"}
+
+<h3>Code</h3>
+
+```{.markdown}
+
+\*Method\*
+
+```
+
+::::
+
+:::: {.column width="47%"}
+
+<h3>Output</h3>
+
+\*Method\*
+
+::::
+
+:::
+
+
+Escaping Markdown characters with a back-slash allows you to use any characters which might be getting accidentally interpreted as HTML/TeX
+
+## Code {.triangledb}
+
+::: columns
+
+
+:::: {.column width="47%"}
+
+<h3>Code</h3>
+
+```{.markdown}
+
+`Methods`
+
+```
+
+::::
+
+:::: {.column width="47%"}
+
+<h3>Output</h3>
+
+`Methods`
+
+::::
+
+:::
+
+## LaTeX equations {.triangledb}
+
+::: {.smaller}
+
+```{r}
+#| echo: false
+library(knitr)
+library(tibble)
+
+latex_reference <- tribble(
+  ~Category, ~Syntax, ~Result,
+  "Fractions", "`\\frac{a}{b}`", "$\\frac{a}{b}$",
+  "Greek", "`\\alpha \\Omega`", "$\\alpha \\quad \\Omega$",
+  "Square root", "`\\sqrt{x}`", "$\\sqrt{x}$",
+  "Sum", "`\\sum_{i=1}^n`", "$\\sum_{i=1}^n$",
+  "Product", "`\\prod_{i=1}^n`", "$\\prod_{i=1}^n$",
+  "Integral", "`\\int_a^b`", "$\\int_a^b$",
+  "Limit", "`\\lim_{x \\to \\infty}`", "$\\lim_{x \\to \\infty}$",
+  "Bold", "`\\mathbf{x}`", "$\\mathbf{x}$",
+  "Less or equal", "`x \\leq y`", "$x \\leq y$",
+  "Greater or equal", "`x \\geq y`", "$x \\geq y$",
+  "Element of", "`x \\in A`", "$x \\in A$",
+  "Plus/minus", "`\\pm`", "$\\pm$",
+  "Times", "`\\times`", "$\\times$",
+  "Multiply dot", "`\\cdot`", "$\\cdot$"
+)
+
+half <- ceiling(nrow(latex_reference) / 2)
+left <- latex_reference[1:half, ]
+right <- latex_reference[(half + 1):nrow(latex_reference), ]
+latex_reference_wide <- cbind(left, right)
+names(latex_reference_wide) <- c("Category", "Syntax", "Result", "Category ", "Syntax ", "Result ")
+
+# Print both tables
+kable(
+latex_reference_wide,
+escape = FALSE
+) 
+
+```
+
+:::
+
+## References {.triangledb}
+
+* A list of most common R markdown commands can be found on:
+- [R markdown cheatsheet](https://www.rstudio.com/wp-content/uploads/2015/02/rmarkdown-cheatsheet.pdf)
+- [rmarkdown.rstudio.com/authoring_basics.html](https://rmarkdown.rstudio.com/authoring_basics.html) and
+- [quarto.org/docs/authoring/markdown-basics.html](https://quarto.org/docs/authoring/markdown-basics.html) (specifically for *quarto*)
+
+
+
+
+## Code chunks {.triangledb}
+
+* [**Quarto**]{color="#0c2074"} allows us to include [**code blocks**]{color="#b281e2"}
+* They will be executed during rendering
+
+::: columns
+
+
+:::: {.column width="47%"}
+
+<h3>Code</h3>
+
+````{.r code-line-numbers="false"}
+
+```
+1+1
+```
+
+````
+
+::::
+
+:::: {.column width="47%"}
+
+<h3>Output</h3>
+
+```{r }
+1+1
+```
+
+::::
+
+:::
+
+* NB: inline R can be included using something like `` `R NROW(x)` ``
+
+## Plots  {.triangledb}
+
+* Plots that are produced in an R code chunk are included in the document
+
+::: columns
+
+
+:::: {.column width="47%"}
+
+<h3>Code</h3>
+
+````{.r code-line-numbers="false"}
+
+```
+
+plot(x=c(1, 2),
+     y=c(1, 2))
+     
+
+```
+
+
+
+````
+
+::::
+
+:::: {.column width="47%"}
+
+<h3>Output</h3>
+
+```{r}
+plot(x=c(1, 2),
+     y=c(1, 2))
+```
+
+::::
+
+:::
+
+## Plots (continued)  {.triangledb .smaller}
+
+* Sometimes it can be useful to save the plot to file and then include it in the document using markdown
+
+::: columns
+
+
+:::: {.column width="47%"}
+
+<h3>Code</h3>
+
+````{.r code-line-numbers="false"}
+
+```
+jpeg("example.jpg")
+plot(x=c(1, 2),
+     y=c(1, 2))
+dev.off()     
+
+```
+![A plot](example.jpg)
+
+
+````
+
+::::
+
+:::: {.column width="47%"}
+
+<h3>Output</h3>
+
+```{r include=FALSE}
+jpeg("example.jpg", height=300, quality= 99)
+plot(x=c(1, 2),
+     y=c(1, 2))
+dev.off()     
+```
+![A plot](example.jpg)
+
+::::
+
+:::
+
+## Tables  {.triangledb .smaller}
+
+* Above we showed how to create markdown based tables
+* Sometimes we want to use R.
+* Use the `kable` function to display tables nicely 
+
+::: columns
+
+
+:::: {.column width="47%"}
+
+<h3>Code</h3>
+
+````{.r code-line-numbers="false"}
+
+```
+
+knitr::kable(data.frame(a=c(1,2),
+  b=c(3,4)))
+     
+
+```
+
+
+
+````
+
+::::
+
+:::: {.column width="47%"}
+
+<h3>Output</h3>
+
+```{r}
+knitr::kable(data.frame(a=c(1,2),
+  b=c(3,4))) |> 
+  kable_styling(full_width = TRUE, htmltable_class = "spwtable")
+
+```
+
+::::
+
+:::
+
+<small>The `flextable` and `kableExtra` packages can also be useful</small>
+
+## YAML header  {.triangledb}
+
+* **YAML:** YAML Ain’t Markup Language
+
+* A YAML header contains YAML **keywords**, such as “title”, “author”, and “date”
+* preceded and ended by three dashes (—)
+
+```{.r}
+---
+title: "R course - Day 4"
+subtitle: Introduction
+author: Sten Willemsen
+date: "16 November 2023"
+---
+
+```
+
+* Converted to title, author, etc in document
+* Receives formatting
+
+## YAML header (2)  {.triangledb}
+
+* Also used to set various options
+  * [**format**]{color="#e84720"} of output
+  * [**Themes**]{color="#e84720"} and [**templates**]{color="#e84720"}
+  * Inclusion of TOC (table-of-contents)
+  * etc
+
+## Popular Output formats {.triangledb}
+
+::: {.spwtable }
+
+| **Output Type**         | **Quarto Format**            | 
+|--------------------------|------------------------------|
+| HTML Document           | `format: html`              | 
+| PDF Document            | `format: pdf`               | 
+| Word Document           | `format: docx`              | 
+| Reveal.js Presentation  | `format: revealjs`          | 
+| Beamer Presentation     | `format: beamer`            |
+
+:::
+
+
+## Chunk options {.triangledb}
+
+<br>
+
+* Code chunks can have various options `
+* Options are set as a comma separated list of `key=value` pairs
+* In Quarto, code chunk options are either included in the header () 
+* Or set using `#|` followed by `key: value` pairs
+  - [NB: When using comments use `true` and `false` instead of `TRUE` and `FALSE`]{color="#df4512"}
+
+
+
+## Chunk options {.triangledb}
+
+*  **eval**: If `FALSE`, code chunk is not run
+*	 **include**: If `FALSE`, code is run but not included the chunk in the final document
+*	**echo**: If `FALSE`, code is not shown (but results are)
+*  **results**: If `hide`, results are not shown. If `hold`, knitr will delay displaying all output until the end of the chunk. If `asis`, knitr will pass through results without reformatting them (useful if results return raw HTML, etc.)
+
+## Chunk options (cont'd) {.triangledb}
+
+
+* **error**: If `FALSE`, knitr will not display any error messages generated by the code
+*	**message**: If `FALSE`, knitr will not display any messages
+*	**warning**: If `FALSE`, knitr will not display any warning messages
+*	**cache**: If `TRUE`, knitr will cache the results to reuse in future knits. Knitr will reuse the results until the code chunk is altered.
+* **cache.comments**: If `FALSE`, knitr will not rerun the chunk if only a code comment has changed
+
+## Chunk options (cont'd) {.triangledb}
+
+*	 **fig.cap**: A character string to be used as a figure caption in html
+*	 **fig.height**, **fig.width**: The width and height to use in R for plots created by the chunk (in inches)
+
+## R markdown Gallery {.triangledb}
+
+```{=html}
+<iframe  height="80%" width="95%" src="https://rmarkdown.rstudio.com/gallery.html" title="R Markdown Gallery"></iframe>
+```
+
+
+* We normally use quarto to transform `.qmd` files to a documents, 
+
+* We can also transform (special) R scripts to .qmd (and html/pdf etc...)
+  - This is called [**spinning**]{color="#DB3324"}
+
+* All **normal text** should be written after a `#'` comment
+
+* Code is split in chunks by markdown content
+
+* **Code chunk** options are preceded by `#|`
+
+* See the demos from the first day as examples
+
+## Spin: example {.triangledb}
+
+{{< include assets-day4/exampleR.qmd >}}
+
+
+* See the demos from the first day as examples
+
+## Visual editor {.triangledb}
+
+* Rstudio has a visual editor for Quarto
+
+* Use CTRL-/ to insert a new structure (list, equation, image, etc)
+
+* R-Studio promises seamless switching between visual and source mode but your mileage may vary.
+
+
+## If you want to know more {.triangledb}
+
+::: {layout-ncol=2}
+
+[![R Markdown: The Definitive Guide](assets-day4\rmarkdownbooks.png){fig-alt="Cover of R Markdown: The Definitive Guide" width=62%}](https://bookdown.org/yihui/rmarkdown/)
+
+[![R markdown-cookbook](assets-day4\cookbook.png){fig-alt="Cover of R Markdown Cookbook" width=63%}](https://bookdown.org/yihui/rmarkdown-cookbook/)
+
+:::
+
+# Shiny {data-background="./templateassets/lbback.svg" class="center"}
+
+## Introduction {.triangledb}
+
+* Shiny is an R package that makes it easy to build [**interactive web apps**]{color="#e84720"} straight from **R**
+* Shiny combines the computational power of \R with the interactivity of the modern web
+* Shiny apps are easy to write - No web development skills are required
+
+<br>
+
+![](assets-day4/shiny.svg){.absolute top=50% left=50% width="100"}
+
+
+## Shiny in Rstudio {.triangledb}
+
+* File $\rightarrow$ New File $\rightarrow$ Shiny Web App...
+* Insert application name
+* Let's try an example
+
+## Structure  {.triangledb}
+
+* Shiny applications consist of:
+	* a user interface object (`ui`): layout and appearance of your app
+	* a `server` function: instructions that your computer needs to build your app
+	* a call to the shinyApp function: creates Shiny app objects
+
+## Structure in code {.triangledb}
+
+```{.r}
+library(shiny)
+
+# Define UI ----
+ ui <- fluidPage(
+)
+				
+# Define server logic ----
+ server <- function(input, output) {
+}
+				
+# Run the app ----
+shinyApp(ui = ui, server = server)
+
+```
+
+## User Interface {.triangledb}
+
+* Consist of a **layout function**  that defines the layout of the app
+  * `fluidPage()`, `fillPage()`, `fixedPage()`, etc  
+* Further layout functions can further structure the layout:
+  * `sidebarLayout`, `sidebarPanel`, `mainPanel`, etc
+
+## User Interface (2) {.triangledb}
+
+* The interface may contain various elements to display different things to the user
+
+* `titlePanel("Old Faithful Geyser Data")`
+
+* [**input**]{color="#e84720"} controls
+```{.r}
+            sliderInput("bins",
+                        "Number of bins:",
+                        min = 1, max = 50, value = = 30)
+```
+
+* [**Output**]{color="#afcc46"}:
+
+```{.r}
+plotOutput("distPlot")
+```
+  
+## Server function {.triangledb}
+
+* informs how the [**output**]{color="#afcc46"} should be calculated based on the [**inputs**]{color="#e84720"} 
+
+
+```{.r}
+    output$distPlot <- renderPlot({
+        x    <- faithful[, 2]
+        bins <- seq(min(x), max(x), length.out = input$bins + 1)
+        hist(x, breaks = bins, col = 'darkgray', border = 'white',
+             xlab = 'Waiting time to next eruption (in mins)',
+             main = 'Histogram of waiting times')
+    })
+```
+
+* Uses different **render** functions
+
+
+# Tidyverse {data-background="./templateassets/lbback.svg" class="center"}
+
+
+## What is the tidyverse {.triangledb}
+
+<br>
+
+* **Collection of packages** from same people that made RStudio
+* Duplicate some functionality of base R
+* [**Consistent**]{color="#e84720"} and [**designed to work together**]{color="#afcc46"}
+* More intuitive (?)
+
+![](./assets-day4/tidyverse.svg){.absolute left=50% width="128"}
+
+::: aside
+
+There are also disadvantages to the tidyverse. For example it is less stable in the sense that it develops faster
+
+:::
+
+
+
+## Tidyverse packages{.triangledb}
+
+
+:::{.emcdescriptionlist}
+
+tibble
+: Replacement for `data.frame`s
+
+dplyr
+:  Grammar of data manipulation (`select`, `filter`, `mutate`, `summarise`, `arrange`)
+
+tidyr
+: Tidy messy data (also let's you pivot data)
+
+ggplot2
+: Replaces for base plots. Discussed before
+
+readr
+: Import data
+
+purrr
+: Tools for functional programming
+
+forcats
+: Tools for categorical data
+
+stringr
+: Tools for character data
+
+
+:::
+
+::: aside
+
+There are many more packages that although not formally part of the tidyverse follow the same design principles 
+
+:::
+
+## Pipe operation {.triangledb}
+
+* Pipe operator in tidyverse is `%>%`
+* Takes the [**output**]{color="#afcc46"} of a function on the left-hand-side 
+* Uses it as [**input**]{color="#e84720"} for a function on the right 
+  - by default as the fist argument
+* Often make long sequences of transformations more readable.
+<br>
+* Now also included in base R `|`<wbr>`>` (sometimes rendered as `|>`)
+
+## tible {.triangledb}
+
+* The tibble package introduces the `tible` a replacement for the `data.frame`
+
+* Does not print all rows and columns by default
+
+* Mostly works as a `data.frame` but if you get a strange error convert it using `as.data.frame.tbl_df`
+
+## dplyr {.triangledb}
+
+* Key functions:
+  * `select`
+  * `filter`
+  * `group_by`
+  * `summarise`
+  * `arrange`
+  
+::: aside
+
+See [dplyr cheatsheet/](https://github.com/rstudio/cheatsheets/blob/main/data-transformation.pdf)
+
+:::
+
+## Example {.triangledb}
+
+
+```{r echo=TRUE}
+#| eval: false
+d <- d[, c('id', 'GA_weeks', 'GA_days', 'BW')]
+d <- d[d$GA_weeks > 30, ]
+d$GA_tot <- d$GA_weeks * 7 + d$GA_days
+d <- d[order(d$id), ]
+
+d_merged <- merge(d, d_grp, by='id')
+aggregate(BW ~ grp, data=d_merged, mean)
+
+```
+
+<br>
+
+* Base R syntax can be made shorter by nesting expressions
+
+* E.g.: `aggregate(BW ~ grp, data=merge(d, d_grp, by='id'), mean)`
+
+* Does not help readability
+
+
+
+## Example (cont'd) {.triangledb}
+
+
+```{r echo=TRUE}
+#| eval: false
+d %>% 
+  select(id, GA_weeks, GA_days, BW) %>% 
+  filter(GA_weeks > 30) %>%
+  mutate(GA_tot = GA_weeks * 7 + GA_days) %>% 
+  arrange(id)
+  
+d %>% 
+  inner_join(d_grp, by='id') %>% 
+  group_by(grp) %>% 
+  summarise(meanBW = mean(BW))
+
+```
+
+<br>
+
+::: {.boxspw}
+
+* The pipe operator makes the code more **readable**
+
+:::
+
+# R in  Erasmus MC {data-background="./templateassets/lbback.svg" class="center"}
+
+## Local installation {.triangledb}
+
+<br>
+
+* Most [**flexible**]{color="#e84720"}
+
+<br>
+
+* Does not make IT happy 😒
+
+
+## Central Installation {.triangledb}  
+  
+* Go to **Service portal** and search for **RStudio**
+* You will find a form to request addition to the **R-users group**
+* Employees of several departments / groups are added automatically 
+* Available in `mijnwerkplek.erasmusmc.nl`
+  
+## Packages {.triangledb}
+
+* By default saved in 'my documents'
+* very [**limited space**]{color="#e84720"}
+* If you use the central installation you gain access to a network drive `p:` which has many packages pre-installed
+* You can **choose location** using `.libPaths()` function
+* You can make this **permanent** by using `.Renviron` file
+```{verbatim rlibs}
+#| code-line-numbers: false
+R_LIBS_USER=v:/homedir/959750/tools/Rlibs/%p%V-library/%v
+```
+
+
+## Digital Research Environment (DRE) {.triangledb}
+
+* DRE runs on virtual machines using [**Microsoft Azure**]{color="#e84720"}
+* Configured data management, processing and sharing can been done securely
+* Various computational software (including R and Rstudio) can be used
+* Collaboration with external parties is possible
+* More computational power is available when needed
+* See  [https://andrea-cloud.com/](https://andrea-cloud.com/) and [support.mydre.org](support.mydre.org)
+
+
+
+
