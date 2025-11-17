@@ -8,7 +8,7 @@ author:
       department: Epidemiology
   orcid: 0000-0002-1675-2931
   email: s.willemsen@erasmusmc.nl
-date: "10/17/2025"
+date: "11/17/2025"
 date-format: long
 categories: [Day1]
 image: "image.png"
@@ -69,10 +69,10 @@ The most valuable tool of a modern quantitative researcher is his/her personal c
   - Introduction
 * **Day 2:** 
   - Data cleaning
-  - Data visualization
-* **Day 3:**
-  - R functions
   - Statistical analysis
+* **Day 3:**
+  - Data visualization
+  - R functions
 * **Day 4:**
   - Additional topics
   
@@ -541,7 +541,7 @@ use forward slashes or double backward slashes in the file names, e.g., \
     `"C:/Documents and Settings/User/Data/file.txt"` or \
     `"C:\\Documents and Settings\\User\\Data\\file.txt"` \
 or use raw character constants \
-    `r"(C:\\Documents and Settings\\User\\Data\\file.txt)"`
+    `r"(C:\Documents and Settings\User\Data\file.txt)"`
 :::
     
 ## Importing Data (cont'd) {.triangledb}
