@@ -445,7 +445,7 @@
 <div class="cell">
 <div class="sourceCode cell-code" id="cb8"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a></a><span class="fu">args</span>(round)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>function (x, digits = 0) 
+<pre><code>function (x, digits = 0, ...) 
 NULL</code></pre>
 </div>
 <div class="sourceCode cell-code" id="cb10"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a></a><span class="fu">round</span>(<span class="fl">4.679</span>, <span class="dv">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -609,8 +609,8 @@ NULL</code></pre>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb41"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb41-1"><a></a>data<span class="sc">$</span>Ages</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code> [1]  30  45  56  50  35  46  28  41  37  44  46  52  59  46  46 -50  26  44  51
-[20]  20  56  43  52  26  46</code></pre>
+<pre><code> [1]  56  35  62  43  57  36  45  57  47  50  41  36  33  33  45 -50  54  57  57
+[20]  38  46  32  41  48  41</code></pre>
 </div>
 </div>
 <p>-50 is clearly wrong</p>
@@ -620,14 +620,14 @@ NULL</code></pre>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb43"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb43-1"><a></a><span class="fu">my_descriptives</span>(data<span class="sc">$</span>Ages)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] 42.70833</code></pre>
+<pre><code>[1] 45.41667</code></pre>
 </div>
 </div>
 <p>In stead of:</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb45"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb45-1"><a></a><span class="fu">mean</span>(data<span class="sc">$</span>Ages)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] 39</code></pre>
+<pre><code>[1] 41.6</code></pre>
 </div>
 </div>
 </section>
@@ -643,7 +643,7 @@ NULL</code></pre>
 <span id="cb47-7"><a></a><span class="fu">my_descriptives</span>(data<span class="sc">$</span>Ages)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>   Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
-  20.00   36.50   45.50   42.71   50.25   59.00 </code></pre>
+  32.00   37.50   45.00   45.42   54.50   62.00 </code></pre>
 </div>
 </div>
 </section>
@@ -681,7 +681,7 @@ NULL</code></pre>
 [1] 1
 
 [[2]]
-[1] 42.70833</code></pre>
+[1] 45.41667</code></pre>
 </div>
 </div>
 </section>
@@ -727,7 +727,7 @@ NULL</code></pre>
 </div>
 <div class="sourceCode cell-code" id="cb59"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb59-1"><a></a>d</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-error">
-<pre><code>Error in eval(expr, envir, enclos): object 'd' not found</code></pre>
+<pre><code>Error: object 'd' not found</code></pre>
 </div>
 </div>
 </section>

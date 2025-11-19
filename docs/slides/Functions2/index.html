@@ -484,13 +484,13 @@
 <span id="cb12-10"><a></a><span class="fu">my_descriptives</span>(data<span class="sc">$</span>Ages)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>   Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
-  23.00   36.75   43.00   45.71   53.50   71.00 </code></pre>
+  24.00   41.00   47.50   45.96   52.25   62.00 </code></pre>
 </div>
 <div class="sourceCode cell-code" id="cb14"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a></a><span class="fu">my_descriptives</span>(data<span class="sc">$</span>Sex)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>x.trim
  0  1 
-13 11 </code></pre>
+12 12 </code></pre>
 </div>
 </div>
 </section>
@@ -901,21 +901,21 @@ $col3
 <span id="cb73-5"><a></a>patients</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>   group    outcome
-1  grp-1 -0.7930061
-2  grp-1  0.4491819
-3  grp-1  0.4399118
-4  grp-1  0.8997570
-5  grp-1 -0.8043006
-6  grp-2 -0.1144139
-7  grp-2  0.1370383
-8  grp-2 -1.0170428
-9  grp-2  0.6118554
-10 grp-2  0.6728039</code></pre>
+1  grp-1  2.0875013
+2  grp-1  0.3904036
+3  grp-1 -1.1373737
+4  grp-1 -0.9206813
+5  grp-1  1.3397331
+6  grp-2 -1.1998178
+7  grp-2  0.2979493
+8  grp-2 -1.6182231
+9  grp-2 -0.6320742
+10 grp-2  0.8173449</code></pre>
 </div>
 <div class="sourceCode cell-code" id="cb75"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb75-1"><a></a><span class="fu">tapply</span>(patients<span class="sc">$</span>outcome, patients<span class="sc">$</span>group, mean)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>     grp-1      grp-2 
-0.03830882 0.05804818 </code></pre>
+ 0.3519166 -0.4669642 </code></pre>
 </div>
 </div>
 </section>
@@ -928,9 +928,9 @@ $col3
 <span id="cb77-4"><a></a></span>
 <span id="cb77-5"><a></a><span class="fu">tapply</span>(patients<span class="sc">$</span>outcome, <span class="fu">list</span>(patients<span class="sc">$</span>group, patients<span class="sc">$</span>serotype), mean)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>                A         B
-grp-1  0.09293757 1.6339488
-grp-2 -0.75751287 0.1602559</code></pre>
+<pre><code>               A          B
+grp-1  0.2922933 -0.4406096
+grp-2 -0.5633073 -1.0104281</code></pre>
 </div>
 </div>
 

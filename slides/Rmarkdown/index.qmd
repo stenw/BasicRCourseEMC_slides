@@ -44,7 +44,6 @@ pbcseq <- survival::pbcseq
       color: green;
     }
 </style>  
-}
 ```
 
 
@@ -57,13 +56,13 @@ pbcseq <- survival::pbcseq
 
 <br>
 
-- Quarto / Rmarkdown
+- Quarto 
 - Shiny
 - Tidyverse
 - R in Erasmus MC
 
 
-# Quarto / Rmarkdown {data-background="./templateassets/lbback.svg" class="center"} 
+# Quarto  {data-background="./templateassets/lbback.svg" class="center"} 
 
 ## Problems {.triangledb}
 
@@ -127,7 +126,7 @@ pbcseq <- survival::pbcseq
 
 ::: {.column  style="background-color: #fafafa; width:55%;"}
 
-![](assets-day4\Quartoprocess.png){width="65%"}
+![](assets-day4/Quartoprocess.png){width="65%"}
 
 :::
 
@@ -140,7 +139,7 @@ pbcseq <- survival::pbcseq
 <br>
 <br>
 
-![](assets-day4\quarto.svg){style="width:60%;"}
+![](assets-day4/quarto.svg){style="width:60%;"}
 
 :::
 
@@ -205,6 +204,15 @@ pbcseq <- survival::pbcseq
   - blogs,
   - dashboards,
   - etc
+
+## Markdown (cont'd) {.triangledb}
+
+* In **Rstudio**
+   * File $\rightarrow$ New File $\rightarrow$ Quarto...
+   * Insert title and author
+   * Select format
+* Write your `.qmd` file
+* Click the **Render** button (or use `quarto render` on command line)
   
 ## Minimal Quarto document {.triangledb}
 
@@ -220,14 +228,7 @@ pbcseq <- survival::pbcseq
 
 
 
-## Markdown (cont'd) {.triangledb}
 
-<br>
-
-* In **Rstudio**
-   * File $\rightarrow$ New File $\rightarrow$ Quarto...
-   * Insert title and author
-   * Select format
    
 ## Advantages and disadvantages {.triangledb}
 
@@ -908,8 +909,9 @@ date: "16 November 2023"
 ## Shiny in Rstudio {.triangledb}
 
 * File $\rightarrow$ New File $\rightarrow$ Shiny Web App...
-* Insert application name
-* Let's try an example
+* Insert application name and location
+* Let's try an example to see it work
+* Modify step-by-step
 
 ## Structure  {.triangledb}
 
@@ -953,7 +955,7 @@ shinyApp(ui = ui, server = server)
 ```{.r}
             sliderInput("bins",
                         "Number of bins:",
-                        min = 1, max = 50, value = = 30)
+                        min = 1, max = 50, value = 30)
 ```
 
 * [**Output**]{color="#afcc46"}:
@@ -961,6 +963,24 @@ shinyApp(ui = ui, server = server)
 ```{.r}
 plotOutput("distPlot")
 ```
+
+## Common Shiny Inputs {.triangledb}
+
+* `sliderInput()` - slider for numeric values
+* `textInput()` - text entry field
+* `selectInput()` - dropdown menu
+* `checkboxInput()` - single checkbox
+* `radioButtons()` - radio button group
+* `dateInput()` - date picker
+* `fileInput()` - file upload
+
+## Common Shiny Outputs {.triangledb}
+
+* `plotOutput()` + `renderPlot()` - for plots
+* `tableOutput()` + `renderTable()` - for tables
+* `textOutput()` + `renderText()` - for text
+* `verbatimTextOutput()` + `renderPrint()` - for code output
+* `uiOutput()` + `renderUI()` - for dynamic UI
   
 ## Server function {.triangledb}
 
@@ -1050,11 +1070,32 @@ There are many more packages that although not formally part of the tidyverse fo
 <br>
 * Now also included in base R `|`<wbr>`>` (sometimes rendered as `|>`)
 
+## Pipe operation (cont'd) {.triangledb}
+
+**Nested functions - hard to read:**
+
+```{r eval=FALSE}
+# Without pipe - hard to read
+mean(log(abs(c(-5, -2, 3, 7))))
+```
+
+**Using a pipe - reads left to right:**
+
+```{r eval=FALSE}
+c(-5, -2, 3, 7) %>% 
+  abs() %>% 
+  log() %>% 
+  mean()
+```
+
+
 ## tible {.triangledb}
 
 * The tibble package introduces the `tible` a replacement for the `data.frame`
 
 * Does not print all rows and columns by default
+
+* Show column types when printed
 
 * Mostly works as a `data.frame` but if you get a strange error convert it using `as.data.frame.tbl_df`
 
@@ -1073,46 +1114,48 @@ See [dplyr cheatsheet/](https://github.com/rstudio/cheatsheets/blob/main/data-tr
 
 :::
 
-## Example {.triangledb}
+## Example {.triangledb .smaller}
 
+**Task:** Analyze survival by treatment and bilirubin level for patients over 40
 
 ```{r echo=TRUE}
 #| eval: false
-d <- d[, c('id', 'GA_weeks', 'GA_days', 'BW')]
-d <- d[d$GA_weeks > 30, ]
-d$GA_tot <- d$GA_weeks * 7 + d$GA_days
-d <- d[order(d$id), ]
-
-d_merged <- merge(d, d_grp, by='id')
-aggregate(BW ~ grp, data=d_merged, mean)
+pbc_sub <- pbc[!is.na(pbc$trt) & pbc$age > 40, 
+               c("id", "time", "age", "sex", "trt", "bili")]
+pbc_sub$bili_cat <- ifelse(pbc_sub$bili > 2, "High", "Normal")
+pbc_sub$time_years <- pbc_sub$time / 365.25
+result <- aggregate(cbind(mean_time = time_years, mean_age = age) ~ 
+                    sex + trt + bili_cat, data = pbc_sub, FUN = mean)
+counts <- aggregate(id ~ sex + trt + bili_cat, data = pbc_sub, FUN = length)
+names(counts)[4] <- "n_patients"
+result <- merge(result, counts, by = c("sex", "trt", "bili_cat"))
+result[order(-result$mean_time), ]
 
 ```
 
 <br>
 
 * Base R syntax can be made shorter by nesting expressions
-
-* E.g.: `aggregate(BW ~ grp, data=merge(d, d_grp, by='id'), mean)`
-
 * Does not help readability
 
 
 
-## Example (cont'd) {.triangledb}
+## Example (cont'd) {.triangledb .smaller}
 
 
 ```{r echo=TRUE}
 #| eval: false
-d %>% 
-  select(id, GA_weeks, GA_days, BW) %>% 
-  filter(GA_weeks > 30) %>%
-  mutate(GA_tot = GA_weeks * 7 + GA_days) %>% 
-  arrange(id)
-  
-d %>% 
-  inner_join(d_grp, by='id') %>% 
-  group_by(grp) %>% 
-  summarise(meanBW = mean(BW))
+pbc %>% 
+  filter(!is.na(trt), age > 40) %>% 
+  select(id, time, age, sex, trt, bili) %>% 
+  mutate(bili_cat = if_else(bili > 2, "High", "Normal"),
+         time_years = time / 365.25) %>% 
+  group_by(sex, trt, bili_cat) %>% 
+  summarise(n_patients = n(),
+            mean_time = mean(time_years, na.rm = TRUE),
+            mean_age = mean(age, na.rm = TRUE),
+            .groups = "drop") %>% 
+  arrange(desc(mean_time))
 
 ```
 
@@ -1124,7 +1167,15 @@ d %>%
 
 :::
 
+## Next Steps {.triangledb}
+
+<br>
+
+- [tidyverse.org](https://www.tidyverse.org/) - Official site
+- [R for Data Science](https://r4ds.hadley.nz/) - Free online book
+
 # R in  Erasmus MC {data-background="./templateassets/lbback.svg" class="center"}
+
 
 ## Local installation {.triangledb}
 
@@ -1164,8 +1215,10 @@ R_LIBS_USER=v:/homedir/959750/tools/Rlibs/%p%V-library/%v
 * Various computational software (including R and Rstudio) can be used
 * Collaboration with external parties is possible
 * More computational power is available when needed
-* See  [https://andrea-cloud.com/](https://andrea-cloud.com/) and [support.mydre.org](support.mydre.org)
+* See  [https://andrea-cloud.com/](https://andrea-cloud.com/) and [support.mydre.org](https://support.mydre.org)
 
 
+## The End / Questions?
 
+**Keep practicing! The best way to learn R is to use it on real problems.**
 
