@@ -8,7 +8,7 @@ author:
       department: Epidemiology
   orcid: 0000-0002-1675-2931
   email: s.willemsen@erasmusmc.nl
-date: "10/17/2025"
+date: "04/07/2026"
 date-format: long
 categories: [Day1]
 image: "image.png"
@@ -36,31 +36,27 @@ pbcseq <- survival::pbcseq
 
 ## Introduction to R {.triangledb}
 
-[**Statistics**]{color="#0c2074"} have flourished in the recent years mainly due to the possibility of doing complex analysis using computers
+[**R**]{color="#0c2074"} is not just another piece of statistical software. It is a way to write down an analysis so that you can rerun it, check it, improve it, and share it with someone else later.
 
-::: {.boxspw}
- 
-The most valuable tool of a modern quantitative researcher is his/her personal computer
 
-:::
 
-* Analysts must not only learn how to use the software but also the ideas behind it
-* Learning statistical modelling and algorithm is more important than learning a programming language
+* In this course, we will use R to explore data, answer questions, and build analyses step by step
+* The important thing is not memorising commands, but understanding what the code is doing and why
 
-    
+     
 ## Introduction to R (cont'd) {.triangledb}
 
-* Many **statistical software packages exists** to do simple and specialized analysis
+* Many **statistical software packages exist** to do simple and specialized analysis
 
 
-* The [**programming language R**]{color="#0c2074"}  is popular for data scientists
+* The [**programming language R**]{color="#0c2074"} is popular among data scientists
 
 * **R** is a software environment for statistical computing and graphics
   - free and open source
   - extensive catalog of statistical and graphical methods
   
 
-* **R** is mainly used in academia. However, many large companies also use **R** programming language, including healthcare industries but also Uber, Google, Airbnb, Facebook and so on
+* **R** is widely used in academia. However, many large companies also use **R** programming language, including healthcare industries but also Uber, Google, Airbnb, Facebook and so on
  
 
 ## Agenda {data-background="./templateassets/lbback.svg" class="center"}
@@ -68,41 +64,28 @@ The most valuable tool of a modern quantitative researcher is his/her personal c
 * **Day 1:** 
   - Introduction
 * **Day 2:** 
-  - Data cleaning
   - Data visualization
-* **Day 3:**
   - R functions
+* **Day 3:**
+  - Data cleaning
   - Statistical analysis
 * **Day 4:**
   - Additional topics
   
-## Program this morning {.triangledb}
+## Plan for today {.triangledb}
 
 <br>
 
-- Introduction to R
-- Basic use of R
-- Common objects in R
-- Indexing / Subsetting
-
-## References {.triangledb}
-
-* More books that use R (or S) can be found at:
-
-- <http://www.r-project.org/doc/bib/R-books.html>, or
-- <http://www.r-project.org/doc/bib/R-jabref.html>
-
-* R ships with a number of helpful manuals 
-
-* Other manuals and helpful material are available on-line via
-CRAN: 
-<http://cran.r-project.org/other-docs.html>
+- why people use R and how it fits into data analysis
+- the basic workflow in R and RStudio
+- the main kinds of objects you will meet in R
+- how to extract the pieces of data you actually need
 
 
-## What does R look like ? {.triangledb}
+## What does R look like? {.triangledb}
 
 <br>
-![](.\\assets-day1\\SS_R.PNG){fig-align="center" height="400px" }
+![](./assets-day1/SS_R.PNG){fig-align="center" height="400px" }
 
 
 
@@ -117,22 +100,19 @@ CRAN:
 * **Now**:  20,777 packages available
 
 
-## Why learn R ? {.triangledb}
+## Why learn R? {.triangledb}
 
-* **R** is a free software environment for statistical computing and graphics
-* It compiles and runs on LINUX, Windows and MacOS
-* Open source language
-* Users are allowed to modify and redistribute the code
-* Advanced statistical language
-* Supports extensions
-* Interfaces to other languages
-* **Flexible and fun!**
+* It is free, open source, and works on Linux, Windows, and macOS
+* It has a huge ecosystem of packages for statistics, graphics, reporting, and reproducible research
+* Analyses can be saved in scripts, which makes them easier to rerun, check, and adapt
+* It is flexible enough for both quick exploratory work and more advanced statistical modelling
+* Once you are comfortable with the basics, it becomes a very efficient way to work
   
 
-## Where do I get R ? {.triangledb}
-  - http://cran.r-project.org
+## Where do I get R? {.triangledb}
+- [cran.r-project.org](https://cran.r-project.org/)
   - choose your platform, e.g., Windows, Linux
-    - e.g., for Windows: Windows $\rightarrow$ base $\rightarrow$ Download R 4.4.3 for Windows
+    - e.g., for Windows: Windows $\rightarrow$ base $\rightarrow$ download the current release for Windows
     - Install 
 
 
@@ -143,21 +123,21 @@ CRAN:
   - Download R packages from the CRAN web site $\rightarrow$ within R
     + Packages
     + [**Install**]{color="#afcc46"} package(s)*
-    + Make you choice(s)
-    + [**Load**]{color="##b281e2"} the package using `library()`. &emsp;  
+    + Make your choice(s)
+    + [**Load**]{color="#b281e2"} the package using `library()`. &emsp;  
     
 (**note:** install does not mean load)
 
 ::: aside
-*  alternatively  use use `install.packages()`
+* Alternatively, use `install.packages()`
 :::
 
 
     
 ## How to get help in R {.triangledb}
 
-* [**Within R **]{color="#e84720"}
-  - `help()` or `? invoke the on-line help file for the specified function
+* [**Within R**]{color="#e84720"}
+  - `help()` or `?` invokes the online help file for the specified function
   - checking the FAQ
   - `help.search("topic")` or `??"topic"` (depends on the installed packages)
   - `RSiteSearch("topic")` (requires internet connection)
@@ -169,10 +149,11 @@ CRAN:
   
 * [**Online**]{color="#e84720"}
   - **R-help** (<https://stat.ethz.ch/mailman/listinfo/r-help> – mailing list)
-  - **R-seek** (<http://www.rseek.org> – Google-like searched engine)
-  - **CRAN Task Views** (<http://cran.r-project.org/web/views/> – categorization of packages)
-  - **R related Blogs** (<http://www.r-bloggers.com/> – many useful illustrations of R and R packages)
-  - **stackoverflow** Open community for developers (<https://stackoverflow.com/> – ask/answer a question)
+  - **Posit Community** (<https://forum.posit.co/> – a good place for questions about RStudio, tidyverse, and Shiny)
+  - **R-seek** (<https://www.rseek.org/> – search engine for R-related material)
+  - **CRAN Task Views** (<https://cran.r-project.org/web/views/> – curated overviews of packages by topic)
+  - **R-bloggers** (<https://www.r-bloggers.com/> – tutorials, examples, and blog posts about R)
+  - **Stack Overflow** (<https://stackoverflow.com/> – open community for developers; ask and answer questions)
   - **Big Book of R** (<https://www.bigbookofr.com/> collection of R books)
 :::  
 
@@ -180,20 +161,18 @@ CRAN:
 #| echo: false
 #| include: false
 
-# SPW 31-05-2024: I removed two entries because they seemed to be out-of date / not working and the slide is full already feel free to add again 
-#  - Crantastic (<http://crantastic.org/> – #categorization of packages + reviews)
-#  - R4stats (<http://www.r4stats.com/> – examples of #basic R programs)
+
 ```
 
 ## Disadvantages of R {.triangledb }
 
 * Appears intimidating to the first-time user
-* Default Output is not so nice looking ([*but wait ultil Day 4*]{color="#e84720"})
+* Default output is not always nice-looking ([*but wait until Day 4*]{color="#e84720"})
 * Exporting output is more difficult ([*we will also discuss this on Day 4*]{color="#e84720"})
 * Cannot easily handle very big data sets ([*depends on the installed RAM*]{color="#e84720"})
 * A lot of things are available but they are sometimes hard to find
-* The quality of the available packages is greatly varying
-* By default uses only one CPU at a time for most tasks ([*can be changed using packages*]{color="#e84720"}))
+* The quality of the available packages varies considerably
+* By default, R uses only one CPU at a time for most tasks ([*this can be changed using packages*]{color="#e84720"})
 
 <div style="background-image: url('https://upload.wikimedia.org/wikipedia/commons/8/8e/Lol_2.png'); background-size: 50%; background-position: center; background-repeat: no-repeat; opacity: 0.15; position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: 2;"></div>
 
@@ -208,7 +187,7 @@ CRAN:
 
 ::: {.boxcontainer}
 
-<h3 syle="margin-left:1em">&emsp;How to use R</h3>
+<h3 style="margin-left:1em">&emsp;How to use R</h3>
 
 :::: {.boxinterior}
 
@@ -248,93 +227,88 @@ CRAN:
   - write and execute [**commands**]{color="#afcc46"}
   - use and define [**functions**]{color="#e84720"}
   
-* You may write the commands in the R console (Windows) or in a shell (Linux)
+* You can give commands through the console. In practice, most of the time you will write code in a script and run it from there
 
 <br>
 
 ::: {.boxspw}
 
-[**You will become more familiar with the syntax as you use it**]{color="#0c2074"}
+[**The goal is not to memorise everything at once, but to build a simple working routine**]{color="#0c2074"}
 
 :::
 
 ## Popular IDEs / GUIs  {.triangledb}
 
-* Strongly advisable to use a suitable **text editor** or **GUI**- Some available options:
-  - **Rstudio** (all major platforms; <http://www.rstudio.org/>)
+* There are several good ways to work with R:
+  - **RStudio** (all major platforms; <https://posit.co/download/rstudio-desktop/>)
   - **Visual Studio Code** (all platforms)
   - **Positron** (all platforms)
   - **Jupyter** (all platforms)
   - **Emacs** (w. ESS, all platforms)
-  
-  - for more check <https://r-dir.com/blog/2013/01/list-of-r-editors.html>
   
   
 ##  Using R / RStudio {.triangledb}
 
 <br>
 
-* For this course: [**Rstudio**]{color="#0c2074"} (<http://www.rstudio.org/>)
-  - free
-  - works fine in Windows, MacOS and Linux
-  - makes working with R a lot more user friendly
-  - helpful with errors
-  - alternative output options
+* For this course, we will use [**RStudio**]{color="#0c2074"} together with **R**
+  - **R** is the language that runs the code
+  - **RStudio** is the environment where you write code, run it, inspect output, and manage files
+  - this makes it much easier to work in a reproducible way
   
   
 ##  Using R / RStudio  {.triangledb}
 
-<br>
-<br>
-
-* Can I use [**R**]{color="#e84720"} without [**Rstudio**]{color="#afcc46"}?
-
-<br>
-
-* Can I use [**Rstudio**]{color="#afcc46"} without [**R**]{color="#e84720"}?
+* A simple workflow to aim for:
+  - open your project or working folder in RStudio
+  - write code in an R script
+  - run the code and inspect the result in the console
+  - save the script so you can rerun the same analysis later
+  - gradually build objects that you can reuse in the next step
 
 
 
 
 ## R commands {.triangledb}
 
-* Elementary commands: [**expressions**]{color="#e84720"} and [**assignments**]{color="#afcc46"}
-
-* An [**expression**]{color="#e84720"} given as command is evaluated printed and discarded
-
-* An [**assignments**]{color="#afcc46"} evaluates an [**expression**]{color="#e84720"} and passes the value to a variable - the result is not automatically printed
+* The first distinction to learn is between an [**expression**]{color="#e84720"} and an [**assignment**]{color="#afcc46"}
+* An [**expression**]{color="#e84720"} is code that R evaluates immediately
+* An [**assignment**]{color="#afcc46"} stores the result in an object so that you can use it again later
 
 
 ## R commands  {.triangledb}
 
-[**expression**]{color="#e84720"} is given as a command,
+[**Expression first:**]{color="#e84720"} type a command and R returns the result
 ```{r, eval = TRUE, include = TRUE, echo = TRUE}
 1 + 1
 ```
 
- - The result is lost after execution
- - It cannot be viewed again unless the command is rerun.
+ - useful for quick checks
+ - but the result is temporary unless you store it
  
 
 <br>
 
- In order to store information, the [**expression**]{color="#e84720"} should [**assign**]{color="#e84720"} the result of the command to a variable
+ [**Then assignment:**]{color="#afcc46"} store the result in an object and reuse it
  
 ```{r, eval = TRUE, include = TRUE, echo = TRUE}
 x <- 1 + 1
 x
 ```
 
+ - now `x` is an object in your session
+ - this is the start of most real analyses in R
+
 
 ## Basic calculations  {.triangledb}
 
 ::: {.boxspw}
 
-**You can use R as a calculator!**
+**You can use R as a calculator, but the real advantage is that the calculations can be saved and reused**
 
 :::
 
-* Basic arithmetics
+* Basic arithmetic
 ```{r, eval = FALSE, include = TRUE, echo = TRUE}
 #| code-line-numbers: false
 +, -, *, /, ^
@@ -346,7 +320,7 @@ y <- 103473 + 100000
 y
 ```
 
-* Complicated arithmetics
+* More complicated calculations work in exactly the same way
 ```{r, eval = TRUE, include = TRUE, echo = TRUE}
 #| code-line-numbers: false
 y <- sqrt(log(5) + exp(1))
@@ -355,13 +329,14 @@ y
 
 ::: {.boxspw}
 
-**Many functions exist can we can even define our own**
+**Functions are one of the main building blocks of R: they take input, do something useful, and return output**
 
 :::
 
 ## Practical Examples {.triangledb}
 
-* In practice we often work with data sets and other data structures
+* A normal workflow in R quickly moves from small commands to working with data
+* So let us make that step now and look at a real data set
 
 * [**Package `survival` - pbc data set**]{color="#0c2074"}
 
@@ -382,7 +357,7 @@ kable_styling(position = "center", full_width = FALSE,
 * [**trt**]{color="#e84720"}:	1/2/NA for D-penicillamine, placebo, not randomised
 * [**age**]{color="#e84720"}:	in years
 * [**sex**]{color="#e84720"}:	m/f
-* [**bili**]{color="#e84720"}:	serum bilirunbin (mg/dl)
+* [**bili**]{color="#e84720"}:	serum bilirubin (mg/dl)
 * [**chol**]{color="#e84720"}:	serum cholesterol (mg/dl)
 
 ::: aside
@@ -497,7 +472,7 @@ kable(dt, "html", booktabs = T, align = "c") %>%
 * R is **case sensitive**, e.g.,
   - **`sex`** is different than **`Sex`**
 * Commands are separated by a **semi-colon** or by a **newline**
-* Comments can be put anywhere, starting with a hashmark **`#`**: everything to the end of the line is a comment
+* Comments can be put anywhere, starting with a hash mark **`#`**: everything to the end of the line is a comment
 * Assign a value to an object by **`<-`** (or **`=`**)
 * **Working directory**: get with `getwd()` and set with `setwd()`
 
@@ -534,14 +509,14 @@ kable(dt, "html", booktabs = T, align = "c") %>%
 
 <br>
 
-* function: **read.table()**, **read.csv()** and its variants
+* functions: **read.table()**, **read.csv()**, and their variants
 
 ::: {.callout-note}
-use forward slashes or double backward slashes in the file names, e.g., \
+use forward slashes or double backslashes in file names, e.g., \
     `"C:/Documents and Settings/User/Data/file.txt"` or \
     `"C:\\Documents and Settings\\User\\Data\\file.txt"` \
 or use raw character constants \
-    `r"(C:\\Documents and Settings\\User\\Data\\file.txt)"`
+    `r"(C:\Documents and Settings\User\Data\file.txt)"`
 :::
     
 ## Importing Data (cont'd) {.triangledb}
@@ -572,7 +547,7 @@ or use raw character constants \
 
 * You can save your R objects using `save()`
   - be careful about overwriting 
-* You can load your saved R objects using `load()`
+* You can load saved R objects using `load()`
 
   
 #### Single object:
@@ -589,7 +564,7 @@ or use raw character constants \
 
 ::: {.boxspw}
 
-[**Save your code by using the tab File in Rstudio!**]{color="#0c2074"}
+[**Save your code using the File menu in RStudio!**]{color="#0c2074"}
 
 :::  
   
@@ -664,7 +639,7 @@ or use raw character constants \
 
 ## Objects in R {.triangledb}
 
-* In R Everything (data, results, ...) is an [**object**]{color="#e84720"}
+* In R, everything (data, results, ...) is an [**object**]{color="#e84720"}
 
 * In order to **list** the created objects use the following functions
 ```{r, eval = FALSE, include = TRUE, echo = TRUE}
@@ -687,115 +662,116 @@ rm(list=ls(all=TRUE))
 
 ## Objects in R  {.triangledb}
 
-* To investigate a specific object (e.g. pbc)
+* In R, almost everything you create is an **object**
+* When you meet an object, three questions are useful:
+  - what does it represent?
+  - what type of values does it contain?
+  - what structure does it have?
+
+## Objects in R  {.triangledb}
+
+* The `pbc` data set is a good example to keep in mind
 ```{r, eval = TRUE, include = TRUE, echo = TRUE}
 str(pbc[,c("id", "time", "status", "trt", "age", "sex", "bili", "chol")])
 ```
+
+## Objects in R  {.triangledb}
+* `pbc` is a **data frame**
+* Columns such as `age` and `bili` are variables we can work with on their own
+* Later on, we will often move from the full table to a single column or even to one single value
 
 
 ## Data Types {.triangledb}
 
 The simplest data types are:
 
-* [**`numeric`**]{color="#0c2074"} : quantitative data
-* [**`character`**]{color="#0c2074"} : qualitative data (text)
-* [**`integer`**]{color="#0c2074"} : whole numbers
-* [**`logical`**]{color="#0c2074"} : TRUE or FALSE
+* [**`numeric`**]{color="#0c2074"}: quantitative data such as `age`, `bili`, and `chol`
+* [**`integer`**]{color="#0c2074"}: whole numbers
+* [**`character`**]{color="#0c2074"}: text values
+* [**`logical`**]{color="#0c2074"}: `TRUE` or `FALSE`
 
 ## Data Types {.triangledb}
 
-* There is a special data type [**`factors`**]{color="#0c2074"} that is often used for  qualitative data 
-  - That is data with a distinct small and fixed number of levels
-  - Note that factors internaly are stored as integers
+* There is a special data type [**`factor`**]{color="#0c2074"} that is often used for categorical data
+  - this is data with a small and fixed set of levels
+  - examples are sex, treatment group, or disease stage
+  - factors are internally stored as integers, but presented with labels
 
 ## Data Types in R {.triangledb}
 
-To find out what type of object you have, you can use the following function
+To inspect an object quickly, `mode()` and `str()` are very useful
 ```{r, eval = TRUE, include = TRUE, echo = TRUE}
 mode(pbc$age)
 ```
 
 ```{r, eval = TRUE, include = TRUE, echo = TRUE}
-str(pbc$age)
+str(pbc$sex)
 ```
 
 ## Data Structures  {.triangledb}
 
 The most important data structures are:
 
-  - [**Vectors:**]{color="#0c2074"} have the same type of elements
-  - [**Matrices:**]{color="#0c2074"} have the same type of elements with the same length 
-  - [**Arrays**]{color="#0c2074"} have the same type of elements with the same length but can store the data in more than two dimensions
-  - [**Data frames:**]{color="#0c2074"} have elements of different type with the same length 
-  - [**Lists:**]{color="#0c2074"} have elements of different type and length 
+  - [**Vectors:**]{color="#0c2074"} one-dimensional objects with elements of the same type
+  - [**Matrices:**]{color="#0c2074"} two-dimensional objects with elements of the same type
+  - [**Arrays**]{color="#0c2074"} objects with more than two dimensions, still of the same type
+  - [**Data frames:**]{color="#0c2074"} table-like objects with columns that may have different types
+  - [**Lists:**]{color="#0c2074"} flexible containers that can hold different kinds of objects
 
 ## Data Structures  {.triangledb}
 
 ::: {.callout-note}
-There is no seperate data structure for [**scalars**]{color="#0c2074"}. Even single numbers are considered vectors! However sometimes a single number is still required! 
+There is no separate data structure for [**scalars**]{color="#0c2074"}. Even a single number is treated as a vector of length 1. However, as we will see, sometimes a single number is still required! 
 :::
 
 ## Data Structures  {.triangledb}
 
-<br>
-<br>
+* A helpful mental model is:
+  - `pbc` is a **data frame**
+  - `pbc$age` is a **vector**
+  - `as.matrix(pbc[, c("age", "bili", "chol")])` is a **matrix**
+  - a **list** can store several objects from one analysis together
 
-::: {.boxspw}
+## Data Structures  {.triangledb}
 
-[**What do these data structures look like?**]{color="#0c2074"}
-
-:::  
-
-
-
-
-## Data Structures  
-
-* Differences between **vector**, matrix, array, data.frame and list
+* Start with the full patient table: this is a **data frame**
 ```{r, eval = TRUE, include = TRUE, echo = TRUE}
-pbc[1:6, c("age")]
+pbc[1:6, c("id", "sex", "age", "bili", "chol")]
 ```
 
 ## Data Structures  {.triangledb}
 
-* Differences between vector, **matrix**, array, data.frame and list
+* One column from that table is a **vector**
 ```{r, eval = TRUE, include = TRUE, echo = TRUE}
-cbind(pbc[1:6, c("age")],
-   pbc[1:6, c("bili", "chol")])
+pbc$age[1:6]
 ```
 
 
 ## Data Structures  {.triangledb}
 
-* Differences between vector, matrix, **array**, data.frame and list
+* If we keep only numeric columns of the same type, we can make a **matrix**
 ```{r, eval = TRUE, include = TRUE, echo = TRUE}
-pbc[1:3, c("age", "bili", "chol")]
-pbc[4:6, c("age", "bili", "chol")]
+as.matrix(pbc[1:6, c("age", "bili", "chol")])
 ```
 
 ## Data Structures  {.triangledb}
 
-* Differences between vector, matrix, **array**, data.frame and list
+* An **array** is like a matrix with more than two dimensions
 ```{r, eval = TRUE, include = TRUE, echo = TRUE}
-pbc[1:2, c("protime", "time")]
-pbc[3:4, c("protime", "time")]
+ar <- array(data = 1:12, dim = c(2, 3, 2))
+ar
 ```
 
 ## Data Structures  {.triangledb}
 
-* Differences between vector, matrix, array, **data.frame** and list
+* A **list** can store different pieces of an analysis together
 ```{r, eval = TRUE, include = TRUE, echo = TRUE}
-pbc[1:6, c("id", "sex", "bili", "chol")]
-```
-
-
-## Data Structures  {.triangledb}
-
-* Differences between vector, matrix, array, data.frame and **list**
-```{r, eval = TRUE, include = TRUE, echo = TRUE}
-pbc[1:6, c("sex")]
-pbc[1:2, c("sex", "bili")]
-pbc[1:4, c("age")]
+patient_summary <- list(
+  ages = pbc$age[1:5],
+  patients = pbc[1:2, c("id", "sex", "bili")],
+  mean_bili = mean(pbc$bili, na.rm = TRUE)
+)
+patient_summary
 ```
 
 
@@ -815,6 +791,11 @@ pbc[1:4, c("age")]
 
 [**Create a vector**]{color="#0c2074"}
 
+```{r, eval = TRUE, include = TRUE, echo = TRUE}
+#| code-line-numbers: false
+age_vec <- pbc$age[1:5]
+age_vec
+```
 ```{r, eval = TRUE, include = TRUE, echo = TRUE}
 #| code-line-numbers: false
 vec <- c(1, 2, 3, 4, 5)
@@ -839,6 +820,10 @@ vec
 
 ```{r, eval = TRUE, include = TRUE, echo = TRUE}
 #| code-line-numbers: false
+mat <- as.matrix(pbc[1:3, c("age", "bili", "chol")])
+mat 
+```
+#| code-line-numbers: false
 vec <- c(1, 2, 3, 4, 5,
          6, 7, 8, 9)
 mat <- matrix(data = vec, 
@@ -854,9 +839,7 @@ mat
 
 ```{r, eval = TRUE, include = TRUE, echo = TRUE}
 #| code-line-numbers: false
-vec <- c(1, 2, 3, 4, 5,
-         6, 7, 8, 9)
-mat <- matrix(data = vec, 
+mat <- matrix(data = 1:9, 
               nrow = 3,
               ncol = 3, 
               byrow = TRUE)
@@ -877,16 +860,6 @@ ar <- array(data = c(1, 2, 3, 4, 5, 6, 7, 8), dim = c(2, 2, 2))
 ar
 ```
 
-
-## Data Structures in R  {.triangledb}
-
-[**Create an array**]{color="#0c2074"}
-
-```{r, eval = TRUE, include = TRUE, echo = TRUE}
-#| code-line-numbers: false
-ar <- array(data = c(1, 2, 3, 4), dim = c(2, 2, 1))
-ar
-```
 
 
 ## Data Structures in R  {.triangledb}
@@ -929,23 +902,23 @@ dtf[1:3, ]
 
 ```{r, eval = TRUE, include = TRUE, echo = TRUE}
 #| code-line-numbers: false
-list1 <- list(vec = c(1:5), mat = pbc[1:2, c("age", "sex")])
+list1 <- list(
+  ages = pbc$age[1:5],
+  small_table = pbc[1:2, c("age", "sex")],
+  mean_age = mean(pbc$age)
+)
 list1
 ```
 
 ## Class {.triangledb}
 
-<br>
-
-* In addition to a type objects have a **class**
-
-<br>
-
-* It indicates how the object can be used
-
-<br>
-
-* The behaviour of functions when used on the object may depend on the **class**
+* In addition to a type, objects also have a **class**
+* The class tells R how the object should behave
+* This is why `summary()` or `plot()` may behave differently for different objects
+```{r, eval = TRUE, include = TRUE, echo = TRUE}
+class(pbc)
+class(pbc$age)
+```
 
 ## Summary {.triangledb}
 
@@ -1012,7 +985,7 @@ list1
 
 ::::: {style="font-size: 95%;"}
 
-* When transforming and analyzing data we often need to **select** specific [**observations**]{color="#afcc46"} or [**variables**]{color="#e84720"}
+* When transforming and analysing data, we often need to **select** specific [**observations**]{color="#afcc46"} or [**variables**]{color="#e84720"}
   - Examples: Select ...
       * [the age of the patient with the name 'John Harvey']{style="font-size: 90%;"}
       * [the 3rd element of vector age]{style="font-size: 90%;"}
@@ -1020,7 +993,7 @@ list1
       * [the sex of the 10th patient]{style="font-size: 90%;"}
       * [all information of the 5th patient]{style="font-size: 90%;"}
       * [the serum cholesterol for all males]{style="font-size: 90%;"}
-      * [the age for male patients or patients that have serum billirubin > 3]{style="font-size: 90%;"}
+      * [the age for male patients or patients that have serum bilirubin > 3]{style="font-size: 90%;"}
       * [the first measurement per patient]{style="font-size: 90%;"}
     
 :::::
@@ -1118,10 +1091,10 @@ x[c('foo', 'one')]
 
 ## Indexing with a `matrix` {.triangledb}
 
-* Indexing matrices is similar to indexing vectors but with double index
+* Indexing matrices is similar to indexing vectors, but uses a double index
 
   - The first position denotes the rows `["index", ]`
-  - The first position denotes the columns `[ , "index"]`
+  - The second position denotes the columns `[ , "index"]`
   
 ::: {.columns}
 
@@ -1221,7 +1194,7 @@ mat[[2]]
 ## Indexing with a `matrix` {.triangledb}
 
 
-* When we leave a position blank all elements are selected
+* When we leave a position blank, all elements are selected
 ```{r, eval = TRUE, include = TRUE, echo = TRUE}
 mat <- matrix(data = 1:4, 
               nrow = 2,
@@ -1245,14 +1218,14 @@ mat[logical_row_index, ]
 ## Indexing with a `matrix` {.triangledb}
 
 
-* Be careful, when a single row or column is selected the result is converted to a vector
+* Be careful: when a single row or column is selected, the result is converted to a vector
 ```{r, eval = TRUE, include = TRUE, echo = TRUE}
 mat <- matrix(data = 1:4, 
               nrow = 2,
               ncol = 2)
 mat[2, ]
 ``` 
-* use `drop=FALSE` to prevent this
+* Use `drop = FALSE` to prevent this
 ```{r, eval = TRUE, include = TRUE, echo = TRUE}
 mat <- matrix(data = 1:4, 
               nrow = 2,
@@ -1288,7 +1261,7 @@ ar[1, 1, ]
 
 ## Indexing with `data.frame` {.triangledb}
 
-* Works with **single** and **double** index
+* Works with **single** and **double** indexing
 
 ::: {.columns}
 
@@ -1309,7 +1282,7 @@ DF
 
 :::: {.column width="47%"}
 
-* Use position single indexing
+* Use single position indexing
 ```{r, eval = TRUE, include = TRUE, echo = TRUE}
 #| code-line-numbers: false
 DF[2]
@@ -1418,7 +1391,7 @@ mylist[2]
 
 ## Indexing with `lists` {.triangledb}
 
-* Double square brackets can be also used - Note that the output is a vector
+* Double square brackets can also be used - Note that the output is a vector
 
 <br>
 

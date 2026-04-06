@@ -11,7 +11,7 @@
   <meta name="generator" content="quarto-1.5.57">
 
   <meta name="author" content="Sten Willemsen">
-  <meta name="dcterms.date" content="2025-11-17">
+  <meta name="dcterms.date" content="2026-04-07">
   <title>BasicRCourseEMC_Slides – R course - Day 1</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
@@ -415,7 +415,7 @@ Sten Willemsen <a href="https://orcid.org/0000-0002-1675-2931" class="quarto-tit
           </p>
     </div>
 
-  <h3 class="date">November 17, 2025</h3>
+  <h3 class="date">April 7, 2026</h3>
 </section>
 
 <section>
@@ -425,26 +425,23 @@ Sten Willemsen <a href="https://orcid.org/0000-0002-1675-2931" class="quarto-tit
 </section>
 <section id="introduction-to-r-1" class="slide level2 triangledb" data-background-image="./templateassets/triangledb.svg">
 <h2>Introduction to R</h2>
-<p><span style="color: #0c2074;"><strong>Statistics</strong></span> have flourished in the recent years mainly due to the possibility of doing complex analysis using computers</p>
-<div class="boxspw">
-<p>The most valuable tool of a modern quantitative researcher is his/her personal computer</p>
-</div>
+<p><span style="color: #0c2074;"><strong>R</strong></span> is not just another piece of statistical software. It is a way to write down an analysis so that you can rerun it, check it, improve it, and share it with someone else later.</p>
 <ul>
-<li>Analysts must not only learn how to use the software but also the ideas behind it</li>
-<li>Learning statistical modelling and algorithm is more important than learning a programming language</li>
+<li>In this course, we will use R to explore data, answer questions, and build analyses step by step</li>
+<li>The important thing is not memorising commands, but understanding what the code is doing and why</li>
 </ul>
 </section>
 <section id="introduction-to-r-contd" class="slide level2 triangledb" data-background-image="./templateassets/triangledb.svg">
 <h2>Introduction to R (cont’d)</h2>
 <ul>
-<li><p>Many <strong>statistical software packages exists</strong> to do simple and specialized analysis</p></li>
-<li><p>The <span style="color: #0c2074;"><strong>programming language R</strong></span> is popular for data scientists</p></li>
+<li><p>Many <strong>statistical software packages exist</strong> to do simple and specialized analysis</p></li>
+<li><p>The <span style="color: #0c2074;"><strong>programming language R</strong></span> is popular among data scientists</p></li>
 <li><p><strong>R</strong> is a software environment for statistical computing and graphics</p>
 <ul>
 <li>free and open source</li>
 <li>extensive catalog of statistical and graphical methods</li>
 </ul></li>
-<li><p><strong>R</strong> is mainly used in academia. However, many large companies also use <strong>R</strong> programming language, including healthcare industries but also Uber, Google, Airbnb, Facebook and so on</p></li>
+<li><p><strong>R</strong> is widely used in academia. However, many large companies also use <strong>R</strong> programming language, including healthcare industries but also Uber, Google, Airbnb, Facebook and so on</p></li>
 </ul>
 </section>
 <section id="agenda" class="slide level2 center" data-background="./templateassets/lbback.svg">
@@ -456,13 +453,13 @@ Sten Willemsen <a href="https://orcid.org/0000-0002-1675-2931" class="quarto-tit
 </ul></li>
 <li><strong>Day 2:</strong>
 <ul>
-<li>Data cleaning</li>
-<li>Statistical analysis</li>
+<li>Data visualization</li>
+<li>R functions</li>
 </ul></li>
 <li><strong>Day 3:</strong>
 <ul>
-<li>Data visualization</li>
-<li>R functions</li>
+<li>Data cleaning</li>
+<li>Statistical analysis</li>
 </ul></li>
 <li><strong>Day 4:</strong>
 <ul>
@@ -470,29 +467,19 @@ Sten Willemsen <a href="https://orcid.org/0000-0002-1675-2931" class="quarto-tit
 </ul></li>
 </ul>
 </section>
-<section id="program-this-morning" class="slide level2 triangledb" data-background-image="./templateassets/triangledb.svg">
-<h2>Program this morning</h2>
+<section id="plan-for-today" class="slide level2 triangledb" data-background-image="./templateassets/triangledb.svg">
+<h2>Plan for today</h2>
 <p><br></p>
 <ul>
-<li>Introduction to R</li>
-<li>Basic use of R</li>
-<li>Common objects in R</li>
-<li>Indexing / Subsetting</li>
-</ul>
-</section>
-<section id="references" class="slide level2 triangledb" data-background-image="./templateassets/triangledb.svg">
-<h2>References</h2>
-<ul>
-<li><p>More books that use R (or S) can be found at:</p></li>
-<li><p><a href="http://www.r-project.org/doc/bib/R-books.html" class="uri">http://www.r-project.org/doc/bib/R-books.html</a>, or</p></li>
-<li><p><a href="http://www.r-project.org/doc/bib/R-jabref.html" class="uri">http://www.r-project.org/doc/bib/R-jabref.html</a></p></li>
-<li><p>R ships with a number of helpful manuals</p></li>
-<li><p>Other manuals and helpful material are available on-line via CRAN: <a href="http://cran.r-project.org/other-docs.html" class="uri">http://cran.r-project.org/other-docs.html</a></p></li>
+<li>why people use R and how it fits into data analysis</li>
+<li>the basic workflow in R and RStudio</li>
+<li>the main kinds of objects you will meet in R</li>
+<li>how to extract the pieces of data you actually need</li>
 </ul>
 </section>
 <section id="what-does-r-look-like" class="slide level2 triangledb" data-background-image="./templateassets/triangledb.svg">
-<h2>What does R look like ?</h2>
-<p><br> <img data-src=".\assets-day1\SS_R.PNG" class="quarto-figure quarto-figure-center" height="400"></p>
+<h2>What does R look like?</h2>
+<p><br> <img data-src="./assets-day1/SS_R.PNG" class="quarto-figure quarto-figure-center" height="400"></p>
 </section>
 <section id="a-brief-history-of-r" class="slide level2 triangledb" data-background-image="./templateassets/triangledb.svg">
 <h2>A brief history of R</h2>
@@ -507,26 +494,25 @@ Sten Willemsen <a href="https://orcid.org/0000-0002-1675-2931" class="quarto-tit
 </ul>
 </section>
 <section id="why-learn-r" class="slide level2 triangledb" data-background-image="./templateassets/triangledb.svg">
-<h2>Why learn R ?</h2>
+<h2>Why learn R?</h2>
 <ul>
-<li><strong>R</strong> is a free software environment for statistical computing and graphics</li>
-<li>It compiles and runs on LINUX, Windows and MacOS</li>
-<li>Open source language</li>
-<li>Users are allowed to modify and redistribute the code</li>
-<li>Advanced statistical language</li>
-<li>Supports extensions</li>
-<li>Interfaces to other languages</li>
-<li><strong>Flexible and fun!</strong></li>
+<li>It is free, open source, and works on Linux, Windows, and macOS</li>
+<li>It has a huge ecosystem of packages for statistics, graphics, reporting, and reproducible research</li>
+<li>Analyses can be saved in scripts, which makes them easier to rerun, check, and adapt</li>
+<li>It is flexible enough for both quick exploratory work and more advanced statistical modelling</li>
+<li>Once you are comfortable with the basics, it becomes a very efficient way to work</li>
 </ul>
 </section>
 <section id="where-do-i-get-r" class="slide level2 triangledb" data-background-image="./templateassets/triangledb.svg">
-<h2>Where do I get R ?</h2>
+<h2>Where do I get R?</h2>
 <ul>
-<li>http://cran.r-project.org</li>
+<li><a href="https://cran.r-project.org/">cran.r-project.org</a>
+<ul>
 <li>choose your platform, e.g., Windows, Linux
 <ul>
-<li>e.g., for Windows: Windows <span class="math inline">\(\rightarrow\)</span> base <span class="math inline">\(\rightarrow\)</span> Download R 4.4.3 for Windows</li>
+<li>e.g., for Windows: Windows <span class="math inline">\(\rightarrow\)</span> base <span class="math inline">\(\rightarrow\)</span> download the current release for Windows</li>
 <li>Install</li>
+</ul></li>
 </ul></li>
 </ul>
 </section>
@@ -538,23 +524,23 @@ Sten Willemsen <a href="https://orcid.org/0000-0002-1675-2931" class="quarto-tit
 <ul>
 <li>Packages</li>
 <li><span style="color: #afcc46;"><strong>Install</strong></span> package(s)*</li>
-<li>Make you choice(s)</li>
-<li><span style="color: ##b281e2;"><strong>Load</strong></span> the package using <code>library()</code>.  </li>
+<li>Make your choice(s)</li>
+<li><span style="color: #b281e2;"><strong>Load</strong></span> the package using <code>library()</code>.  </li>
 </ul></li>
 </ul>
 <p>(<strong>note:</strong> install does not mean load)</p>
 
 <aside><div>
 <ul>
-<li>alternatively use use <code>install.packages()</code></li>
+<li>Alternatively, use <code>install.packages()</code></li>
 </ul>
 </div></aside></section>
 <section id="how-to-get-help-in-r" class="slide level2 triangledb" data-background-image="./templateassets/triangledb.svg">
 <h2>How to get help in R</h2>
 <ul>
-<li><span style="color: #e84720;"><strong>Within R </strong></span>
+<li><span style="color: #e84720;"><strong>Within R</strong></span>
 <ul>
-<li><code>help()</code> or `? invoke the on-line help file for the specified function</li>
+<li><code>help()</code> or <code>?</code> invokes the online help file for the specified function</li>
 <li>checking the FAQ</li>
 <li><code>help.search("topic")</code> or <code>??"topic"</code> (depends on the installed packages)</li>
 <li><code>RSiteSearch("topic")</code> (requires internet connection)</li>
@@ -568,10 +554,11 @@ Sten Willemsen <a href="https://orcid.org/0000-0002-1675-2931" class="quarto-tit
 <li><span style="color: #e84720;"><strong>Online</strong></span>
 <ul>
 <li><strong>R-help</strong> (<a href="https://stat.ethz.ch/mailman/listinfo/r-help" class="uri">https://stat.ethz.ch/mailman/listinfo/r-help</a> – mailing list)</li>
-<li><strong>R-seek</strong> (<a href="http://www.rseek.org" class="uri">http://www.rseek.org</a> – Google-like searched engine)</li>
-<li><strong>CRAN Task Views</strong> (<a href="http://cran.r-project.org/web/views/" class="uri">http://cran.r-project.org/web/views/</a> – categorization of packages)</li>
-<li><strong>R related Blogs</strong> (<a href="http://www.r-bloggers.com/" class="uri">http://www.r-bloggers.com/</a> – many useful illustrations of R and R packages)</li>
-<li><strong>stackoverflow</strong> Open community for developers (<a href="https://stackoverflow.com/" class="uri">https://stackoverflow.com/</a> – ask/answer a question)</li>
+<li><strong>Posit Community</strong> (<a href="https://forum.posit.co/" class="uri">https://forum.posit.co/</a> – a good place for questions about RStudio, tidyverse, and Shiny)</li>
+<li><strong>R-seek</strong> (<a href="https://www.rseek.org/" class="uri">https://www.rseek.org/</a> – search engine for R-related material)</li>
+<li><strong>CRAN Task Views</strong> (<a href="https://cran.r-project.org/web/views/" class="uri">https://cran.r-project.org/web/views/</a> – curated overviews of packages by topic)</li>
+<li><strong>R-bloggers</strong> (<a href="https://www.r-bloggers.com/" class="uri">https://www.r-bloggers.com/</a> – tutorials, examples, and blog posts about R)</li>
+<li><strong>Stack Overflow</strong> (<a href="https://stackoverflow.com/" class="uri">https://stackoverflow.com/</a> – open community for developers; ask and answer questions)</li>
 <li><strong>Big Book of R</strong> (<a href="https://www.bigbookofr.com/" class="uri">https://www.bigbookofr.com/</a> collection of R books)</li>
 </ul></li>
 </ul>
@@ -581,12 +568,12 @@ Sten Willemsen <a href="https://orcid.org/0000-0002-1675-2931" class="quarto-tit
 <h2>Disadvantages of R</h2>
 <ul>
 <li>Appears intimidating to the first-time user</li>
-<li>Default Output is not so nice looking (<span style="color: #e84720;"><em>but wait ultil Day 4</em></span>)</li>
+<li>Default output is not always nice-looking (<span style="color: #e84720;"><em>but wait until Day 4</em></span>)</li>
 <li>Exporting output is more difficult (<span style="color: #e84720;"><em>we will also discuss this on Day 4</em></span>)</li>
 <li>Cannot easily handle very big data sets (<span style="color: #e84720;"><em>depends on the installed RAM</em></span>)</li>
 <li>A lot of things are available but they are sometimes hard to find</li>
-<li>The quality of the available packages is greatly varying</li>
-<li>By default uses only one CPU at a time for most tasks (<span style="color: #e84720;"><em>can be changed using packages</em></span>))</li>
+<li>The quality of the available packages varies considerably</li>
+<li>By default, R uses only one CPU at a time for most tasks (<span style="color: #e84720;"><em>this can be changed using packages</em></span>)</li>
 </ul>
 <div style="background-image: url('https://upload.wikimedia.org/wikipedia/commons/8/8e/Lol_2.png'); background-size: 50%; background-position: center; background-repeat: no-repeat; opacity: 0.15; position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: 2;">
 
@@ -600,7 +587,7 @@ Sten Willemsen <a href="https://orcid.org/0000-0002-1675-2931" class="quarto-tit
 <li>It is important to understand the methods before applying them in <strong>R</strong></li>
 </ul>
 <div class="boxcontainer">
-<h3 syle="margin-left:1em">
+<h3 style="margin-left:1em">
  How to use R
 </h3>
 <div class="boxinterior">
@@ -643,11 +630,11 @@ Sten Willemsen <a href="https://orcid.org/0000-0002-1675-2931" class="quarto-tit
 <li>write and execute <span style="color: #afcc46;"><strong>commands</strong></span></li>
 <li>use and define <span style="color: #e84720;"><strong>functions</strong></span></li>
 </ul></li>
-<li>You may write the commands in the R console (Windows) or in a shell (Linux)</li>
+<li>You can give commands through the console. In practice, most of the time you will write code in a script and run it from there</li>
 </ul>
 <p><br></p>
 <div class="boxspw">
-<p><span style="color: #0c2074;"><strong>You will become more familiar with the syntax as you use it</strong></span></p>
+<p><span style="color: #0c2074;"><strong>The goal is not to memorise everything at once, but to build a simple working routine</strong></span></p>
 </div>
 </section>
 <section id="popular-ides-guis" class="slide level2 triangledb" data-background-image="./templateassets/triangledb.svg">
@@ -655,12 +642,11 @@ Sten Willemsen <a href="https://orcid.org/0000-0002-1675-2931" class="quarto-tit
 <ul>
 <li>Strongly advisable to use a suitable <strong>text editor</strong> or <strong>GUI</strong>- Some available options:
 <ul>
-<li><p><strong>Rstudio</strong> (all major platforms; <a href="http://www.rstudio.org/" class="uri">http://www.rstudio.org/</a>)</p></li>
-<li><p><strong>Visual Studio Code</strong> (all platforms)</p></li>
-<li><p><strong>Positron</strong> (all platforms)</p></li>
-<li><p><strong>Jupyter</strong> (all platforms)</p></li>
-<li><p><strong>Emacs</strong> (w. ESS, all platforms)</p></li>
-<li><p>for more check <a href="https://r-dir.com/blog/2013/01/list-of-r-editors.html" class="uri">https://r-dir.com/blog/2013/01/list-of-r-editors.html</a></p></li>
+<li><strong>RStudio</strong> (all major platforms; <a href="https://posit.co/download/rstudio-desktop/" class="uri">https://posit.co/download/rstudio-desktop/</a>)</li>
+<li><strong>Visual Studio Code</strong> (all platforms)</li>
+<li><strong>Positron</strong> (all platforms)</li>
+<li><strong>Jupyter</strong> (all platforms)</li>
+<li><strong>Emacs</strong> (w. ESS, all platforms)</li>
 </ul></li>
 </ul>
 </section>
@@ -668,25 +654,25 @@ Sten Willemsen <a href="https://orcid.org/0000-0002-1675-2931" class="quarto-tit
 <h2>Using R / RStudio</h2>
 <p><br></p>
 <ul>
-<li>For this course: <span style="color: #0c2074;"><strong>Rstudio</strong></span> (<a href="http://www.rstudio.org/" class="uri">http://www.rstudio.org/</a>)
+<li>For this course, we will use <span style="color: #0c2074;"><strong>RStudio</strong></span> together with <strong>R</strong>
 <ul>
-<li>free</li>
-<li>works fine in Windows, MacOS and Linux</li>
-<li>makes working with R a lot more user friendly</li>
-<li>helpful with errors</li>
-<li>alternative output options</li>
+<li><strong>R</strong> is the language that runs the code</li>
+<li><strong>RStudio</strong> is the environment where you write code, run it, inspect output, and manage files</li>
+<li>this makes it much easier to work in a reproducible way</li>
 </ul></li>
 </ul>
 </section>
 <section id="using-r-rstudio-1" class="slide level2 triangledb" data-background-image="./templateassets/triangledb.svg">
 <h2>Using R / RStudio</h2>
-<p><br> <br></p>
 <ul>
-<li>Can I use <span style="color: #e84720;"><strong>R</strong></span> without <span style="color: #afcc46;"><strong>Rstudio</strong></span>?</li>
-</ul>
-<p><br></p>
+<li>A simple workflow to aim for:
 <ul>
-<li>Can I use <span style="color: #afcc46;"><strong>Rstudio</strong></span> without <span style="color: #e84720;"><strong>R</strong></span>?</li>
+<li>open your project or working folder in RStudio</li>
+<li>write code in an R script</li>
+<li>run the code and inspect the result in the console</li>
+<li>save the script so you can rerun the same analysis later</li>
+<li>gradually build objects that you can reuse in the next step</li>
+</ul></li>
 </ul>
 </section>
 <section id="r-commands" class="slide level2 triangledb" data-background-image="./templateassets/triangledb.svg">
@@ -694,12 +680,12 @@ Sten Willemsen <a href="https://orcid.org/0000-0002-1675-2931" class="quarto-tit
 <ul>
 <li><p>Elementary commands: <span style="color: #e84720;"><strong>expressions</strong></span> and <span style="color: #afcc46;"><strong>assignments</strong></span></p></li>
 <li><p>An <span style="color: #e84720;"><strong>expression</strong></span> given as command is evaluated printed and discarded</p></li>
-<li><p>An <span style="color: #afcc46;"><strong>assignments</strong></span> evaluates an <span style="color: #e84720;"><strong>expression</strong></span> and passes the value to a variable - the result is not automatically printed</p></li>
+<li><p>An <span style="color: #afcc46;"><strong>assignment</strong></span> evaluates an <span style="color: #e84720;"><strong>expression</strong></span> and passes the value to a variable; the result is not automatically printed</p></li>
 </ul>
 </section>
 <section id="r-commands-1" class="slide level2 triangledb" data-background-image="./templateassets/triangledb.svg">
 <h2>R commands</h2>
-<p><span style="color: #e84720;"><strong>expression</strong></span> is given as a command,</p>
+<p><span style="color: #e84720;"><strong>Expression:</strong></span> type a command and R returns the result</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a></a><span class="dv">1</span> <span class="sc">+</span> <span class="dv">1</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
@@ -707,11 +693,11 @@ Sten Willemsen <a href="https://orcid.org/0000-0002-1675-2931" class="quarto-tit
 </div>
 </div>
 <ul>
-<li>The result is lost after execution</li>
-<li>It cannot be viewed again unless the command is rerun.</li>
+<li>useful for quick checks</li>
+<li>but the result is temporary unless you store it</li>
 </ul>
 <p><br></p>
-<p>In order to store information, the <span style="color: #e84720;"><strong>expression</strong></span> should <span style="color: #e84720;"><strong>assign</strong></span> the result of the command to a variable</p>
+<p><span style="color: #afcc46;"><strong>Assignment:</strong></span> store the result in an object and reuse it</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a></a>x <span class="ot">&lt;-</span> <span class="dv">1</span> <span class="sc">+</span> <span class="dv">1</span></span>
 <span id="cb3-2"><a></a>x</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -719,14 +705,18 @@ Sten Willemsen <a href="https://orcid.org/0000-0002-1675-2931" class="quarto-tit
 <pre><code>[1] 2</code></pre>
 </div>
 </div>
+<ul>
+<li>now <code>x</code> is an object in your session</li>
+<li>this is the start of most real analyses in R</li>
+</ul>
 </section>
 <section id="basic-calculations" class="slide level2 triangledb" data-background-image="./templateassets/triangledb.svg">
 <h2>Basic calculations</h2>
 <div class="boxspw">
-<p><strong>You can use R as a calculator!</strong></p>
+<p><strong>You can use R as a calculator, but the real advantage is that the calculations can be saved and reused</strong></p>
 </div>
 <ul>
-<li>Basic arithmetics</li>
+<li>Basic arithmetic</li>
 </ul>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a aria-hidden="true" tabindex="-1"></a><span class="sc">+</span>, <span class="sc">-</span>, <span class="sc">*</span>, <span class="sc">/</span>, <span class="sc">^</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -739,7 +729,7 @@ Sten Willemsen <a href="https://orcid.org/0000-0002-1675-2931" class="quarto-tit
 </div>
 </div>
 <ul>
-<li>Complicated arithmetics</li>
+<li>More complicated calculations work in exactly the same way</li>
 </ul>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a aria-hidden="true" tabindex="-1"></a>y <span class="ot">&lt;-</span> <span class="fu">sqrt</span>(<span class="fu">log</span>(<span class="dv">5</span>) <span class="sc">+</span> <span class="fu">exp</span>(<span class="dv">1</span>))</span>
@@ -749,13 +739,15 @@ Sten Willemsen <a href="https://orcid.org/0000-0002-1675-2931" class="quarto-tit
 </div>
 </div>
 <div class="boxspw">
-<p><strong>Many functions exist can we can even define our own</strong></p>
+<p><strong>Functions are one of the main building blocks of R: they take input, do something useful, and return output</strong></p>
+<p>Many build-in and we can create our own</p>
 </div>
 </section>
 <section id="practical-examples" class="slide level2 triangledb" data-background-image="./templateassets/triangledb.svg">
 <h2>Practical Examples</h2>
 <ul>
-<li><p>In practice we often work with data sets and other data structures</p></li>
+<li><p>A normal workflow in R quickly moves from small commands to working with data</p></li>
+<li><p>So let us make that step now and look at a real data set</p></li>
 <li><p><span style="color: #0c2074;"><strong>Package <code>survival</code> - pbc data set</strong></span></p></li>
 </ul>
 <div class="cell">
@@ -840,7 +832,7 @@ Sten Willemsen <a href="https://orcid.org/0000-0002-1675-2931" class="quarto-tit
 <li><span style="color: #e84720;"><strong>trt</strong></span>: 1/2/NA for D-penicillamine, placebo, not randomised</li>
 <li><span style="color: #e84720;"><strong>age</strong></span>: in years</li>
 <li><span style="color: #e84720;"><strong>sex</strong></span>: m/f</li>
-<li><span style="color: #e84720;"><strong>bili</strong></span>: serum bilirunbin (mg/dl)</li>
+<li><span style="color: #e84720;"><strong>bili</strong></span>: serum bilirubin (mg/dl)</li>
 <li><span style="color: #e84720;"><strong>chol</strong></span>: serum cholesterol (mg/dl)</li>
 </ul>
 
@@ -1269,7 +1261,7 @@ Sten Willemsen <a href="https://orcid.org/0000-0002-1675-2931" class="quarto-tit
 <li><strong><code>sex</code></strong> is different than <strong><code>Sex</code></strong></li>
 </ul></li>
 <li>Commands are separated by a <strong>semi-colon</strong> or by a <strong>newline</strong></li>
-<li>Comments can be put anywhere, starting with a hashmark <strong><code>#</code></strong>: everything to the end of the line is a comment</li>
+<li>Comments can be put anywhere, starting with a hash mark <strong><code>#</code></strong>: everything to the end of the line is a comment</li>
 <li>Assign a value to an object by <strong><code>&lt;-</code></strong> (or <strong><code>=</code></strong>)</li>
 <li><strong>Working directory</strong>: get with <code>getwd()</code> and set with <code>setwd()</code></li>
 </ul>
@@ -1316,7 +1308,7 @@ Sten Willemsen <a href="https://orcid.org/0000-0002-1675-2931" class="quarto-tit
 <h2>Importing Data</h2>
 <p><br></p>
 <ul>
-<li>function: <strong>read.table()</strong>, <strong>read.csv()</strong> and its variants</li>
+<li>functions: <strong>read.table()</strong>, <strong>read.csv()</strong>, and their variants</li>
 </ul>
 <div class="callout callout-note callout-titled callout-style-default">
 <div class="callout-body">
@@ -1327,7 +1319,7 @@ Sten Willemsen <a href="https://orcid.org/0000-0002-1675-2931" class="quarto-tit
 <p><strong>Note</strong></p>
 </div>
 <div class="callout-content">
-<p>use forward slashes or double backward slashes in the file names, e.g.,<br>
+<p>use forward slashes or double backslashes in file names, e.g.,<br>
 <code>"C:/Documents and Settings/User/Data/file.txt"</code> or<br>
 <code>"C:\\Documents and Settings\\User\\Data\\file.txt"</code><br>
 or use raw character constants<br>
@@ -1372,7 +1364,7 @@ or use raw character constants<br>
 <ul>
 <li>be careful about overwriting</li>
 </ul></li>
-<li>You can load your saved R objects using <code>load()</code></li>
+<li>You can load saved R objects using <code>load()</code></li>
 </ul>
 <h4 id="single-object">Single object:</h4>
 <ul>
@@ -1388,7 +1380,7 @@ or use raw character constants<br>
 <h2>Saving and Loading your Work (cont’d)</h2>
 <p><br></p>
 <div class="boxspw">
-<p><span style="color: #0c2074;"><strong>Save your code by using the tab File in Rstudio!</strong></span></p>
+<p><span style="color: #0c2074;"><strong>Save your code using the File menu in RStudio!</strong></span></p>
 </div>
 </section>
 <section id="saving-and-loading-your-work-1" class="slide level2 triangledb" data-background-image="./templateassets/triangledb.svg">
@@ -1448,7 +1440,7 @@ or use raw character constants<br>
 <section id="objects-in-r" class="slide level2 triangledb" data-background-image="./templateassets/triangledb.svg">
 <h2>Objects in R</h2>
 <ul>
-<li><p>In R Everything (data, results, …) is an <span style="color: #e84720;"><strong>object</strong></span></p></li>
+<li><p>In R, everything (data, results, …) is an <span style="color: #e84720;"><strong>object</strong></span></p></li>
 <li><p>In order to <strong>list</strong> the created objects use the following functions</p></li>
 </ul>
 <div class="cell">
@@ -1469,7 +1461,19 @@ or use raw character constants<br>
 <section id="objects-in-r-1" class="slide level2 triangledb" data-background-image="./templateassets/triangledb.svg">
 <h2>Objects in R</h2>
 <ul>
-<li>To investigate a specific object (e.g.&nbsp;pbc)</li>
+<li>In R, almost everything you create is an <strong>object</strong></li>
+<li>When you meet an object, three questions are useful:
+<ul>
+<li>what does it represent?</li>
+<li>what type of values does it contain?</li>
+<li>what structure does it have?</li>
+</ul></li>
+</ul>
+</section>
+<section id="objects-in-r-2" class="slide level2 triangledb" data-background-image="./templateassets/triangledb.svg">
+<h2>Objects in R</h2>
+<ul>
+<li>The <code>pbc</code> data set is a good example to keep in mind</li>
 </ul>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb14"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a></a><span class="fu">str</span>(pbc[,<span class="fu">c</span>(<span class="st">"id"</span>, <span class="st">"time"</span>, <span class="st">"status"</span>, <span class="st">"trt"</span>, <span class="st">"age"</span>, <span class="st">"sex"</span>, <span class="st">"bili"</span>, <span class="st">"chol"</span>)])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -1486,29 +1490,38 @@ or use raw character constants<br>
 </div>
 </div>
 </section>
+<section id="objects-in-r-3" class="slide level2 triangledb" data-background-image="./templateassets/triangledb.svg">
+<h2>Objects in R</h2>
+<ul>
+<li><code>pbc</code> is a <strong>data frame</strong></li>
+<li>Columns such as <code>age</code> and <code>bili</code> are variables we can work with on their own</li>
+<li>Later on, we will often move from the full table to a single column or even to one single value</li>
+</ul>
+</section>
 <section id="data-types" class="slide level2 triangledb" data-background-image="./templateassets/triangledb.svg">
 <h2>Data Types</h2>
 <p>The simplest data types are:</p>
 <ul>
-<li><span style="color: #0c2074;"><strong><code>numeric</code></strong></span> : quantitative data</li>
-<li><span style="color: #0c2074;"><strong><code>character</code></strong></span> : qualitative data (text)</li>
-<li><span style="color: #0c2074;"><strong><code>integer</code></strong></span> : whole numbers</li>
-<li><span style="color: #0c2074;"><strong><code>logical</code></strong></span> : TRUE or FALSE</li>
+<li><span style="color: #0c2074;"><strong><code>numeric</code></strong></span>: quantitative data such as <code>age</code>, <code>bili</code>, and <code>chol</code></li>
+<li><span style="color: #0c2074;"><strong><code>integer</code></strong></span>: whole numbers</li>
+<li><span style="color: #0c2074;"><strong><code>character</code></strong></span>: text values</li>
+<li><span style="color: #0c2074;"><strong><code>logical</code></strong></span>: <code>TRUE</code> or <code>FALSE</code></li>
 </ul>
 </section>
 <section id="data-types-1" class="slide level2 triangledb" data-background-image="./templateassets/triangledb.svg">
 <h2>Data Types</h2>
 <ul>
-<li>There is a special data type <span style="color: #0c2074;"><strong><code>factors</code></strong></span> that is often used for qualitative data
+<li>There is a special data type <span style="color: #0c2074;"><strong><code>factor</code></strong></span> that is often used for categorical data
 <ul>
-<li>That is data with a distinct small and fixed number of levels</li>
-<li>Note that factors internaly are stored as integers</li>
+<li>this is data with a small and fixed set of levels</li>
+<li>examples are sex, treatment group, or disease stage</li>
+<li>factors are internally stored as integers, but presented with labels</li>
 </ul></li>
 </ul>
 </section>
 <section id="data-types-in-r" class="slide level2 triangledb" data-background-image="./templateassets/triangledb.svg">
 <h2>Data Types in R</h2>
-<p>To find out what type of object you have, you can use the following function</p>
+<p>To inspect an object quickly, <code>mode()</code> and <code>str()</code> are very useful</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb16"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a></a><span class="fu">mode</span>(pbc<span class="sc">$</span>age)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
@@ -1516,9 +1529,9 @@ or use raw character constants<br>
 </div>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a></a><span class="fu">str</span>(pbc<span class="sc">$</span>age)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a></a><span class="fu">str</span>(pbc<span class="sc">$</span>sex)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code> num [1:418] 58.8 56.4 70.1 54.7 38.1 ...</code></pre>
+<pre><code> Factor w/ 2 levels "m","f": 2 2 1 2 2 2 2 2 2 2 ...</code></pre>
 </div>
 </div>
 </section>
@@ -1526,11 +1539,11 @@ or use raw character constants<br>
 <h2>Data Structures</h2>
 <p>The most important data structures are:</p>
 <ul>
-<li><span style="color: #0c2074;"><strong>Vectors:</strong></span> have the same type of elements</li>
-<li><span style="color: #0c2074;"><strong>Matrices:</strong></span> have the same type of elements with the same length</li>
-<li><span style="color: #0c2074;"><strong>Arrays</strong></span> have the same type of elements with the same length but can store the data in more than two dimensions</li>
-<li><span style="color: #0c2074;"><strong>Data frames:</strong></span> have elements of different type with the same length</li>
-<li><span style="color: #0c2074;"><strong>Lists:</strong></span> have elements of different type and length</li>
+<li><span style="color: #0c2074;"><strong>Vectors:</strong></span> one-dimensional objects with elements of the same type</li>
+<li><span style="color: #0c2074;"><strong>Matrices:</strong></span> two-dimensional objects with elements of the same type</li>
+<li><span style="color: #0c2074;"><strong>Arrays</strong></span> objects with more than two dimensions, still of the same type</li>
+<li><span style="color: #0c2074;"><strong>Data frames:</strong></span> table-like objects with columns that may have different types</li>
+<li><span style="color: #0c2074;"><strong>Lists:</strong></span> flexible containers that can hold different kinds of objects</li>
 </ul>
 </section>
 <section id="data-structures-1" class="slide level2 triangledb" data-background-image="./templateassets/triangledb.svg">
@@ -1544,65 +1557,65 @@ or use raw character constants<br>
 <p><strong>Note</strong></p>
 </div>
 <div class="callout-content">
-<p>There is no seperate data structure for <span style="color: #0c2074;"><strong>scalars</strong></span>. Even single numbers are considered vectors! However sometimes a single number is still required!</p>
+<p>There is no separate data structure for <span style="color: #0c2074;"><strong>scalars</strong></span>. Even a single number is treated as a vector of length 1. However, as we will see, sometimes a single number is still required!</p>
 </div>
 </div>
 </div>
 </section>
 <section id="data-structures-2" class="slide level2 triangledb" data-background-image="./templateassets/triangledb.svg">
 <h2>Data Structures</h2>
-<p><br> <br></p>
-<div class="boxspw">
-<p><span style="color: #0c2074;"><strong>What do these data structures look like?</strong></span></p>
-</div>
+<ul>
+<li>A helpful mental model is:
+<ul>
+<li><code>pbc</code> is a <strong>data frame</strong></li>
+<li><code>pbc$age</code> is a <strong>vector</strong></li>
+<li><code>as.matrix(pbc[, c("age", "bili", "chol")])</code> is a <strong>matrix</strong></li>
+<li>a <strong>list</strong> can store several objects from one analysis together</li>
+</ul></li>
+</ul>
 </section>
-<section id="data-structures-3" class="slide level2">
+<section id="data-structures-3" class="slide level2 triangledb" data-background-image="./templateassets/triangledb.svg">
 <h2>Data Structures</h2>
 <ul>
-<li>Differences between <strong>vector</strong>, matrix, array, data.frame and list</li>
+<li>Start with the full patient table: this is a <strong>data frame</strong></li>
 </ul>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a></a>pbc[<span class="dv">1</span><span class="sc">:</span><span class="dv">6</span>, <span class="fu">c</span>(<span class="st">"age"</span>)]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a></a>pbc[<span class="dv">1</span><span class="sc">:</span><span class="dv">6</span>, <span class="fu">c</span>(<span class="st">"id"</span>, <span class="st">"sex"</span>, <span class="st">"age"</span>, <span class="st">"bili"</span>, <span class="st">"chol"</span>)]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] 58.76523 56.44627 70.07255 54.74059 38.10541 66.25873</code></pre>
+<pre><code>  id sex      age bili chol
+1  1   f 58.76523 14.5  261
+2  2   f 56.44627  1.1  302
+3  3   m 70.07255  1.4  176
+4  4   f 54.74059  1.8  244
+5  5   f 38.10541  3.4  279
+6  6   f 66.25873  0.8  248</code></pre>
 </div>
 </div>
 </section>
 <section id="data-structures-4" class="slide level2 triangledb" data-background-image="./templateassets/triangledb.svg">
 <h2>Data Structures</h2>
 <ul>
-<li>Differences between vector, <strong>matrix</strong>, array, data.frame and list</li>
+<li>One column from that table is a <strong>vector</strong></li>
 </ul>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a></a><span class="fu">cbind</span>(pbc[<span class="dv">1</span><span class="sc">:</span><span class="dv">6</span>, <span class="fu">c</span>(<span class="st">"age"</span>)],</span>
-<span id="cb22-2"><a></a>   pbc[<span class="dv">1</span><span class="sc">:</span><span class="dv">6</span>, <span class="fu">c</span>(<span class="st">"bili"</span>, <span class="st">"chol"</span>)])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a></a>pbc<span class="sc">$</span>age[<span class="dv">1</span><span class="sc">:</span><span class="dv">6</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>  pbc[1:6, c("age")] bili chol
-1           58.76523 14.5  261
-2           56.44627  1.1  302
-3           70.07255  1.4  176
-4           54.74059  1.8  244
-5           38.10541  3.4  279
-6           66.25873  0.8  248</code></pre>
+<pre><code>[1] 58.76523 56.44627 70.07255 54.74059 38.10541 66.25873</code></pre>
 </div>
 </div>
 </section>
 <section id="data-structures-5" class="slide level2 triangledb" data-background-image="./templateassets/triangledb.svg">
 <h2>Data Structures</h2>
 <ul>
-<li>Differences between vector, matrix, <strong>array</strong>, data.frame and list</li>
+<li>If we keep only numeric columns of the same type, we can make a <strong>matrix</strong></li>
 </ul>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a></a>pbc[<span class="dv">1</span><span class="sc">:</span><span class="dv">3</span>, <span class="fu">c</span>(<span class="st">"age"</span>, <span class="st">"bili"</span>, <span class="st">"chol"</span>)]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a></a><span class="fu">as.matrix</span>(pbc[<span class="dv">1</span><span class="sc">:</span><span class="dv">6</span>, <span class="fu">c</span>(<span class="st">"age"</span>, <span class="st">"bili"</span>, <span class="st">"chol"</span>)])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>       age bili chol
 1 58.76523 14.5  261
 2 56.44627  1.1  302
-3 70.07255  1.4  176</code></pre>
-</div>
-<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a></a>pbc[<span class="dv">4</span><span class="sc">:</span><span class="dv">6</span>, <span class="fu">c</span>(<span class="st">"age"</span>, <span class="st">"bili"</span>, <span class="st">"chol"</span>)]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>       age bili chol
+3 70.07255  1.4  176
 4 54.74059  1.8  244
 5 38.10541  3.4  279
 6 66.25873  0.8  248</code></pre>
@@ -1612,61 +1625,49 @@ or use raw character constants<br>
 <section id="data-structures-6" class="slide level2 triangledb" data-background-image="./templateassets/triangledb.svg">
 <h2>Data Structures</h2>
 <ul>
-<li>Differences between vector, matrix, <strong>array</strong>, data.frame and list</li>
+<li>An <strong>array</strong> is like a matrix with more than two dimensions</li>
 </ul>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a></a>pbc[<span class="dv">1</span><span class="sc">:</span><span class="dv">2</span>, <span class="fu">c</span>(<span class="st">"protime"</span>, <span class="st">"time"</span>)]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a></a>ar <span class="ot">&lt;-</span> <span class="fu">array</span>(<span class="at">data =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">12</span>, <span class="at">dim =</span> <span class="fu">c</span>(<span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">2</span>))</span>
+<span id="cb26-2"><a></a>ar</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>  protime time
-1    12.2  400
-2    10.6 4500</code></pre>
-</div>
-<div class="sourceCode cell-code" id="cb30"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb30-1"><a></a>pbc[<span class="dv">3</span><span class="sc">:</span><span class="dv">4</span>, <span class="fu">c</span>(<span class="st">"protime"</span>, <span class="st">"time"</span>)]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>  protime time
-3    12.0 1012
-4    10.3 1925</code></pre>
+<pre><code>, , 1
+
+     [,1] [,2] [,3]
+[1,]    1    3    5
+[2,]    2    4    6
+
+, , 2
+
+     [,1] [,2] [,3]
+[1,]    7    9   11
+[2,]    8   10   12</code></pre>
 </div>
 </div>
 </section>
 <section id="data-structures-7" class="slide level2 triangledb" data-background-image="./templateassets/triangledb.svg">
 <h2>Data Structures</h2>
 <ul>
-<li>Differences between vector, matrix, array, <strong>data.frame</strong> and list</li>
+<li>A <strong>list</strong> can store different pieces of an analysis together</li>
 </ul>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb32"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb32-1"><a></a>pbc[<span class="dv">1</span><span class="sc">:</span><span class="dv">6</span>, <span class="fu">c</span>(<span class="st">"id"</span>, <span class="st">"sex"</span>, <span class="st">"bili"</span>, <span class="st">"chol"</span>)]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a></a>patient_summary <span class="ot">&lt;-</span> <span class="fu">list</span>(</span>
+<span id="cb28-2"><a></a>  <span class="at">ages =</span> pbc<span class="sc">$</span>age[<span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>],</span>
+<span id="cb28-3"><a></a>  <span class="at">patients =</span> pbc[<span class="dv">1</span><span class="sc">:</span><span class="dv">2</span>, <span class="fu">c</span>(<span class="st">"id"</span>, <span class="st">"sex"</span>, <span class="st">"bili"</span>)],</span>
+<span id="cb28-4"><a></a>  <span class="at">mean_bili =</span> <span class="fu">mean</span>(pbc<span class="sc">$</span>bili, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb28-5"><a></a>)</span>
+<span id="cb28-6"><a></a>patient_summary</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>  id sex bili chol
-1  1   f 14.5  261
-2  2   f  1.1  302
-3  3   m  1.4  176
-4  4   f  1.8  244
-5  5   f  3.4  279
-6  6   f  0.8  248</code></pre>
-</div>
-</div>
-</section>
-<section id="data-structures-8" class="slide level2 triangledb" data-background-image="./templateassets/triangledb.svg">
-<h2>Data Structures</h2>
-<ul>
-<li>Differences between vector, matrix, array, data.frame and <strong>list</strong></li>
-</ul>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb34"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb34-1"><a></a>pbc[<span class="dv">1</span><span class="sc">:</span><span class="dv">6</span>, <span class="fu">c</span>(<span class="st">"sex"</span>)]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] f f m f f f
-Levels: m f</code></pre>
-</div>
-<div class="sourceCode cell-code" id="cb36"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb36-1"><a></a>pbc[<span class="dv">1</span><span class="sc">:</span><span class="dv">2</span>, <span class="fu">c</span>(<span class="st">"sex"</span>, <span class="st">"bili"</span>)]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>  sex bili
-1   f 14.5
-2   f  1.1</code></pre>
-</div>
-<div class="sourceCode cell-code" id="cb38"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb38-1"><a></a>pbc[<span class="dv">1</span><span class="sc">:</span><span class="dv">4</span>, <span class="fu">c</span>(<span class="st">"age"</span>)]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] 58.76523 56.44627 70.07255 54.74059</code></pre>
+<pre><code>$ages
+[1] 58.76523 56.44627 70.07255 54.74059 38.10541
+
+$patients
+  id sex bili
+1  1   f 14.5
+2  2   f  1.1
+
+$mean_bili
+[1] 3.220813</code></pre>
 </div>
 </div>
 </section>
@@ -1681,15 +1682,22 @@ Levels: m f</code></pre>
 <h2>Data Structures in R</h2>
 <p><span style="color: #0c2074;"><strong>Create a vector</strong></span></p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb40"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb40-1"><a aria-hidden="true" tabindex="-1"></a>vec <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>, <span class="dv">5</span>)</span>
-<span id="cb40-2"><a aria-hidden="true" tabindex="-1"></a>vec</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb30"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb30-1"><a aria-hidden="true" tabindex="-1"></a>age_vec <span class="ot">&lt;-</span> pbc<span class="sc">$</span>age[<span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>]</span>
+<span id="cb30-2"><a aria-hidden="true" tabindex="-1"></a>age_vec</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 58.76523 56.44627 70.07255 54.74059 38.10541</code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb32"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb32-1"><a aria-hidden="true" tabindex="-1"></a>vec <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>, <span class="dv">5</span>)</span>
+<span id="cb32-2"><a aria-hidden="true" tabindex="-1"></a>vec</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 1 2 3 4 5</code></pre>
 </div>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb42"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb42-1"><a aria-hidden="true" tabindex="-1"></a>vec <span class="ot">&lt;-</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">5</span></span>
-<span id="cb42-2"><a aria-hidden="true" tabindex="-1"></a>vec</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb34"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb34-1"><a aria-hidden="true" tabindex="-1"></a>vec <span class="ot">&lt;-</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">5</span></span>
+<span id="cb34-2"><a aria-hidden="true" tabindex="-1"></a>vec</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 1 2 3 4 5</code></pre>
 </div>
@@ -1701,43 +1709,45 @@ Levels: m f</code></pre>
 <div class="columns">
 <div class="column" style="width:47%;">
 <div class="cell">
-<div class="sourceCode cell-code" id="cb44"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb44-1"><a aria-hidden="true" tabindex="-1"></a>vec <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>, <span class="dv">5</span>,</span>
-<span id="cb44-2"><a aria-hidden="true" tabindex="-1"></a>         <span class="dv">6</span>, <span class="dv">7</span>, <span class="dv">8</span>, <span class="dv">9</span>)</span>
-<span id="cb44-3"><a aria-hidden="true" tabindex="-1"></a>mat <span class="ot">&lt;-</span> <span class="fu">matrix</span>(<span class="at">data =</span> vec, </span>
-<span id="cb44-4"><a aria-hidden="true" tabindex="-1"></a>              <span class="at">nrow =</span> <span class="dv">3</span>,</span>
-<span id="cb44-5"><a aria-hidden="true" tabindex="-1"></a>              <span class="at">ncol =</span> <span class="dv">3</span>)</span>
-<span id="cb44-6"><a aria-hidden="true" tabindex="-1"></a>mat </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb36"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb36-1"><a aria-hidden="true" tabindex="-1"></a>mat <span class="ot">&lt;-</span> <span class="fu">as.matrix</span>(pbc[<span class="dv">1</span><span class="sc">:</span><span class="dv">3</span>, <span class="fu">c</span>(<span class="st">"age"</span>, <span class="st">"bili"</span>, <span class="st">"chol"</span>)])</span>
+<span id="cb36-2"><a aria-hidden="true" tabindex="-1"></a>mat </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>     [,1] [,2] [,3]
-[1,]    1    4    7
-[2,]    2    5    8
-[3,]    3    6    9</code></pre>
+<pre><code>       age bili chol
+1 58.76523 14.5  261
+2 56.44627  1.1  302
+3 70.07255  1.4  176</code></pre>
 </div>
 </div>
-</div><div class="column" style="width:47%;">
-<div class="cell">
-<div class="sourceCode cell-code" id="cb46"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb46-1"><a aria-hidden="true" tabindex="-1"></a>vec <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>, <span class="dv">5</span>,</span>
-<span id="cb46-2"><a aria-hidden="true" tabindex="-1"></a>         <span class="dv">6</span>, <span class="dv">7</span>, <span class="dv">8</span>, <span class="dv">9</span>)</span>
-<span id="cb46-3"><a aria-hidden="true" tabindex="-1"></a>mat <span class="ot">&lt;-</span> <span class="fu">matrix</span>(<span class="at">data =</span> vec, </span>
-<span id="cb46-4"><a aria-hidden="true" tabindex="-1"></a>              <span class="at">nrow =</span> <span class="dv">3</span>,</span>
-<span id="cb46-5"><a aria-hidden="true" tabindex="-1"></a>              <span class="at">ncol =</span> <span class="dv">3</span>, </span>
-<span id="cb46-6"><a aria-hidden="true" tabindex="-1"></a>              <span class="at">byrow =</span> <span class="cn">TRUE</span>)</span>
-<span id="cb46-7"><a aria-hidden="true" tabindex="-1"></a>mat</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>#| code-line-numbers: false vec &lt;- c(1, 2, 3, 4, 5, 6, 7, 8, 9) mat &lt;- matrix(data = vec, nrow = 3, ncol = 3) mat</p>
+<pre><code>
+:::
+
+::: {.column width="47%"}
+
+
+::: {.cell}
+
+```{.r .cell-code  code-line-numbers="false"}
+mat &lt;- matrix(data = 1:9, 
+              nrow = 3,
+              ncol = 3, 
+              byrow = TRUE)
+mat</code></pre>
 <div class="cell-output cell-output-stdout">
 <pre><code>     [,1] [,2] [,3]
 [1,]    1    2    3
 [2,]    4    5    6
 [3,]    7    8    9</code></pre>
 </div>
-</div>
 </div></div>
+<p>:::</p>
 </section>
 <section id="data-structures-in-r-3" class="slide level2 triangledb" data-background-image="./templateassets/triangledb.svg">
 <h2>Data Structures in R</h2>
 <p><span style="color: #0c2074;"><strong>Create an array</strong></span></p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb48"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb48-1"><a aria-hidden="true" tabindex="-1"></a>ar <span class="ot">&lt;-</span> <span class="fu">array</span>(<span class="at">data =</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>, <span class="dv">5</span>, <span class="dv">6</span>, <span class="dv">7</span>, <span class="dv">8</span>), <span class="at">dim =</span> <span class="fu">c</span>(<span class="dv">2</span>, <span class="dv">2</span>, <span class="dv">2</span>))</span>
-<span id="cb48-2"><a aria-hidden="true" tabindex="-1"></a>ar</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb40"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb40-1"><a aria-hidden="true" tabindex="-1"></a>ar <span class="ot">&lt;-</span> <span class="fu">array</span>(<span class="at">data =</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>, <span class="dv">5</span>, <span class="dv">6</span>, <span class="dv">7</span>, <span class="dv">8</span>), <span class="at">dim =</span> <span class="fu">c</span>(<span class="dv">2</span>, <span class="dv">2</span>, <span class="dv">2</span>))</span>
+<span id="cb40-2"><a aria-hidden="true" tabindex="-1"></a>ar</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>, , 1
 
@@ -1755,28 +1765,13 @@ Levels: m f</code></pre>
 </section>
 <section id="data-structures-in-r-4" class="slide level2 triangledb" data-background-image="./templateassets/triangledb.svg">
 <h2>Data Structures in R</h2>
-<p><span style="color: #0c2074;"><strong>Create an array</strong></span></p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb50"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb50-1"><a aria-hidden="true" tabindex="-1"></a>ar <span class="ot">&lt;-</span> <span class="fu">array</span>(<span class="at">data =</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>), <span class="at">dim =</span> <span class="fu">c</span>(<span class="dv">2</span>, <span class="dv">2</span>, <span class="dv">1</span>))</span>
-<span id="cb50-2"><a aria-hidden="true" tabindex="-1"></a>ar</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>, , 1
-
-     [,1] [,2]
-[1,]    1    3
-[2,]    2    4</code></pre>
-</div>
-</div>
-</section>
-<section id="data-structures-in-r-5" class="slide level2 triangledb" data-background-image="./templateassets/triangledb.svg">
-<h2>Data Structures in R</h2>
 <p><span style="color: #0c2074;"><strong>Create a data frame</strong></span></p>
 <div class="columns">
 <div class="column" style="width:47%;">
 <div class="cell">
-<div class="sourceCode cell-code" id="cb52"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb52-1"><a aria-hidden="true" tabindex="-1"></a>dtf <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(pbc[, <span class="st">"sex"</span>], </span>
-<span id="cb52-2"><a aria-hidden="true" tabindex="-1"></a>                  pbc[, <span class="st">"age"</span>])</span>
-<span id="cb52-3"><a aria-hidden="true" tabindex="-1"></a>dtf[<span class="dv">1</span><span class="sc">:</span><span class="dv">3</span>, ]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb42"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb42-1"><a aria-hidden="true" tabindex="-1"></a>dtf <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(pbc[, <span class="st">"sex"</span>], </span>
+<span id="cb42-2"><a aria-hidden="true" tabindex="-1"></a>                  pbc[, <span class="st">"age"</span>])</span>
+<span id="cb42-3"><a aria-hidden="true" tabindex="-1"></a>dtf[<span class="dv">1</span><span class="sc">:</span><span class="dv">3</span>, ]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>  pbc....sex.. pbc....age..
 1            f     58.76523
@@ -1786,10 +1781,10 @@ Levels: m f</code></pre>
 </div>
 </div><div class="column" style="width:47%;">
 <div class="cell">
-<div class="sourceCode cell-code" id="cb54"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb54-1"><a aria-hidden="true" tabindex="-1"></a>dtf <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(</span>
-<span id="cb54-2"><a aria-hidden="true" tabindex="-1"></a>            <span class="at">Gender =</span> pbc[, <span class="st">"sex"</span>], </span>
-<span id="cb54-3"><a aria-hidden="true" tabindex="-1"></a>            <span class="at">Age =</span> pbc[, <span class="st">"age"</span>])</span>
-<span id="cb54-4"><a aria-hidden="true" tabindex="-1"></a>dtf[<span class="dv">1</span><span class="sc">:</span><span class="dv">3</span>, ]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb44"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb44-1"><a aria-hidden="true" tabindex="-1"></a>dtf <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(</span>
+<span id="cb44-2"><a aria-hidden="true" tabindex="-1"></a>            <span class="at">Gender =</span> pbc[, <span class="st">"sex"</span>], </span>
+<span id="cb44-3"><a aria-hidden="true" tabindex="-1"></a>            <span class="at">Age =</span> pbc[, <span class="st">"age"</span>])</span>
+<span id="cb44-4"><a aria-hidden="true" tabindex="-1"></a>dtf[<span class="dv">1</span><span class="sc">:</span><span class="dv">3</span>, ]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>  Gender      Age
 1      f 58.76523
@@ -1799,37 +1794,47 @@ Levels: m f</code></pre>
 </div>
 </div></div>
 </section>
-<section id="data-structures-in-r-6" class="slide level2 triangledb" data-background-image="./templateassets/triangledb.svg">
+<section id="data-structures-in-r-5" class="slide level2 triangledb" data-background-image="./templateassets/triangledb.svg">
 <h2>Data Structures in R</h2>
 <p><span style="color: #0c2074;"><strong>Create a list</strong></span></p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb56"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb56-1"><a aria-hidden="true" tabindex="-1"></a>list1 <span class="ot">&lt;-</span> <span class="fu">list</span>(<span class="at">vec =</span> <span class="fu">c</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>), <span class="at">mat =</span> pbc[<span class="dv">1</span><span class="sc">:</span><span class="dv">2</span>, <span class="fu">c</span>(<span class="st">"age"</span>, <span class="st">"sex"</span>)])</span>
-<span id="cb56-2"><a aria-hidden="true" tabindex="-1"></a>list1</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb46"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb46-1"><a aria-hidden="true" tabindex="-1"></a>list1 <span class="ot">&lt;-</span> <span class="fu">list</span>(</span>
+<span id="cb46-2"><a aria-hidden="true" tabindex="-1"></a>  <span class="at">ages =</span> pbc<span class="sc">$</span>age[<span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>],</span>
+<span id="cb46-3"><a aria-hidden="true" tabindex="-1"></a>  <span class="at">small_table =</span> pbc[<span class="dv">1</span><span class="sc">:</span><span class="dv">2</span>, <span class="fu">c</span>(<span class="st">"age"</span>, <span class="st">"sex"</span>)],</span>
+<span id="cb46-4"><a aria-hidden="true" tabindex="-1"></a>  <span class="at">mean_age =</span> <span class="fu">mean</span>(pbc<span class="sc">$</span>age)</span>
+<span id="cb46-5"><a aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb46-6"><a aria-hidden="true" tabindex="-1"></a>list1</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>$vec
-[1] 1 2 3 4 5
+<pre><code>$ages
+[1] 58.76523 56.44627 70.07255 54.74059 38.10541
 
-$mat
+$small_table
        age sex
 1 58.76523   f
-2 56.44627   f</code></pre>
+2 56.44627   f
+
+$mean_age
+[1] 50.74155</code></pre>
 </div>
 </div>
 </section>
 <section id="class" class="slide level2 triangledb" data-background-image="./templateassets/triangledb.svg">
 <h2>Class</h2>
-<p><br></p>
 <ul>
-<li>In addition to a type objects have a <strong>class</strong></li>
+<li>In addition to a type, objects also have a <strong>class</strong></li>
+<li>The class tells R how the object should behave</li>
+<li>This is why <code>summary()</code> or <code>plot()</code> may behave differently for different objects</li>
 </ul>
-<p><br></p>
-<ul>
-<li>It indicates how the object can be used</li>
-</ul>
-<p><br></p>
-<ul>
-<li>The behaviour of functions when used on the object may depend on the <strong>class</strong></li>
-</ul>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb48"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb48-1"><a></a><span class="fu">class</span>(pbc)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "data.frame"</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb50"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb50-1"><a></a><span class="fu">class</span>(pbc<span class="sc">$</span>age)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "numeric"</code></pre>
+</div>
+</div>
 </section>
 <section id="summary-2" class="slide level2 triangledb" data-background-image="./templateassets/triangledb.svg">
 <h2>Summary</h2>
@@ -1879,7 +1884,7 @@ $mat
 <h2>Indexing/Subsetting</h2>
 <div style="font-size: 95%;">
 <ul>
-<li>When transforming and analyzing data we often need to <strong>select</strong> specific <span style="color: #afcc46;"><strong>observations</strong></span> or <span style="color: #e84720;"><strong>variables</strong></span>
+<li>When transforming and analysing data, we often need to <strong>select</strong> specific <span style="color: #afcc46;"><strong>observations</strong></span> or <span style="color: #e84720;"><strong>variables</strong></span>
 <ul>
 <li>Examples: Select …
 <ul>
@@ -1889,7 +1894,7 @@ $mat
 <li><span style="font-size: 90%;">the sex of the 10th patient</span></li>
 <li><span style="font-size: 90%;">all information of the 5th patient</span></li>
 <li><span style="font-size: 90%;">the serum cholesterol for all males</span></li>
-<li><span style="font-size: 90%;">the age for male patients or patients that have serum billirubin &gt; 3</span></li>
+<li><span style="font-size: 90%;">the age for male patients or patients that have serum bilirubin &gt; 3</span></li>
 <li><span style="font-size: 90%;">the first measurement per patient</span></li>
 </ul></li>
 </ul></li>
@@ -1923,12 +1928,12 @@ $mat
 <li>For position indexing, use a <span style="color: #afcc46;"><strong>positive</strong></span> value to select an element</li>
 </ul>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb58"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb58-1"><a></a>x <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">6</span><span class="sc">:</span><span class="dv">17</span>)</span>
-<span id="cb58-2"><a></a>x</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb52"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb52-1"><a></a>x <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">6</span><span class="sc">:</span><span class="dv">17</span>)</span>
+<span id="cb52-2"><a></a>x</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code> [1]  6  7  8  9 10 11 12 13 14 15 16 17</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb60"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb60-1"><a></a>x[<span class="dv">2</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb54"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb54-1"><a></a>x[<span class="dv">2</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 7</code></pre>
 </div>
@@ -1937,7 +1942,7 @@ $mat
 <li>Use <span style="color: #afcc46;"><strong>multiple positive</strong></span> values to select <strong>multiple</strong> elements</li>
 </ul>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb62"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb62-1"><a></a>x[<span class="fu">c</span>(<span class="dv">2</span>,<span class="dv">3</span>,<span class="dv">4</span>)]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb56"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb56-1"><a></a>x[<span class="fu">c</span>(<span class="dv">2</span>,<span class="dv">3</span>,<span class="dv">4</span>)]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 7 8 9</code></pre>
 </div>
@@ -1950,12 +1955,12 @@ $mat
 <li>For position indexing, use duplicated <span style="color: #afcc46;"><strong>positive</strong></span> values to select the same elements</li>
 </ul>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb64"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb64-1"><a></a>x <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">6</span><span class="sc">:</span><span class="dv">17</span>)</span>
-<span id="cb64-2"><a></a>x</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb58"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb58-1"><a></a>x <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">6</span><span class="sc">:</span><span class="dv">17</span>)</span>
+<span id="cb58-2"><a></a>x</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code> [1]  6  7  8  9 10 11 12 13 14 15 16 17</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb66"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb66-1"><a></a>x[<span class="fu">c</span>(<span class="dv">2</span>,<span class="dv">2</span>,<span class="dv">2</span>)]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb60"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb60-1"><a></a>x[<span class="fu">c</span>(<span class="dv">2</span>,<span class="dv">2</span>,<span class="dv">2</span>)]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 7 7 7</code></pre>
 </div>
@@ -1967,12 +1972,12 @@ $mat
 <li>For position indexing, use a <span style="color: #e84720;"><strong>negative</strong></span> value to <strong>remove</strong> an element</li>
 </ul>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb68"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb68-1"><a></a>x <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">6</span><span class="sc">:</span><span class="dv">17</span>)</span>
-<span id="cb68-2"><a></a>x</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb62"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb62-1"><a></a>x <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">6</span><span class="sc">:</span><span class="dv">17</span>)</span>
+<span id="cb62-2"><a></a>x</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code> [1]  6  7  8  9 10 11 12 13 14 15 16 17</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb70"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb70-1"><a></a>x[<span class="sc">-</span><span class="dv">5</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb64"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb64-1"><a></a>x[<span class="sc">-</span><span class="dv">5</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code> [1]  6  7  8  9 11 12 13 14 15 16 17</code></pre>
 </div>
@@ -1988,9 +1993,9 @@ $mat
 <li>Use <strong>logical</strong> index of the same length to select elements where the value is <strong>TRUE</strong></li>
 </ul>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb72"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb72-1"><a></a>x <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">6</span><span class="sc">:</span><span class="dv">10</span>)</span>
-<span id="cb72-2"><a></a>y <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="cn">TRUE</span>, <span class="cn">FALSE</span>, <span class="cn">FALSE</span>, <span class="cn">FALSE</span>, <span class="cn">FALSE</span>)</span>
-<span id="cb72-3"><a></a>x[y]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb66"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb66-1"><a></a>x <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">6</span><span class="sc">:</span><span class="dv">10</span>)</span>
+<span id="cb66-2"><a></a>y <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="cn">TRUE</span>, <span class="cn">FALSE</span>, <span class="cn">FALSE</span>, <span class="cn">FALSE</span>, <span class="cn">FALSE</span>)</span>
+<span id="cb66-3"><a></a>x[y]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 6</code></pre>
 </div>
@@ -2002,16 +2007,16 @@ $mat
 <li>Use logical indexing in combination with conditions</li>
 </ul>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb74"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb74-1"><a></a>x <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">6</span><span class="sc">:</span><span class="dv">10</span>)</span>
-<span id="cb74-2"><a></a>x[x <span class="sc">&gt;</span> <span class="dv">7</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb68"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb68-1"><a></a>x <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">6</span><span class="sc">:</span><span class="dv">10</span>)</span>
+<span id="cb68-2"><a></a>x[x <span class="sc">&gt;</span> <span class="dv">7</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1]  8  9 10</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb76"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb76-1"><a></a>x[x <span class="sc">&gt;</span> <span class="dv">7</span> <span class="sc">&amp;</span> x <span class="sc">&gt;</span> <span class="dv">9</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb70"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb70-1"><a></a>x[x <span class="sc">&gt;</span> <span class="dv">7</span> <span class="sc">&amp;</span> x <span class="sc">&gt;</span> <span class="dv">9</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 10</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb78"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb78-1"><a></a>x[x <span class="sc">&gt;</span> <span class="dv">7</span> <span class="sc">|</span> x <span class="sc">&gt;</span> <span class="dv">9</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb72"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb72-1"><a></a>x[x <span class="sc">&gt;</span> <span class="dv">7</span> <span class="sc">|</span> x <span class="sc">&gt;</span> <span class="dv">9</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1]  8  9 10</code></pre>
 </div>
@@ -2023,8 +2028,8 @@ $mat
 <li>For <strong>name/character</strong> indexing, use the name of the element</li>
 </ul>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb80"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb80-1"><a></a>x <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="at">foo=</span><span class="dv">5</span>, <span class="at">bar=</span><span class="dv">4</span>, <span class="at">one=</span><span class="dv">7</span>, <span class="at">two=</span><span class="dv">12</span>, <span class="at">three=</span><span class="dv">2</span>)</span>
-<span id="cb80-2"><a></a>x[<span class="fu">c</span>(<span class="st">'foo'</span>, <span class="st">'one'</span>)]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb74"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb74-1"><a></a>x <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="at">foo=</span><span class="dv">5</span>, <span class="at">bar=</span><span class="dv">4</span>, <span class="at">one=</span><span class="dv">7</span>, <span class="at">two=</span><span class="dv">12</span>, <span class="at">three=</span><span class="dv">2</span>)</span>
+<span id="cb74-2"><a></a>x[<span class="fu">c</span>(<span class="st">'foo'</span>, <span class="st">'one'</span>)]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>foo one 
   5   7 </code></pre>
@@ -2037,7 +2042,7 @@ $mat
 <section id="indexing-with-a-matrix" class="slide level2 triangledb" data-background-image="./templateassets/triangledb.svg">
 <h2>Indexing with a <code>matrix</code></h2>
 <ul>
-<li><p>Indexing matrices is similar to indexing vectors but with double index</p>
+<li><p>Indexing matrices is similar to indexing vectors, but uses a double index</p>
 <ul>
 <li>The first position denotes the rows <code>["index", ]</code></li>
 <li>The second position denotes the columns <code>[ , "index"]</code></li>
@@ -2066,9 +2071,9 @@ $mat
 <div class="columns">
 <div class="column" style="width:47%;">
 <div class="cell">
-<div class="sourceCode cell-code" id="cb82"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb82-1"><a></a>mat <span class="ot">&lt;-</span> <span class="fu">matrix</span>(<span class="at">data =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">4</span>, </span>
-<span id="cb82-2"><a></a>              <span class="at">nrow =</span> <span class="dv">2</span>, <span class="at">ncol =</span> <span class="dv">2</span>)</span>
-<span id="cb82-3"><a></a>mat</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb76"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb76-1"><a></a>mat <span class="ot">&lt;-</span> <span class="fu">matrix</span>(<span class="at">data =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">4</span>, </span>
+<span id="cb76-2"><a></a>              <span class="at">nrow =</span> <span class="dv">2</span>, <span class="at">ncol =</span> <span class="dv">2</span>)</span>
+<span id="cb76-3"><a></a>mat</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>     [,1] [,2]
 [1,]    1    3
@@ -2079,9 +2084,9 @@ $mat
 <li>Use position indexing as:</li>
 </ul>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb84"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb84-1"><a></a>mat <span class="ot">&lt;-</span> <span class="fu">matrix</span>(<span class="at">data =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">4</span>, </span>
-<span id="cb84-2"><a></a>              <span class="at">nrow =</span> <span class="dv">2</span>, <span class="at">ncol =</span> <span class="dv">2</span>)</span>
-<span id="cb84-3"><a></a>mat[<span class="dv">2</span>, <span class="dv">2</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb78"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb78-1"><a></a>mat <span class="ot">&lt;-</span> <span class="fu">matrix</span>(<span class="at">data =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">4</span>, </span>
+<span id="cb78-2"><a></a>              <span class="at">nrow =</span> <span class="dv">2</span>, <span class="at">ncol =</span> <span class="dv">2</span>)</span>
+<span id="cb78-3"><a></a>mat[<span class="dv">2</span>, <span class="dv">2</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 4</code></pre>
 </div>
@@ -2091,9 +2096,9 @@ $mat
 <li>Can use names:</li>
 </ul>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb86"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb86-1"><a></a><span class="fu">rownames</span>(mat) <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"Patient1"</span>, <span class="st">"Patient2"</span>)</span>
-<span id="cb86-2"><a></a><span class="fu">colnames</span>(mat) <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"Height"</span>, <span class="st">"Weight"</span>)</span>
-<span id="cb86-3"><a></a>mat <span class="co"># display</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb80"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb80-1"><a></a><span class="fu">rownames</span>(mat) <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"Patient1"</span>, <span class="st">"Patient2"</span>)</span>
+<span id="cb80-2"><a></a><span class="fu">colnames</span>(mat) <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"Height"</span>, <span class="st">"Weight"</span>)</span>
+<span id="cb80-3"><a></a>mat <span class="co"># display</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>         Height Weight
 Patient1      1      3
@@ -2104,7 +2109,7 @@ Patient2      2      4</code></pre>
 <li>To access the Weight of Patient2:</li>
 </ul>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb88"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb88-1"><a></a>mat[<span class="st">"Patient2"</span>, <span class="st">"Weight"</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb82"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb82-1"><a></a>mat[<span class="st">"Patient2"</span>, <span class="st">"Weight"</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 4</code></pre>
 </div>
@@ -2129,14 +2134,14 @@ Patient2      2      4</code></pre>
 </div>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb90"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb90-1"><a></a>mat <span class="ot">&lt;-</span> <span class="fu">matrix</span>(<span class="at">data =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">4</span>, </span>
-<span id="cb90-2"><a></a>              <span class="at">nrow =</span> <span class="dv">2</span>,</span>
-<span id="cb90-3"><a></a>              <span class="at">ncol =</span> <span class="dv">2</span>)</span>
-<span id="cb90-4"><a></a>mat[<span class="dv">2</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb84"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb84-1"><a></a>mat <span class="ot">&lt;-</span> <span class="fu">matrix</span>(<span class="at">data =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">4</span>, </span>
+<span id="cb84-2"><a></a>              <span class="at">nrow =</span> <span class="dv">2</span>,</span>
+<span id="cb84-3"><a></a>              <span class="at">ncol =</span> <span class="dv">2</span>)</span>
+<span id="cb84-4"><a></a>mat[<span class="dv">2</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 2</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb92"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb92-1"><a></a>mat[[<span class="dv">2</span>]]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb86"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb86-1"><a></a>mat[[<span class="dv">2</span>]]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 2</code></pre>
 </div>
@@ -2145,19 +2150,19 @@ Patient2      2      4</code></pre>
 <section id="indexing-with-a-matrix-3" class="slide level2 triangledb" data-background-image="./templateassets/triangledb.svg">
 <h2>Indexing with a <code>matrix</code></h2>
 <ul>
-<li>When we leave a position blank all elements are selected</li>
+<li>When we leave a position blank, all elements are selected</li>
 </ul>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb94"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb94-1"><a></a>mat <span class="ot">&lt;-</span> <span class="fu">matrix</span>(<span class="at">data =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">4</span>, </span>
-<span id="cb94-2"><a></a>              <span class="at">nrow =</span> <span class="dv">2</span>,</span>
-<span id="cb94-3"><a></a>              <span class="at">ncol =</span> <span class="dv">2</span>)</span>
-<span id="cb94-4"><a></a>mat</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb88"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb88-1"><a></a>mat <span class="ot">&lt;-</span> <span class="fu">matrix</span>(<span class="at">data =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">4</span>, </span>
+<span id="cb88-2"><a></a>              <span class="at">nrow =</span> <span class="dv">2</span>,</span>
+<span id="cb88-3"><a></a>              <span class="at">ncol =</span> <span class="dv">2</span>)</span>
+<span id="cb88-4"><a></a>mat</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>     [,1] [,2]
 [1,]    1    3
 [2,]    2    4</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb96"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb96-1"><a></a>mat[<span class="dv">2</span>, ]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb90"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb90-1"><a></a>mat[<span class="dv">2</span>, ]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 2 4</code></pre>
 </div>
@@ -2166,14 +2171,14 @@ Patient2      2      4</code></pre>
 <li>Example with a logical index: select rows where first column &gt; 1</li>
 </ul>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb98"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb98-1"><a></a>logical_row_index <span class="ot">&lt;-</span> mat[,<span class="dv">1</span>] <span class="sc">&gt;</span> <span class="dv">1</span></span>
-<span id="cb98-2"><a></a>logical_row_index</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb92"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb92-1"><a></a>logical_row_index <span class="ot">&lt;-</span> mat[,<span class="dv">1</span>] <span class="sc">&gt;</span> <span class="dv">1</span></span>
+<span id="cb92-2"><a></a>logical_row_index</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] FALSE  TRUE</code></pre>
 </div>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb100"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb100-1"><a></a>mat[logical_row_index, ]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb94"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb94-1"><a></a>mat[logical_row_index, ]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 2 4</code></pre>
 </div>
@@ -2182,25 +2187,25 @@ Patient2      2      4</code></pre>
 <section id="indexing-with-a-matrix-4" class="slide level2 triangledb" data-background-image="./templateassets/triangledb.svg">
 <h2>Indexing with a <code>matrix</code></h2>
 <ul>
-<li>Be careful, when a single row or column is selected the result is converted to a vector</li>
+<li>Be careful: when a single row or column is selected, the result is converted to a vector</li>
 </ul>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb102"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb102-1"><a></a>mat <span class="ot">&lt;-</span> <span class="fu">matrix</span>(<span class="at">data =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">4</span>, </span>
-<span id="cb102-2"><a></a>              <span class="at">nrow =</span> <span class="dv">2</span>,</span>
-<span id="cb102-3"><a></a>              <span class="at">ncol =</span> <span class="dv">2</span>)</span>
-<span id="cb102-4"><a></a>mat[<span class="dv">2</span>, ]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb96"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb96-1"><a></a>mat <span class="ot">&lt;-</span> <span class="fu">matrix</span>(<span class="at">data =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">4</span>, </span>
+<span id="cb96-2"><a></a>              <span class="at">nrow =</span> <span class="dv">2</span>,</span>
+<span id="cb96-3"><a></a>              <span class="at">ncol =</span> <span class="dv">2</span>)</span>
+<span id="cb96-4"><a></a>mat[<span class="dv">2</span>, ]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 2 4</code></pre>
 </div>
 </div>
 <ul>
-<li>use <code>drop=FALSE</code> to prevent this</li>
+<li>Use <code>drop = FALSE</code> to prevent this</li>
 </ul>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb104"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb104-1"><a></a>mat <span class="ot">&lt;-</span> <span class="fu">matrix</span>(<span class="at">data =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">4</span>, </span>
-<span id="cb104-2"><a></a>              <span class="at">nrow =</span> <span class="dv">2</span>,</span>
-<span id="cb104-3"><a></a>              <span class="at">ncol =</span> <span class="dv">2</span>)</span>
-<span id="cb104-4"><a></a>mat[<span class="dv">2</span>, , drop<span class="ot">=</span><span class="cn">FALSE</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb98"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb98-1"><a></a>mat <span class="ot">&lt;-</span> <span class="fu">matrix</span>(<span class="at">data =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">4</span>, </span>
+<span id="cb98-2"><a></a>              <span class="at">nrow =</span> <span class="dv">2</span>,</span>
+<span id="cb98-3"><a></a>              <span class="at">ncol =</span> <span class="dv">2</span>)</span>
+<span id="cb98-4"><a></a>mat[<span class="dv">2</span>, , drop<span class="ot">=</span><span class="cn">FALSE</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>     [,1] [,2]
 [1,]    2    4</code></pre>
@@ -2212,9 +2217,9 @@ Patient2      2      4</code></pre>
 <div class=".columns">
 <div class="column" style="width:47%;">
 <div class="cell">
-<div class="sourceCode cell-code" id="cb106"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb106-1"><a></a>ar <span class="ot">&lt;-</span> <span class="fu">array</span>(<span class="at">data =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">4</span>, </span>
-<span id="cb106-2"><a></a>            <span class="at">dim =</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">2</span>))</span>
-<span id="cb106-3"><a></a>ar</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb100"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb100-1"><a></a>ar <span class="ot">&lt;-</span> <span class="fu">array</span>(<span class="at">data =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">4</span>, </span>
+<span id="cb100-2"><a></a>            <span class="at">dim =</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">2</span>))</span>
+<span id="cb100-3"><a></a>ar</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>, , 1
 
@@ -2229,7 +2234,7 @@ Patient2      2      4</code></pre>
 </div>
 </div><div class="column" style="width:47%;">
 <div class="cell">
-<div class="sourceCode cell-code" id="cb108"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb108-1"><a></a>ar[<span class="dv">1</span>, <span class="dv">1</span>, ]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb102"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb102-1"><a></a>ar[<span class="dv">1</span>, <span class="dv">1</span>, ]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 1 3</code></pre>
 </div>
@@ -2239,16 +2244,16 @@ Patient2      2      4</code></pre>
 <section id="indexing-with-data.frame" class="slide level2 triangledb" data-background-image="./templateassets/triangledb.svg">
 <h2>Indexing with <code>data.frame</code></h2>
 <ul>
-<li>Works with <strong>single</strong> and <strong>double</strong> index</li>
+<li>Works with <strong>single</strong> and <strong>double</strong> indexing</li>
 </ul>
 <div class="columns">
 <div class="column" style="width:47%;">
 <div class="cell">
-<div class="sourceCode cell-code" id="cb110"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb110-1"><a aria-hidden="true" tabindex="-1"></a>DF <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">x =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">3</span>, </span>
-<span id="cb110-2"><a aria-hidden="true" tabindex="-1"></a>      <span class="at">y =</span> <span class="fu">c</span>(<span class="st">"male"</span>, </span>
-<span id="cb110-3"><a aria-hidden="true" tabindex="-1"></a>            <span class="st">"male"</span>,</span>
-<span id="cb110-4"><a aria-hidden="true" tabindex="-1"></a>            <span class="st">"female"</span>))</span>
-<span id="cb110-5"><a aria-hidden="true" tabindex="-1"></a>DF</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb104"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb104-1"><a aria-hidden="true" tabindex="-1"></a>DF <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">x =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">3</span>, </span>
+<span id="cb104-2"><a aria-hidden="true" tabindex="-1"></a>      <span class="at">y =</span> <span class="fu">c</span>(<span class="st">"male"</span>, </span>
+<span id="cb104-3"><a aria-hidden="true" tabindex="-1"></a>            <span class="st">"male"</span>,</span>
+<span id="cb104-4"><a aria-hidden="true" tabindex="-1"></a>            <span class="st">"female"</span>))</span>
+<span id="cb104-5"><a aria-hidden="true" tabindex="-1"></a>DF</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>  x      y
 1 1   male
@@ -2258,17 +2263,17 @@ Patient2      2      4</code></pre>
 </div>
 </div><div class="column" style="width:47%;">
 <ul>
-<li>Use position single indexing</li>
+<li>Use single position indexing</li>
 </ul>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb112"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb112-1"><a aria-hidden="true" tabindex="-1"></a>DF[<span class="dv">2</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb106"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb106-1"><a aria-hidden="true" tabindex="-1"></a>DF[<span class="dv">2</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>       y
 1   male
 2   male
 3 female</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb114"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb114-1"><a aria-hidden="true" tabindex="-1"></a>DF[[<span class="dv">2</span>]]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb108"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb108-1"><a aria-hidden="true" tabindex="-1"></a>DF[[<span class="dv">2</span>]]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] "male"   "male"   "female"</code></pre>
 </div>
@@ -2283,11 +2288,11 @@ Patient2      2      4</code></pre>
 <li>When using double index, indexing works like a matrix</li>
 </ul>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb116"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb116-1"><a aria-hidden="true" tabindex="-1"></a>DF <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">x =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">3</span>, </span>
-<span id="cb116-2"><a aria-hidden="true" tabindex="-1"></a>      <span class="at">y =</span> <span class="fu">c</span>(<span class="st">"male"</span>, </span>
-<span id="cb116-3"><a aria-hidden="true" tabindex="-1"></a>            <span class="st">"male"</span>, </span>
-<span id="cb116-4"><a aria-hidden="true" tabindex="-1"></a>            <span class="st">"female"</span>))</span>
-<span id="cb116-5"><a aria-hidden="true" tabindex="-1"></a>DF</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb110"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb110-1"><a aria-hidden="true" tabindex="-1"></a>DF <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">x =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">3</span>, </span>
+<span id="cb110-2"><a aria-hidden="true" tabindex="-1"></a>      <span class="at">y =</span> <span class="fu">c</span>(<span class="st">"male"</span>, </span>
+<span id="cb110-3"><a aria-hidden="true" tabindex="-1"></a>            <span class="st">"male"</span>, </span>
+<span id="cb110-4"><a aria-hidden="true" tabindex="-1"></a>            <span class="st">"female"</span>))</span>
+<span id="cb110-5"><a aria-hidden="true" tabindex="-1"></a>DF</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>  x      y
 1 1   male
@@ -2300,7 +2305,7 @@ Patient2      2      4</code></pre>
 <li>Use position indexing</li>
 </ul>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb118"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb118-1"><a aria-hidden="true" tabindex="-1"></a>DF[<span class="dv">2</span>, ]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb112"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb112-1"><a aria-hidden="true" tabindex="-1"></a>DF[<span class="dv">2</span>, ]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>  x    y
 2 2 male</code></pre>
@@ -2310,7 +2315,7 @@ Patient2      2      4</code></pre>
 <li>Use logical indexing</li>
 </ul>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb120"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb120-1"><a aria-hidden="true" tabindex="-1"></a>DF[DF<span class="sc">$</span>x <span class="sc">&lt;</span> <span class="dv">2</span>, ]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb114"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb114-1"><a aria-hidden="true" tabindex="-1"></a>DF[DF<span class="sc">$</span>x <span class="sc">&lt;</span> <span class="dv">2</span>, ]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>  x    y
 1 1 male</code></pre>
@@ -2324,11 +2329,11 @@ Patient2      2      4</code></pre>
 <li><strong><code>$</code></strong> provides a convenient notation to extract an element by name</li>
 </ul>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb122"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb122-1"><a aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(pbc<span class="sc">$</span>time)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb116"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb116-1"><a aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(pbc<span class="sc">$</span>time)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1]  400 4500 1012 1925 1504 2503</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb124"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb124-1"><a aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(pbc[ ,<span class="st">"time"</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb118"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb118-1"><a aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(pbc[ ,<span class="st">"time"</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1]  400 4500 1012 1925 1504 2503</code></pre>
 </div>
@@ -2340,7 +2345,7 @@ Patient2      2      4</code></pre>
 <li>Combine logical and position indexing in data frame</li>
 </ul>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb126"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb126-1"><a aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(pbc[pbc<span class="sc">$</span>sex <span class="sc">==</span> <span class="st">"m"</span>, <span class="dv">1</span><span class="sc">:</span><span class="dv">7</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb120"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb120-1"><a aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(pbc[pbc<span class="sc">$</span>sex <span class="sc">==</span> <span class="st">"m"</span>, <span class="dv">1</span><span class="sc">:</span><span class="dv">7</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>   id time status trt      age sex ascites
 3   3 1012      2   1 70.07255   m       0
@@ -2358,9 +2363,9 @@ Patient2      2      4</code></pre>
 <li>Combine logical and position indexing in data frame</li>
 </ul>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb128"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb128-1"><a aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(pbc[pbc<span class="sc">$</span>age <span class="sc">&gt;</span> <span class="dv">30</span> <span class="sc">|</span> </span>
-<span id="cb128-2"><a aria-hidden="true" tabindex="-1"></a>         pbc<span class="sc">$</span>sex <span class="sc">==</span> <span class="st">"f"</span>,</span>
-<span id="cb128-3"><a aria-hidden="true" tabindex="-1"></a>         <span class="dv">1</span><span class="sc">:</span><span class="dv">7</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb122"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb122-1"><a aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(pbc[pbc<span class="sc">$</span>age <span class="sc">&gt;</span> <span class="dv">30</span> <span class="sc">|</span> </span>
+<span id="cb122-2"><a aria-hidden="true" tabindex="-1"></a>         pbc<span class="sc">$</span>sex <span class="sc">==</span> <span class="st">"f"</span>,</span>
+<span id="cb122-3"><a aria-hidden="true" tabindex="-1"></a>         <span class="dv">1</span><span class="sc">:</span><span class="dv">7</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>  id time status trt      age sex ascites
 1  1  400      2   1 58.76523   f       1
@@ -2378,9 +2383,9 @@ Patient2      2      4</code></pre>
 <li>Combine logical and position indexing in data frame</li>
 </ul>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb130"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb130-1"><a aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(pbc[pbc<span class="sc">$</span>age <span class="sc">&gt;</span> <span class="dv">30</span> <span class="sc">&amp;</span> </span>
-<span id="cb130-2"><a aria-hidden="true" tabindex="-1"></a>         pbc<span class="sc">$</span>sex <span class="sc">==</span> <span class="st">"f"</span>,</span>
-<span id="cb130-3"><a aria-hidden="true" tabindex="-1"></a>         <span class="dv">1</span><span class="sc">:</span><span class="dv">7</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb124"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb124-1"><a aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(pbc[pbc<span class="sc">$</span>age <span class="sc">&gt;</span> <span class="dv">30</span> <span class="sc">&amp;</span> </span>
+<span id="cb124-2"><a aria-hidden="true" tabindex="-1"></a>         pbc<span class="sc">$</span>sex <span class="sc">==</span> <span class="st">"f"</span>,</span>
+<span id="cb124-3"><a aria-hidden="true" tabindex="-1"></a>         <span class="dv">1</span><span class="sc">:</span><span class="dv">7</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>  id time status trt      age sex ascites
 1  1  400      2   1 58.76523   f       1
@@ -2402,8 +2407,8 @@ Patient2      2      4</code></pre>
 <li>Use position indexing</li>
 </ul>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb132"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb132-1"><a aria-hidden="true" tabindex="-1"></a>mylist <span class="ot">&lt;-</span> <span class="fu">list</span>(<span class="at">y =</span> <span class="fu">c</span>(<span class="dv">14</span>, <span class="dv">45</span>), <span class="at">z =</span> <span class="fu">c</span>(<span class="st">"m"</span>, <span class="st">"f"</span>, <span class="st">"f"</span>))</span>
-<span id="cb132-2"><a aria-hidden="true" tabindex="-1"></a>mylist[<span class="dv">2</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb126"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb126-1"><a aria-hidden="true" tabindex="-1"></a>mylist <span class="ot">&lt;-</span> <span class="fu">list</span>(<span class="at">y =</span> <span class="fu">c</span>(<span class="dv">14</span>, <span class="dv">45</span>), <span class="at">z =</span> <span class="fu">c</span>(<span class="st">"m"</span>, <span class="st">"f"</span>, <span class="st">"f"</span>))</span>
+<span id="cb126-2"><a aria-hidden="true" tabindex="-1"></a>mylist[<span class="dv">2</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>$z
 [1] "m" "f" "f"</code></pre>
@@ -2413,16 +2418,16 @@ Patient2      2      4</code></pre>
 <section id="indexing-with-lists-1" class="slide level2 triangledb" data-background-image="./templateassets/triangledb.svg">
 <h2>Indexing with <code>lists</code></h2>
 <ul>
-<li>Double square brackets can be also used - Note that the output is a vector</li>
+<li>Double square brackets can also be used - Note that the output is a vector</li>
 </ul>
 <p><br></p>
 <ul>
 <li>Use position indexing</li>
 </ul>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb134"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb134-1"><a aria-hidden="true" tabindex="-1"></a>mylist <span class="ot">&lt;-</span> <span class="fu">list</span>(<span class="at">y =</span> <span class="fu">c</span>(<span class="dv">14</span>, <span class="dv">45</span>),</span>
-<span id="cb134-2"><a aria-hidden="true" tabindex="-1"></a>               <span class="at">z =</span> <span class="fu">c</span>(<span class="st">"m"</span>, <span class="st">"f"</span>, <span class="st">"f"</span>))</span>
-<span id="cb134-3"><a aria-hidden="true" tabindex="-1"></a>mylist[[<span class="dv">2</span>]]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb128"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb128-1"><a aria-hidden="true" tabindex="-1"></a>mylist <span class="ot">&lt;-</span> <span class="fu">list</span>(<span class="at">y =</span> <span class="fu">c</span>(<span class="dv">14</span>, <span class="dv">45</span>),</span>
+<span id="cb128-2"><a aria-hidden="true" tabindex="-1"></a>               <span class="at">z =</span> <span class="fu">c</span>(<span class="st">"m"</span>, <span class="st">"f"</span>, <span class="st">"f"</span>))</span>
+<span id="cb128-3"><a aria-hidden="true" tabindex="-1"></a>mylist[[<span class="dv">2</span>]]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] "m" "f" "f"</code></pre>
 </div>
@@ -2434,9 +2439,9 @@ Patient2      2      4</code></pre>
 <li><strong><code>$</code></strong> provides a convenient notation to extract an element by name - Note that the output is a vector</li>
 </ul>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb136"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb136-1"><a aria-hidden="true" tabindex="-1"></a>mylist <span class="ot">&lt;-</span> <span class="fu">list</span>(<span class="at">y =</span> <span class="fu">c</span>(<span class="dv">14</span>, <span class="dv">45</span>),</span>
-<span id="cb136-2"><a aria-hidden="true" tabindex="-1"></a>               <span class="at">z =</span> <span class="fu">c</span>(<span class="st">"m"</span>, <span class="st">"f"</span>, <span class="st">"f"</span>))</span>
-<span id="cb136-3"><a aria-hidden="true" tabindex="-1"></a>mylist</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb130"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb130-1"><a aria-hidden="true" tabindex="-1"></a>mylist <span class="ot">&lt;-</span> <span class="fu">list</span>(<span class="at">y =</span> <span class="fu">c</span>(<span class="dv">14</span>, <span class="dv">45</span>),</span>
+<span id="cb130-2"><a aria-hidden="true" tabindex="-1"></a>               <span class="at">z =</span> <span class="fu">c</span>(<span class="st">"m"</span>, <span class="st">"f"</span>, <span class="st">"f"</span>))</span>
+<span id="cb130-3"><a aria-hidden="true" tabindex="-1"></a>mylist</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>$y
 [1] 14 45
@@ -2444,7 +2449,7 @@ Patient2      2      4</code></pre>
 $z
 [1] "m" "f" "f"</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb138"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb138-1"><a aria-hidden="true" tabindex="-1"></a>mylist<span class="sc">$</span>y</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb132"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb132-1"><a aria-hidden="true" tabindex="-1"></a>mylist<span class="sc">$</span>y</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 14 45</code></pre>
 </div>

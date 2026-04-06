@@ -4,42 +4,35 @@
     "href": "slides/Introduction/index.html#introduction-to-r-1",
     "title": "R course - Day 1",
     "section": "Introduction to R",
-    "text": "Introduction to R\nStatistics have flourished in the recent years mainly due to the possibility of doing complex analysis using computers\n\nThe most valuable tool of a modern quantitative researcher is his/her personal computer\n\n\nAnalysts must not only learn how to use the software but also the ideas behind it\nLearning statistical modelling and algorithm is more important than learning a programming language"
+    "text": "Introduction to R\nR is not just another piece of statistical software. It is a way to write down an analysis so that you can rerun it, check it, improve it, and share it with someone else later.\n\nIn this course, we will use R to explore data, answer questions, and build analyses step by step\nThe important thing is not memorising commands, but understanding what the code is doing and why"
   },
   {
     "objectID": "slides/Introduction/index.html#introduction-to-r-contd",
     "href": "slides/Introduction/index.html#introduction-to-r-contd",
     "title": "R course - Day 1",
     "section": "Introduction to R (cont’d)",
-    "text": "Introduction to R (cont’d)\n\nMany statistical software packages exists to do simple and specialized analysis\nThe programming language R is popular for data scientists\nR is a software environment for statistical computing and graphics\n\nfree and open source\nextensive catalog of statistical and graphical methods\n\nR is mainly used in academia. However, many large companies also use R programming language, including healthcare industries but also Uber, Google, Airbnb, Facebook and so on"
+    "text": "Introduction to R (cont’d)\n\nMany statistical software packages exist to do simple and specialized analysis\nThe programming language R is popular among data scientists\nR is a software environment for statistical computing and graphics\n\nfree and open source\nextensive catalog of statistical and graphical methods\n\nR is widely used in academia. However, many large companies also use R programming language, including healthcare industries but also Uber, Google, Airbnb, Facebook and so on"
   },
   {
     "objectID": "slides/Introduction/index.html#agenda",
     "href": "slides/Introduction/index.html#agenda",
     "title": "R course - Day 1",
     "section": "Agenda",
-    "text": "Agenda\n\nDay 1:\n\nIntroduction\n\nDay 2:\n\nData cleaning\nData visualization\n\nDay 3:\n\nR functions\nStatistical analysis\n\nDay 4:\n\nAdditional topics"
+    "text": "Agenda\n\nDay 1:\n\nIntroduction\n\nDay 2:\n\nData visualization\nR functions\n\nDay 3:\n\nData cleaning\nStatistical analysis\n\nDay 4:\n\nAdditional topics"
   },
   {
-    "objectID": "slides/Introduction/index.html#program-this-morning",
-    "href": "slides/Introduction/index.html#program-this-morning",
+    "objectID": "slides/Introduction/index.html#plan-for-today",
+    "href": "slides/Introduction/index.html#plan-for-today",
     "title": "R course - Day 1",
-    "section": "Program this morning",
-    "text": "Program this morning\n\n\nIntroduction to R\nBasic use of R\nCommon objects in R\nIndexing / Subsetting"
-  },
-  {
-    "objectID": "slides/Introduction/index.html#references",
-    "href": "slides/Introduction/index.html#references",
-    "title": "R course - Day 1",
-    "section": "References",
-    "text": "References\n\nMore books that use R (or S) can be found at:\nhttp://www.r-project.org/doc/bib/R-books.html, or\nhttp://www.r-project.org/doc/bib/R-jabref.html\nR ships with a number of helpful manuals\nOther manuals and helpful material are available on-line via CRAN: http://cran.r-project.org/other-docs.html"
+    "section": "Plan for today",
+    "text": "Plan for today\n\n\nwhy people use R and how it fits into data analysis\nthe basic workflow in R and RStudio\nthe main kinds of objects you will meet in R\nhow to extract the pieces of data you actually need"
   },
   {
     "objectID": "slides/Introduction/index.html#what-does-r-look-like",
     "href": "slides/Introduction/index.html#what-does-r-look-like",
     "title": "R course - Day 1",
-    "section": "What does R look like ?",
-    "text": "What does R look like ?"
+    "section": "What does R look like?",
+    "text": "What does R look like?"
   },
   {
     "objectID": "slides/Introduction/index.html#a-brief-history-of-r",
@@ -52,43 +45,43 @@
     "objectID": "slides/Introduction/index.html#why-learn-r",
     "href": "slides/Introduction/index.html#why-learn-r",
     "title": "R course - Day 1",
-    "section": "Why learn R ?",
-    "text": "Why learn R ?\n\nR is a free software environment for statistical computing and graphics\nIt compiles and runs on LINUX, Windows and MacOS\nOpen source language\nUsers are allowed to modify and redistribute the code\nAdvanced statistical language\nSupports extensions\nInterfaces to other languages\nFlexible and fun!"
+    "section": "Why learn R?",
+    "text": "Why learn R?\n\nIt is free, open source, and works on Linux, Windows, and macOS\nIt has a huge ecosystem of packages for statistics, graphics, reporting, and reproducible research\nAnalyses can be saved in scripts, which makes them easier to rerun, check, and adapt\nIt is flexible enough for both quick exploratory work and more advanced statistical modelling\nOnce you are comfortable with the basics, it becomes a very efficient way to work"
   },
   {
     "objectID": "slides/Introduction/index.html#where-do-i-get-r",
     "href": "slides/Introduction/index.html#where-do-i-get-r",
     "title": "R course - Day 1",
-    "section": "Where do I get R ?",
-    "text": "Where do I get R ?\n\nhttp://cran.r-project.org\nchoose your platform, e.g., Windows, Linux\n\ne.g., for Windows: Windows \\(\\rightarrow\\) base \\(\\rightarrow\\) Download R 4.4.3 for Windows\nInstall"
+    "section": "Where do I get R?",
+    "text": "Where do I get R?\n\ncran.r-project.org\n\nchoose your platform, e.g., Windows, Linux\n\ne.g., for Windows: Windows \\(\\rightarrow\\) base \\(\\rightarrow\\) download the current release for Windows\nInstall"
   },
   {
     "objectID": "slides/Introduction/index.html#packages",
     "href": "slides/Introduction/index.html#packages",
     "title": "R course - Day 1",
     "section": "Packages",
-    "text": "Packages\n\nPackages built for specific tasks\nDownload R packages from the CRAN web site \\(\\rightarrow\\) within R\n\nPackages\nInstall package(s)*\nMake you choice(s)\nLoad the package using library().  \n\n\n(note: install does not mean load)\n\n\n\nalternatively use use install.packages()"
+    "text": "Packages\n\nPackages built for specific tasks\nDownload R packages from the CRAN web site \\(\\rightarrow\\) within R\n\nPackages\nInstall package(s)*\nMake your choice(s)\nLoad the package using library().  \n\n\n(note: install does not mean load)\n\n\n\nAlternatively, use install.packages()"
   },
   {
     "objectID": "slides/Introduction/index.html#how-to-get-help-in-r",
     "href": "slides/Introduction/index.html#how-to-get-help-in-r",
     "title": "R course - Day 1",
     "section": "How to get help in R",
-    "text": "How to get help in R\n\nWithin R \n\nhelp() or `? invoke the on-line help file for the specified function\nchecking the FAQ\nhelp.search(\"topic\") or ??\"topic\" (depends on the installed packages)\nRSiteSearch(\"topic\") (requires internet connection)"
+    "text": "How to get help in R\n\nWithin R\n\nhelp() or ? invokes the online help file for the specified function\nchecking the FAQ\nhelp.search(\"topic\") or ??\"topic\" (depends on the installed packages)\nRSiteSearch(\"topic\") (requires internet connection)"
   },
   {
     "objectID": "slides/Introduction/index.html#how-to-get-help-in-r-contd",
     "href": "slides/Introduction/index.html#how-to-get-help-in-r-contd",
     "title": "R course - Day 1",
     "section": "How to get help in R (cont’d)",
-    "text": "How to get help in R (cont’d)\n\n\nOnline\n\nR-help (https://stat.ethz.ch/mailman/listinfo/r-help – mailing list)\nR-seek (http://www.rseek.org – Google-like searched engine)\nCRAN Task Views (http://cran.r-project.org/web/views/ – categorization of packages)\nR related Blogs (http://www.r-bloggers.com/ – many useful illustrations of R and R packages)\nstackoverflow Open community for developers (https://stackoverflow.com/ – ask/answer a question)\nBig Book of R (https://www.bigbookofr.com/ collection of R books)"
+    "text": "How to get help in R (cont’d)\n\n\nOnline\n\nR-help (https://stat.ethz.ch/mailman/listinfo/r-help – mailing list)\nPosit Community (https://forum.posit.co/ – a good place for questions about RStudio, tidyverse, and Shiny)\nR-seek (https://www.rseek.org/ – search engine for R-related material)\nCRAN Task Views (https://cran.r-project.org/web/views/ – curated overviews of packages by topic)\nR-bloggers (https://www.r-bloggers.com/ – tutorials, examples, and blog posts about R)\nStack Overflow (https://stackoverflow.com/ – open community for developers; ask and answer questions)\nBig Book of R (https://www.bigbookofr.com/ collection of R books)"
   },
   {
     "objectID": "slides/Introduction/index.html#disadvantages-of-r",
     "href": "slides/Introduction/index.html#disadvantages-of-r",
     "title": "R course - Day 1",
     "section": "Disadvantages of R",
-    "text": "Disadvantages of R\n\nAppears intimidating to the first-time user\nDefault Output is not so nice looking (but wait ultil Day 4)\nExporting output is more difficult (we will also discuss this on Day 4)\nCannot easily handle very big data sets (depends on the installed RAM)\nA lot of things are available but they are sometimes hard to find\nThe quality of the available packages is greatly varying\nBy default uses only one CPU at a time for most tasks (can be changed using packages))"
+    "text": "Disadvantages of R\n\nAppears intimidating to the first-time user\nDefault output is not always nice-looking (but wait until Day 4)\nExporting output is more difficult (we will also discuss this on Day 4)\nCannot easily handle very big data sets (depends on the installed RAM)\nA lot of things are available but they are sometimes hard to find\nThe quality of the available packages varies considerably\nBy default, R uses only one CPU at a time for most tasks (this can be changed using packages)"
   },
   {
     "objectID": "slides/Introduction/index.html#summary",
@@ -109,63 +102,63 @@
     "href": "slides/Introduction/index.html#using-r",
     "title": "R course - Day 1",
     "section": "Using R",
-    "text": "Using R\n\nR is a command-based procedural language\n\nwrite and execute commands\nuse and define functions\n\nYou may write the commands in the R console (Windows) or in a shell (Linux)\n\n\n\nYou will become more familiar with the syntax as you use it"
+    "text": "Using R\n\nR is a command-based procedural language\n\nwrite and execute commands\nuse and define functions\n\nYou can give commands through the console. In practice, most of the time you will write code in a script and run it from there\n\n\n\nThe goal is not to memorise everything at once, but to build a simple working routine"
   },
   {
     "objectID": "slides/Introduction/index.html#popular-ides-guis",
     "href": "slides/Introduction/index.html#popular-ides-guis",
     "title": "R course - Day 1",
     "section": "Popular IDEs / GUIs",
-    "text": "Popular IDEs / GUIs\n\nStrongly advisable to use a suitable text editor or GUI- Some available options:\n\nRstudio (all major platforms; http://www.rstudio.org/)\nVisual Studio Code (all platforms)\nPositron (all platforms)\nJupyter (all platforms)\nEmacs (w. ESS, all platforms)\nfor more check https://r-dir.com/blog/2013/01/list-of-r-editors.html"
+    "text": "Popular IDEs / GUIs\n\nStrongly advisable to use a suitable text editor or GUI- Some available options:\n\nRStudio (all major platforms; https://posit.co/download/rstudio-desktop/)\nVisual Studio Code (all platforms)\nPositron (all platforms)\nJupyter (all platforms)\nEmacs (w. ESS, all platforms)"
   },
   {
     "objectID": "slides/Introduction/index.html#using-r-rstudio",
     "href": "slides/Introduction/index.html#using-r-rstudio",
     "title": "R course - Day 1",
     "section": "Using R / RStudio",
-    "text": "Using R / RStudio\n\n\nFor this course: Rstudio (http://www.rstudio.org/)\n\nfree\nworks fine in Windows, MacOS and Linux\nmakes working with R a lot more user friendly\nhelpful with errors\nalternative output options"
+    "text": "Using R / RStudio\n\n\nFor this course, we will use RStudio together with R\n\nR is the language that runs the code\nRStudio is the environment where you write code, run it, inspect output, and manage files\nthis makes it much easier to work in a reproducible way"
   },
   {
     "objectID": "slides/Introduction/index.html#using-r-rstudio-1",
     "href": "slides/Introduction/index.html#using-r-rstudio-1",
     "title": "R course - Day 1",
     "section": "Using R / RStudio",
-    "text": "Using R / RStudio\n \n\nCan I use R without Rstudio?\n\n\n\nCan I use Rstudio without R?"
+    "text": "Using R / RStudio\n\nA simple workflow to aim for:\n\nopen your project or working folder in RStudio\nwrite code in an R script\nrun the code and inspect the result in the console\nsave the script so you can rerun the same analysis later\ngradually build objects that you can reuse in the next step"
   },
   {
     "objectID": "slides/Introduction/index.html#r-commands",
     "href": "slides/Introduction/index.html#r-commands",
     "title": "R course - Day 1",
     "section": "R commands",
-    "text": "R commands\n\nElementary commands: expressions and assignments\nAn expression given as command is evaluated printed and discarded\nAn assignments evaluates an expression and passes the value to a variable - the result is not automatically printed"
+    "text": "R commands\n\nElementary commands: expressions and assignments\nAn expression given as command is evaluated printed and discarded\nAn assignment evaluates an expression and passes the value to a variable; the result is not automatically printed"
   },
   {
     "objectID": "slides/Introduction/index.html#r-commands-1",
     "href": "slides/Introduction/index.html#r-commands-1",
     "title": "R course - Day 1",
     "section": "R commands",
-    "text": "R commands\nexpression is given as a command,\n\n1 + 1\n\n[1] 2\n\n\n\nThe result is lost after execution\nIt cannot be viewed again unless the command is rerun.\n\n\nIn order to store information, the expression should assign the result of the command to a variable\n\nx &lt;- 1 + 1\nx\n\n[1] 2"
+    "text": "R commands\nExpression: type a command and R returns the result\n\n1 + 1\n\n[1] 2\n\n\n\nuseful for quick checks\nbut the result is temporary unless you store it\n\n\nAssignment: store the result in an object and reuse it\n\nx &lt;- 1 + 1\nx\n\n[1] 2\n\n\n\nnow x is an object in your session\nthis is the start of most real analyses in R"
   },
   {
     "objectID": "slides/Introduction/index.html#basic-calculations",
     "href": "slides/Introduction/index.html#basic-calculations",
     "title": "R course - Day 1",
     "section": "Basic calculations",
-    "text": "Basic calculations\n\nYou can use R as a calculator!\n\n\nBasic arithmetics\n\n\n+, -, *, /, ^\n\n\ny &lt;- 103473 + 100000\ny\n\n[1] 203473\n\n\n\nComplicated arithmetics\n\n\ny &lt;- sqrt(log(5) + exp(1))\ny\n\n[1] 2.080317\n\n\n\nMany functions exist can we can even define our own"
+    "text": "Basic calculations\n\nYou can use R as a calculator, but the real advantage is that the calculations can be saved and reused\n\n\nBasic arithmetic\n\n\n+, -, *, /, ^\n\n\ny &lt;- 103473 + 100000\ny\n\n[1] 203473\n\n\n\nMore complicated calculations work in exactly the same way\n\n\ny &lt;- sqrt(log(5) + exp(1))\ny\n\n[1] 2.080317\n\n\n\nFunctions are one of the main building blocks of R: they take input, do something useful, and return output\nMany build-in and we can create our own"
   },
   {
     "objectID": "slides/Introduction/index.html#practical-examples",
     "href": "slides/Introduction/index.html#practical-examples",
     "title": "R course - Day 1",
     "section": "Practical Examples",
-    "text": "Practical Examples\n\nIn practice we often work with data sets and other data structures\nPackage survival - pbc data set\n\n\n\n\n\n\nid\ntime\nstatus\ntrt\nage\nsex\nbili\nchol\n\n\n\n\n1\n400\n2\n1\n58.76523\nf\n14.5\n261\n\n\n2\n4500\n0\n1\n56.44627\nf\n1.1\n302\n\n\n3\n1012\n2\n1\n70.07255\nm\n1.4\n176\n\n\n4\n1925\n2\n1\n54.74059\nf\n1.8\n244\n\n\n5\n1504\n1\n2\n38.10541\nf\n3.4\n279"
+    "text": "Practical Examples\n\nA normal workflow in R quickly moves from small commands to working with data\nSo let us make that step now and look at a real data set\nPackage survival - pbc data set\n\n\n\n\n\n\nid\ntime\nstatus\ntrt\nage\nsex\nbili\nchol\n\n\n\n\n1\n400\n2\n1\n58.76523\nf\n14.5\n261\n\n\n2\n4500\n0\n1\n56.44627\nf\n1.1\n302\n\n\n3\n1012\n2\n1\n70.07255\nm\n1.4\n176\n\n\n4\n1925\n2\n1\n54.74059\nf\n1.8\n244\n\n\n5\n1504\n1\n2\n38.10541\nf\n3.4\n279"
   },
   {
     "objectID": "slides/Introduction/index.html#practical-examples-1",
     "href": "slides/Introduction/index.html#practical-examples-1",
     "title": "R course - Day 1",
     "section": "Practical Examples",
-    "text": "Practical Examples\n\nid: case number\ntime: number of days between registration and the earlier of death, transplantation, or study analysis in July, 1986\nstatus: status at endpoint, 0/1/2 for censored, transplant, dead\ntrt: 1/2/NA for D-penicillamine, placebo, not randomised\nage: in years\nsex: m/f\nbili: serum bilirunbin (mg/dl)\nchol: serum cholesterol (mg/dl)\n\n\n\nMore details: https://stat.ethz.ch/R-manual/R-devel/library/survival/html/pbc.html"
+    "text": "Practical Examples\n\nid: case number\ntime: number of days between registration and the earlier of death, transplantation, or study analysis in July, 1986\nstatus: status at endpoint, 0/1/2 for censored, transplant, dead\ntrt: 1/2/NA for D-penicillamine, placebo, not randomised\nage: in years\nsex: m/f\nbili: serum bilirubin (mg/dl)\nchol: serum cholesterol (mg/dl)\n\n\n\nMore details: https://stat.ethz.ch/R-manual/R-devel/library/survival/html/pbc.html"
   },
   {
     "objectID": "slides/Introduction/index.html#practical-examples-2",
@@ -214,7 +207,7 @@
     "href": "slides/Introduction/index.html#tips",
     "title": "R course - Day 1",
     "section": "Tips",
-    "text": "Tips\n\n\nR is case sensitive, e.g.,\n\nsex is different than Sex\n\nCommands are separated by a semi-colon or by a newline\nComments can be put anywhere, starting with a hashmark #: everything to the end of the line is a comment\nAssign a value to an object by &lt;- (or =)\nWorking directory: get with getwd() and set with setwd()"
+    "text": "Tips\n\n\nR is case sensitive, e.g.,\n\nsex is different than Sex\n\nCommands are separated by a semi-colon or by a newline\nComments can be put anywhere, starting with a hash mark #: everything to the end of the line is a comment\nAssign a value to an object by &lt;- (or =)\nWorking directory: get with getwd() and set with setwd()"
   },
   {
     "objectID": "slides/Introduction/index.html#getting-familiar-with-r",
@@ -235,7 +228,7 @@
     "href": "slides/Introduction/index.html#importing-data",
     "title": "R course - Day 1",
     "section": "Importing Data",
-    "text": "Importing Data\n\n\nfunction: read.table(), read.csv() and its variants\n\n\n\n\n\n\n\nNote\n\n\nuse forward slashes or double backward slashes in the file names, e.g.,\n\"C:/Documents and Settings/User/Data/file.txt\" or\n\"C:\\\\Documents and Settings\\\\User\\\\Data\\\\file.txt\"\nor use raw character constants\nr\"(C:\\\\Documents and Settings\\\\User\\\\Data\\\\file.txt)\""
+    "text": "Importing Data\n\n\nfunctions: read.table(), read.csv(), and their variants\n\n\n\n\n\n\n\nNote\n\n\nuse forward slashes or double backslashes in file names, e.g.,\n\"C:/Documents and Settings/User/Data/file.txt\" or\n\"C:\\\\Documents and Settings\\\\User\\\\Data\\\\file.txt\"\nor use raw character constants\nr\"(C:\\Documents and Settings\\User\\Data\\file.txt)\""
   },
   {
     "objectID": "slides/Introduction/index.html#importing-data-contd",
@@ -256,14 +249,14 @@
     "href": "slides/Introduction/index.html#saving-and-loading-your-work",
     "title": "R course - Day 1",
     "section": "Saving and Loading your Work",
-    "text": "Saving and Loading your Work\nMultiple objects:\n\nYou can save your R objects using save()\n\nbe careful about overwriting\n\nYou can load your saved R objects using load()\n\nSingle object:\n\nUsing saveRDS() you can save a single R object\nUsing readRDS() you can load a single R object\n\nwe will need an assignment statement to store the results"
+    "text": "Saving and Loading your Work\nMultiple objects:\n\nYou can save your R objects using save()\n\nbe careful about overwriting\n\nYou can load saved R objects using load()\n\nSingle object:\n\nUsing saveRDS() you can save a single R object\nUsing readRDS() you can load a single R object\n\nwe will need an assignment statement to store the results"
   },
   {
     "objectID": "slides/Introduction/index.html#saving-and-loading-your-work-contd",
     "href": "slides/Introduction/index.html#saving-and-loading-your-work-contd",
     "title": "R course - Day 1",
     "section": "Saving and Loading your Work (cont’d)",
-    "text": "Saving and Loading your Work (cont’d)\n\n\nSave your code by using the tab File in Rstudio!"
+    "text": "Saving and Loading your Work (cont’d)\n\n\nSave your code using the File menu in RStudio!"
   },
   {
     "objectID": "slides/Introduction/index.html#saving-and-loading-your-work-1",
@@ -291,98 +284,105 @@
     "href": "slides/Introduction/index.html#objects-in-r",
     "title": "R course - Day 1",
     "section": "Objects in R",
-    "text": "Objects in R\n\nIn R Everything (data, results, …) is an object\nIn order to list the created objects use the following functions\n\n\nobjects()\nls()\n\n\n\n\nWhen you want to remove objects\n\n\nrm()\nrm(list=ls(all=TRUE))"
+    "text": "Objects in R\n\nIn R, everything (data, results, …) is an object\nIn order to list the created objects use the following functions\n\n\nobjects()\nls()\n\n\n\n\nWhen you want to remove objects\n\n\nrm()\nrm(list=ls(all=TRUE))"
   },
   {
     "objectID": "slides/Introduction/index.html#objects-in-r-1",
     "href": "slides/Introduction/index.html#objects-in-r-1",
     "title": "R course - Day 1",
     "section": "Objects in R",
-    "text": "Objects in R\n\nTo investigate a specific object (e.g. pbc)\n\n\nstr(pbc[,c(\"id\", \"time\", \"status\", \"trt\", \"age\", \"sex\", \"bili\", \"chol\")])\n\n'data.frame':   418 obs. of  8 variables:\n $ id    : int  1 2 3 4 5 6 7 8 9 10 ...\n $ time  : int  400 4500 1012 1925 1504 2503 1832 2466 2400 51 ...\n $ status: int  2 0 2 2 1 2 0 2 2 2 ...\n $ trt   : int  1 1 1 1 2 2 2 2 1 2 ...\n $ age   : num  58.8 56.4 70.1 54.7 38.1 ...\n $ sex   : Factor w/ 2 levels \"m\",\"f\": 2 2 1 2 2 2 2 2 2 2 ...\n $ bili  : num  14.5 1.1 1.4 1.8 3.4 0.8 1 0.3 3.2 12.6 ...\n $ chol  : int  261 302 176 244 279 248 322 280 562 200 ..."
+    "text": "Objects in R\n\nIn R, almost everything you create is an object\nWhen you meet an object, three questions are useful:\n\nwhat does it represent?\nwhat type of values does it contain?\nwhat structure does it have?"
+  },
+  {
+    "objectID": "slides/Introduction/index.html#objects-in-r-2",
+    "href": "slides/Introduction/index.html#objects-in-r-2",
+    "title": "R course - Day 1",
+    "section": "Objects in R",
+    "text": "Objects in R\n\nThe pbc data set is a good example to keep in mind\n\n\nstr(pbc[,c(\"id\", \"time\", \"status\", \"trt\", \"age\", \"sex\", \"bili\", \"chol\")])\n\n'data.frame':   418 obs. of  8 variables:\n $ id    : int  1 2 3 4 5 6 7 8 9 10 ...\n $ time  : int  400 4500 1012 1925 1504 2503 1832 2466 2400 51 ...\n $ status: int  2 0 2 2 1 2 0 2 2 2 ...\n $ trt   : int  1 1 1 1 2 2 2 2 1 2 ...\n $ age   : num  58.8 56.4 70.1 54.7 38.1 ...\n $ sex   : Factor w/ 2 levels \"m\",\"f\": 2 2 1 2 2 2 2 2 2 2 ...\n $ bili  : num  14.5 1.1 1.4 1.8 3.4 0.8 1 0.3 3.2 12.6 ...\n $ chol  : int  261 302 176 244 279 248 322 280 562 200 ..."
+  },
+  {
+    "objectID": "slides/Introduction/index.html#objects-in-r-3",
+    "href": "slides/Introduction/index.html#objects-in-r-3",
+    "title": "R course - Day 1",
+    "section": "Objects in R",
+    "text": "Objects in R\n\npbc is a data frame\nColumns such as age and bili are variables we can work with on their own\nLater on, we will often move from the full table to a single column or even to one single value"
   },
   {
     "objectID": "slides/Introduction/index.html#data-types",
     "href": "slides/Introduction/index.html#data-types",
     "title": "R course - Day 1",
     "section": "Data Types",
-    "text": "Data Types\nThe simplest data types are:\n\nnumeric : quantitative data\ncharacter : qualitative data (text)\ninteger : whole numbers\nlogical : TRUE or FALSE"
+    "text": "Data Types\nThe simplest data types are:\n\nnumeric: quantitative data such as age, bili, and chol\ninteger: whole numbers\ncharacter: text values\nlogical: TRUE or FALSE"
   },
   {
     "objectID": "slides/Introduction/index.html#data-types-1",
     "href": "slides/Introduction/index.html#data-types-1",
     "title": "R course - Day 1",
     "section": "Data Types",
-    "text": "Data Types\n\nThere is a special data type factors that is often used for qualitative data\n\nThat is data with a distinct small and fixed number of levels\nNote that factors internaly are stored as integers"
+    "text": "Data Types\n\nThere is a special data type factor that is often used for categorical data\n\nthis is data with a small and fixed set of levels\nexamples are sex, treatment group, or disease stage\nfactors are internally stored as integers, but presented with labels"
   },
   {
     "objectID": "slides/Introduction/index.html#data-types-in-r",
     "href": "slides/Introduction/index.html#data-types-in-r",
     "title": "R course - Day 1",
     "section": "Data Types in R",
-    "text": "Data Types in R\nTo find out what type of object you have, you can use the following function\n\nmode(pbc$age)\n\n[1] \"numeric\"\n\n\n\nstr(pbc$age)\n\n num [1:418] 58.8 56.4 70.1 54.7 38.1 ..."
+    "text": "Data Types in R\nTo inspect an object quickly, mode() and str() are very useful\n\nmode(pbc$age)\n\n[1] \"numeric\"\n\n\n\nstr(pbc$sex)\n\n Factor w/ 2 levels \"m\",\"f\": 2 2 1 2 2 2 2 2 2 2 ..."
   },
   {
     "objectID": "slides/Introduction/index.html#data-structures",
     "href": "slides/Introduction/index.html#data-structures",
     "title": "R course - Day 1",
     "section": "Data Structures",
-    "text": "Data Structures\nThe most important data structures are:\n\nVectors: have the same type of elements\nMatrices: have the same type of elements with the same length\nArrays have the same type of elements with the same length but can store the data in more than two dimensions\nData frames: have elements of different type with the same length\nLists: have elements of different type and length"
+    "text": "Data Structures\nThe most important data structures are:\n\nVectors: one-dimensional objects with elements of the same type\nMatrices: two-dimensional objects with elements of the same type\nArrays objects with more than two dimensions, still of the same type\nData frames: table-like objects with columns that may have different types\nLists: flexible containers that can hold different kinds of objects"
   },
   {
     "objectID": "slides/Introduction/index.html#data-structures-1",
     "href": "slides/Introduction/index.html#data-structures-1",
     "title": "R course - Day 1",
     "section": "Data Structures",
-    "text": "Data Structures\n\n\n\n\n\n\nNote\n\n\nThere is no seperate data structure for scalars. Even single numbers are considered vectors! However sometimes a single number is still required!"
+    "text": "Data Structures\n\n\n\n\n\n\nNote\n\n\nThere is no separate data structure for scalars. Even a single number is treated as a vector of length 1. However, as we will see, sometimes a single number is still required!"
   },
   {
     "objectID": "slides/Introduction/index.html#data-structures-2",
     "href": "slides/Introduction/index.html#data-structures-2",
     "title": "R course - Day 1",
     "section": "Data Structures",
-    "text": "Data Structures\n \n\nWhat do these data structures look like?"
+    "text": "Data Structures\n\nA helpful mental model is:\n\npbc is a data frame\npbc$age is a vector\nas.matrix(pbc[, c(\"age\", \"bili\", \"chol\")]) is a matrix\na list can store several objects from one analysis together"
   },
   {
     "objectID": "slides/Introduction/index.html#data-structures-3",
     "href": "slides/Introduction/index.html#data-structures-3",
     "title": "R course - Day 1",
     "section": "Data Structures",
-    "text": "Data Structures\n\nDifferences between vector, matrix, array, data.frame and list\n\n\npbc[1:6, c(\"age\")]\n\n[1] 58.76523 56.44627 70.07255 54.74059 38.10541 66.25873"
+    "text": "Data Structures\n\nStart with the full patient table: this is a data frame\n\n\npbc[1:6, c(\"id\", \"sex\", \"age\", \"bili\", \"chol\")]\n\n  id sex      age bili chol\n1  1   f 58.76523 14.5  261\n2  2   f 56.44627  1.1  302\n3  3   m 70.07255  1.4  176\n4  4   f 54.74059  1.8  244\n5  5   f 38.10541  3.4  279\n6  6   f 66.25873  0.8  248"
   },
   {
     "objectID": "slides/Introduction/index.html#data-structures-4",
     "href": "slides/Introduction/index.html#data-structures-4",
     "title": "R course - Day 1",
     "section": "Data Structures",
-    "text": "Data Structures\n\nDifferences between vector, matrix, array, data.frame and list\n\n\ncbind(pbc[1:6, c(\"age\")],\n   pbc[1:6, c(\"bili\", \"chol\")])\n\n  pbc[1:6, c(\"age\")] bili chol\n1           58.76523 14.5  261\n2           56.44627  1.1  302\n3           70.07255  1.4  176\n4           54.74059  1.8  244\n5           38.10541  3.4  279\n6           66.25873  0.8  248"
+    "text": "Data Structures\n\nOne column from that table is a vector\n\n\npbc$age[1:6]\n\n[1] 58.76523 56.44627 70.07255 54.74059 38.10541 66.25873"
   },
   {
     "objectID": "slides/Introduction/index.html#data-structures-5",
     "href": "slides/Introduction/index.html#data-structures-5",
     "title": "R course - Day 1",
     "section": "Data Structures",
-    "text": "Data Structures\n\nDifferences between vector, matrix, array, data.frame and list\n\n\npbc[1:3, c(\"age\", \"bili\", \"chol\")]\n\n       age bili chol\n1 58.76523 14.5  261\n2 56.44627  1.1  302\n3 70.07255  1.4  176\n\npbc[4:6, c(\"age\", \"bili\", \"chol\")]\n\n       age bili chol\n4 54.74059  1.8  244\n5 38.10541  3.4  279\n6 66.25873  0.8  248"
+    "text": "Data Structures\n\nIf we keep only numeric columns of the same type, we can make a matrix\n\n\nas.matrix(pbc[1:6, c(\"age\", \"bili\", \"chol\")])\n\n       age bili chol\n1 58.76523 14.5  261\n2 56.44627  1.1  302\n3 70.07255  1.4  176\n4 54.74059  1.8  244\n5 38.10541  3.4  279\n6 66.25873  0.8  248"
   },
   {
     "objectID": "slides/Introduction/index.html#data-structures-6",
     "href": "slides/Introduction/index.html#data-structures-6",
     "title": "R course - Day 1",
     "section": "Data Structures",
-    "text": "Data Structures\n\nDifferences between vector, matrix, array, data.frame and list\n\n\npbc[1:2, c(\"protime\", \"time\")]\n\n  protime time\n1    12.2  400\n2    10.6 4500\n\npbc[3:4, c(\"protime\", \"time\")]\n\n  protime time\n3    12.0 1012\n4    10.3 1925"
+    "text": "Data Structures\n\nAn array is like a matrix with more than two dimensions\n\n\nar &lt;- array(data = 1:12, dim = c(2, 3, 2))\nar\n\n, , 1\n\n     [,1] [,2] [,3]\n[1,]    1    3    5\n[2,]    2    4    6\n\n, , 2\n\n     [,1] [,2] [,3]\n[1,]    7    9   11\n[2,]    8   10   12"
   },
   {
     "objectID": "slides/Introduction/index.html#data-structures-7",
     "href": "slides/Introduction/index.html#data-structures-7",
     "title": "R course - Day 1",
     "section": "Data Structures",
-    "text": "Data Structures\n\nDifferences between vector, matrix, array, data.frame and list\n\n\npbc[1:6, c(\"id\", \"sex\", \"bili\", \"chol\")]\n\n  id sex bili chol\n1  1   f 14.5  261\n2  2   f  1.1  302\n3  3   m  1.4  176\n4  4   f  1.8  244\n5  5   f  3.4  279\n6  6   f  0.8  248"
-  },
-  {
-    "objectID": "slides/Introduction/index.html#data-structures-8",
-    "href": "slides/Introduction/index.html#data-structures-8",
-    "title": "R course - Day 1",
-    "section": "Data Structures",
-    "text": "Data Structures\n\nDifferences between vector, matrix, array, data.frame and list\n\n\npbc[1:6, c(\"sex\")]\n\n[1] f f m f f f\nLevels: m f\n\npbc[1:2, c(\"sex\", \"bili\")]\n\n  sex bili\n1   f 14.5\n2   f  1.1\n\npbc[1:4, c(\"age\")]\n\n[1] 58.76523 56.44627 70.07255 54.74059"
+    "text": "Data Structures\n\nA list can store different pieces of an analysis together\n\n\npatient_summary &lt;- list(\n  ages = pbc$age[1:5],\n  patients = pbc[1:2, c(\"id\", \"sex\", \"bili\")],\n  mean_bili = mean(pbc$bili, na.rm = TRUE)\n)\npatient_summary\n\n$ages\n[1] 58.76523 56.44627 70.07255 54.74059 38.10541\n\n$patients\n  id sex bili\n1  1   f 14.5\n2  2   f  1.1\n\n$mean_bili\n[1] 3.220813"
   },
   {
     "objectID": "slides/Introduction/index.html#data-structures-in-r",
@@ -396,14 +396,14 @@
     "href": "slides/Introduction/index.html#data-structures-in-r-1",
     "title": "R course - Day 1",
     "section": "Data Structures in R",
-    "text": "Data Structures in R\nCreate a vector\n\nvec &lt;- c(1, 2, 3, 4, 5)\nvec\n\n[1] 1 2 3 4 5\n\n\n\nvec &lt;- 1:5\nvec\n\n[1] 1 2 3 4 5"
+    "text": "Data Structures in R\nCreate a vector\n\nage_vec &lt;- pbc$age[1:5]\nage_vec\n\n[1] 58.76523 56.44627 70.07255 54.74059 38.10541\n\n\n\nvec &lt;- c(1, 2, 3, 4, 5)\nvec\n\n[1] 1 2 3 4 5\n\n\n\nvec &lt;- 1:5\nvec\n\n[1] 1 2 3 4 5"
   },
   {
     "objectID": "slides/Introduction/index.html#data-structures-in-r-2",
     "href": "slides/Introduction/index.html#data-structures-in-r-2",
     "title": "R course - Day 1",
     "section": "Data Structures in R",
-    "text": "Data Structures in R\nCreate a matrix\n\n\n\nvec &lt;- c(1, 2, 3, 4, 5,\n         6, 7, 8, 9)\nmat &lt;- matrix(data = vec, \n              nrow = 3,\n              ncol = 3)\nmat \n\n     [,1] [,2] [,3]\n[1,]    1    4    7\n[2,]    2    5    8\n[3,]    3    6    9\n\n\n\n\nvec &lt;- c(1, 2, 3, 4, 5,\n         6, 7, 8, 9)\nmat &lt;- matrix(data = vec, \n              nrow = 3,\n              ncol = 3, \n              byrow = TRUE)\nmat\n\n     [,1] [,2] [,3]\n[1,]    1    2    3\n[2,]    4    5    6\n[3,]    7    8    9"
+    "text": "Data Structures in R\nCreate a matrix\n\n\n\nmat &lt;- as.matrix(pbc[1:3, c(\"age\", \"bili\", \"chol\")])\nmat \n\n       age bili chol\n1 58.76523 14.5  261\n2 56.44627  1.1  302\n3 70.07255  1.4  176\n\n\n#| code-line-numbers: false vec &lt;- c(1, 2, 3, 4, 5, 6, 7, 8, 9) mat &lt;- matrix(data = vec, nrow = 3, ncol = 3) mat\n\n:::\n\n::: {.column width=\"47%\"}\n\n\n::: {.cell}\n\n```{.r .cell-code  code-line-numbers=\"false\"}\nmat &lt;- matrix(data = 1:9, \n              nrow = 3,\n              ncol = 3, \n              byrow = TRUE)\nmat\n\n     [,1] [,2] [,3]\n[1,]    1    2    3\n[2,]    4    5    6\n[3,]    7    8    9\n\n\n:::"
   },
   {
     "objectID": "slides/Introduction/index.html#data-structures-in-r-3",
@@ -417,28 +417,21 @@
     "href": "slides/Introduction/index.html#data-structures-in-r-4",
     "title": "R course - Day 1",
     "section": "Data Structures in R",
-    "text": "Data Structures in R\nCreate an array\n\nar &lt;- array(data = c(1, 2, 3, 4), dim = c(2, 2, 1))\nar\n\n, , 1\n\n     [,1] [,2]\n[1,]    1    3\n[2,]    2    4"
+    "text": "Data Structures in R\nCreate a data frame\n\n\n\ndtf &lt;- data.frame(pbc[, \"sex\"], \n                  pbc[, \"age\"])\ndtf[1:3, ]\n\n  pbc....sex.. pbc....age..\n1            f     58.76523\n2            f     56.44627\n3            m     70.07255\n\n\n\n\ndtf &lt;- data.frame(\n            Gender = pbc[, \"sex\"], \n            Age = pbc[, \"age\"])\ndtf[1:3, ]\n\n  Gender      Age\n1      f 58.76523\n2      f 56.44627\n3      m 70.07255"
   },
   {
     "objectID": "slides/Introduction/index.html#data-structures-in-r-5",
     "href": "slides/Introduction/index.html#data-structures-in-r-5",
     "title": "R course - Day 1",
     "section": "Data Structures in R",
-    "text": "Data Structures in R\nCreate a data frame\n\n\n\ndtf &lt;- data.frame(pbc[, \"sex\"], \n                  pbc[, \"age\"])\ndtf[1:3, ]\n\n  pbc....sex.. pbc....age..\n1            f     58.76523\n2            f     56.44627\n3            m     70.07255\n\n\n\n\ndtf &lt;- data.frame(\n            Gender = pbc[, \"sex\"], \n            Age = pbc[, \"age\"])\ndtf[1:3, ]\n\n  Gender      Age\n1      f 58.76523\n2      f 56.44627\n3      m 70.07255"
-  },
-  {
-    "objectID": "slides/Introduction/index.html#data-structures-in-r-6",
-    "href": "slides/Introduction/index.html#data-structures-in-r-6",
-    "title": "R course - Day 1",
-    "section": "Data Structures in R",
-    "text": "Data Structures in R\nCreate a list\n\nlist1 &lt;- list(vec = c(1:5), mat = pbc[1:2, c(\"age\", \"sex\")])\nlist1\n\n$vec\n[1] 1 2 3 4 5\n\n$mat\n       age sex\n1 58.76523   f\n2 56.44627   f"
+    "text": "Data Structures in R\nCreate a list\n\nlist1 &lt;- list(\n  ages = pbc$age[1:5],\n  small_table = pbc[1:2, c(\"age\", \"sex\")],\n  mean_age = mean(pbc$age)\n)\nlist1\n\n$ages\n[1] 58.76523 56.44627 70.07255 54.74059 38.10541\n\n$small_table\n       age sex\n1 58.76523   f\n2 56.44627   f\n\n$mean_age\n[1] 50.74155"
   },
   {
     "objectID": "slides/Introduction/index.html#class",
     "href": "slides/Introduction/index.html#class",
     "title": "R course - Day 1",
     "section": "Class",
-    "text": "Class\n\n\nIn addition to a type objects have a class\n\n\n\nIt indicates how the object can be used\n\n\n\nThe behaviour of functions when used on the object may depend on the class"
+    "text": "Class\n\nIn addition to a type, objects also have a class\nThe class tells R how the object should behave\nThis is why summary() or plot() may behave differently for different objects\n\n\nclass(pbc)\n\n[1] \"data.frame\"\n\nclass(pbc$age)\n\n[1] \"numeric\""
   },
   {
     "objectID": "slides/Introduction/index.html#summary-2",
@@ -452,7 +445,7 @@
     "href": "slides/Introduction/index.html#indexingsubsetting",
     "title": "R course - Day 1",
     "section": "Indexing/Subsetting",
-    "text": "Indexing/Subsetting\n\n\nWhen transforming and analyzing data we often need to select specific observations or variables\n\nExamples: Select …\n\nthe age of the patient with the name ‘John Harvey’\nthe 3rd element of vector age\nthe 3rd column of the pbc data set\nthe sex of the 10th patient\nall information of the 5th patient\nthe serum cholesterol for all males\nthe age for male patients or patients that have serum billirubin &gt; 3\nthe first measurement per patient"
+    "text": "Indexing/Subsetting\n\n\nWhen transforming and analysing data, we often need to select specific observations or variables\n\nExamples: Select …\n\nthe age of the patient with the name ‘John Harvey’\nthe 3rd element of vector age\nthe 3rd column of the pbc data set\nthe sex of the 10th patient\nall information of the 5th patient\nthe serum cholesterol for all males\nthe age for male patients or patients that have serum bilirubin &gt; 3\nthe first measurement per patient"
   },
   {
     "objectID": "slides/Introduction/index.html#indexingsubsetting-1",
@@ -515,7 +508,7 @@
     "href": "slides/Introduction/index.html#indexing-with-a-matrix",
     "title": "R course - Day 1",
     "section": "Indexing with a matrix",
-    "text": "Indexing with a matrix\n\nIndexing matrices is similar to indexing vectors but with double index\n\nThe first position denotes the rows [\"index\", ]\nThe first position denotes the columns [ , \"index\"]\n\n\n\n\n\nExample: select M[3, 2]\n\n3rd row, second column\n\n\\[\n\\begin{pmatrix}\n11 & \\color{blue}{\\mathbf{12}} & 13 & 14 & 15 \\\\[6pt]\n21 & \\color{blue}{\\mathbf{22}} & 23 & 24 & 25 \\\\[6pt]\n\\color{blue}{\\mathbf{31}} & \\color{red}{\\mathbf{32}} & \\color{blue}{\\mathbf{33}} & \\color{blue}{\\mathbf{34}} & \\color{blue}{\\mathbf{35}} \\\\[6pt]\n41 & \\color{blue}{\\mathbf{42}} & 43 & 44 & 45 \\\\[6pt]\n51 & \\color{blue}{\\mathbf{52}} & 53 & 54 & 55\n\\end{pmatrix}\n\\]"
+    "text": "Indexing with a matrix\n\nIndexing matrices is similar to indexing vectors, but uses a double index\n\nThe first position denotes the rows [\"index\", ]\nThe second position denotes the columns [ , \"index\"]\n\n\n\n\n\nExample: select M[3, 2]\n\n3rd row, second column\n\n\\[\n\\begin{pmatrix}\n11 & \\color{blue}{\\mathbf{12}} & 13 & 14 & 15 \\\\[6pt]\n21 & \\color{blue}{\\mathbf{22}} & 23 & 24 & 25 \\\\[6pt]\n\\color{blue}{\\mathbf{31}} & \\color{red}{\\mathbf{32}} & \\color{blue}{\\mathbf{33}} & \\color{blue}{\\mathbf{34}} & \\color{blue}{\\mathbf{35}} \\\\[6pt]\n41 & \\color{blue}{\\mathbf{42}} & 43 & 44 & 45 \\\\[6pt]\n51 & \\color{blue}{\\mathbf{52}} & 53 & 54 & 55\n\\end{pmatrix}\n\\]"
   },
   {
     "objectID": "slides/Introduction/index.html#indexing-with-a-matrix-1",
@@ -536,14 +529,14 @@
     "href": "slides/Introduction/index.html#indexing-with-a-matrix-3",
     "title": "R course - Day 1",
     "section": "Indexing with a matrix",
-    "text": "Indexing with a matrix\n\nWhen we leave a position blank all elements are selected\n\n\nmat &lt;- matrix(data = 1:4, \n              nrow = 2,\n              ncol = 2)\nmat\n\n     [,1] [,2]\n[1,]    1    3\n[2,]    2    4\n\nmat[2, ]\n\n[1] 2 4\n\n\n\nExample with a logical index: select rows where first column &gt; 1\n\n\nlogical_row_index &lt;- mat[,1] &gt; 1\nlogical_row_index\n\n[1] FALSE  TRUE\n\n\n\nmat[logical_row_index, ]\n\n[1] 2 4"
+    "text": "Indexing with a matrix\n\nWhen we leave a position blank, all elements are selected\n\n\nmat &lt;- matrix(data = 1:4, \n              nrow = 2,\n              ncol = 2)\nmat\n\n     [,1] [,2]\n[1,]    1    3\n[2,]    2    4\n\nmat[2, ]\n\n[1] 2 4\n\n\n\nExample with a logical index: select rows where first column &gt; 1\n\n\nlogical_row_index &lt;- mat[,1] &gt; 1\nlogical_row_index\n\n[1] FALSE  TRUE\n\n\n\nmat[logical_row_index, ]\n\n[1] 2 4"
   },
   {
     "objectID": "slides/Introduction/index.html#indexing-with-a-matrix-4",
     "href": "slides/Introduction/index.html#indexing-with-a-matrix-4",
     "title": "R course - Day 1",
     "section": "Indexing with a matrix",
-    "text": "Indexing with a matrix\n\nBe careful, when a single row or column is selected the result is converted to a vector\n\n\nmat &lt;- matrix(data = 1:4, \n              nrow = 2,\n              ncol = 2)\nmat[2, ]\n\n[1] 2 4\n\n\n\nuse drop=FALSE to prevent this\n\n\nmat &lt;- matrix(data = 1:4, \n              nrow = 2,\n              ncol = 2)\nmat[2, , drop=FALSE]\n\n     [,1] [,2]\n[1,]    2    4"
+    "text": "Indexing with a matrix\n\nBe careful: when a single row or column is selected, the result is converted to a vector\n\n\nmat &lt;- matrix(data = 1:4, \n              nrow = 2,\n              ncol = 2)\nmat[2, ]\n\n[1] 2 4\n\n\n\nUse drop = FALSE to prevent this\n\n\nmat &lt;- matrix(data = 1:4, \n              nrow = 2,\n              ncol = 2)\nmat[2, , drop=FALSE]\n\n     [,1] [,2]\n[1,]    2    4"
   },
   {
     "objectID": "slides/Introduction/index.html#indexing-with-array",
@@ -557,7 +550,7 @@
     "href": "slides/Introduction/index.html#indexing-with-data.frame",
     "title": "R course - Day 1",
     "section": "Indexing with data.frame",
-    "text": "Indexing with data.frame\n\nWorks with single and double index\n\n\n\n\nDF &lt;- data.frame(x = 1:3, \n      y = c(\"male\", \n            \"male\",\n            \"female\"))\nDF\n\n  x      y\n1 1   male\n2 2   male\n3 3 female\n\n\n\n\nUse position single indexing\n\n\nDF[2]\n\n       y\n1   male\n2   male\n3 female\n\nDF[[2]]\n\n[1] \"male\"   \"male\"   \"female\""
+    "text": "Indexing with data.frame\n\nWorks with single and double indexing\n\n\n\n\nDF &lt;- data.frame(x = 1:3, \n      y = c(\"male\", \n            \"male\",\n            \"female\"))\nDF\n\n  x      y\n1 1   male\n2 2   male\n3 3 female\n\n\n\n\nUse single position indexing\n\n\nDF[2]\n\n       y\n1   male\n2   male\n3 female\n\nDF[[2]]\n\n[1] \"male\"   \"male\"   \"female\""
   },
   {
     "objectID": "slides/Introduction/index.html#indexing-with-data.frame-1",
@@ -606,7 +599,7 @@
     "href": "slides/Introduction/index.html#indexing-with-lists-1",
     "title": "R course - Day 1",
     "section": "Indexing with lists",
-    "text": "Indexing with lists\n\nDouble square brackets can be also used - Note that the output is a vector\n\n\n\nUse position indexing\n\n\nmylist &lt;- list(y = c(14, 45),\n               z = c(\"m\", \"f\", \"f\"))\nmylist[[2]]\n\n[1] \"m\" \"f\" \"f\""
+    "text": "Indexing with lists\n\nDouble square brackets can also be used - Note that the output is a vector\n\n\n\nUse position indexing\n\n\nmylist &lt;- list(y = c(14, 45),\n               z = c(\"m\", \"f\", \"f\"))\nmylist[[2]]\n\n[1] \"m\" \"f\" \"f\""
   },
   {
     "objectID": "slides/Introduction/index.html#indexing-with-lists-2",
@@ -984,7 +977,7 @@
     "href": "index.html",
     "title": "BasicRCourseEMC_Slides",
     "section": "",
-    "text": "R Course - Day 2\n\n\n\nDay2\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nR Course - Day 3\n\n\n\nDay3\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nR Course - Day 2\n\n\n\nDay2\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nR Course - Day 3\n\n\n\nDay3\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nR course - Day 4\n\n\n\nDay4\n\n\n\n\n\n\n\nSten Willemsen\n\n\nNov 20, 2025\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nR course - Day 1\n\n\n\nDay1\n\n\n\n\n\n\n\nSten Willemsen\n\n\nNov 17, 2025\n\n\n\n\n\n\n\n\nNo matching items"
+    "text": "R Course - Day 2\n\n\n\nDay2\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nR Course - Day 3\n\n\n\nDay3\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nR Course - Day 2\n\n\n\nDay2\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nR Course - Day 3\n\n\n\nDay3\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nR course - Day 1\n\n\n\nDay1\n\n\n\n\n\n\n\nSten Willemsen\n\n\nApr 7, 2026\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nR course - Day 4\n\n\n\nDay4\n\n\n\n\n\n\n\nSten Willemsen\n\n\nNov 20, 2025\n\n\n\n\n\n\n\n\nNo matching items"
   },
   {
     "objectID": "slides/Rmarkdown/index.html#r-course---programme",
@@ -998,7 +991,7 @@
     "href": "slides/Rmarkdown/index.html#program-this-morning",
     "title": "R course - Day 4",
     "section": "Program this morning",
-    "text": "Program this morning\n\n\nQuarto / Rmarkdown\nShiny\nTidyverse\nR in Erasmus MC"
+    "text": "Program this morning\n\n\nQuarto\nShiny\nTidyverse\nR in Erasmus MC"
   },
   {
     "objectID": "slides/Rmarkdown/index.html#problems",
@@ -1036,8 +1029,8 @@
     "text": "Two parts\n\n\nWe need:\n\na documentation language\n\nTo write our program / analysis script\n\na programming language\n\nTo write and format the text that explains what is done"
   },
   {
-    "objectID": "slides/Rmarkdown/index.html#quarto",
-    "href": "slides/Rmarkdown/index.html#quarto",
+    "objectID": "slides/Rmarkdown/index.html#quarto-1",
+    "href": "slides/Rmarkdown/index.html#quarto-1",
     "title": "R course - Day 4",
     "section": "Quarto",
     "text": "Quarto\n\nQuarto is a format for writing \nKeeps code, output, documentation and results together\nUse it to embed R code and results into various formats"
@@ -1057,6 +1050,13 @@
     "text": "Formats\n\nQuarto can produce output in various formats such as:\n\nslideshows (e.g. powerpoint),\npdfs,\nbooks,\nhtml documents,\nblogs,\ndashboards,\netc"
   },
   {
+    "objectID": "slides/Rmarkdown/index.html#markdown-contd",
+    "href": "slides/Rmarkdown/index.html#markdown-contd",
+    "title": "R course - Day 4",
+    "section": "Markdown (cont’d)",
+    "text": "Markdown (cont’d)\n\nIn Rstudio\n\nFile \\(\\rightarrow\\) New File \\(\\rightarrow\\) Quarto…\nInsert title and author\nSelect format\n\nWrite your .qmd file\nClick the Render button (or use quarto render on command line)"
+  },
+  {
     "objectID": "slides/Rmarkdown/index.html#minimal-quarto-document",
     "href": "slides/Rmarkdown/index.html#minimal-quarto-document",
     "title": "R course - Day 4",
@@ -1069,13 +1069,6 @@
     "title": "R course - Day 4",
     "section": "Minimal Quarto document results",
     "text": "Minimal Quarto document results\n\nResulting html document"
-  },
-  {
-    "objectID": "slides/Rmarkdown/index.html#markdown-contd",
-    "href": "slides/Rmarkdown/index.html#markdown-contd",
-    "title": "R course - Day 4",
-    "section": "Markdown (cont’d)",
-    "text": "Markdown (cont’d)\n\n\nIn Rstudio\n\nFile \\(\\rightarrow\\) New File \\(\\rightarrow\\) Quarto…\nInsert title and author\nSelect format"
   },
   {
     "objectID": "slides/Rmarkdown/index.html#advantages-and-disadvantages",
@@ -1271,7 +1264,7 @@
     "href": "slides/Rmarkdown/index.html#shiny-in-rstudio",
     "title": "R course - Day 4",
     "section": "Shiny in Rstudio",
-    "text": "Shiny in Rstudio\n\nFile \\(\\rightarrow\\) New File \\(\\rightarrow\\) Shiny Web App…\nInsert application name\nLet’s try an example"
+    "text": "Shiny in Rstudio\n\nFile \\(\\rightarrow\\) New File \\(\\rightarrow\\) Shiny Web App…\nInsert application name and location\nLet’s try an example to see it work\nModify step-by-step"
   },
   {
     "objectID": "slides/Rmarkdown/index.html#structure",
@@ -1299,7 +1292,21 @@
     "href": "slides/Rmarkdown/index.html#user-interface-2",
     "title": "R course - Day 4",
     "section": "User Interface (2)",
-    "text": "User Interface (2)\n\nThe interface may contain various elements to display different things to the user\ntitlePanel(\"Old Faithful Geyser Data\")\ninput controls\n\n            sliderInput(\"bins\",\n                        \"Number of bins:\",\n                        min = 1, max = 50, value = = 30)\n\nOutput:\n\nplotOutput(\"distPlot\")"
+    "text": "User Interface (2)\n\nThe interface may contain various elements to display different things to the user\ntitlePanel(\"Old Faithful Geyser Data\")\ninput controls\n\n            sliderInput(\"bins\",\n                        \"Number of bins:\",\n                        min = 1, max = 50, value = 30)\n\nOutput:\n\nplotOutput(\"distPlot\")"
+  },
+  {
+    "objectID": "slides/Rmarkdown/index.html#common-shiny-inputs",
+    "href": "slides/Rmarkdown/index.html#common-shiny-inputs",
+    "title": "R course - Day 4",
+    "section": "Common Shiny Inputs",
+    "text": "Common Shiny Inputs\n\nsliderInput() - slider for numeric values\ntextInput() - text entry field\nselectInput() - dropdown menu\ncheckboxInput() - single checkbox\nradioButtons() - radio button group\ndateInput() - date picker\nfileInput() - file upload"
+  },
+  {
+    "objectID": "slides/Rmarkdown/index.html#common-shiny-outputs",
+    "href": "slides/Rmarkdown/index.html#common-shiny-outputs",
+    "title": "R course - Day 4",
+    "section": "Common Shiny Outputs",
+    "text": "Common Shiny Outputs\n\nplotOutput() + renderPlot() - for plots\ntableOutput() + renderTable() - for tables\ntextOutput() + renderText() - for text\nverbatimTextOutput() + renderPrint() - for code output\nuiOutput() + renderUI() - for dynamic UI"
   },
   {
     "objectID": "slides/Rmarkdown/index.html#server-function",
@@ -1330,11 +1337,18 @@
     "text": "Pipe operation\n\nPipe operator in tidyverse is %&gt;%\nTakes the output of a function on the left-hand-side\nUses it as input for a function on the right\n\nby default as the fist argument\n\nOften make long sequences of transformations more readable. \nNow also included in base R |&gt; (sometimes rendered as |&gt;)"
   },
   {
+    "objectID": "slides/Rmarkdown/index.html#pipe-operation-contd",
+    "href": "slides/Rmarkdown/index.html#pipe-operation-contd",
+    "title": "R course - Day 4",
+    "section": "Pipe operation (cont’d)",
+    "text": "Pipe operation (cont’d)\nNested functions - hard to read:\nUsing a pipe - reads left to right:"
+  },
+  {
     "objectID": "slides/Rmarkdown/index.html#tible",
     "href": "slides/Rmarkdown/index.html#tible",
     "title": "R course - Day 4",
     "section": "tible",
-    "text": "tible\n\nThe tibble package introduces the tible a replacement for the data.frame\nDoes not print all rows and columns by default\nMostly works as a data.frame but if you get a strange error convert it using as.data.frame.tbl_df"
+    "text": "tible\n\nThe tibble package introduces the tible a replacement for the data.frame\nDoes not print all rows and columns by default\nShow column types when printed\nMostly works as a data.frame but if you get a strange error convert it using as.data.frame.tbl_df"
   },
   {
     "objectID": "slides/Rmarkdown/index.html#dplyr",
@@ -1348,14 +1362,21 @@
     "href": "slides/Rmarkdown/index.html#example",
     "title": "R course - Day 4",
     "section": "Example",
-    "text": "Example\n\nd &lt;- d[, c('id', 'GA_weeks', 'GA_days', 'BW')]\nd &lt;- d[d$GA_weeks &gt; 30, ]\nd$GA_tot &lt;- d$GA_weeks * 7 + d$GA_days\nd &lt;- d[order(d$id), ]\n\nd_merged &lt;- merge(d, d_grp, by='id')\naggregate(BW ~ grp, data=d_merged, mean)\n\n\n\nBase R syntax can be made shorter by nesting expressions\nE.g.: aggregate(BW ~ grp, data=merge(d, d_grp, by='id'), mean)\nDoes not help readability"
+    "text": "Example\nTask: Analyze survival by treatment and bilirubin level for patients over 40\n\npbc_sub &lt;- pbc[!is.na(pbc$trt) & pbc$age &gt; 40, \n               c(\"id\", \"time\", \"age\", \"sex\", \"trt\", \"bili\")]\npbc_sub$bili_cat &lt;- ifelse(pbc_sub$bili &gt; 2, \"High\", \"Normal\")\npbc_sub$time_years &lt;- pbc_sub$time / 365.25\nresult &lt;- aggregate(cbind(mean_time = time_years, mean_age = age) ~ \n                    sex + trt + bili_cat, data = pbc_sub, FUN = mean)\ncounts &lt;- aggregate(id ~ sex + trt + bili_cat, data = pbc_sub, FUN = length)\nnames(counts)[4] &lt;- \"n_patients\"\nresult &lt;- merge(result, counts, by = c(\"sex\", \"trt\", \"bili_cat\"))\nresult[order(-result$mean_time), ]\n\n\n\nBase R syntax can be made shorter by nesting expressions\nDoes not help readability"
   },
   {
     "objectID": "slides/Rmarkdown/index.html#example-contd",
     "href": "slides/Rmarkdown/index.html#example-contd",
     "title": "R course - Day 4",
     "section": "Example (cont’d)",
-    "text": "Example (cont’d)\n\nd %&gt;% \n  select(id, GA_weeks, GA_days, BW) %&gt;% \n  filter(GA_weeks &gt; 30) %&gt;%\n  mutate(GA_tot = GA_weeks * 7 + GA_days) %&gt;% \n  arrange(id)\n  \nd %&gt;% \n  inner_join(d_grp, by='id') %&gt;% \n  group_by(grp) %&gt;% \n  summarise(meanBW = mean(BW))\n\n\n\n\nThe pipe operator makes the code more readable"
+    "text": "Example (cont’d)\n\npbc %&gt;% \n  filter(!is.na(trt), age &gt; 40) %&gt;% \n  select(id, time, age, sex, trt, bili) %&gt;% \n  mutate(bili_cat = if_else(bili &gt; 2, \"High\", \"Normal\"),\n         time_years = time / 365.25) %&gt;% \n  group_by(sex, trt, bili_cat) %&gt;% \n  summarise(n_patients = n(),\n            mean_time = mean(time_years, na.rm = TRUE),\n            mean_age = mean(age, na.rm = TRUE),\n            .groups = \"drop\") %&gt;% \n  arrange(desc(mean_time))\n\n\n\n\nThe pipe operator makes the code more readable"
+  },
+  {
+    "objectID": "slides/Rmarkdown/index.html#next-steps",
+    "href": "slides/Rmarkdown/index.html#next-steps",
+    "title": "R course - Day 4",
+    "section": "Next Steps",
+    "text": "Next Steps\n\n\ntidyverse.org - Official site\nR for Data Science - Free online book"
   },
   {
     "objectID": "slides/Rmarkdown/index.html#local-installation",
@@ -1384,6 +1405,13 @@
     "title": "R course - Day 4",
     "section": "Digital Research Environment (DRE)",
     "text": "Digital Research Environment (DRE)\n\nDRE runs on virtual machines using Microsoft Azure\nConfigured data management, processing and sharing can been done securely\nVarious computational software (including R and Rstudio) can be used\nCollaboration with external parties is possible\nMore computational power is available when needed\nSee https://andrea-cloud.com/ and support.mydre.org"
+  },
+  {
+    "objectID": "slides/Rmarkdown/index.html#the-end-questions",
+    "href": "slides/Rmarkdown/index.html#the-end-questions",
+    "title": "R course - Day 4",
+    "section": "The End / Questions?",
+    "text": "The End / Questions?\nKeep practicing! The best way to learn R is to use it on real problems."
   },
   {
     "objectID": "slides/Functions1/index.html#built-in-named-functions",
