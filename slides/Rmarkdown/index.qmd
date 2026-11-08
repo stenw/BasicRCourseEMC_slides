@@ -62,7 +62,7 @@ pbcseq <- survival::pbcseq
 - R in Erasmus MC
 
 
-# Quarto  {data-background="./templateassets/lbback.svg" class="center"} 
+# Quarto {data-background="./templateassets/lbback.svg" class="center"} 
 
 ## Problems {.triangledb}
 
@@ -102,7 +102,7 @@ pbcseq <- survival::pbcseq
 * Presentation code formats results (tables, figures)
 * Text explains what is done 
   - Self documenting
-* Literate programs are [**weaved**]{color="#b281e2"} to produce human readable documents and [**tangled**]{color="#0078d1"} to produce machine readable documents
+* Literate programs are [**woven**]{color="#b281e2"} to produce human readable documents and [**tangled**]{color="#0078d1"} to produce machine readable documents
 
 ## Two parts  {.triangledb}
 
@@ -164,7 +164,7 @@ pbcseq <- survival::pbcseq
 </div>
 <div class="side-by-side-container">
 <div class="extrabox">
-<p>test</p>
+
 
 <img src="https://upload.wikimedia.org/wikipedia/commons/3/34/Knitr_hex_logo.svg" alt="knitr sticker" style="width:64px;height:64px;">
 </div>
@@ -182,7 +182,7 @@ pbcseq <- survival::pbcseq
 
 <div class="content">
 <h5>2022: Quarto</h5>
-<p>by Carlos Scheidegger et. al.</p>
+<p>by Carlos Scheidegger et al.</p>
 </div>
 </div>
 
@@ -207,7 +207,7 @@ pbcseq <- survival::pbcseq
 
 ## Markdown (cont'd) {.triangledb}
 
-* In **Rstudio**
+* In **RStudio**
    * File $\rightarrow$ New File $\rightarrow$ Quarto...
    * Insert title and author
    * Select format
@@ -440,7 +440,7 @@ __Methods__<br>
 
 ::: aside
 
-More on plots below</small>
+<small>More on plots below</small>
 
 :::
 
@@ -492,7 +492,7 @@ More on plots below</small>
 
 ::: aside
 
-More on tables below</small>
+<small>More on tables below</small>
 
 :::
 
@@ -524,7 +524,7 @@ More on tables below</small>
 :::
 
 
-Escaping Markdown characters with a back-slash allows you to use any characters which might be getting accidentally interpreted as HTML/TeX
+Escaping Markdown characters with a backslash allows you to use characters that might otherwise be interpreted as Markdown, HTML, or TeX.
 
 ## Code {.triangledb}
 
@@ -598,8 +598,8 @@ escape = FALSE
 
 ## References {.triangledb}
 
-* A list of most common R markdown commands can be found on:
-- [R markdown cheatsheet](https://www.rstudio.com/wp-content/uploads/2015/02/rmarkdown-cheatsheet.pdf)
+* A list of common Quarto and R Markdown commands can be found here:
+- [R Markdown cheatsheet](https://www.rstudio.com/wp-content/uploads/2015/02/rmarkdown-cheatsheet.pdf)
 - [rmarkdown.rstudio.com/authoring_basics.html](https://rmarkdown.rstudio.com/authoring_basics.html) and
 - [quarto.org/docs/authoring/markdown-basics.html](https://quarto.org/docs/authoring/markdown-basics.html) (specifically for *quarto*)
 
@@ -640,7 +640,7 @@ escape = FALSE
 
 :::
 
-* NB: inline R can be included using something like `` `R NROW(x)` ``
+* Note: inline R can be included using something like ``{r} NROW(x)``
 
 ## Plots  {.triangledb}
 
@@ -684,7 +684,7 @@ plot(x=c(1, 2),
 
 ## Plots (continued)  {.triangledb .smaller}
 
-* Sometimes it can be useful to save the plot to file and then include it in the document using markdown
+* Sometimes it can be useful to save the plot to file and then include it in the document using Quarto
 
 ::: columns
 
@@ -727,7 +727,7 @@ dev.off()
 
 ## Tables  {.triangledb .smaller}
 
-* Above we showed how to create markdown based tables
+* Above we showed how to create Markdown-based tables
 * Sometimes we want to use R.
 * Use the `kable` function to display tables nicely 
 
@@ -773,7 +773,7 @@ knitr::kable(data.frame(a=c(1,2),
 
 ## YAML header  {.triangledb}
 
-* **YAML:** YAML Ain’t Markup Language
+* **YAML:** YAML Ain't Markup Language
 
 * A YAML header contains YAML **keywords**, such as “title”, “author”, and “date”
 * preceded and ended by three dashes (—)
@@ -818,11 +818,10 @@ date: "16 November 2023"
 
 <br>
 
-* Code chunks can have various options `
-* Options are set as a comma separated list of `key=value` pairs
-* In Quarto, code chunk options are either included in the header () 
-* Or set using `#|` followed by `key: value` pairs
-  - [NB: When using comments use `true` and `false` instead of `TRUE` and `FALSE`]{color="#df4512"}
+* Code chunks can have various options
+* Options can be set as a comma-separated list of `key=value` pairs in the chunk header
+* In Quarto, they can also be set using `#|` followed by `key: value` pairs
+  - [NB: When using `#|` comments, use `true` and `false` instead of `TRUE` and `FALSE`]{color="#df4512"}
 
 
 
@@ -844,19 +843,20 @@ date: "16 November 2023"
 
 ## Chunk options (cont'd) {.triangledb}
 
-*	 **fig.cap**: A character string to be used as a figure caption in html
+* **fig.cap**: A character string to be used as a figure caption in html
 *	 **fig.height**, **fig.width**: The width and height to use in R for plots created by the chunk (in inches)
 
-## R markdown Gallery {.triangledb}
+## R Markdown Gallery {.triangledb}
 
 ```{=html}
 <iframe  height="80%" width="95%" src="https://rmarkdown.rstudio.com/gallery.html" title="R Markdown Gallery"></iframe>
 ```
 
+## Spin {background-image="triangledb-cap.svg" background-size="cover"}
 
-* We normally use quarto to transform `.qmd` files to a documents, 
+* We normally use Quarto to transform `.qmd` files into documents
 
-* We can also transform (special) R scripts to .qmd (and html/pdf etc...)
+* We can also transform special R scripts into `.qmd` files (and then into HTML, PDF, and so on)
   - This is called [**spinning**]{color="#DB3324"}
 
 * All **normal text** should be written after a `#'` comment
@@ -876,11 +876,11 @@ date: "16 November 2023"
 
 ## Visual editor {.triangledb}
 
-* Rstudio has a visual editor for Quarto
+* RStudio has a visual editor for Quarto
 
 * Use CTRL-/ to insert a new structure (list, equation, image, etc)
 
-* R-Studio promises seamless switching between visual and source mode but your mileage may vary.
+* RStudio promises seamless switching between visual and source mode, but your mileage may vary
 
 
 ## If you want to know more {.triangledb}
@@ -906,7 +906,7 @@ date: "16 November 2023"
 ![](assets-day4/shiny.svg){.absolute top=50% left=50% width="100"}
 
 
-## Shiny in Rstudio {.triangledb}
+## Shiny in RStudio {.triangledb}
 
 * File $\rightarrow$ New File $\rightarrow$ Shiny Web App...
 * Insert application name and location
@@ -916,9 +916,9 @@ date: "16 November 2023"
 ## Structure  {.triangledb}
 
 * Shiny applications consist of:
-	* a user interface object (`ui`): layout and appearance of your app
-	* a `server` function: instructions that your computer needs to build your app
-	* a call to the shinyApp function: creates Shiny app objects
+	* a user interface object (`ui`): the layout and appearance of your app
+	* a `server` function: the instructions your computer needs to build your app
+	* a call to `shinyApp()`: this creates the app object
 
 ## Structure in code {.triangledb}
 
@@ -940,7 +940,7 @@ shinyApp(ui = ui, server = server)
 
 ## User Interface {.triangledb}
 
-* Consist of a **layout function**  that defines the layout of the app
+* Consists of a **layout function** that defines the layout of the app
   * `fluidPage()`, `fillPage()`, `fixedPage()`, etc  
 * Further layout functions can further structure the layout:
   * `sidebarLayout`, `sidebarPanel`, `mainPanel`, etc
@@ -984,7 +984,7 @@ plotOutput("distPlot")
   
 ## Server function {.triangledb}
 
-* informs how the [**output**]{color="#afcc46"} should be calculated based on the [**inputs**]{color="#e84720"} 
+* It specifies how the [**output**]{color="#afcc46"} should be calculated based on the [**inputs**]{color="#e84720"}
 
 
 ```{.r}
@@ -1007,10 +1007,10 @@ plotOutput("distPlot")
 
 <br>
 
-* **Collection of packages** from same people that made RStudio
-* Duplicate some functionality of base R
+* **Collection of packages** from the same team that created RStudio
+* It duplicates some functionality from base R
 * [**Consistent**]{color="#e84720"} and [**designed to work together**]{color="#afcc46"}
-* More intuitive (?)
+* Often more intuitive
 
 ![](./assets-day4/tidyverse.svg){.absolute left=50% width="128"}
 
@@ -1034,10 +1034,10 @@ dplyr
 :  Grammar of data manipulation (`select`, `filter`, `mutate`, `summarise`, `arrange`)
 
 tidyr
-: Tidy messy data (also let's you pivot data)
+: Tidy messy data (also lets you pivot data)
 
 ggplot2
-: Replaces for base plots. Discussed before
+: Replacement for base plots. Discussed before
 
 readr
 : Import data
@@ -1056,7 +1056,7 @@ stringr
 
 ::: aside
 
-There are many more packages that although not formally part of the tidyverse follow the same design principles 
+There are many more packages that, although not formally part of the tidyverse, follow the same design principles
 
 :::
 
@@ -1064,9 +1064,9 @@ There are many more packages that although not formally part of the tidyverse fo
 
 * Pipe operator in tidyverse is `%>%`
 * Takes the [**output**]{color="#afcc46"} of a function on the left-hand-side 
-* Uses it as [**input**]{color="#e84720"} for a function on the right 
-  - by default as the fist argument
-* Often make long sequences of transformations more readable.
+* Uses it as [**input**]{color="#e84720"} for a function on the right
+  - by default as the first argument
+* It often makes long sequences of transformations more readable.
 <br>
 * Now also included in base R `|`<wbr>`>` (sometimes rendered as `|>`)
 
@@ -1089,15 +1089,15 @@ c(-5, -2, 3, 7) %>%
 ```
 
 
-## tible {.triangledb}
+## Tibble {.triangledb}
 
-* The tibble package introduces the `tible` a replacement for the `data.frame`
+* The tibble package introduces the `tibble`, a replacement for the `data.frame`
 
 * Does not print all rows and columns by default
 
-* Show column types when printed
+* Shows column types when printed
 
-* Mostly works as a `data.frame` but if you get a strange error convert it using `as.data.frame.tbl_df`
+* Mostly works like a `data.frame`, but if you get a strange error you can convert it using `as.data.frame.tbl_df`
 
 ## dplyr {.triangledb}
 
@@ -1110,7 +1110,7 @@ c(-5, -2, 3, 7) %>%
   
 ::: aside
 
-See [dplyr cheatsheet/](https://github.com/rstudio/cheatsheets/blob/main/data-transformation.pdf)
+See [dplyr cheatsheet](https://github.com/rstudio/cheatsheets/blob/main/data-transformation.pdf)
 
 :::
 
@@ -1174,7 +1174,7 @@ pbc %>%
 - [tidyverse.org](https://www.tidyverse.org/) - Official site
 - [R for Data Science](https://r4ds.hadley.nz/) - Free online book
 
-# R in  Erasmus MC {data-background="./templateassets/lbback.svg" class="center"}
+# R in Erasmus MC {data-background="./templateassets/lbback.svg" class="center"}
 
 
 ## Local installation {.triangledb}
@@ -1197,9 +1197,9 @@ pbc %>%
   
 ## Packages {.triangledb}
 
-* By default saved in 'my documents'
-* very [**limited space**]{color="#e84720"}
-* If you use the central installation you gain access to a network drive `p:` which has many packages pre-installed
+* By default, packages are saved in 'My Documents'
+* This has very [**limited space**]{color="#e84720"}
+* If you use the central installation, you gain access to a network drive `p:` which has many packages pre-installed
 * You can **choose location** using `.libPaths()` function
 * You can make this **permanent** by using `.Renviron` file
 ```{verbatim rlibs}
@@ -1211,11 +1211,11 @@ R_LIBS_USER=v:/homedir/959750/tools/Rlibs/%p%V-library/%v
 ## Digital Research Environment (DRE) {.triangledb}
 
 * DRE runs on virtual machines using [**Microsoft Azure**]{color="#e84720"}
-* Configured data management, processing and sharing can been done securely
-* Various computational software (including R and Rstudio) can be used
+* Configured data management, processing, and sharing can be done securely
+* Various computational tools (including R and RStudio) can be used
 * Collaboration with external parties is possible
 * More computational power is available when needed
-* See  [https://andrea-cloud.com/](https://andrea-cloud.com/) and [support.mydre.org](https://support.mydre.org)
+* See [https://andrea-cloud.com/](https://andrea-cloud.com/) and [support.mydre.org](https://support.mydre.org)
 
 
 ## The End / Questions?

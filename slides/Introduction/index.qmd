@@ -36,7 +36,7 @@ pbcseq <- survival::pbcseq
 
 ## Introduction to R {.triangledb}
 
-[**R**]{color="#0c2074"} is not just another piece of statistical software. It is a way to write down an analysis so that you can rerun it, check it, improve it, and share it with someone else later.
+* [**R**]{color="#0c2074"} is not just another piece of statistical software. It is a way to write down an analysis so that you can rerun it, check it, improve it, and share it with someone else later.
 
 
 
