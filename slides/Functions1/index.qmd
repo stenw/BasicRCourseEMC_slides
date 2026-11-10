@@ -1,18 +1,23 @@
 ---
 title: "R Course - Day 3"
 subtitle: "Functions I"
+date: "11/11/2026"
+date-format: long
 format:
   emc-revealjs:
     toc: true
     toc-depth: 1
     menu: true
+    slide-number: true
 execute:
   echo: true
 categories: [Day3]
 image: "image.png"
+resources:
+  - _extensions/emc/www/triangle1.svg
 ---
 
-## Built-in Named Functions {data-background="./_extensions/emc/www/triangle1.svg"}
+## Built-in Named Functions {data-background-image="./_extensions/emc/www/triangle1.svg" data-background-size="contain" data-background-position="top left"}
 
 ```{r, eval=FALSE}
 head() #Print the first 6 lines of a dataframe
@@ -27,14 +32,14 @@ sort(c(3,4,2,5,1)) #Sort numbers or letters numerically or alphabetically
 
 max(c(111,333,444,55,6,777,999)) #Determine the maximum value of a vector
 
-rnorm(10) #Sample 10 values from a r(andom) norm(al) distribution between 0 and 1
+rnorm(10) # Draw 10 standard normal values (mean 0, SD 1)
 ```
 
 Built-in functions in base-R :
 
 <https://stat.ethz.ch/R-manual/R-patched/library/base/html/00Index.html>
 
-## Function arguments {data-background="./_extensions/emc/www/triangle1.svg"}
+## Function arguments {data-background-image="./_extensions/emc/www/triangle1.svg" data-background-size="contain" data-background-position="top left"}
 
 ***arguments***, the object in the parentheses `( )`:
 
@@ -56,7 +61,7 @@ or
 sqrt(x^2 + 5)
 ```
 
-## Functions with multiple arguments {data-background="./_extensions/emc/www/triangle1.svg"}
+## Functions with multiple arguments {data-background-image="./_extensions/emc/www/triangle1.svg" data-background-size="contain" data-background-position="top left"}
 
 ```{r}
 args(round)
@@ -70,7 +75,7 @@ round(4.679, 2)
 round(4.679)
 ```
 
-## Named Argument Matching {data-background="./_extensions/emc/www/triangle1.svg"}
+## Named Argument Matching {data-background-image="./_extensions/emc/www/triangle1.svg" data-background-size="contain" data-background-position="top left"}
 
 ```{r}
 round(x = 4.679, digits = 2)
@@ -84,7 +89,7 @@ round(4.679, digits=2)
 round(digits=2, 4.679)
 ```
 
-## Creating your own functions {data-background="./_extensions/emc/www/triangle1.svg"}
+## Creating your own functions {data-background-image="./_extensions/emc/www/triangle1.svg" data-background-size="contain" data-background-position="top left"}
 
 ```{r, eval=FALSE}
 myFun <- function(arg1, arg2) {
@@ -94,7 +99,7 @@ myFun <- function(arg1, arg2) {
 myFun(arg1, arg2)
 ```
 
-## Example of a custom function {data-background="./_extensions/emc/www/triangle1.svg"}
+## Example of a custom function {data-background-image="./_extensions/emc/www/triangle1.svg" data-background-size="contain" data-background-position="top left"}
 
 ```{r}
 mean_xy <- function(x, y){
@@ -111,7 +116,20 @@ or
 mean_xy(x = 2,y = 6)
 ```
 
-## Use `return()` in a function {data-background="./_extensions/emc/www/triangle1.svg"}
+## Giving an argument a default {data-background-image="./_extensions/emc/www/triangle1.svg" data-background-size="contain" data-background-position="top left"}
+
+Set a default in the function definition. Here `x` is required and `y` is optional.
+
+```{r}
+mean_xy <- function(x, y = 2) {
+  (x + y) / 2
+}
+
+mean_xy(2)        # Uses the default y = 2
+mean_xy(2, y = 6) # Overrides the default
+```
+
+## Use `return()` in a function {data-background-image="./_extensions/emc/www/triangle1.svg" data-background-size="contain" data-background-position="top left"}
 
 ```{r}
 mean_xy <- function(x, y){
@@ -122,7 +140,7 @@ mean_xy <- function(x, y){
 mean_xy(x = 2, y = 6)
 ```
 
-## Default return value {data-background="./_extensions/emc/www/triangle1.svg"}
+## Default return value {data-background-image="./_extensions/emc/www/triangle1.svg" data-background-size="contain" data-background-position="top left"}
 
 ```{r}
 mean_xy_2 <- function(x, y){
@@ -145,7 +163,7 @@ mean_xy_3(x = 1, y = 3)
 ```
 z is not returned!
 
-## Function with multiple input values {data-background="./_extensions/emc/www/triangle1.svg"}
+## Function with multiple input values {data-background-image="./_extensions/emc/www/triangle1.svg" data-background-size="contain" data-background-position="top left"}
 
 ```{r}
 mean_vector <- function(...){ 
@@ -160,7 +178,7 @@ No limit to number of inputs:
 mean_vector(1,2,3,4,5,6,7,8,9,10) 
 ```
 
-## Vector as an input to a function {data-background="./_extensions/emc/www/triangle1.svg"}
+## Vector as an input to a function {data-background-image="./_extensions/emc/www/triangle1.svg" data-background-size="contain" data-background-position="top left"}
 
 ```{r}
 mean_x <- function(x){ 
@@ -171,7 +189,7 @@ x <- c(1,2,3,4,5)
 mean_x(x)
 ```
 
-## Build a custom function to clean data {data-background="./_extensions/emc/www/triangle1.svg"}
+## Build a custom function to clean data {data-background-image="./_extensions/emc/www/triangle1.svg" data-background-size="contain" data-background-position="top left"}
 
 ```{r, echo=FALSE}
 PatientID <- 1:25
@@ -194,7 +212,7 @@ data$Ages
 ```
 -50 is clearly wrong
 
-## Build a custom function to clean data {data-background="./_extensions/emc/www/triangle1.svg"}
+## Build a custom function to clean data {data-background-image="./_extensions/emc/www/triangle1.svg" data-background-size="contain" data-background-position="top left"}
 
 ```{r}
 my_descriptives(data$Ages)
@@ -204,7 +222,7 @@ In stead of:
 mean(data$Ages)
 ```
 
-## Returning vectors {data-background="./_extensions/emc/www/triangle1.svg"}
+## Returning vectors {data-background-image="./_extensions/emc/www/triangle1.svg" data-background-size="contain" data-background-position="top left"}
 
 ```{r}
 my_descriptives <- function(x){
@@ -216,7 +234,7 @@ my_descriptives <- function(x){
 my_descriptives(data$Ages)
 ```
 
-## Returning multiple values {data-background="./_extensions/emc/www/triangle1.svg"}
+## Returning multiple values {data-background-image="./_extensions/emc/www/triangle1.svg" data-background-size="contain" data-background-position="top left"}
 
 It is not possible to use `return(x,y)`
 
@@ -231,7 +249,7 @@ my_descriptives2_wrong <- function(x){
 my_descriptives2_wrong(data$Ages)
 ```
 
-## Returning multiple values {data-background="./_extensions/emc/www/triangle1.svg"}
+## Returning multiple values {data-background-image="./_extensions/emc/www/triangle1.svg" data-background-size="contain" data-background-position="top left"}
 
 To return multiple values we use: `return(c(x,y))` or `return(list(x,y))`
 
@@ -246,7 +264,7 @@ my_descriptives2 <- function(x){
 my_descriptives2(data$Ages)
 ```
 
-## Function environments and scoping {data-background="./_extensions/emc/www/triangle1.svg"}
+## Function environments and scoping {data-background-image="./_extensions/emc/www/triangle1.svg" data-background-size="contain" data-background-position="top left"}
 
 The Top-Level (or Global) Environment
 
@@ -265,7 +283,7 @@ Objects in the Global Environment:
 objects()
 ```
 
-## Global and Local Variables {data-background="./_extensions/emc/www/triangle1.svg"}
+## Global and Local Variables {data-background-image="./_extensions/emc/www/triangle1.svg" data-background-size="contain" data-background-position="top left"}
 
 `w` is a global variable
 
@@ -282,7 +300,27 @@ f(y = 1)
 d
 ```
 
-## Local preference over Global {data-background="./_extensions/emc/www/triangle1.svg"}
+## Pass inputs explicitly {data-background-image="./_extensions/emc/www/triangle1.svg" data-background-size="contain" data-background-position="top left"}
+
+The earlier `f(y)` reads `w` from the global environment. Give `w` its own argument so the call shows both inputs.
+
+```{r}
+f <- function(y, w) {
+  d <- 3
+  d * (w + y)
+}
+
+f(y = 1, w = 2)
+```
+
+Predict the result of the same call after changing the global `w`.
+
+```{r}
+w <- 10
+f(y = 1, w = 2)
+```
+
+## Local preference over Global {data-background-image="./_extensions/emc/www/triangle1.svg" data-background-size="contain" data-background-position="top left"}
 
 ```{r}
 w <- 2
@@ -296,7 +334,7 @@ f <- function(y) {
 f(y = 1)
 ```
 
-## Local assignment of variables {data-background="./_extensions/emc/www/triangle1.svg"}
+## Local assignment of variables {data-background-image="./_extensions/emc/www/triangle1.svg" data-background-size="contain" data-background-position="top left"}
 
 ```{r}
 w <- 2

@@ -1,18 +1,23 @@
 ---
 title: "R Course - Day 3"
 subtitle: "Functions II"
+date: "11/11/2026"
+date-format: long
 format:
   emc-revealjs:
     toc: true
     toc-depth: 1
     menu: true
+    slide-number: true
 execute:
   echo: true
 categories: [Day3]
 image: "image.png"
+resources:
+  - _extensions/emc/www/triangle1.svg
 ---
 
-## If? Then! Else? {data-background="./_extensions/emc/www/triangle1.svg"}
+## If? Then! Else? {data-background-image="./_extensions/emc/www/triangle1.svg" data-background-size="contain" data-background-position="top left"}
 
 Conditional execution:
 
@@ -32,7 +37,7 @@ if (condition) {
 }
 ```
 
-## Example {data-background="./_extensions/emc/www/triangle1.svg"}
+## Example {data-background-image="./_extensions/emc/www/triangle1.svg" data-background-size="contain" data-background-position="top left"}
 
 ```{r}
 x <- 5
@@ -53,7 +58,7 @@ if (x >= 10) {
 y
 ```
 
-## If else on one line
+## If else on one line {data-background-image="./_extensions/emc/www/triangle1.svg" data-background-size="contain" data-background-position="top left"}
 
 Oneliner:
 
@@ -69,7 +74,7 @@ y <- if(x >= 10) 1 #no else
 y
 ```
 
-## Nested `if()` Statements {data-background="./_extensions/emc/www/triangle1.svg"}
+## Nested `if()` Statements {data-background-image="./_extensions/emc/www/triangle1.svg" data-background-size="contain" data-background-position="top left"}
 
 `if` inside an `if`
 
@@ -84,30 +89,36 @@ if(condition1) {
 }
 ```
 
-## Adding if else to the descriptives function {data-background="./_extensions/emc/www/triangle1.svg"}
+## Decide which inputs to accept {data-background-image="./_extensions/emc/www/triangle1.svg" data-background-size="contain" data-background-position="top left"}
 
-```{r, echo=FALSE}
-PatientID <- 1:25
-Ages <- round(c(rnorm(15, mean = 45, sd = 10), -50, rnorm(9, mean = 45, sd = 10) ) )
-data <- data.frame(PatientID = PatientID, Ages = Ages)
-data$Sex <- as.factor(c(rbinom(24, 1, 0.5),-1))
-```
+For numeric ages, skip missing and nonpositive values. For a factor, drop the invalid code `-1`. Stop if there are no valid ages or if the input type is unsupported.
 
 ```{r}
-my_descriptives <- function(x){
-  if(class(x) == "numeric"){
-    x.trim <- x[x>0]
-    summary(x.trim)
-  } else if (class(x) == "factor"){
-    x.trim <- droplevels(x[x!=-1])
-    table(x.trim)
+my_descriptives <- function(x) {
+  if (is.numeric(x)) {
+    ages <- x[!is.na(x) & x > 0]
+    if (length(ages) == 0) stop("No valid ages left")
+    summary(ages)
+  } else if (is.factor(x)) {
+    table(droplevels(x[x != -1]))
+  } else {
+    stop("Expected numeric ages or a factor")
   }
 }
-my_descriptives(data$Ages)
-my_descriptives(data$Sex)
 ```
 
-## Stringing multiple if else together {data-background="./_extensions/emc/www/triangle1.svg"}
+## Try typical inputs and edge cases {data-background-image="./_extensions/emc/www/triangle1.svg" data-background-size="contain" data-background-position="top left"}
+
+Predict what each call will return or report.
+
+```{r, error=TRUE}
+my_descriptives(c(NA, -50, 42, 50))
+my_descriptives(factor(c(0, 1, -1)))
+my_descriptives(c(NA, -50))
+my_descriptives(c("42", "50"))
+```
+
+## Stringing multiple if else together {data-background-image="./_extensions/emc/www/triangle1.svg" data-background-size="contain" data-background-position="top left"}
 
 ```{r}
 whatAnimalSound <- function(animal){
@@ -128,7 +139,7 @@ whatAnimalSound("dog")
 whatAnimalSound("bird")
 ```
 
-## if-else on a vector: The `ifelse()` Function {data-background="./_extensions/emc/www/triangle1.svg"}
+## if-else on a vector: The `ifelse()` Function {data-background-image="./_extensions/emc/www/triangle1.svg" data-background-size="contain" data-background-position="top left"}
 
 ```{r, error=TRUE}
 height <- c(69, 71, 67, 66, 72, 71, 61, 65, 73, 70, 68, 74)
@@ -148,7 +159,7 @@ htCategory
 
 For more complicated cases we can use `apply()`
 
-## Terminating a function with returns, errors, and warnings {data-background="./_extensions/emc/www/triangle1.svg"}
+## Terminating a function with returns, errors, and warnings {data-background-image="./_extensions/emc/www/triangle1.svg" data-background-size="contain" data-background-position="top left"}
 
 The following functions are useful for terminating a function call or just printing a warning message:
 
@@ -158,7 +169,7 @@ stop()       # Terminate a function call and print an error message
 warning()    # Print a warning message (without terminating the function call)
 ```
 
-## Terminating a Function Call Using `return()` {data-background="./_extensions/emc/www/triangle1.svg"}
+## Terminating a Function Call Using `return()` {data-background-image="./_extensions/emc/www/triangle1.svg" data-background-size="contain" data-background-position="top left"}
 
 ```{r}
 mySign <- function(x) {
@@ -172,39 +183,54 @@ mySign(x = 13)
 
 Note: `return("Zero")` not reached
 
-## Terminating Using `stop()` {data-background="./_extensions/emc/www/triangle1.svg"}
+## Terminating Using `stop()` {data-background-image="./_extensions/emc/www/triangle1.svg" data-background-size="contain" data-background-position="top left"}
 
-`stop()` means "error"
+An `if` condition needs one `TRUE` or `FALSE`. Check that `y` is one nonmissing number before comparing it to zero.
 
 ```{r}
 myRatio <- function(x, y) {
-  if(y == 0) stop("Cannot divide by 0")
-  return(x/y)
+  if (!is.numeric(y) || length(y) != 1 || is.na(y)) {
+    stop("y must be one nonmissing number")
+  }
+  if (y == 0) stop("Cannot divide by 0")
+  x / y
 }
 ```
 
 ```{r, error=TRUE}
-myRatio(x = 3, y = 0)
+myRatio(3, 2) # Valid input
+myRatio(3, 0) # Zero denominator
 ```
 
-Note: `return(x/y)` not reached
+## Test the denominator check {data-background-image="./_extensions/emc/www/triangle1.svg" data-background-size="contain" data-background-position="top left"}
 
-## Printing a Warning Message Using `warning()` {data-background="./_extensions/emc/www/triangle1.svg"}
+Each of these inputs fails the check before R compares `y` to zero.
 
-`warning()` just prints a warning message.
+```{r, error=TRUE}
+myRatio(3, c(1, 2))   # More than one value
+myRatio(3, numeric()) # No values
+myRatio(3, NA_real_)  # Missing value
+```
+
+## Printing a Warning Message Using `warning()` {data-background-image="./_extensions/emc/www/triangle1.svg" data-background-size="contain" data-background-position="top left"}
+
+`warning()` reports a problem and lets the function continue.
 
 ```{r, warning=TRUE}
 myRatio <- function(x, y) {
-  if(y == 0) warning("Attempt made to divide by 0")
-  return(x/y)
+  if (!is.numeric(y) || length(y) != 1 || is.na(y)) {
+    stop("y must be one nonmissing number")
+  }
+  if (y == 0) warning("Attempt made to divide by 0")
+  x / y
 }
 
 myRatio(x = 3, y = 0)
 ```
 
-R can divide by zero, it returns special value `Inf`
+In this example, `3 / 0` returns `Inf` after the warning.
 
-## Looping {data-background="./_extensions/emc/www/triangle1.svg"}
+## Looping {data-background-image="./_extensions/emc/www/triangle1.svg" data-background-size="contain" data-background-position="top left"}
 
 Repeat (iterate) an R statement
 
@@ -221,7 +247,7 @@ break # Terminate a loops iterations
 next # Skip ahead to the next iteration
 ```
 
-## Example `for`, `while` and `repeat` loops {data-background="./_extensions/emc/www/triangle1.svg"}
+## Example `for`, `while` and `repeat` loops {data-background-image="./_extensions/emc/www/triangle1.svg" data-background-size="contain" data-background-position="top left"}
 
 ::: columns
 
@@ -254,7 +280,7 @@ repeat {
 
 :::
 
-## for() Loops {data-background="./_extensions/emc/www/triangle1.svg"}
+## for() Loops {data-background-image="./_extensions/emc/www/triangle1.svg" data-background-size="contain" data-background-position="top left"}
 
 ```{r, eval=F}
 for(i in sequence) {
@@ -267,7 +293,7 @@ for(i in sequence) {
 }
 ```
 
-## "Looping" over a `data.frame` {data-background="./_extensions/emc/www/triangle1.svg"}
+## "Looping" over a `data.frame` {data-background-image="./_extensions/emc/www/triangle1.svg" data-background-size="contain" data-background-position="top left"}
 
 ```{r}
 coins <- data.frame(Coin = c("penny", "quarter", "nickel", "quarter", "dime", "penny"),
@@ -285,7 +311,7 @@ Calculate the mean of each column:
 colMeans(coins)
 ```
 
-## Looping Over `data.frame` Columns {data-background="./_extensions/emc/www/triangle1.svg"}
+## Looping Over `data.frame` Columns {data-background-image="./_extensions/emc/www/triangle1.svg" data-background-size="contain" data-background-position="top left"}
 
 ```{r}
 means <- NULL
@@ -298,7 +324,7 @@ for(i in 1:ncol(coins)) {
 means
 ```
 
-## Looping Over List Elements {data-background="./_extensions/emc/www/triangle1.svg"}
+## Looping Over List Elements {data-background-image="./_extensions/emc/www/triangle1.svg" data-background-size="contain" data-background-position="top left"}
 
 ```{r}
 myList <- list(
@@ -318,7 +344,7 @@ for(i in myList) {
 lengths
 ```
 
-## Using apply functions {data-background="./_extensions/emc/www/triangle1.svg"}
+## Using apply functions {data-background-image="./_extensions/emc/www/triangle1.svg" data-background-size="contain" data-background-position="top left"}
 
 Applying a function to an object
 
@@ -327,7 +353,7 @@ Applying a function to an object
 -   `sapply()`
 -   `tapply()`
 
-## Using apply on matrices {data-background="./_extensions/emc/www/triangle1.svg"}
+## Using apply on matrices {data-background-image="./_extensions/emc/www/triangle1.svg" data-background-size="contain" data-background-position="top left"}
 
 `apply()` requires 3 arguments:
 
@@ -341,7 +367,7 @@ args(apply)
 
 <!-- The apply function works by "applying" a specified function to an data object. It requires 3 arguments: the data, a so-called "MARGIN", and a function. The data can be a vector, data.frame or a matrix. The MARGIN indicates whether you want to apply the function to the rows or the columns of your data, or both. To apply the function to the rows the MARGIN should be 1, to apply it to the columns it should be 2 and to apply it to both it should be `c(1,2)`. The function can be an existing function, such as `sum()` or `mean()`, or your own custom function. -->
 
-## Applying a function on a matrix {data-background="./_extensions/emc/www/triangle1.svg"}
+## Applying a function on a matrix {data-background-image="./_extensions/emc/www/triangle1.svg" data-background-size="contain" data-background-position="top left"}
 
 ```{r}
 mat <- matrix(1:25,nrow=5)
@@ -362,7 +388,7 @@ apply(mat, 2, max)
 
 ```
 
-## Applying a function to each element: {data-background="./_extensions/emc/www/triangle1.svg"}
+## Applying a function to each element: {data-background-image="./_extensions/emc/www/triangle1.svg" data-background-size="contain" data-background-position="top left"}
 
 ```{r}
 apply(mat, c(1,2), sqrt)
@@ -375,7 +401,7 @@ Remember:
 sqrt(mat)
 ```
 
-## Using lapply on lists to return lists {data-background="./_extensions/emc/www/triangle1.svg"}
+## Using lapply on lists to return lists {data-background-image="./_extensions/emc/www/triangle1.svg" data-background-size="contain" data-background-position="top left"}
 
 ```{r}
 mylist <- list(matrix(1:16,nrow=4), matrix(1:9,nrow=3),matrix(1:4,nrow=2))
@@ -383,7 +409,7 @@ mylist <- list(matrix(1:16,nrow=4), matrix(1:9,nrow=3),matrix(1:4,nrow=2))
 lapply(mylist, dim)
 ```
 
-## lapply on a data.frame (list of lists) {data-background="./_extensions/emc/www/triangle1.svg"}
+## lapply on a data.frame (list of lists) {data-background-image="./_extensions/emc/www/triangle1.svg" data-background-size="contain" data-background-position="top left"}
 
 ```{r}
 df <- data.frame("col1"=c(1,1,1,1), "col2"=c(2,2,2,2), "col3"=c(3,3,3,3))
@@ -391,7 +417,7 @@ df <- data.frame("col1"=c(1,1,1,1), "col2"=c(2,2,2,2), "col3"=c(3,3,3,3))
 lapply(df, sum)
 ```
 
-## Using lapply alternative: sapply {data-background="./_extensions/emc/www/triangle1.svg"}
+## Using lapply alternative: sapply {data-background-image="./_extensions/emc/www/triangle1.svg" data-background-size="contain" data-background-position="top left"}
 
 "Simplify" lapply output:
 
@@ -403,7 +429,7 @@ sapply(mylist, dim)
 sapply(df, sum)
 ```
 
-## Using tapply on groups of data {data-background="./_extensions/emc/www/triangle1.svg"}
+## Using tapply on groups of data {data-background-image="./_extensions/emc/www/triangle1.svg" data-background-size="contain" data-background-position="top left"}
 
 ```{r}
 patients <- data.frame("group"=paste('grp',
@@ -415,7 +441,7 @@ patients
 tapply(patients$outcome, patients$group, mean)
 ```
 
-## Multiple grouping variables possible {data-background="./_extensions/emc/www/triangle1.svg"}
+## Multiple grouping variables possible {data-background-image="./_extensions/emc/www/triangle1.svg" data-background-size="contain" data-background-position="top left"}
 
 ```{r}
 
