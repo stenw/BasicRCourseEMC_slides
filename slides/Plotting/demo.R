@@ -88,11 +88,10 @@ p <- axes +
 print(p)
 
 # 5. Compare methods and save a figure ------------------------------------
-panels <- ggplot(growth, aes(x = factor(dose), y = len)) +
+panels <- ggplot(growth, aes(x = supp, y = len)) +
   geom_boxplot(fill = "#A6D7ED") +
-  facet_wrap(~ supp) +
-  labs(x = "Vitamin C dose (mg/day)",
-       y = "Odontoblast length")
+  facet_wrap(~ dose, nrow = 1, labeller = label_both) +
+  labs(x = "Delivery method", y = "Odontoblast length")
 print(panels)
 
 method_labels <- c("Orange juice", "Ascorbic acid")

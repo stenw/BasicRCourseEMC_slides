@@ -501,6 +501,20 @@
 </div>
 </div>
 </section>
+<section id="base-save" class="slide level2" data-background-image="./templateassets/triangledb.svg">
+<h2>Saving base R plots</h2>
+<p>Open a graphics device for the file, draw the plot, then close the device.</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a aria-hidden="true" tabindex="-1"></a><span class="fu">png</span>(<span class="st">"dose-response-base.png"</span>,</span>
+<span id="cb8-2"><a aria-hidden="true" tabindex="-1"></a>    <span class="at">width =</span> <span class="dv">7</span>, <span class="at">height =</span> <span class="dv">4</span>, <span class="at">units =</span> <span class="st">"in"</span>, <span class="at">res =</span> <span class="dv">300</span>)</span>
+<span id="cb8-3"><a aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(len <span class="sc">~</span> dose, <span class="at">data =</span> growth,</span>
+<span id="cb8-4"><a aria-hidden="true" tabindex="-1"></a>     <span class="at">xlab =</span> <span class="st">"Vitamin C dose (mg/day)"</span>,</span>
+<span id="cb8-5"><a aria-hidden="true" tabindex="-1"></a>     <span class="at">ylab =</span> <span class="st">"Odontoblast length"</span>,</span>
+<span id="cb8-6"><a aria-hidden="true" tabindex="-1"></a>     <span class="at">pch =</span> <span class="dv">16</span>, <span class="at">col =</span> <span class="st">"#0072B2"</span>)</span>
+<span id="cb8-7"><a aria-hidden="true" tabindex="-1"></a><span class="fu">dev.off</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<p>Use <code>pdf()</code> to save a figure that stays sharp when scaled.</p>
+</section>
 <section id="base-check" class="slide level2" data-background-image="./templateassets/triangledb.svg">
 <h2>Reading the dose response</h2>
 <ul>
@@ -513,10 +527,10 @@
 <h2>ggplot2</h2>
 <p>A plotting package built around the <strong>layered grammar of graphics</strong>.</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">"ggplot2"</span>)  <span class="co"># Once per R installation</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">"ggplot2"</span>)  <span class="co"># Once per R installation</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p><a href="https://ggplot2.tidyverse.org/reference/">ggplot2 function reference</a></p>
 </section>
@@ -537,7 +551,7 @@
 <tbody>
 <tr class="odd">
 <td style="text-align: left;">Data</td>
-<td style="text-align: left;">One row per animal</td>
+<td style="text-align: left;">One row per ibservation: one animal</td>
 </tr>
 <tr class="even">
 <td style="text-align: left;">Mapping (<code>aes()</code>)</td>
@@ -570,15 +584,15 @@
 <div class="tab-content">
 <div id="tabset-1-1">
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a aria-hidden="true" tabindex="-1"></a>p <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(growth,</span>
-<span id="cb10-2"><a aria-hidden="true" tabindex="-1"></a>            <span class="fu">aes</span>(<span class="at">x =</span> dose, <span class="at">y =</span> len)) <span class="sc">+</span></span>
-<span id="cb10-3"><a aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="fu">aes</span>(<span class="at">colour =</span> supp,</span>
-<span id="cb10-4"><a aria-hidden="true" tabindex="-1"></a>                 <span class="at">shape =</span> supp),</span>
-<span id="cb10-5"><a aria-hidden="true" tabindex="-1"></a>             <span class="at">size =</span> <span class="fl">2.5</span>) <span class="sc">+</span></span>
-<span id="cb10-6"><a aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">"Vitamin C dose (mg/day)"</span>,</span>
-<span id="cb10-7"><a aria-hidden="true" tabindex="-1"></a>       <span class="at">y =</span> <span class="st">"Odontoblast length"</span>,</span>
-<span id="cb10-8"><a aria-hidden="true" tabindex="-1"></a>       <span class="at">colour =</span> <span class="st">"Method"</span>, <span class="at">shape =</span> <span class="st">"Method"</span>)</span>
-<span id="cb10-9"><a aria-hidden="true" tabindex="-1"></a>p</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a aria-hidden="true" tabindex="-1"></a>p <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(growth,</span>
+<span id="cb11-2"><a aria-hidden="true" tabindex="-1"></a>            <span class="fu">aes</span>(<span class="at">x =</span> dose, <span class="at">y =</span> len)) <span class="sc">+</span></span>
+<span id="cb11-3"><a aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="fu">aes</span>(<span class="at">colour =</span> supp,</span>
+<span id="cb11-4"><a aria-hidden="true" tabindex="-1"></a>                 <span class="at">shape =</span> supp),</span>
+<span id="cb11-5"><a aria-hidden="true" tabindex="-1"></a>             <span class="at">size =</span> <span class="fl">2.5</span>) <span class="sc">+</span></span>
+<span id="cb11-6"><a aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">"Vitamin C dose (mg/day)"</span>,</span>
+<span id="cb11-7"><a aria-hidden="true" tabindex="-1"></a>       <span class="at">y =</span> <span class="st">"Odontoblast length"</span>,</span>
+<span id="cb11-8"><a aria-hidden="true" tabindex="-1"></a>       <span class="at">colour =</span> <span class="st">"Method"</span>, <span class="at">shape =</span> <span class="st">"Method"</span>)</span>
+<span id="cb11-9"><a aria-hidden="true" tabindex="-1"></a>p</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output-display">
 <div>
 <figure>
@@ -590,18 +604,18 @@
 </div>
 <div id="tabset-1-2">
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(len <span class="sc">~</span> dose, <span class="at">data =</span> growth, <span class="at">type =</span> <span class="st">"n"</span>,</span>
-<span id="cb11-2"><a aria-hidden="true" tabindex="-1"></a>     <span class="at">xlab =</span> <span class="st">"Vitamin C dose (mg/day)"</span>,</span>
-<span id="cb11-3"><a aria-hidden="true" tabindex="-1"></a>     <span class="at">ylab =</span> <span class="st">"Odontoblast length"</span>)</span>
-<span id="cb11-4"><a aria-hidden="true" tabindex="-1"></a><span class="fu">with</span>(<span class="fu">subset</span>(growth, supp <span class="sc">==</span> <span class="st">"OJ"</span>),</span>
-<span id="cb11-5"><a aria-hidden="true" tabindex="-1"></a>     <span class="fu">points</span>(dose, len, <span class="at">pch =</span> <span class="dv">16</span>, <span class="at">col =</span> <span class="st">"#0072B2"</span>))</span>
-<span id="cb11-6"><a aria-hidden="true" tabindex="-1"></a><span class="fu">with</span>(<span class="fu">subset</span>(growth, supp <span class="sc">==</span> <span class="st">"VC"</span>),</span>
-<span id="cb11-7"><a aria-hidden="true" tabindex="-1"></a>     <span class="fu">points</span>(dose, len, <span class="at">pch =</span> <span class="dv">17</span>, <span class="at">col =</span> <span class="st">"#D55E00"</span>))</span>
-<span id="cb11-8"><a aria-hidden="true" tabindex="-1"></a><span class="fu">legend</span>(<span class="st">"bottomright"</span>,</span>
-<span id="cb11-9"><a aria-hidden="true" tabindex="-1"></a>       <span class="fu">c</span>(<span class="st">"Orange juice"</span>, <span class="st">"Ascorbic acid"</span>),</span>
-<span id="cb11-10"><a aria-hidden="true" tabindex="-1"></a>       <span class="at">pch =</span> <span class="fu">c</span>(<span class="dv">16</span>, <span class="dv">17</span>),</span>
-<span id="cb11-11"><a aria-hidden="true" tabindex="-1"></a>       <span class="at">col =</span> <span class="fu">c</span>(<span class="st">"#0072B2"</span>, <span class="st">"#D55E00"</span>),</span>
-<span id="cb11-12"><a aria-hidden="true" tabindex="-1"></a>       <span class="at">bty =</span> <span class="st">"n"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(len <span class="sc">~</span> dose, <span class="at">data =</span> growth, <span class="at">type =</span> <span class="st">"n"</span>,</span>
+<span id="cb12-2"><a aria-hidden="true" tabindex="-1"></a>     <span class="at">xlab =</span> <span class="st">"Vitamin C dose (mg/day)"</span>,</span>
+<span id="cb12-3"><a aria-hidden="true" tabindex="-1"></a>     <span class="at">ylab =</span> <span class="st">"Odontoblast length"</span>)</span>
+<span id="cb12-4"><a aria-hidden="true" tabindex="-1"></a><span class="fu">with</span>(<span class="fu">subset</span>(growth, supp <span class="sc">==</span> <span class="st">"OJ"</span>),</span>
+<span id="cb12-5"><a aria-hidden="true" tabindex="-1"></a>     <span class="fu">points</span>(dose, len, <span class="at">pch =</span> <span class="dv">16</span>, <span class="at">col =</span> <span class="st">"#0072B2"</span>))</span>
+<span id="cb12-6"><a aria-hidden="true" tabindex="-1"></a><span class="fu">with</span>(<span class="fu">subset</span>(growth, supp <span class="sc">==</span> <span class="st">"VC"</span>),</span>
+<span id="cb12-7"><a aria-hidden="true" tabindex="-1"></a>     <span class="fu">points</span>(dose, len, <span class="at">pch =</span> <span class="dv">17</span>, <span class="at">col =</span> <span class="st">"#D55E00"</span>))</span>
+<span id="cb12-8"><a aria-hidden="true" tabindex="-1"></a><span class="fu">legend</span>(<span class="st">"bottomright"</span>,</span>
+<span id="cb12-9"><a aria-hidden="true" tabindex="-1"></a>       <span class="fu">c</span>(<span class="st">"Orange juice"</span>, <span class="st">"Ascorbic acid"</span>),</span>
+<span id="cb12-10"><a aria-hidden="true" tabindex="-1"></a>       <span class="at">pch =</span> <span class="fu">c</span>(<span class="dv">16</span>, <span class="dv">17</span>),</span>
+<span id="cb12-11"><a aria-hidden="true" tabindex="-1"></a>       <span class="at">col =</span> <span class="fu">c</span>(<span class="st">"#0072B2"</span>, <span class="st">"#D55E00"</span>),</span>
+<span id="cb12-12"><a aria-hidden="true" tabindex="-1"></a>       <span class="at">bty =</span> <span class="st">"n"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output-display">
 <div>
 <figure>
@@ -614,50 +628,27 @@
 </div>
 </div>
 </section>
-<section id="gg-data" class="slide level2" data-background-image="./templateassets/triangledb.svg">
-<h2>One row, one observation</h2>
-<table class="caption-top">
-<colgroup>
-<col style="width: 33%">
-<col style="width: 33%">
-<col style="width: 33%">
-</colgroup>
-<thead>
-<tr class="header">
-<th style="text-align: left;">Dataset</th>
-<th style="text-align: left;">What one row represents</th>
-<th style="text-align: left;">What connects the rows</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td style="text-align: left;"><code>ToothGrowth</code></td>
-<td style="text-align: left;">One animal</td>
-<td style="text-align: left;">Animals share a dose and delivery method</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;"><code>Indometh</code></td>
-<td style="text-align: left;">One blood sample</td>
-<td style="text-align: left;">Several samples come from the same person</td>
-</tr>
-</tbody>
-</table>
-<p>To draw one concentration curve per person in ggplot2, map <code>group = Subject</code> in the line layer.</p>
-</section>
 <section id="gg-aes" class="slide level2" data-background-image="./templateassets/triangledb.svg">
 <h2>Aesthetics and constants</h2>
 <p><strong>Map a column</strong> inside <code>aes()</code>. <code>aes(colour = supp)</code> assigns colours by method and creates a guide.</p>
 <p><strong>Set a constant</strong> outside <code>aes()</code>. <code>colour = "steelblue"</code> gives every point the same colour.</p>
 <p>Other aesthetics include <code>x</code>, <code>y</code>, <code>shape</code>, <code>fill</code>, <code>size</code>, <code>alpha</code> and <code>linetype</code>. Use <code>group</code> to tell a line layer which points belong together.</p>
 </section>
-<section id="gg-group" class="slide level2" data-background-image="./templateassets/triangledb.svg">
+<section id="gg-group" class="slide level2 smaller" data-background-image="./templateassets/triangledb.svg">
 <h2>Grouping repeated samples</h2>
-<p>Both panels show the same indomethacin measurements.</p>
+<ul>
+<li>Indometh: 6 people, 11 samples each; 1 row is 1 sample</li>
+<li>Both panels show the same indomethacin measurements</li>
+</ul>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a aria-hidden="true" tabindex="-1"></a>profile <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(Indometh, <span class="fu">aes</span>(<span class="at">x =</span> time, <span class="at">y =</span> conc)) <span class="sc">+</span></span>
+<span id="cb13-2"><a aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">"Time since dose (hours)"</span>, <span class="at">y =</span> <span class="st">"Plasma concentration (mcg/mL)"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
 <div class="group-comparison">
 <div>
 <p><strong>One line through all samples</strong></p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a aria-hidden="true" tabindex="-1"></a>profile <span class="sc">+</span> <span class="fu">geom_line</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a aria-hidden="true" tabindex="-1"></a>profile <span class="sc">+</span> <span class="fu">geom_line</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output-display">
 <div>
 <figure>
@@ -670,7 +661,7 @@
 <div>
 <p><strong>One line per subject</strong></p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a aria-hidden="true" tabindex="-1"></a>profile <span class="sc">+</span> <span class="fu">geom_line</span>(<span class="fu">aes</span>(<span class="at">group =</span> Subject))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a aria-hidden="true" tabindex="-1"></a>profile <span class="sc">+</span> <span class="fu">geom_line</span>(<span class="fu">aes</span>(<span class="at">group =</span> Subject))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output-display">
 <div>
 <figure>
@@ -704,13 +695,13 @@
 <div class="tab-content">
 <div id="tabset-2-1">
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(growth, <span class="fu">aes</span>(<span class="at">x =</span> len)) <span class="sc">+</span></span>
-<span id="cb14-2"><a aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_histogram</span>(<span class="at">binwidth =</span> <span class="dv">5</span>,</span>
-<span id="cb14-3"><a aria-hidden="true" tabindex="-1"></a>                 <span class="at">boundary =</span> <span class="dv">0</span>,</span>
-<span id="cb14-4"><a aria-hidden="true" tabindex="-1"></a>                 <span class="at">fill =</span> <span class="st">"#56B4E9"</span>,</span>
-<span id="cb14-5"><a aria-hidden="true" tabindex="-1"></a>                 <span class="at">colour =</span> <span class="st">"white"</span>) <span class="sc">+</span></span>
-<span id="cb14-6"><a aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">"Odontoblast length"</span>,</span>
-<span id="cb14-7"><a aria-hidden="true" tabindex="-1"></a>       <span class="at">y =</span> <span class="st">"Animals"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(growth, <span class="fu">aes</span>(<span class="at">x =</span> len)) <span class="sc">+</span></span>
+<span id="cb16-2"><a aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_histogram</span>(<span class="at">binwidth =</span> <span class="dv">5</span>,</span>
+<span id="cb16-3"><a aria-hidden="true" tabindex="-1"></a>                 <span class="at">boundary =</span> <span class="dv">0</span>,</span>
+<span id="cb16-4"><a aria-hidden="true" tabindex="-1"></a>                 <span class="at">fill =</span> <span class="st">"#56B4E9"</span>,</span>
+<span id="cb16-5"><a aria-hidden="true" tabindex="-1"></a>                 <span class="at">colour =</span> <span class="st">"white"</span>) <span class="sc">+</span></span>
+<span id="cb16-6"><a aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">"Odontoblast length"</span>,</span>
+<span id="cb16-7"><a aria-hidden="true" tabindex="-1"></a>       <span class="at">y =</span> <span class="st">"Animals"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output-display">
 <div>
 <figure>
@@ -722,12 +713,12 @@
 </div>
 <div id="tabset-2-2">
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a aria-hidden="true" tabindex="-1"></a>growth <span class="ot">&lt;-</span> ToothGrowth</span>
-<span id="cb15-2"><a aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(growth<span class="sc">$</span>len,</span>
-<span id="cb15-3"><a aria-hidden="true" tabindex="-1"></a>     <span class="at">breaks =</span> <span class="fu">seq</span>(<span class="dv">0</span>, <span class="dv">35</span>, <span class="at">by =</span> <span class="dv">5</span>),</span>
-<span id="cb15-4"><a aria-hidden="true" tabindex="-1"></a>     <span class="at">xlab =</span> <span class="st">"Odontoblast length"</span>,</span>
-<span id="cb15-5"><a aria-hidden="true" tabindex="-1"></a>     <span class="at">main =</span> <span class="st">""</span>,</span>
-<span id="cb15-6"><a aria-hidden="true" tabindex="-1"></a>     <span class="at">col =</span> <span class="st">"#56B4E9"</span>, <span class="at">border =</span> <span class="st">"white"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a aria-hidden="true" tabindex="-1"></a>growth <span class="ot">&lt;-</span> ToothGrowth</span>
+<span id="cb17-2"><a aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(growth<span class="sc">$</span>len,</span>
+<span id="cb17-3"><a aria-hidden="true" tabindex="-1"></a>     <span class="at">breaks =</span> <span class="fu">seq</span>(<span class="dv">0</span>, <span class="dv">35</span>, <span class="at">by =</span> <span class="dv">5</span>),</span>
+<span id="cb17-4"><a aria-hidden="true" tabindex="-1"></a>     <span class="at">xlab =</span> <span class="st">"Odontoblast length"</span>,</span>
+<span id="cb17-5"><a aria-hidden="true" tabindex="-1"></a>     <span class="at">main =</span> <span class="st">""</span>,</span>
+<span id="cb17-6"><a aria-hidden="true" tabindex="-1"></a>     <span class="at">col =</span> <span class="st">"#56B4E9"</span>, <span class="at">border =</span> <span class="st">"white"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output-display">
 <div>
 <figure>
@@ -748,10 +739,10 @@
 <div class="tab-content">
 <div id="tabset-3-1">
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(growth, <span class="fu">aes</span>(<span class="at">x =</span> <span class="fu">factor</span>(dose))) <span class="sc">+</span></span>
-<span id="cb16-2"><a aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_bar</span>(<span class="at">fill =</span> <span class="st">"#56B4E9"</span>) <span class="sc">+</span></span>
-<span id="cb16-3"><a aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">"Vitamin C dose (mg/day)"</span>,</span>
-<span id="cb16-4"><a aria-hidden="true" tabindex="-1"></a>       <span class="at">y =</span> <span class="st">"Animals"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(growth, <span class="fu">aes</span>(<span class="at">x =</span> <span class="fu">factor</span>(dose))) <span class="sc">+</span></span>
+<span id="cb18-2"><a aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_bar</span>(<span class="at">fill =</span> <span class="st">"#56B4E9"</span>) <span class="sc">+</span></span>
+<span id="cb18-3"><a aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">"Vitamin C dose (mg/day)"</span>,</span>
+<span id="cb18-4"><a aria-hidden="true" tabindex="-1"></a>       <span class="at">y =</span> <span class="st">"Animals"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output-display">
 <div>
 <figure>
@@ -763,9 +754,9 @@
 </div>
 <div id="tabset-3-2">
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a aria-hidden="true" tabindex="-1"></a><span class="fu">barplot</span>(<span class="fu">table</span>(growth<span class="sc">$</span>dose),</span>
-<span id="cb17-2"><a aria-hidden="true" tabindex="-1"></a>        <span class="at">xlab =</span> <span class="st">"Vitamin C dose (mg/day)"</span>,</span>
-<span id="cb17-3"><a aria-hidden="true" tabindex="-1"></a>        <span class="at">ylab =</span> <span class="st">"Animals"</span>, <span class="at">col =</span> <span class="st">"#56B4E9"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a aria-hidden="true" tabindex="-1"></a><span class="fu">barplot</span>(<span class="fu">table</span>(growth<span class="sc">$</span>dose),</span>
+<span id="cb19-2"><a aria-hidden="true" tabindex="-1"></a>        <span class="at">xlab =</span> <span class="st">"Vitamin C dose (mg/day)"</span>,</span>
+<span id="cb19-3"><a aria-hidden="true" tabindex="-1"></a>        <span class="at">ylab =</span> <span class="st">"Animals"</span>, <span class="at">col =</span> <span class="st">"#56B4E9"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output-display">
 <div>
 <figure>
@@ -786,11 +777,11 @@
 <div class="tab-content">
 <div id="tabset-4-1">
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(growth, <span class="fu">aes</span>(<span class="at">x =</span> <span class="fu">factor</span>(dose), <span class="at">y =</span> len,</span>
-<span id="cb18-2"><a aria-hidden="true" tabindex="-1"></a>                   <span class="at">fill =</span> supp)) <span class="sc">+</span></span>
-<span id="cb18-3"><a aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_boxplot</span>() <span class="sc">+</span></span>
-<span id="cb18-4"><a aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">"Vitamin C dose (mg/day)"</span>,</span>
-<span id="cb18-5"><a aria-hidden="true" tabindex="-1"></a>       <span class="at">y =</span> <span class="st">"Odontoblast length"</span>, <span class="at">fill =</span> <span class="st">"Method"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(growth, <span class="fu">aes</span>(<span class="at">x =</span> <span class="fu">factor</span>(dose), <span class="at">y =</span> len,</span>
+<span id="cb20-2"><a aria-hidden="true" tabindex="-1"></a>                   <span class="at">fill =</span> supp)) <span class="sc">+</span></span>
+<span id="cb20-3"><a aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_boxplot</span>() <span class="sc">+</span></span>
+<span id="cb20-4"><a aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">"Vitamin C dose (mg/day)"</span>,</span>
+<span id="cb20-5"><a aria-hidden="true" tabindex="-1"></a>       <span class="at">y =</span> <span class="st">"Odontoblast length"</span>, <span class="at">fill =</span> <span class="st">"Method"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output-display">
 <div>
 <figure>
@@ -802,60 +793,14 @@
 </div>
 <div id="tabset-4-2">
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a aria-hidden="true" tabindex="-1"></a><span class="fu">boxplot</span>(len <span class="sc">~</span> supp <span class="sc">+</span> dose, <span class="at">data =</span> growth,</span>
-<span id="cb19-2"><a aria-hidden="true" tabindex="-1"></a>        <span class="at">xlab =</span> <span class="st">"Method and dose (mg/day)"</span>,</span>
-<span id="cb19-3"><a aria-hidden="true" tabindex="-1"></a>        <span class="at">ylab =</span> <span class="st">"Odontoblast length"</span>,</span>
-<span id="cb19-4"><a aria-hidden="true" tabindex="-1"></a>        <span class="at">col =</span> <span class="fu">c</span>(<span class="st">"#A6D7ED"</span>, <span class="st">"#F4BA9B"</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a aria-hidden="true" tabindex="-1"></a><span class="fu">boxplot</span>(len <span class="sc">~</span> supp <span class="sc">+</span> dose, <span class="at">data =</span> growth,</span>
+<span id="cb21-2"><a aria-hidden="true" tabindex="-1"></a>        <span class="at">xlab =</span> <span class="st">"Method and dose (mg/day)"</span>,</span>
+<span id="cb21-3"><a aria-hidden="true" tabindex="-1"></a>        <span class="at">ylab =</span> <span class="st">"Odontoblast length"</span>,</span>
+<span id="cb21-4"><a aria-hidden="true" tabindex="-1"></a>        <span class="at">col =</span> <span class="fu">c</span>(<span class="st">"#A6D7ED"</span>, <span class="st">"#F4BA9B"</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output-display">
 <div>
 <figure>
 <p><img data-src="index_files/figure-revealjs/compare-base-boxplot-1.png" alt="Base R boxplots for each dose and delivery method." width="576"></p>
-</figure>
-</div>
-</div>
-</div>
-</div>
-</div>
-</div>
-</section>
-<section id="gg-facets" class="slide level2 plot-example wide-code" data-background-image="./templateassets/triangledb.svg">
-<h2>Facets share a scale</h2>
-<p>Show one delivery method per panel. The default shared y scale makes the panels comparable.</p>
-<div class="panel-tabset">
-<ul id="tabset-5" class="panel-tabset-tabby"><li><a data-tabby-default="" href="#tabset-5-1">ggplot2</a></li><li><a href="#tabset-5-2">Base R</a></li></ul>
-<div class="tab-content">
-<div id="tabset-5-1">
-<div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(growth,</span>
-<span id="cb20-2"><a aria-hidden="true" tabindex="-1"></a>       <span class="fu">aes</span>(<span class="at">x =</span> <span class="fu">factor</span>(dose), <span class="at">y =</span> len)) <span class="sc">+</span></span>
-<span id="cb20-3"><a aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_boxplot</span>(<span class="at">fill =</span> <span class="st">"#A6D7ED"</span>) <span class="sc">+</span></span>
-<span id="cb20-4"><a aria-hidden="true" tabindex="-1"></a>  <span class="fu">facet_wrap</span>(<span class="sc">~</span> supp) <span class="sc">+</span></span>
-<span id="cb20-5"><a aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">"Vitamin C dose (mg/day)"</span>,</span>
-<span id="cb20-6"><a aria-hidden="true" tabindex="-1"></a>       <span class="at">y =</span> <span class="st">"Odontoblast length"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output-display">
-<div>
-<figure>
-<p><img data-src="index_files/figure-revealjs/gg-facets-1.png" alt="Separate panels for orange juice and ascorbic acid boxplots on a common scale." width="576"></p>
-</figure>
-</div>
-</div>
-</div>
-</div>
-<div id="tabset-5-2">
-<div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a aria-hidden="true" tabindex="-1"></a>old <span class="ot">&lt;-</span> <span class="fu">par</span>(<span class="at">no.readonly =</span> <span class="cn">TRUE</span>)</span>
-<span id="cb21-2"><a aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow =</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>), <span class="at">mar =</span> <span class="fu">c</span>(<span class="dv">4</span>, <span class="dv">4</span>, <span class="dv">2</span>, <span class="dv">1</span>), <span class="at">las =</span> <span class="dv">1</span>)</span>
-<span id="cb21-3"><a aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (method <span class="cf">in</span> <span class="fu">c</span>(<span class="st">"OJ"</span>, <span class="st">"VC"</span>)) {</span>
-<span id="cb21-4"><a aria-hidden="true" tabindex="-1"></a>  group <span class="ot">&lt;-</span> <span class="fu">subset</span>(growth, supp <span class="sc">==</span> method)</span>
-<span id="cb21-5"><a aria-hidden="true" tabindex="-1"></a>  <span class="fu">boxplot</span>(len <span class="sc">~</span> dose, <span class="at">data =</span> group,</span>
-<span id="cb21-6"><a aria-hidden="true" tabindex="-1"></a>          <span class="at">main =</span> method, <span class="at">ylim =</span> <span class="fu">range</span>(growth<span class="sc">$</span>len),</span>
-<span id="cb21-7"><a aria-hidden="true" tabindex="-1"></a>          <span class="at">xlab =</span> <span class="st">"Dose (mg/day)"</span>, <span class="at">ylab =</span> <span class="st">"Length"</span>)</span>
-<span id="cb21-8"><a aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb21-9"><a aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(old)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output-display">
-<div>
-<figure>
-<p><img data-src="index_files/figure-revealjs/compare-base-panels-1.png" alt="Base R side-by-side boxplots on a common y scale." width="576"></p>
 </figure>
 </div>
 </div>
@@ -873,12 +818,9 @@
 <span id="cb22-3"><a aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(means, <span class="fu">aes</span>(<span class="at">x =</span> supp, <span class="at">y =</span> <span class="fu">factor</span>(dose),</span>
 <span id="cb22-4"><a aria-hidden="true" tabindex="-1"></a>                  <span class="at">fill =</span> len)) <span class="sc">+</span></span>
 <span id="cb22-5"><a aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_tile</span>(<span class="at">colour =</span> <span class="st">"white"</span>) <span class="sc">+</span></span>
-<span id="cb22-6"><a aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_text</span>(<span class="fu">aes</span>(<span class="at">label =</span> <span class="fu">round</span>(len, <span class="dv">1</span>)),</span>
-<span id="cb22-7"><a aria-hidden="true" tabindex="-1"></a>            <span class="at">colour =</span> <span class="st">"white"</span>) <span class="sc">+</span></span>
-<span id="cb22-8"><a aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_fill_gradient</span>(<span class="at">low =</span> <span class="st">"#315E85"</span>,</span>
-<span id="cb22-9"><a aria-hidden="true" tabindex="-1"></a>                      <span class="at">high =</span> <span class="st">"#113045"</span>) <span class="sc">+</span></span>
-<span id="cb22-10"><a aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">"Delivery method"</span>, <span class="at">y =</span> <span class="st">"Dose (mg/day)"</span>,</span>
-<span id="cb22-11"><a aria-hidden="true" tabindex="-1"></a>       <span class="at">fill =</span> <span class="st">"Mean length"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb22-6"><a aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_label</span>(<span class="fu">aes</span>(<span class="at">label =</span> <span class="fu">round</span>(len, <span class="dv">1</span>)), <span class="at">fill =</span> <span class="st">"white"</span>) <span class="sc">+</span></span>
+<span id="cb22-7"><a aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">"Delivery method"</span>, <span class="at">y =</span> <span class="st">"Dose (mg/day)"</span>,</span>
+<span id="cb22-8"><a aria-hidden="true" tabindex="-1"></a>       <span class="at">fill =</span> <span class="st">"Mean length"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output-display">
 <div>
 <figure>
@@ -888,20 +830,69 @@
 </div>
 </div>
 </section>
+<section id="gg-facets" class="slide level2 plot-example" data-background-image="./templateassets/triangledb.svg">
+<h2>Facets share a scale</h2>
+<p>Compare methods within each dose on a shared y scale.</p>
+<div class="panel-tabset">
+<ul id="tabset-5" class="panel-tabset-tabby"><li><a data-tabby-default="" href="#tabset-5-1">ggplot2</a></li><li><a href="#tabset-5-2">Base R</a></li></ul>
+<div class="tab-content">
+<div id="tabset-5-1">
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb23"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(growth, <span class="fu">aes</span>(<span class="at">x =</span> supp, <span class="at">y =</span> len)) <span class="sc">+</span></span>
+<span id="cb23-2"><a aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_boxplot</span>(<span class="at">fill =</span> <span class="st">"#A6D7ED"</span>) <span class="sc">+</span></span>
+<span id="cb23-3"><a aria-hidden="true" tabindex="-1"></a>  <span class="fu">facet_wrap</span>(<span class="sc">~</span> dose, <span class="at">nrow =</span> <span class="dv">1</span>, <span class="at">labeller =</span> label_both) <span class="sc">+</span></span>
+<span id="cb23-4"><a aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">"Delivery method"</span>, <span class="at">y =</span> <span class="st">"Odontoblast length"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output-display">
+<div>
+<figure>
+<p><img data-src="index_files/figure-revealjs/gg-facets-1.png" alt="Three panels compare orange juice and ascorbic acid at each vitamin C dose. All panels use the same y scale." width="960"></p>
+</figure>
+</div>
+</div>
+</div>
+</div>
+<div id="tabset-5-2">
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb24"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a aria-hidden="true" tabindex="-1"></a>old <span class="ot">&lt;-</span> <span class="fu">par</span>(<span class="at">no.readonly =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb24-2"><a aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow =</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">3</span>), <span class="at">mar =</span> <span class="fu">c</span>(<span class="fl">4.2</span>, <span class="dv">4</span>, <span class="dv">2</span>, <span class="dv">1</span>))</span>
+<span id="cb24-3"><a aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (amount <span class="cf">in</span> <span class="fu">sort</span>(<span class="fu">unique</span>(growth<span class="sc">$</span>dose))) {</span>
+<span id="cb24-4"><a aria-hidden="true" tabindex="-1"></a>  <span class="fu">boxplot</span>(len <span class="sc">~</span> supp, <span class="at">data =</span> <span class="fu">subset</span>(growth, dose <span class="sc">==</span> amount),</span>
+<span id="cb24-5"><a aria-hidden="true" tabindex="-1"></a>          <span class="at">main =</span> <span class="fu">paste</span>(amount, <span class="st">"mg/day"</span>), <span class="at">ylim =</span> <span class="fu">range</span>(growth<span class="sc">$</span>len),</span>
+<span id="cb24-6"><a aria-hidden="true" tabindex="-1"></a>          <span class="at">xlab =</span> <span class="st">"Delivery method"</span>, <span class="at">ylab =</span> <span class="st">"Odontoblast length"</span>)</span>
+<span id="cb24-7"><a aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb24-8"><a aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(old)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output-display">
+<div>
+<figure>
+<p><img data-src="index_files/figure-revealjs/compare-base-panels-1.png" alt="Base R boxplots compare the two delivery methods in three dose panels with the same y limits." width="960"></p>
+</figure>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
 <section id="gg-scales" class="slide level2 plot-example wide-code" data-background-image="./templateassets/triangledb.svg">
 <h2>Scales, axes and guides</h2>
-<p>A mapping says which variable controls colour. The scale chooses the colours and sets the legend labels.</p>
+<ul>
+<li>Scale can be changed for each Aesthetic with corresponding <code>scale_...</code>
+<ul>
+<li>A mapping says which variable controls colour.</li>
+<li>The scale chooses the colours and sets the legend labels.</li>
+</ul></li>
+</ul>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb23"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a aria-hidden="true" tabindex="-1"></a>method_labels <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"Orange juice"</span>,</span>
-<span id="cb23-2"><a aria-hidden="true" tabindex="-1"></a>                   <span class="st">"Ascorbic acid"</span>)</span>
-<span id="cb23-3"><a aria-hidden="true" tabindex="-1"></a>p_scaled <span class="ot">&lt;-</span> p <span class="sc">+</span></span>
-<span id="cb23-4"><a aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_x_continuous</span>(<span class="at">breaks =</span> <span class="fu">c</span>(<span class="fl">0.5</span>, <span class="dv">1</span>, <span class="dv">2</span>)) <span class="sc">+</span></span>
-<span id="cb23-5"><a aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_colour_manual</span>(</span>
-<span id="cb23-6"><a aria-hidden="true" tabindex="-1"></a>    <span class="at">values =</span> <span class="fu">c</span>(<span class="at">OJ =</span> <span class="st">"#0072B2"</span>, <span class="at">VC =</span> <span class="st">"#D55E00"</span>),</span>
-<span id="cb23-7"><a aria-hidden="true" tabindex="-1"></a>    <span class="at">labels =</span> method_labels</span>
-<span id="cb23-8"><a aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
-<span id="cb23-9"><a aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_shape_discrete</span>(<span class="at">labels =</span> method_labels)</span>
-<span id="cb23-10"><a aria-hidden="true" tabindex="-1"></a>p_scaled</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb25"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a aria-hidden="true" tabindex="-1"></a>method_labels <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"Orange juice"</span>,</span>
+<span id="cb25-2"><a aria-hidden="true" tabindex="-1"></a>                   <span class="st">"Ascorbic acid"</span>)</span>
+<span id="cb25-3"><a aria-hidden="true" tabindex="-1"></a>p_scaled <span class="ot">&lt;-</span> p <span class="sc">+</span></span>
+<span id="cb25-4"><a aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_x_continuous</span>(<span class="at">breaks =</span> <span class="fu">c</span>(<span class="fl">0.5</span>, <span class="dv">1</span>, <span class="dv">2</span>)) <span class="sc">+</span></span>
+<span id="cb25-5"><a aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_colour_manual</span>(</span>
+<span id="cb25-6"><a aria-hidden="true" tabindex="-1"></a>    <span class="at">values =</span> <span class="fu">c</span>(<span class="at">OJ =</span> <span class="st">"#0072B2"</span>, <span class="at">VC =</span> <span class="st">"#D55E00"</span>),</span>
+<span id="cb25-7"><a aria-hidden="true" tabindex="-1"></a>    <span class="at">labels =</span> method_labels</span>
+<span id="cb25-8"><a aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
+<span id="cb25-9"><a aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_shape_discrete</span>(<span class="at">labels =</span> method_labels)</span>
+<span id="cb25-10"><a aria-hidden="true" tabindex="-1"></a>p_scaled</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output-display">
 <div>
 <figure>
@@ -915,10 +906,10 @@
 <h2>Themes</h2>
 <p>Use a theme to change the background, text size and legend position.</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb24"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a aria-hidden="true" tabindex="-1"></a>p_final <span class="ot">&lt;-</span> p_scaled <span class="sc">+</span></span>
-<span id="cb24-2"><a aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_classic</span>(<span class="at">base_size =</span> <span class="dv">14</span>) <span class="sc">+</span></span>
-<span id="cb24-3"><a aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">legend.position =</span> <span class="st">"bottom"</span>)</span>
-<span id="cb24-4"><a aria-hidden="true" tabindex="-1"></a>p_final</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb26"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a aria-hidden="true" tabindex="-1"></a>p_final <span class="ot">&lt;-</span> p_scaled <span class="sc">+</span></span>
+<span id="cb26-2"><a aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_classic</span>(<span class="at">base_size =</span> <span class="dv">14</span>) <span class="sc">+</span></span>
+<span id="cb26-3"><a aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">legend.position =</span> <span class="st">"bottom"</span>)</span>
+<span id="cb26-4"><a aria-hidden="true" tabindex="-1"></a>p_final</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output-display">
 <div>
 <figure>
@@ -931,8 +922,8 @@
 <section id="gg-save" class="slide level2" data-background-image="./templateassets/triangledb.svg">
 <h2>Saving a figure</h2>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb25"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a aria-hidden="true" tabindex="-1"></a><span class="fu">ggsave</span>(<span class="st">"dose-response.png"</span>, <span class="at">plot =</span> p_final,</span>
-<span id="cb25-2"><a aria-hidden="true" tabindex="-1"></a>       <span class="at">width =</span> <span class="dv">7</span>, <span class="at">height =</span> <span class="dv">4</span>, <span class="at">units =</span> <span class="st">"in"</span>, <span class="at">dpi =</span> <span class="dv">300</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb27"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a aria-hidden="true" tabindex="-1"></a><span class="fu">ggsave</span>(<span class="st">"dose-response.png"</span>, <span class="at">plot =</span> p_final,</span>
+<span id="cb27-2"><a aria-hidden="true" tabindex="-1"></a>       <span class="at">width =</span> <span class="dv">7</span>, <span class="at">height =</span> <span class="dv">4</span>, <span class="at">units =</span> <span class="st">"in"</span>, <span class="at">dpi =</span> <span class="dv">300</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>Pass the plot object explicitly. The filename extension chooses the file format. Use PDF or SVG when you need scalable graphics.</p>
 </section>
@@ -1026,11 +1017,11 @@
 <h2>Plotting the reshaped data</h2>
 <p>Now ggplot2 can draw a separate line for each sex group on the same date axis.</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb26"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(deaths,</span>
-<span id="cb26-2"><a aria-hidden="true" tabindex="-1"></a>       <span class="fu">aes</span>(month, count, <span class="at">colour =</span> sex)) <span class="sc">+</span></span>
-<span id="cb26-3"><a aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>() <span class="sc">+</span></span>
-<span id="cb26-4"><a aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">"Month"</span>, <span class="at">y =</span> <span class="st">"Deaths"</span>,</span>
-<span id="cb26-5"><a aria-hidden="true" tabindex="-1"></a>       <span class="at">colour =</span> <span class="st">"Sex"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb28"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(deaths,</span>
+<span id="cb28-2"><a aria-hidden="true" tabindex="-1"></a>       <span class="fu">aes</span>(month, count, <span class="at">colour =</span> sex)) <span class="sc">+</span></span>
+<span id="cb28-3"><a aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>() <span class="sc">+</span></span>
+<span id="cb28-4"><a aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">"Month"</span>, <span class="at">y =</span> <span class="st">"Deaths"</span>,</span>
+<span id="cb28-5"><a aria-hidden="true" tabindex="-1"></a>       <span class="at">colour =</span> <span class="st">"Sex"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output-display">
 <div>
 <figure>
@@ -1039,6 +1030,16 @@
 </div>
 </div>
 </div>
+</section>
+<section id="saving-ggplots" class="slide level2" data-background="./_extensions/emc/www/triangle1.svg">
+<h2>Saving ggplots</h2>
+<ul>
+<li>Save plot with <code>ggsave()</code> function
+<ul>
+<li>Enter plot object and file to save <code>ggsave(p, "myplot.png")</code></li>
+<li>Possible file extensions: “eps”, “ps”, “tex”, “pdf”, “jpeg”, “tiff”, “png”, “bmp”, “svg” or “wmf”</li>
+</ul></li>
+</ul>
 </section>
 <section id="gg-extension" class="slide level2" data-background-image="./templateassets/triangledb.svg">
 <h2>References and extensions</h2>
@@ -1351,7 +1352,7 @@
         });
         const isCodeAnnotation = (el) => {
           for (const clz of el.classList) {
-            if (clz.startsWith('code-annotation-')) {
+            if (clz.startsWith('code-annotation-')) {                     
               return true;
             }
           }
@@ -1371,11 +1372,11 @@
             button.setAttribute("data-bs-toggle", "tooltip");
             button.setAttribute("data-bs-placement", "left");
             button.setAttribute("data-bs-title", "Copied!");
-            tooltip = new bootstrap.Tooltip(button,
-              { trigger: "manual",
+            tooltip = new bootstrap.Tooltip(button, 
+              { trigger: "manual", 
                 customClass: "code-copy-button-tooltip",
                 offset: [0, -8]});
-            tooltip.show();
+            tooltip.show();    
           }
           setTimeout(function() {
             if (tooltip) {
@@ -1454,7 +1455,7 @@
           }
             config['offset'] = [0,0];
             config['maxWidth'] = 700;
-          window.tippy(el, config);
+          window.tippy(el, config); 
         }
         const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
         for (var i=0; i<noterefs.length; i++) {

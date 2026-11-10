@@ -280,6 +280,22 @@ h2::after.title {
 	margin: 5px;
 }
 
+.reveal .slides .columns {
+	display: flex;
+	justify-content: space-between;
+	align-items: flex-start;
+	gap: 1rem;
+}
+
+.reveal .slides .columns > .column {
+	box-sizing: border-box;
+	margin: 0;
+}
+
+.reveal .slides .columns.equal-height {
+	align-items: stretch;
+}
+
 .column {
 	// #column;
 	// border: 2px solid red;

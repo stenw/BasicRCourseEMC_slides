@@ -9,6 +9,8 @@ format:
     toc-depth: 1
     menu: true
     slide-number: true
+    width: 1160
+    margin: 0.01
 execute:
   echo: true
 categories: [Day3]
@@ -67,10 +69,10 @@ y <- if(x >= 10) 1 else 0
 y
 ```
 
-Beware!
+With `x = 5`, the condition is false. Without an `else` branch, the expression returns `NULL`, which is assigned to `y`.
 
 ```{r}
-y <- if(x >= 10) 1 #no else
+y <- if (x >= 10) 1
 y
 ```
 
@@ -87,35 +89,6 @@ if(condition1) {
     statement2
   }
 }
-```
-
-## Decide which inputs to accept {data-background-image="./_extensions/emc/www/triangle1.svg" data-background-size="contain" data-background-position="top left"}
-
-For numeric ages, skip missing and nonpositive values. For a factor, drop the invalid code `-1`. Stop if there are no valid ages or if the input type is unsupported.
-
-```{r}
-my_descriptives <- function(x) {
-  if (is.numeric(x)) {
-    ages <- x[!is.na(x) & x > 0]
-    if (length(ages) == 0) stop("No valid ages left")
-    summary(ages)
-  } else if (is.factor(x)) {
-    table(droplevels(x[x != -1]))
-  } else {
-    stop("Expected numeric ages or a factor")
-  }
-}
-```
-
-## Try typical inputs and edge cases {data-background-image="./_extensions/emc/www/triangle1.svg" data-background-size="contain" data-background-position="top left"}
-
-Predict what each call will return or report.
-
-```{r, error=TRUE}
-my_descriptives(c(NA, -50, 42, 50))
-my_descriptives(factor(c(0, 1, -1)))
-my_descriptives(c(NA, -50))
-my_descriptives(c("42", "50"))
 ```
 
 ## Stringing multiple if else together {data-background-image="./_extensions/emc/www/triangle1.svg" data-background-size="contain" data-background-position="top left"}
@@ -142,13 +115,8 @@ whatAnimalSound("bird")
 ## if-else on a vector: The `ifelse()` Function {data-background-image="./_extensions/emc/www/triangle1.svg" data-background-size="contain" data-background-position="top left"}
 
 ```{r, error=TRUE}
-height <- c(69, 71, 67, 66, 72, 71, 61, 65, 73, 70, 68, 74)
-
-if (height > 69){
-  print("tall") 
-} else {
-  print("short")
-}
+height <- c(69, 71, 67, 66, 72, 71)
+if (height > 69) "tall" else "short"
 ```
 
 ```{r}
@@ -157,7 +125,7 @@ htCategory <- ifelse(height > 69, yes = "tall", no = "short")
 htCategory
 ```
 
-For more complicated cases we can use `apply()`
+`if` expects one condition. `ifelse()` checks each element of `height > 69` and returns one category per height.
 
 ## Terminating a function with returns, errors, and warnings {data-background-image="./_extensions/emc/www/triangle1.svg" data-background-size="contain" data-background-position="top left"}
 
@@ -185,50 +153,91 @@ Note: `return("Zero")` not reached
 
 ## Terminating Using `stop()` {data-background-image="./_extensions/emc/www/triangle1.svg" data-background-size="contain" data-background-position="top left"}
 
-An `if` condition needs one `TRUE` or `FALSE`. Check that `y` is one nonmissing number before comparing it to zero.
+Start with two single numbers. If the denominator is zero, `stop()` ends the call before division.
 
 ```{r}
 myRatio <- function(x, y) {
-  if (!is.numeric(y) || length(y) != 1 || is.na(y)) {
-    stop("y must be one nonmissing number")
-  }
-  if (y == 0) stop("Cannot divide by 0")
+  if (y == 0) stop("Cannot divide by zero")
   x / y
 }
 ```
 
-```{r, error=TRUE}
-myRatio(3, 2) # Valid input
-myRatio(3, 0) # Zero denominator
-```
-
-## Test the denominator check {data-background-image="./_extensions/emc/www/triangle1.svg" data-background-size="contain" data-background-position="top left"}
-
-Each of these inputs fails the check before R compares `y` to zero.
-
-```{r, error=TRUE}
-myRatio(3, c(1, 2))   # More than one value
-myRatio(3, numeric()) # No values
-myRatio(3, NA_real_)  # Missing value
+```{r}
+#| error: true
+myRatio(3, 2)
+myRatio(3, 0)
 ```
 
 ## Printing a Warning Message Using `warning()` {data-background-image="./_extensions/emc/www/triangle1.svg" data-background-size="contain" data-background-position="top left"}
 
 `warning()` reports a problem and lets the function continue.
 
-```{r, warning=TRUE}
-myRatio <- function(x, y) {
-  if (!is.numeric(y) || length(y) != 1 || is.na(y)) {
-    stop("y must be one nonmissing number")
-  }
-  if (y == 0) warning("Attempt made to divide by 0")
+```{r}
+myRatioWarn <- function(x, y) {
+  if (y == 0) warning("Dividing by zero")
   x / y
 }
 
-myRatio(x = 3, y = 0)
+myRatioWarn(3, 0)
 ```
 
-In this example, `3 / 0` returns `Inf` after the warning.
+The function reaches `x / y` and returns `Inf`.
+
+## Validate the denominator {data-background-image="./_extensions/emc/www/triangle1.svg" data-background-size="contain" data-background-position="top left"}
+
+Before checking for zero, verify that the denominator is one nonmissing number.
+
+```{r}
+myRatioChecked <- function(x, y) {
+  if (!is.numeric(y)) stop("y must be numeric")
+  if (length(y) != 1) stop("y must have one value")
+  if (is.na(y)) stop("y must not be missing")
+  myRatio(x, y)
+}
+```
+
+## Test the denominator check {data-background-image="./_extensions/emc/www/triangle1.svg" data-background-size="contain" data-background-position="top left"}
+
+Each call fails a different check before R compares the denominator to zero.
+
+```{r}
+#| error: true
+myRatioChecked(3, "2")
+myRatioChecked(3, c(1, 2))
+myRatioChecked(3, NA_real_)
+```
+
+## Decide which inputs to accept {data-background-image="./_extensions/emc/www/triangle1.svg" data-background-size="contain" data-background-position="top left"}
+
+Accept numeric ages. Remove missing values, then keep ages strictly above zero.
+
+```{r}
+my_descriptives <- function(x) {
+  if (!is.numeric(x)) stop("Expected numeric ages")
+  ages <- x[!is.na(x)]
+  ages <- ages[ages > 0]
+  if (length(ages) == 0) stop("No positive ages left")
+  summary(ages)
+}
+```
+
+## Try typical inputs and edge cases {data-background-image="./_extensions/emc/www/triangle1.svg" data-background-size="contain" data-background-position="top left"}
+
+Predict which call returns a summary and which calls report an error.
+
+```{r predict-ages}
+#| eval: false
+my_descriptives(c(NA, -50, 0, 42, 50))
+my_descriptives(c(NA, -50, 0))
+my_descriptives(c("42", "50"))
+```
+
+::: {.fragment}
+```{r reveal-ages, ref.label="predict-ages"}
+#| echo: false
+#| error: true
+```
+:::
 
 ## Looping {data-background-image="./_extensions/emc/www/triangle1.svg" data-background-size="contain" data-background-position="top left"}
 
@@ -251,13 +260,15 @@ next # Skip ahead to the next iteration
 
 ::: columns
 
-::: {.column style="width: 45%"}
+::: {.column width="31%"}
 ```{r}
 for(i in 1:5) {
   print(i^2)
 }
 ```
+:::
 
+::: {.column width="32%"}
 ```{r}
 i <- 1
 while(i <= 5) {
@@ -267,7 +278,7 @@ while(i <= 5) {
 ```
 :::
 
-::: {.column style="width: 45%"}
+::: {.column width="33%"}
 ```{r}
 i <- 1
 repeat {
@@ -305,19 +316,22 @@ coins <- data.frame(Coin = c("penny", "quarter", "nickel", "quarter", "dime", "p
 coins
 ```
 
-Calculate the mean of each column:
+## Why `colMeans(coins)` fails {data-background-image="./_extensions/emc/www/triangle1.svg" data-background-size="contain" data-background-position="top left"}
 
-```{r, error=TRUE}
+```{r}
+#| error: true
 colMeans(coins)
 ```
+
+`colMeans()` converts the data frame to a matrix. A matrix has one type, so the text columns cause the numbers to become text too. Select the numeric columns before taking means.
 
 ## Looping Over `data.frame` Columns {data-background-image="./_extensions/emc/www/triangle1.svg" data-background-size="contain" data-background-position="top left"}
 
 ```{r}
-means <- NULL
-for(i in 1:ncol(coins)) {
-  if (is.numeric(coins[ , i])) {
-    means <- c(means, mean(coins[ , i]))
+means <- numeric()
+for (column in names(coins)) {
+  if (is.numeric(coins[[column]])) {
+    means[column] <- mean(coins[[column]])
   }
 }
 
@@ -346,12 +360,12 @@ lengths
 
 ## Using apply functions {data-background-image="./_extensions/emc/www/triangle1.svg" data-background-size="contain" data-background-position="top left"}
 
-Applying a function to an object
+The apply family runs a function such as `mean()` repeatedly over parts of your data, without writing a loop yourself.
 
--   `apply()`
--   `lapply()`
--   `sapply()`
--   `tapply()`
+-   `apply()` works across rows or columns of a matrix.
+-   `lapply()` works on each list element and returns a list.
+-   `sapply()` does the same and combines results into a vector or matrix when possible.
+-   `tapply()` works on groups of values.
 
 ## Using apply on matrices {data-background-image="./_extensions/emc/www/triangle1.svg" data-background-size="contain" data-background-position="top left"}
 
@@ -369,35 +383,45 @@ args(apply)
 
 ## Applying a function on a matrix {data-background-image="./_extensions/emc/www/triangle1.svg" data-background-size="contain" data-background-position="top left"}
 
-```{r}
-mat <- matrix(1:25,nrow=5)
+::::: {.columns .equal-height}
 
+::: {.column width="45%"}
+The matrix
+
+```{r}
+mat <- matrix(1:25, nrow = 5)
 mat
 ```
+:::
 
-Margin 1 to apply to the rows:
+::: {.column width="50%"}
+`MARGIN = 1` gives one maximum per row.
 
 ```{r}
 apply(mat, 1, max)
 ```
 
-Margin 2 to apply to the columns:
+`MARGIN = 2` gives one maximum per column.
 
 ```{r}
 apply(mat, 2, max)
-
 ```
+:::
 
-## Applying a function to each element: {data-background-image="./_extensions/emc/www/triangle1.svg" data-background-size="contain" data-background-position="top left"}
+:::::
+
+## Applying a function to each cell {#applying-a-function-to-each-element data-background-image="./_extensions/emc/www/triangle1.svg" data-background-size="contain" data-background-position="top left"}
+
+Apply `sqrt()` to each cell.
 
 ```{r}
-apply(mat, c(1,2), sqrt)
-
+apply(mat, c(1, 2), sqrt)
 ```
 
-Remember:
+`sqrt()` also works on the whole matrix and gives the same result.
 
 ```{r}
+#| eval: false
 sqrt(mat)
 ```
 
@@ -417,26 +441,40 @@ df <- data.frame("col1"=c(1,1,1,1), "col2"=c(2,2,2,2), "col3"=c(3,3,3,3))
 lapply(df, sum)
 ```
 
-## Using lapply alternative: sapply {data-background-image="./_extensions/emc/www/triangle1.svg" data-background-size="contain" data-background-position="top left"}
+## What `sapply()` returns {#using-lapply-alternative-sapply data-background-image="./_extensions/emc/www/triangle1.svg" data-background-size="contain" data-background-position="top left"}
 
-"Simplify" lapply output:
-
-```{r}
-sapply(mylist, dim)
-```
+**A vector** when each column gives one sum.
 
 ```{r}
 sapply(df, sum)
 ```
 
+**A matrix** when each input matrix gives two dimensions. Each result becomes a column.
+
+```{r}
+sapply(mylist, dim)
+```
+
+If the results have different lengths, `sapply()` keeps them in a list.
+
+## Column means with `sapply()` {data-background-image="./_extensions/emc/www/triangle1.svg" data-background-size="contain" data-background-position="top left"}
+
+Select the numeric columns, then apply `mean()` to each one. This gives the same named results as the loop.
+
+```{r}
+numeric_columns <- sapply(coins, is.numeric)
+sapply(coins[numeric_columns], mean)
+```
+
 ## Using tapply on groups of data {data-background-image="./_extensions/emc/www/triangle1.svg" data-background-size="contain" data-background-position="top left"}
 
 ```{r}
+set.seed(42)
 patients <- data.frame("group"=paste('grp',
                           c(1,1,1,1,1,2,2,2,2,2),sep='-'), 
                        "outcome"=rnorm(10)) 
                       #10 random normally distributed values
-patients
+patients[c(1:2, 6:7), ]  # Two rows from each group
 
 tapply(patients$outcome, patients$group, mean)
 ```
@@ -444,7 +482,7 @@ tapply(patients$outcome, patients$group, mean)
 ## Multiple grouping variables possible {data-background-image="./_extensions/emc/www/triangle1.svg" data-background-size="contain" data-background-position="top left"}
 
 ```{r}
-
+set.seed(42)
 patients <- data.frame("group"=paste('grp',c(1,1,1,1,1,2,2,2,2,2),sep='-'),
                        "serotype"=c("A","B","A","B","A","B","A","B","A","B"),
                        "outcome"=rnorm(10))

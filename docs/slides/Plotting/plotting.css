@@ -72,3 +72,27 @@
 .reveal .slide-callout > p:only-child {
   margin: 0;
 }
+
+#gg-facets .cell {
+  grid-template-columns: minmax(0, 1fr);
+  gap: 0.4rem;
+}
+
+#gg-facets .cell-output-display img {
+  width: min(100%, 825px);
+  margin-inline: auto;
+}
+
+
+#gg-facets div.sourceCode pre code {
+  line-height: 1.2;
+}
+
+#gg-facets > h2,
+#gg-facets > p {
+  margin-block: 0.2em;
+}
+
+#gg-facets .panel-tabset-tabby a {
+  padding-block: 0.2em;
+}

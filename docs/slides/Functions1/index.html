@@ -220,7 +220,8 @@
 <span id="cb1-10"><a aria-label="10"></a></span>
 <span id="cb1-11"><a aria-label="11"></a><span class="fu">max</span>(<span class="fu">c</span>(<span class="dv">111</span>,<span class="dv">333</span>,<span class="dv">444</span>,<span class="dv">55</span>,<span class="dv">6</span>,<span class="dv">777</span>,<span class="dv">999</span>)) <span class="co">#Determine the maximum value of a vector</span></span>
 <span id="cb1-12"><a aria-label="12"></a></span>
-<span id="cb1-13"><a aria-label="13"></a><span class="fu">rnorm</span>(<span class="dv">10</span>) <span class="co"># Draw 10 standard normal values (mean 0, SD 1)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb1-13"><a aria-label="13"></a><span class="fu">set.seed</span>(<span class="dv">42</span>)</span>
+<span id="cb1-14"><a aria-label="14"></a><span class="fu">rnorm</span>(<span class="dv">10</span>) <span class="co"># Draw 10 standard normal values (mean 0, SD 1)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>Built-in functions in base-R :</p>
 <p><a href="https://stat.ethz.ch/R-manual/R-patched/library/base/html/00Index.html" class="uri">https://stat.ethz.ch/R-manual/R-patched/library/base/html/00Index.html</a></p>
@@ -361,9 +362,10 @@ NULL</code></pre>
 </section>
 <section id="default-return-value" class="slide level2" data-background-image="./_extensions/emc/www/triangle1.svg" data-background-size="contain" data-background-position="top left">
 <h2>Default return value</h2>
+<p>Without an explicit <code>return()</code>, R returns the value of the last expression it evaluates.</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb34"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb34-1"><a aria-label="1"></a>mean_xy_2 <span class="ot">&lt;-</span> <span class="cf">function</span>(x, y){</span>
-<span id="cb34-2"><a aria-label="2"></a>  z <span class="ot">&lt;-</span> (x <span class="sc">+</span> y)<span class="sc">/</span><span class="dv">2</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb34"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb34-1"><a aria-label="1"></a>mean_xy_2 <span class="ot">&lt;-</span> <span class="cf">function</span>(x, y) {</span>
+<span id="cb34-2"><a aria-label="2"></a>  z <span class="ot">&lt;-</span> (x <span class="sc">+</span> y) <span class="sc">/</span> <span class="dv">2</span></span>
 <span id="cb34-3"><a aria-label="3"></a>  x</span>
 <span id="cb34-4"><a aria-label="4"></a>  z</span>
 <span id="cb34-5"><a aria-label="5"></a>}</span>
@@ -373,37 +375,24 @@ NULL</code></pre>
 <pre><code>[1] 2</code></pre>
 </div>
 </div>
-<p>x is not returned!</p>
-<div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb36"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb36-1"><a aria-label="1"></a>mean_xy_3 <span class="ot">&lt;-</span> <span class="cf">function</span>(x, y){</span>
-<span id="cb36-2"><a aria-label="2"></a>  z <span class="ot">&lt;-</span> x <span class="sc">+</span> y </span>
-<span id="cb36-3"><a aria-label="3"></a>  <span class="fu">return</span>(x)</span>
-<span id="cb36-4"><a aria-label="4"></a>  z</span>
-<span id="cb36-5"><a aria-label="5"></a>}</span>
-<span id="cb36-6"><a aria-label="6"></a></span>
-<span id="cb36-7"><a aria-label="7"></a><span class="fu">mean_xy_3</span>(<span class="at">x =</span> <span class="dv">1</span>, <span class="at">y =</span> <span class="dv">3</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] 1</code></pre>
-</div>
-</div>
-<p>z is not returned!</p>
+<p>Here the last expression is <code>z</code>, so the function returns 2.</p>
 </section>
 <section id="function-with-multiple-input-values" class="slide level2" data-background-image="./_extensions/emc/www/triangle1.svg" data-background-size="contain" data-background-position="top left">
 <h2>Function with multiple input values</h2>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb38"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb38-1"><a aria-label="1"></a>mean_vector <span class="ot">&lt;-</span> <span class="cf">function</span>(...){ </span>
-<span id="cb38-2"><a aria-label="2"></a>  z <span class="ot">&lt;-</span> <span class="fu">mean</span>(<span class="fu">c</span>(...))</span>
-<span id="cb38-3"><a aria-label="3"></a>  <span class="fu">return</span>(z)</span>
-<span id="cb38-4"><a aria-label="4"></a>} </span>
-<span id="cb38-5"><a aria-label="5"></a></span>
-<span id="cb38-6"><a aria-label="6"></a><span class="fu">mean_vector</span>(<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb36"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb36-1"><a aria-label="1"></a>mean_vector <span class="ot">&lt;-</span> <span class="cf">function</span>(...){ </span>
+<span id="cb36-2"><a aria-label="2"></a>  z <span class="ot">&lt;-</span> <span class="fu">mean</span>(<span class="fu">c</span>(...))</span>
+<span id="cb36-3"><a aria-label="3"></a>  <span class="fu">return</span>(z)</span>
+<span id="cb36-4"><a aria-label="4"></a>} </span>
+<span id="cb36-5"><a aria-label="5"></a></span>
+<span id="cb36-6"><a aria-label="6"></a><span class="fu">mean_vector</span>(<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 2</code></pre>
 </div>
 </div>
 <p>No limit to number of inputs:</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb40"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb40-1"><a aria-label="1"></a><span class="fu">mean_vector</span>(<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>,<span class="dv">4</span>,<span class="dv">5</span>,<span class="dv">6</span>,<span class="dv">7</span>,<span class="dv">8</span>,<span class="dv">9</span>,<span class="dv">10</span>) </span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb38"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb38-1"><a aria-label="1"></a><span class="fu">mean_vector</span>(<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>,<span class="dv">4</span>,<span class="dv">5</span>,<span class="dv">6</span>,<span class="dv">7</span>,<span class="dv">8</span>,<span class="dv">9</span>,<span class="dv">10</span>) </span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 5.5</code></pre>
 </div>
@@ -412,12 +401,12 @@ NULL</code></pre>
 <section id="vector-as-an-input-to-a-function" class="slide level2" data-background-image="./_extensions/emc/www/triangle1.svg" data-background-size="contain" data-background-position="top left">
 <h2>Vector as an input to a function</h2>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb42"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb42-1"><a aria-label="1"></a>mean_x <span class="ot">&lt;-</span> <span class="cf">function</span>(x){ </span>
-<span id="cb42-2"><a aria-label="2"></a>  z <span class="ot">&lt;-</span> <span class="fu">mean</span>(x)</span>
-<span id="cb42-3"><a aria-label="3"></a>  <span class="fu">return</span>(z)</span>
-<span id="cb42-4"><a aria-label="4"></a>} </span>
-<span id="cb42-5"><a aria-label="5"></a>x <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>,<span class="dv">4</span>,<span class="dv">5</span>)</span>
-<span id="cb42-6"><a aria-label="6"></a><span class="fu">mean_x</span>(x)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb40"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb40-1"><a aria-label="1"></a>mean_x <span class="ot">&lt;-</span> <span class="cf">function</span>(x){ </span>
+<span id="cb40-2"><a aria-label="2"></a>  z <span class="ot">&lt;-</span> <span class="fu">mean</span>(x)</span>
+<span id="cb40-3"><a aria-label="3"></a>  <span class="fu">return</span>(z)</span>
+<span id="cb40-4"><a aria-label="4"></a>} </span>
+<span id="cb40-5"><a aria-label="5"></a>x <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>,<span class="dv">4</span>,<span class="dv">5</span>)</span>
+<span id="cb40-6"><a aria-label="6"></a><span class="fu">mean_x</span>(x)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 3</code></pre>
 </div>
@@ -425,20 +414,20 @@ NULL</code></pre>
 </section>
 <section id="build-a-custom-function-to-clean-data" class="slide level2" data-background-image="./_extensions/emc/www/triangle1.svg" data-background-size="contain" data-background-position="top left">
 <h2>Build a custom function to clean data</h2>
-<p>Calculate mean of only the positive values (data cleaning)</p>
+<p>Calculate the mean of the strictly positive ages. The filter excludes zero.</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb44"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb44-1"><a aria-label="1"></a>my_descriptives <span class="ot">&lt;-</span> <span class="cf">function</span>(x){</span>
-<span id="cb44-2"><a aria-label="2"></a>  x.trim <span class="ot">&lt;-</span> x[x <span class="sc">&gt;=</span> <span class="dv">0</span>]</span>
-<span id="cb44-3"><a aria-label="3"></a>  out <span class="ot">&lt;-</span> <span class="fu">mean</span>(x.trim)</span>
-<span id="cb44-4"><a aria-label="4"></a>  <span class="fu">return</span>(out)</span>
-<span id="cb44-5"><a aria-label="5"></a>}</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb42"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb42-1"><a aria-label="1"></a>my_descriptives <span class="ot">&lt;-</span> <span class="cf">function</span>(x){</span>
+<span id="cb42-2"><a aria-label="2"></a>  x.trim <span class="ot">&lt;-</span> x[x <span class="sc">&gt;</span> <span class="dv">0</span>]</span>
+<span id="cb42-3"><a aria-label="3"></a>  out <span class="ot">&lt;-</span> <span class="fu">mean</span>(x.trim)</span>
+<span id="cb42-4"><a aria-label="4"></a>  <span class="fu">return</span>(out)</span>
+<span id="cb42-5"><a aria-label="5"></a>}</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>Patient data:</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb45"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb45-1"><a aria-label="1"></a>data<span class="sc">$</span>Ages</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb43"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb43-1"><a aria-label="1"></a>data<span class="sc">$</span>Ages</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
-<pre><code> [1]  45  43  52  45  51  36  56  26  49  42  39  59  45  45  44 -50  49  57  36
-[20]  61  56  48  42  52  54</code></pre>
+<pre><code> [1]  59  39  49  51  49  44  60  44  65  44  58  68  31  42  44 -50  51  42  18
+[20]  21  58  42  27  43  57</code></pre>
 </div>
 </div>
 <p>-50 is clearly wrong</p>
@@ -446,32 +435,32 @@ NULL</code></pre>
 <section id="build-a-custom-function-to-clean-data-1" class="slide level2" data-background-image="./_extensions/emc/www/triangle1.svg" data-background-size="contain" data-background-position="top left">
 <h2>Build a custom function to clean data</h2>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb47"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb47-1"><a aria-label="1"></a><span class="fu">my_descriptives</span>(data<span class="sc">$</span>Ages)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb45"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb45-1"><a aria-label="1"></a><span class="fu">my_descriptives</span>(data<span class="sc">$</span>Ages)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] 47.16667</code></pre>
+<pre><code>[1] 46.08333</code></pre>
 </div>
 </div>
 <p>In stead of:</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb49"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb49-1"><a aria-label="1"></a><span class="fu">mean</span>(data<span class="sc">$</span>Ages)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb47"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb47-1"><a aria-label="1"></a><span class="fu">mean</span>(data<span class="sc">$</span>Ages)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] 43.28</code></pre>
+<pre><code>[1] 42.24</code></pre>
 </div>
 </div>
 </section>
 <section id="returning-vectors" class="slide level2" data-background-image="./_extensions/emc/www/triangle1.svg" data-background-size="contain" data-background-position="top left">
 <h2>Returning vectors</h2>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb51"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb51-1"><a aria-label="1"></a>my_descriptives <span class="ot">&lt;-</span> <span class="cf">function</span>(x){</span>
-<span id="cb51-2"><a aria-label="2"></a>  x.trim <span class="ot">&lt;-</span> x[x<span class="sc">&gt;=</span><span class="dv">0</span>]</span>
-<span id="cb51-3"><a aria-label="3"></a>  out <span class="ot">&lt;-</span> <span class="fu">summary</span>(x.trim)</span>
-<span id="cb51-4"><a aria-label="4"></a>  <span class="fu">return</span>(out)</span>
-<span id="cb51-5"><a aria-label="5"></a>}</span>
-<span id="cb51-6"><a aria-label="6"></a></span>
-<span id="cb51-7"><a aria-label="7"></a><span class="fu">my_descriptives</span>(data<span class="sc">$</span>Ages)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb49"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb49-1"><a aria-label="1"></a>my_descriptives <span class="ot">&lt;-</span> <span class="cf">function</span>(x){</span>
+<span id="cb49-2"><a aria-label="2"></a>  x.trim <span class="ot">&lt;-</span> x[x <span class="sc">&gt;</span> <span class="dv">0</span>]</span>
+<span id="cb49-3"><a aria-label="3"></a>  out <span class="ot">&lt;-</span> <span class="fu">summary</span>(x.trim)</span>
+<span id="cb49-4"><a aria-label="4"></a>  <span class="fu">return</span>(out)</span>
+<span id="cb49-5"><a aria-label="5"></a>}</span>
+<span id="cb49-6"><a aria-label="6"></a></span>
+<span id="cb49-7"><a aria-label="7"></a><span class="fu">my_descriptives</span>(data<span class="sc">$</span>Ages)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>   Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
-  26.00   42.75   46.50   47.17   52.50   61.00 </code></pre>
+  18.00   42.00   44.00   46.08   57.25   68.00 </code></pre>
 </div>
 </div>
 </section>
@@ -479,14 +468,14 @@ NULL</code></pre>
 <h2>Returning multiple values</h2>
 <p>It is not possible to use <code>return(x,y)</code></p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb53"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb53-1"><a aria-label="1"></a>my_descriptives2_wrong <span class="ot">&lt;-</span> <span class="cf">function</span>(x){</span>
-<span id="cb53-2"><a aria-label="2"></a>  x.trim <span class="ot">&lt;-</span> x[x<span class="sc">&gt;</span><span class="dv">0</span>]</span>
-<span id="cb53-3"><a aria-label="3"></a>  below0 <span class="ot">&lt;-</span> <span class="fu">sum</span>(x<span class="sc">&lt;</span><span class="dv">0</span>)</span>
-<span id="cb53-4"><a aria-label="4"></a>  meanX <span class="ot">&lt;-</span> <span class="fu">mean</span>(x.trim)</span>
-<span id="cb53-5"><a aria-label="5"></a>  <span class="fu">return</span>(below0, meanX)</span>
-<span id="cb53-6"><a aria-label="6"></a>}</span>
-<span id="cb53-7"><a aria-label="7"></a></span>
-<span id="cb53-8"><a aria-label="8"></a><span class="fu">my_descriptives2_wrong</span>(data<span class="sc">$</span>Ages)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb51"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb51-1"><a aria-label="1"></a>my_descriptives2_wrong <span class="ot">&lt;-</span> <span class="cf">function</span>(x){</span>
+<span id="cb51-2"><a aria-label="2"></a>  x.trim <span class="ot">&lt;-</span> x[x<span class="sc">&gt;</span><span class="dv">0</span>]</span>
+<span id="cb51-3"><a aria-label="3"></a>  below0 <span class="ot">&lt;-</span> <span class="fu">sum</span>(x<span class="sc">&lt;</span><span class="dv">0</span>)</span>
+<span id="cb51-4"><a aria-label="4"></a>  meanX <span class="ot">&lt;-</span> <span class="fu">mean</span>(x.trim)</span>
+<span id="cb51-5"><a aria-label="5"></a>  <span class="fu">return</span>(below0, meanX)</span>
+<span id="cb51-6"><a aria-label="6"></a>}</span>
+<span id="cb51-7"><a aria-label="7"></a></span>
+<span id="cb51-8"><a aria-label="8"></a><span class="fu">my_descriptives2_wrong</span>(data<span class="sc">$</span>Ages)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-error">
 <pre><code>Error in `return()`:
 ! multi-argument returns are not permitted</code></pre>
@@ -495,22 +484,22 @@ NULL</code></pre>
 </section>
 <section id="returning-multiple-values-1" class="slide level2" data-background-image="./_extensions/emc/www/triangle1.svg" data-background-size="contain" data-background-position="top left">
 <h2>Returning multiple values</h2>
-<p>To return multiple values we use: <code>return(c(x,y))</code> or <code>return(list(x,y))</code></p>
+<p>Return a named list so each result has a label.</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb55"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb55-1"><a aria-label="1"></a>my_descriptives2 <span class="ot">&lt;-</span> <span class="cf">function</span>(x){</span>
-<span id="cb55-2"><a aria-label="2"></a>  x.trim <span class="ot">&lt;-</span> x[x<span class="sc">&gt;</span><span class="dv">0</span>]</span>
-<span id="cb55-3"><a aria-label="3"></a>  below0 <span class="ot">&lt;-</span> <span class="fu">sum</span>(x<span class="sc">&lt;</span><span class="dv">0</span>)</span>
-<span id="cb55-4"><a aria-label="4"></a>  meanX <span class="ot">&lt;-</span> <span class="fu">mean</span>(x.trim)</span>
-<span id="cb55-5"><a aria-label="5"></a>  <span class="fu">return</span>(<span class="fu">list</span>(below0, meanX))</span>
-<span id="cb55-6"><a aria-label="6"></a>}</span>
-<span id="cb55-7"><a aria-label="7"></a></span>
-<span id="cb55-8"><a aria-label="8"></a><span class="fu">my_descriptives2</span>(data<span class="sc">$</span>Ages)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb53"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb53-1"><a aria-label="1"></a>my_descriptives2 <span class="ot">&lt;-</span> <span class="cf">function</span>(x){</span>
+<span id="cb53-2"><a aria-label="2"></a>  x.trim <span class="ot">&lt;-</span> x[x<span class="sc">&gt;</span><span class="dv">0</span>]</span>
+<span id="cb53-3"><a aria-label="3"></a>  below0 <span class="ot">&lt;-</span> <span class="fu">sum</span>(x<span class="sc">&lt;</span><span class="dv">0</span>)</span>
+<span id="cb53-4"><a aria-label="4"></a>  meanX <span class="ot">&lt;-</span> <span class="fu">mean</span>(x.trim)</span>
+<span id="cb53-5"><a aria-label="5"></a>  <span class="fu">return</span>(<span class="fu">list</span>(<span class="at">n_negative =</span> below0, <span class="at">mean_positive =</span> meanX))</span>
+<span id="cb53-6"><a aria-label="6"></a>}</span>
+<span id="cb53-7"><a aria-label="7"></a></span>
+<span id="cb53-8"><a aria-label="8"></a><span class="fu">my_descriptives2</span>(data<span class="sc">$</span>Ages)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[[1]]
+<pre><code>$n_negative
 [1] 1
 
-[[2]]
-[1] 47.16667</code></pre>
+$mean_positive
+[1] 46.08333</code></pre>
 </div>
 </div>
 </section>
@@ -518,26 +507,25 @@ NULL</code></pre>
 <h2>Function environments and scoping</h2>
 <p>The Top-Level (or Global) Environment</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb57"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb57-1"><a aria-label="1"></a>w <span class="ot">&lt;-</span> <span class="dv">2</span></span>
-<span id="cb57-2"><a aria-label="2"></a>f <span class="ot">&lt;-</span> <span class="cf">function</span>(y) {</span>
-<span id="cb57-3"><a aria-label="3"></a>  d <span class="ot">&lt;-</span> <span class="dv">3</span></span>
-<span id="cb57-4"><a aria-label="4"></a>  <span class="fu">return</span>(d <span class="sc">*</span> (w <span class="sc">+</span> y))</span>
-<span id="cb57-5"><a aria-label="5"></a>}</span>
-<span id="cb57-6"><a aria-label="6"></a><span class="fu">environment</span>(f)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb55"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb55-1"><a aria-label="1"></a>w <span class="ot">&lt;-</span> <span class="dv">2</span></span>
+<span id="cb55-2"><a aria-label="2"></a>f <span class="ot">&lt;-</span> <span class="cf">function</span>(y) {</span>
+<span id="cb55-3"><a aria-label="3"></a>  d <span class="ot">&lt;-</span> <span class="dv">3</span></span>
+<span id="cb55-4"><a aria-label="4"></a>  <span class="fu">return</span>(d <span class="sc">*</span> (w <span class="sc">+</span> y))</span>
+<span id="cb55-5"><a aria-label="5"></a>}</span>
+<span id="cb55-6"><a aria-label="6"></a><span class="fu">environment</span>(f)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>&lt;environment: R_GlobalEnv&gt;</code></pre>
 </div>
 </div>
 <p>Objects in the Global Environment:</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb59"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb59-1"><a aria-label="1"></a><span class="fu">objects</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb57"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb57-1"><a aria-label="1"></a><span class="fu">objects</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code> [1] "Ages"                   "PatientID"              "data"                  
  [4] "f"                      "mean_vector"            "mean_x"                
- [7] "mean_xy"                "mean_xy_2"              "mean_xy_3"             
-[10] "my_descriptives"        "my_descriptives2"       "my_descriptives2_wrong"
-[13] "pandoc_dir"             "quarto_bin_path"        "w"                     
-[16] "x"                     </code></pre>
+ [7] "mean_xy"                "mean_xy_2"              "my_descriptives"       
+[10] "my_descriptives2"       "my_descriptives2_wrong" "pandoc_dir"            
+[13] "quarto_bin_path"        "w"                      "x"                     </code></pre>
 </div>
 </div>
 </section>
@@ -546,16 +534,16 @@ NULL</code></pre>
 <p><code>w</code> is a global variable</p>
 <p><code>d</code> is a local variable to <code>f()</code></p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb61"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb61-1"><a aria-label="1"></a>f <span class="ot">&lt;-</span> <span class="cf">function</span>(y) {</span>
-<span id="cb61-2"><a aria-label="2"></a>  d <span class="ot">&lt;-</span> <span class="dv">3</span></span>
-<span id="cb61-3"><a aria-label="3"></a>  <span class="fu">return</span>(d <span class="sc">*</span> (w <span class="sc">+</span> y))</span>
-<span id="cb61-4"><a aria-label="4"></a>}</span>
-<span id="cb61-5"><a aria-label="5"></a></span>
-<span id="cb61-6"><a aria-label="6"></a><span class="fu">f</span>(<span class="at">y =</span> <span class="dv">1</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb59"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb59-1"><a aria-label="1"></a>f <span class="ot">&lt;-</span> <span class="cf">function</span>(y) {</span>
+<span id="cb59-2"><a aria-label="2"></a>  d <span class="ot">&lt;-</span> <span class="dv">3</span></span>
+<span id="cb59-3"><a aria-label="3"></a>  <span class="fu">return</span>(d <span class="sc">*</span> (w <span class="sc">+</span> y))</span>
+<span id="cb59-4"><a aria-label="4"></a>}</span>
+<span id="cb59-5"><a aria-label="5"></a></span>
+<span id="cb59-6"><a aria-label="6"></a><span class="fu">f</span>(<span class="at">y =</span> <span class="dv">1</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 9</code></pre>
 </div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb63"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb63-1"><a aria-label="1"></a>d</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb61"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb61-1"><a aria-label="1"></a>d</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-error">
 <pre><code>Error:
 ! object 'd' not found</code></pre>
@@ -566,20 +554,17 @@ NULL</code></pre>
 <h2>Pass inputs explicitly</h2>
 <p>The earlier <code>f(y)</code> reads <code>w</code> from the global environment. Give <code>w</code> its own argument so the call shows both inputs.</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb65"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb65-1"><a aria-label="1"></a>f <span class="ot">&lt;-</span> <span class="cf">function</span>(y, w) {</span>
-<span id="cb65-2"><a aria-label="2"></a>  d <span class="ot">&lt;-</span> <span class="dv">3</span></span>
-<span id="cb65-3"><a aria-label="3"></a>  d <span class="sc">*</span> (w <span class="sc">+</span> y)</span>
-<span id="cb65-4"><a aria-label="4"></a>}</span>
-<span id="cb65-5"><a aria-label="5"></a></span>
-<span id="cb65-6"><a aria-label="6"></a><span class="fu">f</span>(<span class="at">y =</span> <span class="dv">1</span>, <span class="at">w =</span> <span class="dv">2</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] 9</code></pre>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb63"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb63-1"><a aria-label="1"></a>f <span class="ot">&lt;-</span> <span class="cf">function</span>(y, w) {</span>
+<span id="cb63-2"><a aria-label="2"></a>  d <span class="ot">&lt;-</span> <span class="dv">3</span></span>
+<span id="cb63-3"><a aria-label="3"></a>  d <span class="sc">*</span> (w <span class="sc">+</span> y)</span>
+<span id="cb63-4"><a aria-label="4"></a>}</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
-</div>
-<p>Predict the result of the same call after changing the global <code>w</code>.</p>
+<p>Predict the result after we set the global <code>w</code> to 10 and pass <code>w = 2</code> in the call.</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb67"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb67-1"><a aria-label="1"></a>w <span class="ot">&lt;-</span> <span class="dv">10</span></span>
-<span id="cb67-2"><a aria-label="2"></a><span class="fu">f</span>(<span class="at">y =</span> <span class="dv">1</span>, <span class="at">w =</span> <span class="dv">2</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb64"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb64-1"><a aria-label="1"></a>w <span class="ot">&lt;-</span> <span class="dv">10</span></span>
+<span id="cb64-2"><a aria-label="2"></a><span class="fu">f</span>(<span class="at">y =</span> <span class="dv">1</span>, <span class="at">w =</span> <span class="dv">2</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<div class="cell fragment">
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 9</code></pre>
 </div>
@@ -588,15 +573,15 @@ NULL</code></pre>
 <section id="local-preference-over-global" class="slide level2" data-background-image="./_extensions/emc/www/triangle1.svg" data-background-size="contain" data-background-position="top left">
 <h2>Local preference over Global</h2>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb69"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb69-1"><a aria-label="1"></a>w <span class="ot">&lt;-</span> <span class="dv">2</span></span>
-<span id="cb69-2"><a aria-label="2"></a>d <span class="ot">&lt;-</span> <span class="dv">4</span></span>
-<span id="cb69-3"><a aria-label="3"></a></span>
-<span id="cb69-4"><a aria-label="4"></a>f <span class="ot">&lt;-</span> <span class="cf">function</span>(y) {</span>
-<span id="cb69-5"><a aria-label="5"></a>  d <span class="ot">&lt;-</span> <span class="dv">3</span></span>
-<span id="cb69-6"><a aria-label="6"></a>  <span class="fu">return</span>(d <span class="sc">*</span> (w <span class="sc">+</span> y))</span>
-<span id="cb69-7"><a aria-label="7"></a>}</span>
-<span id="cb69-8"><a aria-label="8"></a></span>
-<span id="cb69-9"><a aria-label="9"></a><span class="fu">f</span>(<span class="at">y =</span> <span class="dv">1</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb66"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb66-1"><a aria-label="1"></a>w <span class="ot">&lt;-</span> <span class="dv">2</span></span>
+<span id="cb66-2"><a aria-label="2"></a>d <span class="ot">&lt;-</span> <span class="dv">4</span></span>
+<span id="cb66-3"><a aria-label="3"></a></span>
+<span id="cb66-4"><a aria-label="4"></a>f <span class="ot">&lt;-</span> <span class="cf">function</span>(y) {</span>
+<span id="cb66-5"><a aria-label="5"></a>  d <span class="ot">&lt;-</span> <span class="dv">3</span></span>
+<span id="cb66-6"><a aria-label="6"></a>  <span class="fu">return</span>(d <span class="sc">*</span> (w <span class="sc">+</span> y))</span>
+<span id="cb66-7"><a aria-label="7"></a>}</span>
+<span id="cb66-8"><a aria-label="8"></a></span>
+<span id="cb66-9"><a aria-label="9"></a><span class="fu">f</span>(<span class="at">y =</span> <span class="dv">1</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 9</code></pre>
 </div>
@@ -605,19 +590,19 @@ NULL</code></pre>
 <section id="local-assignment-of-variables" class="slide level2" data-background-image="./_extensions/emc/www/triangle1.svg" data-background-size="contain" data-background-position="top left">
 <h2>Local assignment of variables</h2>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb71"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb71-1"><a aria-label="1"></a>w <span class="ot">&lt;-</span> <span class="dv">2</span></span>
-<span id="cb71-2"><a aria-label="2"></a>d <span class="ot">&lt;-</span> <span class="dv">4</span> <span class="co"># This value of d will remain unchanged.</span></span>
-<span id="cb71-3"><a aria-label="3"></a></span>
-<span id="cb71-4"><a aria-label="4"></a>f <span class="ot">&lt;-</span> <span class="cf">function</span>(y) {</span>
-<span id="cb71-5"><a aria-label="5"></a>  d <span class="ot">&lt;-</span> <span class="dv">3</span> <span class="co"># This doesnt affect the value of d in the global environment</span></span>
-<span id="cb71-6"><a aria-label="6"></a>  <span class="fu">return</span>(d <span class="sc">*</span> (w <span class="sc">+</span> y))</span>
-<span id="cb71-7"><a aria-label="7"></a>}</span>
-<span id="cb71-8"><a aria-label="8"></a></span>
-<span id="cb71-9"><a aria-label="9"></a><span class="fu">f</span>(<span class="at">y =</span> <span class="dv">1</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb68"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb68-1"><a aria-label="1"></a>w <span class="ot">&lt;-</span> <span class="dv">2</span></span>
+<span id="cb68-2"><a aria-label="2"></a>d <span class="ot">&lt;-</span> <span class="dv">4</span> <span class="co"># This value of d will remain unchanged.</span></span>
+<span id="cb68-3"><a aria-label="3"></a></span>
+<span id="cb68-4"><a aria-label="4"></a>f <span class="ot">&lt;-</span> <span class="cf">function</span>(y) {</span>
+<span id="cb68-5"><a aria-label="5"></a>  d <span class="ot">&lt;-</span> <span class="dv">3</span> <span class="co"># This doesnt affect the value of d in the global environment</span></span>
+<span id="cb68-6"><a aria-label="6"></a>  <span class="fu">return</span>(d <span class="sc">*</span> (w <span class="sc">+</span> y))</span>
+<span id="cb68-7"><a aria-label="7"></a>}</span>
+<span id="cb68-8"><a aria-label="8"></a></span>
+<span id="cb68-9"><a aria-label="9"></a><span class="fu">f</span>(<span class="at">y =</span> <span class="dv">1</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 9</code></pre>
 </div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb73"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb73-1"><a aria-label="1"></a>d</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb70"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb70-1"><a aria-label="1"></a>d</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 4</code></pre>
 </div>

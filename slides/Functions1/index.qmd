@@ -32,6 +32,7 @@ sort(c(3,4,2,5,1)) #Sort numbers or letters numerically or alphabetically
 
 max(c(111,333,444,55,6,777,999)) #Determine the maximum value of a vector
 
+set.seed(42)
 rnorm(10) # Draw 10 standard normal values (mean 0, SD 1)
 ```
 
@@ -142,26 +143,19 @@ mean_xy(x = 2, y = 6)
 
 ## Default return value {data-background-image="./_extensions/emc/www/triangle1.svg" data-background-size="contain" data-background-position="top left"}
 
+Without an explicit `return()`, R returns the value of the last expression it evaluates.
+
 ```{r}
-mean_xy_2 <- function(x, y){
-  z <- (x + y)/2
+mean_xy_2 <- function(x, y) {
+  z <- (x + y) / 2
   x
   z
 }
 
 mean_xy_2(x = 1, y = 3)
 ```
-x is not returned!
-```{r}
-mean_xy_3 <- function(x, y){
-  z <- x + y 
-  return(x)
-  z
-}
 
-mean_xy_3(x = 1, y = 3)
-```
-z is not returned!
+Here the last expression is `z`, so the function returns 2.
 
 ## Function with multiple input values {data-background-image="./_extensions/emc/www/triangle1.svg" data-background-size="contain" data-background-position="top left"}
 
@@ -192,16 +186,17 @@ mean_x(x)
 ## Build a custom function to clean data {data-background-image="./_extensions/emc/www/triangle1.svg" data-background-size="contain" data-background-position="top left"}
 
 ```{r, echo=FALSE}
+set.seed(42)
 PatientID <- 1:25
 Ages <- round(c(rnorm(15, mean = 45, sd = 10), -50, rnorm(9, mean = 45, sd = 10) ) )
 data <- data.frame(PatientID = PatientID, Ages = Ages)
 data$Sex <- as.factor(c(rbinom(24, 1, 0.5),-1))
 ```
 
-Calculate mean of only the positive values (data cleaning)
+Calculate the mean of the strictly positive ages. The filter excludes zero.
 ```{r}
 my_descriptives <- function(x){
-  x.trim <- x[x >= 0]
+  x.trim <- x[x > 0]
   out <- mean(x.trim)
   return(out)
 }
@@ -226,7 +221,7 @@ mean(data$Ages)
 
 ```{r}
 my_descriptives <- function(x){
-  x.trim <- x[x>=0]
+  x.trim <- x[x > 0]
   out <- summary(x.trim)
   return(out)
 }
@@ -251,14 +246,14 @@ my_descriptives2_wrong(data$Ages)
 
 ## Returning multiple values {data-background-image="./_extensions/emc/www/triangle1.svg" data-background-size="contain" data-background-position="top left"}
 
-To return multiple values we use: `return(c(x,y))` or `return(list(x,y))`
+Return a named list so each result has a label.
 
 ```{r}
 my_descriptives2 <- function(x){
   x.trim <- x[x>0]
   below0 <- sum(x<0)
   meanX <- mean(x.trim)
-  return(list(below0, meanX))
+  return(list(n_negative = below0, mean_positive = meanX))
 }
 
 my_descriptives2(data$Ages)
@@ -309,13 +304,12 @@ f <- function(y, w) {
   d <- 3
   d * (w + y)
 }
-
-f(y = 1, w = 2)
 ```
 
-Predict the result of the same call after changing the global `w`.
+Predict the result after we set the global `w` to 10 and pass `w = 2` in the call.
 
 ```{r}
+#| output-location: fragment
 w <- 10
 f(y = 1, w = 2)
 ```

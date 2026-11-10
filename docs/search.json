@@ -949,7 +949,7 @@
     "href": "slides/Plotting/index.html#grammar",
     "title": "R Course - Day 3",
     "section": "What “grammar of graphics” means",
-    "text": "What “grammar of graphics” means\nA chart combines reusable parts.\n\n\n\n\n\n\n\nPart\nOur dose-response scatterplot\n\n\n\n\nData\nOne row per animal\n\n\nMapping (aes())\nDose on x, length on y, method sets colour and shape\n\n\nStat\nNone here; a histogram would count rows in bins\n\n\nGeometry (geom_point())\nDraw each animal as a point\n\n\nScale and coordinates\nTranslate values to colours and positions\n\n\nFacets and theme\nSplit into panels if useful, then style the display"
+    "text": "What “grammar of graphics” means\nA chart combines reusable parts.\n\n\n\n\n\n\n\nPart\nOur dose-response scatterplot\n\n\n\n\nData\nOne row per ibservation: one animal\n\n\nMapping (aes())\nDose on x, length on y, method sets colour and shape\n\n\nStat\nNone here; a histogram would count rows in bins\n\n\nGeometry (geom_point())\nDraw each animal as a point\n\n\nScale and coordinates\nTranslate values to colours and positions\n\n\nFacets and theme\nSplit into panels if useful, then style the display"
   },
   {
     "objectID": "slides/Plotting/index.html#gg-scatter",
@@ -998,21 +998,21 @@
     "href": "slides/Plotting/index.html#gg-facets",
     "title": "R Course - Day 3",
     "section": "Facets share a scale",
-    "text": "Facets share a scale\nShow one delivery method per panel. The default shared y scale makes the panels comparable.\n\nggplot2Base R\n\n\n\nggplot(growth,\n       aes(x = factor(dose), y = len)) +\n  geom_boxplot(fill = \"#A6D7ED\") +\n  facet_wrap(~ supp) +\n  labs(x = \"Vitamin C dose (mg/day)\",\n       y = \"Odontoblast length\")\n\n\n\n\n\n\n\n\n\n\n\nold &lt;- par(no.readonly = TRUE)\npar(mfrow = c(1, 2), mar = c(4, 4, 2, 1), las = 1)\nfor (method in c(\"OJ\", \"VC\")) {\n  group &lt;- subset(growth, supp == method)\n  boxplot(len ~ dose, data = group,\n          main = method, ylim = range(growth$len),\n          xlab = \"Dose (mg/day)\", ylab = \"Length\")\n}\npar(old)"
+    "text": "Facets share a scale\nCompare methods within each dose on a shared y scale.\n\nggplot2Base R\n\n\n\nggplot(growth, aes(x = supp, y = len)) +\n  geom_boxplot(fill = \"#A6D7ED\") +\n  facet_wrap(~ dose, nrow = 1, labeller = label_both) +\n  labs(x = \"Delivery method\", y = \"Odontoblast length\")\n\n\n\n\n\n\n\n\n\n\n\nold &lt;- par(no.readonly = TRUE)\npar(mfrow = c(1, 3), mar = c(4.2, 4, 2, 1))\nfor (amount in sort(unique(growth$dose))) {\n  boxplot(len ~ supp, data = subset(growth, dose == amount),\n          main = paste(amount, \"mg/day\"), ylim = range(growth$len),\n          xlab = \"Delivery method\", ylab = \"Odontoblast length\")\n}\npar(old)"
   },
   {
     "objectID": "slides/Plotting/index.html#gg-heat",
     "href": "slides/Plotting/index.html#gg-heat",
     "title": "R Course - Day 3",
     "section": "Heatmap of group means",
-    "text": "Heatmap of group means\nReduce to one row per tile first. A tile shows the mean for a group and hides variation within it.\n\nmeans &lt;- aggregate(len ~ supp + dose,\n                   data = growth, FUN = mean)\nggplot(means, aes(x = supp, y = factor(dose),\n                  fill = len)) +\n  geom_tile(colour = \"white\") +\n  geom_text(aes(label = round(len, 1)),\n            colour = \"white\") +\n  scale_fill_gradient(low = \"#315E85\",\n                      high = \"#113045\") +\n  labs(x = \"Delivery method\", y = \"Dose (mg/day)\",\n       fill = \"Mean length\")"
+    "text": "Heatmap of group means\nReduce to one row per tile first. A tile shows the mean for a group and hides variation within it.\n\nmeans &lt;- aggregate(len ~ supp + dose,\n                   data = growth, FUN = mean)\nggplot(means, aes(x = supp, y = factor(dose),\n                  fill = len)) +\n  geom_tile(colour = \"white\") +\n  geom_label(aes(label = round(len, 1)), fill = \"white\") +\n  labs(x = \"Delivery method\", y = \"Dose (mg/day)\",\n       fill = \"Mean length\")"
   },
   {
     "objectID": "slides/Plotting/index.html#gg-scales",
     "href": "slides/Plotting/index.html#gg-scales",
     "title": "R Course - Day 3",
     "section": "Scales, axes and guides",
-    "text": "Scales, axes and guides\nA mapping says which variable controls colour. The scale chooses the colours and sets the legend labels.\n\nmethod_labels &lt;- c(\"Orange juice\",\n                   \"Ascorbic acid\")\np_scaled &lt;- p +\n  scale_x_continuous(breaks = c(0.5, 1, 2)) +\n  scale_colour_manual(\n    values = c(OJ = \"#0072B2\", VC = \"#D55E00\"),\n    labels = method_labels\n  ) +\n  scale_shape_discrete(labels = method_labels)\np_scaled"
+    "text": "Scales, axes and guides\n\nScale can be changed for each Aesthetic with corresponding scale_...\n\nA mapping says which variable controls colour.\nThe scale chooses the colours and sets the legend labels.\n\n\n\nmethod_labels &lt;- c(\"Orange juice\",\n                   \"Ascorbic acid\")\np_scaled &lt;- p +\n  scale_x_continuous(breaks = c(0.5, 1, 2)) +\n  scale_colour_manual(\n    values = c(OJ = \"#0072B2\", VC = \"#D55E00\"),\n    labels = method_labels\n  ) +\n  scale_shape_discrete(labels = method_labels)\np_scaled"
   },
   {
     "objectID": "slides/Plotting/index.html#gg-themes",
@@ -1068,7 +1068,7 @@
     "href": "slides/Plotting/index.html#gg-group",
     "title": "R Course - Day 3",
     "section": "Grouping repeated samples",
-    "text": "Grouping repeated samples\nBoth panels show the same indomethacin measurements.\n\n\nOne line through all samples\n\nprofile + geom_line()\n\n\n\n\n\n\n\n\n\n\nOne line per subject\n\nprofile + geom_line(aes(group = Subject))"
+    "text": "Grouping repeated samples\n\nIndometh: 6 people, 11 samples each; 1 row is 1 sample\nBoth panels show the same indomethacin measurements\n\n\nprofile &lt;- ggplot(Indometh, aes(x = time, y = conc)) +\n  labs(x = \"Time since dose (hours)\", y = \"Plasma concentration (mcg/mL)\")\n\n\n\nOne line through all samples\n\nprofile + geom_line()\n\n\n\n\n\n\n\n\n\n\nOne line per subject\n\nprofile + geom_line(aes(group = Subject))"
   },
   {
     "objectID": "slides/Plotting/index.html#deaths-ready",
@@ -1663,7 +1663,7 @@
     "href": "slides/Functions1/index.html#built-in-named-functions",
     "title": "R Course - Day 3",
     "section": "Built-in Named Functions",
-    "text": "Built-in Named Functions\n\nhead() #Print the first 6 lines of a dataframe\n\ntail() #Print the last 6 lines of a dataframe\n\nseq(from=1, to=10, by=2) #Create a sequence from 1 to 10 with steps of 2\n\nas.numeric(c(\"1\",\"2\",\"3\",\"4\")) #Turn string into numbers\n\nsort(c(3,4,2,5,1)) #Sort numbers or letters numerically or alphabetically\n\nmax(c(111,333,444,55,6,777,999)) #Determine the maximum value of a vector\n\nrnorm(10) # Draw 10 standard normal values (mean 0, SD 1)\n\nBuilt-in functions in base-R :\nhttps://stat.ethz.ch/R-manual/R-patched/library/base/html/00Index.html"
+    "text": "Built-in Named Functions\n\nhead() #Print the first 6 lines of a dataframe\n\ntail() #Print the last 6 lines of a dataframe\n\nseq(from=1, to=10, by=2) #Create a sequence from 1 to 10 with steps of 2\n\nas.numeric(c(\"1\",\"2\",\"3\",\"4\")) #Turn string into numbers\n\nsort(c(3,4,2,5,1)) #Sort numbers or letters numerically or alphabetically\n\nmax(c(111,333,444,55,6,777,999)) #Determine the maximum value of a vector\n\nset.seed(42)\nrnorm(10) # Draw 10 standard normal values (mean 0, SD 1)\n\nBuilt-in functions in base-R :\nhttps://stat.ethz.ch/R-manual/R-patched/library/base/html/00Index.html"
   },
   {
     "objectID": "slides/Functions1/index.html#function-arguments",
@@ -1712,7 +1712,7 @@
     "href": "slides/Functions1/index.html#default-return-value",
     "title": "R Course - Day 3",
     "section": "Default return value",
-    "text": "Default return value\n\nmean_xy_2 &lt;- function(x, y){\n  z &lt;- (x + y)/2\n  x\n  z\n}\n\nmean_xy_2(x = 1, y = 3)\n\n[1] 2\n\n\nx is not returned!\n\nmean_xy_3 &lt;- function(x, y){\n  z &lt;- x + y \n  return(x)\n  z\n}\n\nmean_xy_3(x = 1, y = 3)\n\n[1] 1\n\n\nz is not returned!"
+    "text": "Default return value\nWithout an explicit return(), R returns the value of the last expression it evaluates.\n\nmean_xy_2 &lt;- function(x, y) {\n  z &lt;- (x + y) / 2\n  x\n  z\n}\n\nmean_xy_2(x = 1, y = 3)\n\n[1] 2\n\n\nHere the last expression is z, so the function returns 2."
   },
   {
     "objectID": "slides/Functions1/index.html#function-with-multiple-input-values",
@@ -1733,21 +1733,21 @@
     "href": "slides/Functions1/index.html#build-a-custom-function-to-clean-data",
     "title": "R Course - Day 3",
     "section": "Build a custom function to clean data",
-    "text": "Build a custom function to clean data\nCalculate mean of only the positive values (data cleaning)\n\nmy_descriptives &lt;- function(x){\n  x.trim &lt;- x[x &gt;= 0]\n  out &lt;- mean(x.trim)\n  return(out)\n}\n\nPatient data:\n\ndata$Ages\n\n [1]  45  43  52  45  51  36  56  26  49  42  39  59  45  45  44 -50  49  57  36\n[20]  61  56  48  42  52  54\n\n\n-50 is clearly wrong"
+    "text": "Build a custom function to clean data\nCalculate the mean of the strictly positive ages. The filter excludes zero.\n\nmy_descriptives &lt;- function(x){\n  x.trim &lt;- x[x &gt; 0]\n  out &lt;- mean(x.trim)\n  return(out)\n}\n\nPatient data:\n\ndata$Ages\n\n [1]  59  39  49  51  49  44  60  44  65  44  58  68  31  42  44 -50  51  42  18\n[20]  21  58  42  27  43  57\n\n\n-50 is clearly wrong"
   },
   {
     "objectID": "slides/Functions1/index.html#build-a-custom-function-to-clean-data-1",
     "href": "slides/Functions1/index.html#build-a-custom-function-to-clean-data-1",
     "title": "R Course - Day 3",
     "section": "Build a custom function to clean data",
-    "text": "Build a custom function to clean data\n\nmy_descriptives(data$Ages)\n\n[1] 47.16667\n\n\nIn stead of:\n\nmean(data$Ages)\n\n[1] 43.28"
+    "text": "Build a custom function to clean data\n\nmy_descriptives(data$Ages)\n\n[1] 46.08333\n\n\nIn stead of:\n\nmean(data$Ages)\n\n[1] 42.24"
   },
   {
     "objectID": "slides/Functions1/index.html#returning-vectors",
     "href": "slides/Functions1/index.html#returning-vectors",
     "title": "R Course - Day 3",
     "section": "Returning vectors",
-    "text": "Returning vectors\n\nmy_descriptives &lt;- function(x){\n  x.trim &lt;- x[x&gt;=0]\n  out &lt;- summary(x.trim)\n  return(out)\n}\n\nmy_descriptives(data$Ages)\n\n   Min. 1st Qu.  Median    Mean 3rd Qu.    Max. \n  26.00   42.75   46.50   47.17   52.50   61.00"
+    "text": "Returning vectors\n\nmy_descriptives &lt;- function(x){\n  x.trim &lt;- x[x &gt; 0]\n  out &lt;- summary(x.trim)\n  return(out)\n}\n\nmy_descriptives(data$Ages)\n\n   Min. 1st Qu.  Median    Mean 3rd Qu.    Max. \n  18.00   42.00   44.00   46.08   57.25   68.00"
   },
   {
     "objectID": "slides/Functions1/index.html#returning-multiple-values",
@@ -1761,14 +1761,14 @@
     "href": "slides/Functions1/index.html#returning-multiple-values-1",
     "title": "R Course - Day 3",
     "section": "Returning multiple values",
-    "text": "Returning multiple values\nTo return multiple values we use: return(c(x,y)) or return(list(x,y))\n\nmy_descriptives2 &lt;- function(x){\n  x.trim &lt;- x[x&gt;0]\n  below0 &lt;- sum(x&lt;0)\n  meanX &lt;- mean(x.trim)\n  return(list(below0, meanX))\n}\n\nmy_descriptives2(data$Ages)\n\n[[1]]\n[1] 1\n\n[[2]]\n[1] 47.16667"
+    "text": "Returning multiple values\nReturn a named list so each result has a label.\n\nmy_descriptives2 &lt;- function(x){\n  x.trim &lt;- x[x&gt;0]\n  below0 &lt;- sum(x&lt;0)\n  meanX &lt;- mean(x.trim)\n  return(list(n_negative = below0, mean_positive = meanX))\n}\n\nmy_descriptives2(data$Ages)\n\n$n_negative\n[1] 1\n\n$mean_positive\n[1] 46.08333"
   },
   {
     "objectID": "slides/Functions1/index.html#function-environments-and-scoping",
     "href": "slides/Functions1/index.html#function-environments-and-scoping",
     "title": "R Course - Day 3",
     "section": "Function environments and scoping",
-    "text": "Function environments and scoping\nThe Top-Level (or Global) Environment\n\nw &lt;- 2\nf &lt;- function(y) {\n  d &lt;- 3\n  return(d * (w + y))\n}\nenvironment(f)\n\n&lt;environment: R_GlobalEnv&gt;\n\n\nObjects in the Global Environment:\n\nobjects()\n\n [1] \"Ages\"                   \"PatientID\"              \"data\"                  \n [4] \"f\"                      \"mean_vector\"            \"mean_x\"                \n [7] \"mean_xy\"                \"mean_xy_2\"              \"mean_xy_3\"             \n[10] \"my_descriptives\"        \"my_descriptives2\"       \"my_descriptives2_wrong\"\n[13] \"pandoc_dir\"             \"quarto_bin_path\"        \"w\"                     \n[16] \"x\""
+    "text": "Function environments and scoping\nThe Top-Level (or Global) Environment\n\nw &lt;- 2\nf &lt;- function(y) {\n  d &lt;- 3\n  return(d * (w + y))\n}\nenvironment(f)\n\n&lt;environment: R_GlobalEnv&gt;\n\n\nObjects in the Global Environment:\n\nobjects()\n\n [1] \"Ages\"                   \"PatientID\"              \"data\"                  \n [4] \"f\"                      \"mean_vector\"            \"mean_x\"                \n [7] \"mean_xy\"                \"mean_xy_2\"              \"my_descriptives\"       \n[10] \"my_descriptives2\"       \"my_descriptives2_wrong\" \"pandoc_dir\"            \n[13] \"quarto_bin_path\"        \"w\"                      \"x\""
   },
   {
     "objectID": "slides/Functions1/index.html#global-and-local-variables",
@@ -1803,7 +1803,7 @@
     "href": "slides/Functions1/index.html#pass-inputs-explicitly",
     "title": "R Course - Day 3",
     "section": "Pass inputs explicitly",
-    "text": "Pass inputs explicitly\nThe earlier f(y) reads w from the global environment. Give w its own argument so the call shows both inputs.\n\nf &lt;- function(y, w) {\n  d &lt;- 3\n  d * (w + y)\n}\n\nf(y = 1, w = 2)\n\n[1] 9\n\n\nPredict the result of the same call after changing the global w.\n\nw &lt;- 10\nf(y = 1, w = 2)\n\n[1] 9"
+    "text": "Pass inputs explicitly\nThe earlier f(y) reads w from the global environment. Give w its own argument so the call shows both inputs.\n\nf &lt;- function(y, w) {\n  d &lt;- 3\n  d * (w + y)\n}\n\nPredict the result after we set the global w to 10 and pass w = 2 in the call.\n\nw &lt;- 10\nf(y = 1, w = 2)\n\n\n\n[1] 9"
   },
   {
     "objectID": "slides/Functions2/index.html#if-then-else",
@@ -1824,7 +1824,7 @@
     "href": "slides/Functions2/index.html#if-else-on-one-line",
     "title": "R Course - Day 3",
     "section": "If else on one line",
-    "text": "If else on one line\nOneliner:\n\ny &lt;- if(x &gt;= 10) 1 else 0\ny\n\n[1] 0\n\n\nBeware!\n\ny &lt;- if(x &gt;= 10) 1 #no else\ny\n\nNULL"
+    "text": "If else on one line\nOneliner:\n\ny &lt;- if(x &gt;= 10) 1 else 0\ny\n\n[1] 0\n\n\nWith x = 5, the condition is false. Without an else branch, the expression returns NULL, which is assigned to y.\n\ny &lt;- if (x &gt;= 10) 1\ny\n\nNULL"
   },
   {
     "objectID": "slides/Functions2/index.html#nested-if-statements",
@@ -1852,7 +1852,7 @@
     "href": "slides/Functions2/index.html#if-else-on-a-vector-the-ifelse-function",
     "title": "R Course - Day 3",
     "section": "if-else on a vector: The ifelse() Function",
-    "text": "if-else on a vector: The ifelse() Function\n\nheight &lt;- c(69, 71, 67, 66, 72, 71, 61, 65, 73, 70, 68, 74)\n\nif (height &gt; 69){\n  print(\"tall\") \n} else {\n  print(\"short\")\n}\n\nError in `if (height &gt; 69) ...`:\n! the condition has length &gt; 1\n\n\n\nhtCategory &lt;- ifelse(height &gt; 69, yes = \"tall\", no = \"short\")\n\nhtCategory\n\n [1] \"short\" \"tall\"  \"short\" \"short\" \"tall\"  \"tall\"  \"short\" \"short\" \"tall\" \n[10] \"tall\"  \"short\" \"tall\" \n\n\nFor more complicated cases we can use apply()"
+    "text": "if-else on a vector: The ifelse() Function\n\nheight &lt;- c(69, 71, 67, 66, 72, 71)\nif (height &gt; 69) \"tall\" else \"short\"\n\nError in `if (height &gt; 69) ...`:\n! the condition has length &gt; 1\n\n\n\nhtCategory &lt;- ifelse(height &gt; 69, yes = \"tall\", no = \"short\")\n\nhtCategory\n\n[1] \"short\" \"tall\"  \"short\" \"short\" \"tall\"  \"tall\" \n\n\nif expects one condition. ifelse() checks each element of height &gt; 69 and returns one category per height."
   },
   {
     "objectID": "slides/Functions2/index.html#terminating-a-function-with-returns-errors-and-warnings",
@@ -1873,14 +1873,14 @@
     "href": "slides/Functions2/index.html#terminating-using-stop",
     "title": "R Course - Day 3",
     "section": "Terminating Using stop()",
-    "text": "Terminating Using stop()\nAn if condition needs one TRUE or FALSE. Check that y is one nonmissing number before comparing it to zero.\n\nmyRatio &lt;- function(x, y) {\n  if (!is.numeric(y) || length(y) != 1 || is.na(y)) {\n    stop(\"y must be one nonmissing number\")\n  }\n  if (y == 0) stop(\"Cannot divide by 0\")\n  x / y\n}\n\n\nmyRatio(3, 2) # Valid input\n\n[1] 1.5\n\nmyRatio(3, 0) # Zero denominator\n\nError in `myRatio()`:\n! Cannot divide by 0"
+    "text": "Terminating Using stop()\nStart with two single numbers. If the denominator is zero, stop() ends the call before division.\n\nmyRatio &lt;- function(x, y) {\n  if (y == 0) stop(\"Cannot divide by zero\")\n  x / y\n}\n\n\nmyRatio(3, 2)\n\n[1] 1.5\n\nmyRatio(3, 0)\n\nError in `myRatio()`:\n! Cannot divide by zero"
   },
   {
     "objectID": "slides/Functions2/index.html#printing-a-warning-message-using-warning",
     "href": "slides/Functions2/index.html#printing-a-warning-message-using-warning",
     "title": "R Course - Day 3",
     "section": "Printing a Warning Message Using warning()",
-    "text": "Printing a Warning Message Using warning()\nwarning() reports a problem and lets the function continue.\n\nmyRatio &lt;- function(x, y) {\n  if (!is.numeric(y) || length(y) != 1 || is.na(y)) {\n    stop(\"y must be one nonmissing number\")\n  }\n  if (y == 0) warning(\"Attempt made to divide by 0\")\n  x / y\n}\n\nmyRatio(x = 3, y = 0)\n\nWarning in myRatio(x = 3, y = 0): Attempt made to divide by 0\n\n\n[1] Inf\n\n\nIn this example, 3 / 0 returns Inf after the warning."
+    "text": "Printing a Warning Message Using warning()\nwarning() reports a problem and lets the function continue.\n\nmyRatioWarn &lt;- function(x, y) {\n  if (y == 0) warning(\"Dividing by zero\")\n  x / y\n}\n\nmyRatioWarn(3, 0)\n\n[1] Inf\n\n\nThe function reaches x / y and returns Inf."
   },
   {
     "objectID": "slides/Functions2/index.html#looping",
@@ -1894,7 +1894,7 @@
     "href": "slides/Functions2/index.html#example-for-while-and-repeat-loops",
     "title": "R Course - Day 3",
     "section": "Example for, while and repeat loops",
-    "text": "Example for, while and repeat loops\n\n\n\nfor(i in 1:5) {\n  print(i^2)\n}\n\n[1] 1\n[1] 4\n[1] 9\n[1] 16\n[1] 25\n\n\n\ni &lt;- 1\nwhile(i &lt;= 5) {\n  print(i^2)\n  i &lt;- i + 1\n}\n\n[1] 1\n[1] 4\n[1] 9\n[1] 16\n[1] 25\n\n\n\n\ni &lt;- 1\nrepeat {\n  print(i^2)\n  i &lt;- i + 1\n  if(i &gt; 5) break\n}\n\n[1] 1\n[1] 4\n[1] 9\n[1] 16\n[1] 25"
+    "text": "Example for, while and repeat loops\n\n\n\nfor(i in 1:5) {\n  print(i^2)\n}\n\n[1] 1\n[1] 4\n[1] 9\n[1] 16\n[1] 25\n\n\n\n\ni &lt;- 1\nwhile(i &lt;= 5) {\n  print(i^2)\n  i &lt;- i + 1\n}\n\n[1] 1\n[1] 4\n[1] 9\n[1] 16\n[1] 25\n\n\n\n\ni &lt;- 1\nrepeat {\n  print(i^2)\n  i &lt;- i + 1\n  if(i &gt; 5) break\n}\n\n[1] 1\n[1] 4\n[1] 9\n[1] 16\n[1] 25"
   },
   {
     "objectID": "slides/Functions2/index.html#for-loops",
@@ -1908,14 +1908,14 @@
     "href": "slides/Functions2/index.html#looping-over-a-data.frame",
     "title": "R Course - Day 3",
     "section": "“Looping” over a data.frame",
-    "text": "“Looping” over a data.frame\n\ncoins &lt;- data.frame(Coin = c(\"penny\", \"quarter\", \"nickel\", \"quarter\", \"dime\", \"penny\"),\n                    Year = c(1943, 1905, 1889, 1960, 1937, 1900),\n                    Mint = c(\"Den\", \"SF\", \"Phil\", \"Den\", \"SF\", \"Den\"),\n                    Condition = c(\"good\", \"fair\", \"excellent\", \"good\", \"poor\", \"good\"),\n                    Value = c(12.00, 55.00, 300.00, 40.00, 18.00, 28.00),\n                    Price = c(15.00, 45.00, 375.00, 25.00, 20.00, 20.00))\ncoins\n\n     Coin Year Mint Condition Value Price\n1   penny 1943  Den      good    12    15\n2 quarter 1905   SF      fair    55    45\n3  nickel 1889 Phil excellent   300   375\n4 quarter 1960  Den      good    40    25\n5    dime 1937   SF      poor    18    20\n6   penny 1900  Den      good    28    20\n\n\nCalculate the mean of each column:\n\ncolMeans(coins)\n\nError in `colMeans()`:\n! 'x' must be numeric or complex"
+    "text": "“Looping” over a data.frame\n\ncoins &lt;- data.frame(Coin = c(\"penny\", \"quarter\", \"nickel\", \"quarter\", \"dime\", \"penny\"),\n                    Year = c(1943, 1905, 1889, 1960, 1937, 1900),\n                    Mint = c(\"Den\", \"SF\", \"Phil\", \"Den\", \"SF\", \"Den\"),\n                    Condition = c(\"good\", \"fair\", \"excellent\", \"good\", \"poor\", \"good\"),\n                    Value = c(12.00, 55.00, 300.00, 40.00, 18.00, 28.00),\n                    Price = c(15.00, 45.00, 375.00, 25.00, 20.00, 20.00))\ncoins\n\n     Coin Year Mint Condition Value Price\n1   penny 1943  Den      good    12    15\n2 quarter 1905   SF      fair    55    45\n3  nickel 1889 Phil excellent   300   375\n4 quarter 1960  Den      good    40    25\n5    dime 1937   SF      poor    18    20\n6   penny 1900  Den      good    28    20"
   },
   {
     "objectID": "slides/Functions2/index.html#looping-over-data.frame-columns",
     "href": "slides/Functions2/index.html#looping-over-data.frame-columns",
     "title": "R Course - Day 3",
     "section": "Looping Over data.frame Columns",
-    "text": "Looping Over data.frame Columns\n\nmeans &lt;- NULL\nfor(i in 1:ncol(coins)) {\n  if (is.numeric(coins[ , i])) {\n    means &lt;- c(means, mean(coins[ , i]))\n  }\n}\n\nmeans\n\n[1] 1922.33333   75.50000   83.33333"
+    "text": "Looping Over data.frame Columns\n\nmeans &lt;- numeric()\nfor (column in names(coins)) {\n  if (is.numeric(coins[[column]])) {\n    means[column] &lt;- mean(coins[[column]])\n  }\n}\n\nmeans\n\n      Year      Value      Price \n1922.33333   75.50000   83.33333"
   },
   {
     "objectID": "slides/Functions2/index.html#looping-over-list-elements",
@@ -1929,7 +1929,7 @@
     "href": "slides/Functions2/index.html#using-apply-functions",
     "title": "R Course - Day 3",
     "section": "Using apply functions",
-    "text": "Using apply functions\nApplying a function to an object\n\napply()\nlapply()\nsapply()\ntapply()"
+    "text": "Using apply functions\nThe apply family runs a function such as mean() repeatedly over parts of your data, without writing a loop yourself.\n\napply() works across rows or columns of a matrix.\nlapply() works on each list element and returns a list.\nsapply() does the same and combines results into a vector or matrix when possible.\ntapply() works on groups of values."
   },
   {
     "objectID": "slides/Functions2/index.html#using-apply-on-matrices",
@@ -1943,14 +1943,14 @@
     "href": "slides/Functions2/index.html#applying-a-function-on-a-matrix",
     "title": "R Course - Day 3",
     "section": "Applying a function on a matrix",
-    "text": "Applying a function on a matrix\n\nmat &lt;- matrix(1:25,nrow=5)\n\nmat\n\n     [,1] [,2] [,3] [,4] [,5]\n[1,]    1    6   11   16   21\n[2,]    2    7   12   17   22\n[3,]    3    8   13   18   23\n[4,]    4    9   14   19   24\n[5,]    5   10   15   20   25\n\n\nMargin 1 to apply to the rows:\n\napply(mat, 1, max)\n\n[1] 21 22 23 24 25\n\n\nMargin 2 to apply to the columns:\n\napply(mat, 2, max)\n\n[1]  5 10 15 20 25"
+    "text": "Applying a function on a matrix\n\n\nThe matrix\n\nmat &lt;- matrix(1:25, nrow = 5)\nmat\n\n     [,1] [,2] [,3] [,4] [,5]\n[1,]    1    6   11   16   21\n[2,]    2    7   12   17   22\n[3,]    3    8   13   18   23\n[4,]    4    9   14   19   24\n[5,]    5   10   15   20   25\n\n\n\nMARGIN = 1 gives one maximum per row.\n\napply(mat, 1, max)\n\n[1] 21 22 23 24 25\n\n\nMARGIN = 2 gives one maximum per column.\n\napply(mat, 2, max)\n\n[1]  5 10 15 20 25"
   },
   {
     "objectID": "slides/Functions2/index.html#applying-a-function-to-each-element",
     "href": "slides/Functions2/index.html#applying-a-function-to-each-element",
     "title": "R Course - Day 3",
-    "section": "Applying a function to each element:",
-    "text": "Applying a function to each element:\n\napply(mat, c(1,2), sqrt)\n\n         [,1]     [,2]     [,3]     [,4]     [,5]\n[1,] 1.000000 2.449490 3.316625 4.000000 4.582576\n[2,] 1.414214 2.645751 3.464102 4.123106 4.690416\n[3,] 1.732051 2.828427 3.605551 4.242641 4.795832\n[4,] 2.000000 3.000000 3.741657 4.358899 4.898979\n[5,] 2.236068 3.162278 3.872983 4.472136 5.000000\n\n\nRemember:\n\nsqrt(mat)\n\n         [,1]     [,2]     [,3]     [,4]     [,5]\n[1,] 1.000000 2.449490 3.316625 4.000000 4.582576\n[2,] 1.414214 2.645751 3.464102 4.123106 4.690416\n[3,] 1.732051 2.828427 3.605551 4.242641 4.795832\n[4,] 2.000000 3.000000 3.741657 4.358899 4.898979\n[5,] 2.236068 3.162278 3.872983 4.472136 5.000000"
+    "section": "Applying a function to each cell",
+    "text": "Applying a function to each cell\nApply sqrt() to each cell.\n\napply(mat, c(1, 2), sqrt)\n\n         [,1]     [,2]     [,3]     [,4]     [,5]\n[1,] 1.000000 2.449490 3.316625 4.000000 4.582576\n[2,] 1.414214 2.645751 3.464102 4.123106 4.690416\n[3,] 1.732051 2.828427 3.605551 4.242641 4.795832\n[4,] 2.000000 3.000000 3.741657 4.358899 4.898979\n[5,] 2.236068 3.162278 3.872983 4.472136 5.000000\n\n\nsqrt() also works on the whole matrix and gives the same result.\n\nsqrt(mat)"
   },
   {
     "objectID": "slides/Functions2/index.html#using-lapply-on-lists-to-return-lists",
@@ -1970,42 +1970,77 @@
     "objectID": "slides/Functions2/index.html#using-lapply-alternative-sapply",
     "href": "slides/Functions2/index.html#using-lapply-alternative-sapply",
     "title": "R Course - Day 3",
-    "section": "Using lapply alternative: sapply",
-    "text": "Using lapply alternative: sapply\n“Simplify” lapply output:\n\nsapply(mylist, dim)\n\n     [,1] [,2] [,3]\n[1,]    4    3    2\n[2,]    4    3    2\n\n\n\nsapply(df, sum)\n\ncol1 col2 col3 \n   4    8   12"
+    "section": "What sapply() returns",
+    "text": "What sapply() returns\nA vector when each column gives one sum.\n\nsapply(df, sum)\n\ncol1 col2 col3 \n   4    8   12 \n\n\nA matrix when each input matrix gives two dimensions. Each result becomes a column.\n\nsapply(mylist, dim)\n\n     [,1] [,2] [,3]\n[1,]    4    3    2\n[2,]    4    3    2\n\n\nIf the results have different lengths, sapply() keeps them in a list."
   },
   {
     "objectID": "slides/Functions2/index.html#using-tapply-on-groups-of-data",
     "href": "slides/Functions2/index.html#using-tapply-on-groups-of-data",
     "title": "R Course - Day 3",
     "section": "Using tapply on groups of data",
-    "text": "Using tapply on groups of data\n\npatients &lt;- data.frame(\"group\"=paste('grp',\n                          c(1,1,1,1,1,2,2,2,2,2),sep='-'), \n                       \"outcome\"=rnorm(10)) \n                      #10 random normally distributed values\npatients\n\n   group     outcome\n1  grp-1 -1.59513618\n2  grp-1  0.28673575\n3  grp-1  0.42907780\n4  grp-1 -0.26946788\n5  grp-1  2.15811181\n6  grp-2  0.31431303\n7  grp-2  0.15312145\n8  grp-2  0.57695445\n9  grp-2 -0.67232360\n10 grp-2 -0.01992484\n\ntapply(patients$outcome, patients$group, mean)\n\n    grp-1     grp-2 \n0.2018643 0.0704281"
+    "text": "Using tapply on groups of data\n\nset.seed(42)\npatients &lt;- data.frame(\"group\"=paste('grp',\n                          c(1,1,1,1,1,2,2,2,2,2),sep='-'), \n                       \"outcome\"=rnorm(10)) \n                      #10 random normally distributed values\npatients[c(1:2, 6:7), ]  # Two rows from each group\n\n  group    outcome\n1 grp-1  1.3709584\n2 grp-1 -0.5646982\n6 grp-2 -0.1061245\n7 grp-2  1.5115220\n\ntapply(patients$outcome, patients$group, mean)\n\n    grp-1     grp-2 \n0.4413039 0.6532896"
   },
   {
     "objectID": "slides/Functions2/index.html#multiple-grouping-variables-possible",
     "href": "slides/Functions2/index.html#multiple-grouping-variables-possible",
     "title": "R Course - Day 3",
     "section": "Multiple grouping variables possible",
-    "text": "Multiple grouping variables possible\n\npatients &lt;- data.frame(\"group\"=paste('grp',c(1,1,1,1,1,2,2,2,2,2),sep='-'),\n                       \"serotype\"=c(\"A\",\"B\",\"A\",\"B\",\"A\",\"B\",\"A\",\"B\",\"A\",\"B\"),\n                       \"outcome\"=rnorm(10))\n\ntapply(patients$outcome, list(patients$group, patients$serotype), mean)\n\n               A         B\ngrp-1 -0.4883402 0.8139164\ngrp-2 -0.3605431 0.2780741"
+    "text": "Multiple grouping variables possible\n\nset.seed(42)\npatients &lt;- data.frame(\"group\"=paste('grp',c(1,1,1,1,1,2,2,2,2,2),sep='-'),\n                       \"serotype\"=c(\"A\",\"B\",\"A\",\"B\",\"A\",\"B\",\"A\",\"B\",\"A\",\"B\"),\n                       \"outcome\"=rnorm(10))\n\ntapply(patients$outcome, list(patients$group, patients$serotype), mean)\n\n              A           B\ngrp-1 0.7127851  0.03408222\ngrp-2 1.7649729 -0.08783255"
   },
   {
     "objectID": "slides/Functions2/index.html#decide-which-inputs-to-accept",
     "href": "slides/Functions2/index.html#decide-which-inputs-to-accept",
     "title": "R Course - Day 3",
     "section": "Decide which inputs to accept",
-    "text": "Decide which inputs to accept\nFor numeric ages, skip missing and nonpositive values. For a factor, drop the invalid code -1. Stop if there are no valid ages or if the input type is unsupported.\n\nmy_descriptives &lt;- function(x) {\n  if (is.numeric(x)) {\n    ages &lt;- x[!is.na(x) & x &gt; 0]\n    if (length(ages) == 0) stop(\"No valid ages left\")\n    summary(ages)\n  } else if (is.factor(x)) {\n    table(droplevels(x[x != -1]))\n  } else {\n    stop(\"Expected numeric ages or a factor\")\n  }\n}"
+    "text": "Decide which inputs to accept\nAccept numeric ages. Remove missing values, then keep ages strictly above zero.\n\nmy_descriptives &lt;- function(x) {\n  if (!is.numeric(x)) stop(\"Expected numeric ages\")\n  ages &lt;- x[!is.na(x)]\n  ages &lt;- ages[ages &gt; 0]\n  if (length(ages) == 0) stop(\"No positive ages left\")\n  summary(ages)\n}"
   },
   {
     "objectID": "slides/Functions2/index.html#try-typical-inputs-and-edge-cases",
     "href": "slides/Functions2/index.html#try-typical-inputs-and-edge-cases",
     "title": "R Course - Day 3",
     "section": "Try typical inputs and edge cases",
-    "text": "Try typical inputs and edge cases\nPredict what each call will return or report.\n\nmy_descriptives(c(NA, -50, 42, 50))\n\n   Min. 1st Qu.  Median    Mean 3rd Qu.    Max. \n     42      44      46      46      48      50 \n\nmy_descriptives(factor(c(0, 1, -1)))\n\n\n0 1 \n1 1 \n\nmy_descriptives(c(NA, -50))\n\nError in `my_descriptives()`:\n! No valid ages left\n\nmy_descriptives(c(\"42\", \"50\"))\n\nError in `my_descriptives()`:\n! Expected numeric ages or a factor"
+    "text": "Try typical inputs and edge cases\nPredict which call returns a summary and which calls report an error.\n\nmy_descriptives(c(NA, -50, 0, 42, 50))\nmy_descriptives(c(NA, -50, 0))\nmy_descriptives(c(\"42\", \"50\"))\n\n\n\n\n   Min. 1st Qu.  Median    Mean 3rd Qu.    Max. \n     42      44      46      46      48      50 \n\n\nError in `my_descriptives()`:\n! No positive ages left\n\n\nError in `my_descriptives()`:\n! Expected numeric ages"
   },
   {
     "objectID": "slides/Functions2/index.html#test-the-denominator-check",
     "href": "slides/Functions2/index.html#test-the-denominator-check",
     "title": "R Course - Day 3",
     "section": "Test the denominator check",
-    "text": "Test the denominator check\nEach of these inputs fails the check before R compares y to zero.\n\nmyRatio(3, c(1, 2))   # More than one value\n\nError in `myRatio()`:\n! y must be one nonmissing number\n\nmyRatio(3, numeric()) # No values\n\nError in `myRatio()`:\n! y must be one nonmissing number\n\nmyRatio(3, NA_real_)  # Missing value\n\nError in `myRatio()`:\n! y must be one nonmissing number"
+    "text": "Test the denominator check\nEach call fails a different check before R compares the denominator to zero.\n\nmyRatioChecked(3, \"2\")\n\nError in `myRatioChecked()`:\n! y must be numeric\n\nmyRatioChecked(3, c(1, 2))\n\nError in `myRatioChecked()`:\n! y must have one value\n\nmyRatioChecked(3, NA_real_)\n\nError in `myRatioChecked()`:\n! y must not be missing"
+  },
+  {
+    "objectID": "slides/Functions2/index.html#validate-the-denominator",
+    "href": "slides/Functions2/index.html#validate-the-denominator",
+    "title": "R Course - Day 3",
+    "section": "Validate the denominator",
+    "text": "Validate the denominator\nBefore checking for zero, verify that the denominator is one nonmissing number.\n\nmyRatioChecked &lt;- function(x, y) {\n  if (!is.numeric(y)) stop(\"y must be numeric\")\n  if (length(y) != 1) stop(\"y must have one value\")\n  if (is.na(y)) stop(\"y must not be missing\")\n  myRatio(x, y)\n}"
+  },
+  {
+    "objectID": "slides/Functions2/index.html#why-colmeanscoins-fails",
+    "href": "slides/Functions2/index.html#why-colmeanscoins-fails",
+    "title": "R Course - Day 3",
+    "section": "Why colMeans(coins) fails",
+    "text": "Why colMeans(coins) fails\n\ncolMeans(coins)\n\nError in `colMeans()`:\n! 'x' must be numeric or complex\n\n\ncolMeans() converts the data frame to a matrix. A matrix has one type, so the text columns cause the numbers to become text too. Select the numeric columns before taking means."
+  },
+  {
+    "objectID": "slides/Functions2/index.html#column-means-with-sapply",
+    "href": "slides/Functions2/index.html#column-means-with-sapply",
+    "title": "R Course - Day 3",
+    "section": "Column means with sapply()",
+    "text": "Column means with sapply()\nSelect the numeric columns, then apply mean() to each one. This gives the same named results as the loop.\n\nnumeric_columns &lt;- sapply(coins, is.numeric)\nsapply(coins[numeric_columns], mean)\n\n      Year      Value      Price \n1922.33333   75.50000   83.33333"
+  },
+  {
+    "objectID": "slides/Plotting/index.html#base-save",
+    "href": "slides/Plotting/index.html#base-save",
+    "title": "R Course - Day 3",
+    "section": "Saving base R plots",
+    "text": "Saving base R plots\nOpen a graphics device for the file, draw the plot, then close the device.\n\npng(\"dose-response-base.png\",\n    width = 7, height = 4, units = \"in\", res = 300)\nplot(len ~ dose, data = growth,\n     xlab = \"Vitamin C dose (mg/day)\",\n     ylab = \"Odontoblast length\",\n     pch = 16, col = \"#0072B2\")\ndev.off()\n\nUse pdf() to save a figure that stays sharp when scaled."
+  },
+  {
+    "objectID": "slides/Plotting/index.html#saving-ggplots",
+    "href": "slides/Plotting/index.html#saving-ggplots",
+    "title": "R Course - Day 3",
+    "section": "Saving ggplots",
+    "text": "Saving ggplots\n\nSave plot with ggsave() function\n\nEnter plot object and file to save ggsave(p, \"myplot.png\")\nPossible file extensions: “eps”, “ps”, “tex”, “pdf”, “jpeg”, “tiff”, “png”, “bmp”, “svg” or “wmf”"
   }
 ]

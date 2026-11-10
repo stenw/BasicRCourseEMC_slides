@@ -185,6 +185,23 @@ for (method in c("OJ", "VC")) {
 par(old)
 ```
 
+## Saving base R plots {#base-save data-background-image="./templateassets/triangledb.svg"}
+
+Open a graphics device for the file, draw the plot, then close the device.
+
+```{r}
+#| eval: false
+png("dose-response-base.png",
+    width = 7, height = 4, units = "in", res = 300)
+plot(len ~ dose, data = growth,
+     xlab = "Vitamin C dose (mg/day)",
+     ylab = "Odontoblast length",
+     pch = 16, col = "#0072B2")
+dev.off()
+```
+
+Use `pdf()` to save a figure that stays sharp when scaled.
+
 ## Reading the dose response {#base-check data-background-image="./templateassets/triangledb.svg"}
 
 - Which plot best shows whether the delivery methods differ at each dose?
@@ -213,7 +230,7 @@ A chart combines reusable parts.
 
 | Part | Our dose-response scatterplot |
 |:---|:---|
-| Data | One row per animal |
+| Data | One row per ibservation: one animal |
 | Mapping (`aes()`) | Dose on x, length on y, method sets colour and shape |
 | Stat | None here; a histogram would count rows in bins |
 | Geometry (`geom_point()`) | Draw each animal as a point |
@@ -252,15 +269,6 @@ p
 
 :::
 
-## One row, one observation {#gg-data data-background-image="./templateassets/triangledb.svg"}
-
-| Dataset | What one row represents | What connects the rows |
-|:---|:---|:---|
-| `ToothGrowth` | One animal | Animals share a dose and delivery method |
-| `Indometh` | One blood sample | Several samples come from the same person |
-
-To draw one concentration curve per person in ggplot2, map `group = Subject` in the line layer.
-
 ## Aesthetics and constants {#gg-aes data-background-image="./templateassets/triangledb.svg"}
 
 **Map a column** inside `aes()`. `aes(colour = supp)` assigns colours by method and creates a guide.
@@ -269,16 +277,16 @@ To draw one concentration curve per person in ggplot2, map `group = Subject` in 
 
 Other aesthetics include `x`, `y`, `shape`, `fill`, `size`, `alpha` and `linetype`. Use `group` to tell a line layer which points belong together.
 
-## Grouping repeated samples {#gg-group data-background-image="./templateassets/triangledb.svg"}
+## Grouping repeated samples {#gg-group data-background-image="./templateassets/triangledb.svg" .smaller}
 
-Both panels show the same indomethacin measurements.
+* Indometh: 6 people, 11 samples each; 1 row is 1 sample
+* Both panels show the same indomethacin measurements
 
 ```{r}
 #| label: group-data
-#| include: false
+#| include: true
 profile <- ggplot(Indometh, aes(x = time, y = conc)) +
-  labs(x = "Time since dose (hours)",
-       y = "Plasma concentration (mcg/mL)")
+  labs(x = "Time since dose (hours)", y = "Plasma concentration (mcg/mL)")
 ```
 
 :::: {.group-comparison}
@@ -287,7 +295,7 @@ profile <- ggplot(Indometh, aes(x = time, y = conc)) +
 
 ```{r}
 #| label: group-unmapped
-#| fig-height: 4.6
+#| fig-height: 4.5
 #| fig-alt: "A single zigzag line connects measurements across different subjects at the same sampling times."
 profile + geom_line()
 ```
@@ -298,7 +306,7 @@ profile + geom_line()
 
 ```{r}
 #| label: group-subject
-#| fig-height: 4.6
+#| fig-height: 4.5
 #| fig-alt: "Six separate lines each follow one subject's plasma concentration over time."
 profile + geom_line(aes(group = Subject))
 ```
@@ -432,36 +440,6 @@ ggplot(growth, aes(x = factor(dose), y = len,
 
 :::
 
-## Facets share a scale {#gg-facets .plot-example .wide-code data-background-image="./templateassets/triangledb.svg"}
-
-Show one delivery method per panel. The default shared y scale makes the panels comparable.
-
-::: {.panel-tabset}
-
-### ggplot2
-
-```{r}
-#| label: gg-facets
-#| fig-height: 4.15
-#| fig-alt: "Separate panels for orange juice and ascorbic acid boxplots on a common scale."
-ggplot(growth,
-       aes(x = factor(dose), y = len)) +
-  geom_boxplot(fill = "#A6D7ED") +
-  facet_wrap(~ supp) +
-  labs(x = "Vitamin C dose (mg/day)",
-       y = "Odontoblast length")
-```
-
-### Base R
-
-```{r compare-base-panels, ref.label="base-panels"}
-#| fig-height: 4.15
-#| fig-show: hold
-#| fig-alt: "Base R side-by-side boxplots on a common y scale."
-```
-
-:::
-
 ## Heatmap of group means {#gg-heat .plot-example .wide-code data-background-image="./templateassets/triangledb.svg"}
 
 Reduce to one row per tile first. A tile shows the mean for a group and hides variation within it.
@@ -474,17 +452,56 @@ means <- aggregate(len ~ supp + dose,
 ggplot(means, aes(x = supp, y = factor(dose),
                   fill = len)) +
   geom_tile(colour = "white") +
-  geom_text(aes(label = round(len, 1)),
-            colour = "white") +
-  scale_fill_gradient(low = "#315E85",
-                      high = "#113045") +
+  geom_label(aes(label = round(len, 1)), fill = "white") +
   labs(x = "Delivery method", y = "Dose (mg/day)",
        fill = "Mean length")
 ```
 
+## Facets share a scale {#gg-facets .plot-example data-background-image="./templateassets/triangledb.svg"}
+
+Compare methods within each dose on a shared y scale.
+
+::: {.panel-tabset}
+
+### ggplot2
+
+```{r}
+#| label: gg-facets
+#| fig-width: 10
+#| fig-height: 2.65
+#| fig-alt: "Three panels compare orange juice and ascorbic acid at each vitamin C dose. All panels use the same y scale."
+ggplot(growth, aes(x = supp, y = len)) +
+  geom_boxplot(fill = "#A6D7ED") +
+  facet_wrap(~ dose, nrow = 1, labeller = label_both) +
+  labs(x = "Delivery method", y = "Odontoblast length")
+```
+
+### Base R
+
+```{r}
+#| label: compare-base-panels
+#| fig-width: 10
+#| fig-height: 2.55
+#| fig-show: hold
+#| fig-alt: "Base R boxplots compare the two delivery methods in three dose panels with the same y limits."
+old <- par(no.readonly = TRUE)
+par(mfrow = c(1, 3), mar = c(4.2, 4, 2, 1))
+for (amount in sort(unique(growth$dose))) {
+  boxplot(len ~ supp, data = subset(growth, dose == amount),
+          main = paste(amount, "mg/day"), ylim = range(growth$len),
+          xlab = "Delivery method", ylab = "Odontoblast length")
+}
+par(old)
+```
+
+:::
+
 ## Scales, axes and guides {#gg-scales .plot-example .wide-code data-background-image="./templateassets/triangledb.svg"}
 
-A mapping says which variable controls colour. The scale chooses the colours and sets the legend labels.
+* Scale can be changed for each Aesthetic with corresponding `scale_...`
+  * A mapping says which variable controls colour.
+  * The scale chooses the colours and sets the legend labels.
+
 
 ```{r}
 #| label: gg-scales
@@ -586,6 +603,12 @@ ggplot(deaths,
   labs(x = "Month", y = "Deaths",
        colour = "Sex")
 ```
+
+## Saving ggplots {data-background="./_extensions/emc/www/triangle1.svg"}
+
+* Save plot with `ggsave()` function
+  * Enter plot object and file to save `ggsave(p, "myplot.png")`
+  * Possible file extensions: "eps", "ps", "tex", "pdf", "jpeg", "tiff", "png", "bmp", "svg" or "wmf"
 
 ## References and extensions {#gg-extension data-background-image="./templateassets/triangledb.svg"}
 
