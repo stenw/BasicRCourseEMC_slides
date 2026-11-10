@@ -245,22 +245,39 @@
 </section>
 <section id="toothgrowth" class="slide level2" data-background="./_extensions/emc/www/triangle1.svg">
 <h2>Vitamin C and tooth growth</h2>
-<p>One row per guinea pig, 60 animals in total.</p>
-<ul>
-<li><code>len</code> is odontoblast length. Odontoblasts are cells involved in tooth formation.</li>
-<li><code>dose</code> is vitamin C dose (0.5, 1 or 2 mg/day).</li>
-<li><code>supp</code> is the delivery method (OJ = orange juice, VC = ascorbic acid).</li>
-</ul>
+<p><strong><code>ToothGrowth</code></strong> comes from an animal experiment. Each row is one guinea pig. The 60 animals are split into six groups of 10 (three doses × two delivery methods).</p>
+<table class="caption-top">
+<thead>
+<tr class="header">
+<th style="text-align: left;">Column</th>
+<th style="text-align: left;">Meaning</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;"><code>len</code></td>
+<td style="text-align: left;">Length of odontoblasts, cells involved in tooth formation</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><code>dose</code></td>
+<td style="text-align: left;">Vitamin C dose (0.5, 1 or 2 mg/day)</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><code>supp</code></td>
+<td style="text-align: left;">Delivery method (OJ = orange juice, VC = ascorbic acid)</td>
+</tr>
+</tbody>
+</table>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a aria-hidden="true" tabindex="-1"></a>growth <span class="ot">&lt;-</span> ToothGrowth</span>
-<span id="cb1-2"><a aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(growth, <span class="dv">3</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb1-2"><a aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(growth, <span class="dv">2</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>   len supp dose
 1  4.2   VC  0.5
-2 11.5   VC  0.5
-3  7.3   VC  0.5</code></pre>
+2 11.5   VC  0.5</code></pre>
 </div>
 </div>
+<p>Does the pattern across doses look similar for the two methods?</p>
 </section>
 <section id="plot-choices" class="slide level2" data-background="./_extensions/emc/www/triangle1.svg">
 <h2>Plot choice by question</h2>
@@ -428,16 +445,51 @@
 </div>
 </div>
 </section>
+<section id="indometh" class="slide level2" data-background="./_extensions/emc/www/triangle1.svg">
+<h2>Indomethacin in blood samples</h2>
+<p><strong><code>Indometh</code></strong> follows six people after an intravenous injection of indomethacin. Each person gave 11 blood samples at different times.</p>
+<table class="caption-top">
+<thead>
+<tr class="header">
+<th style="text-align: left;">Column</th>
+<th style="text-align: left;">Meaning</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;"><code>Subject</code></td>
+<td style="text-align: left;">Person’s study ID</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><code>time</code></td>
+<td style="text-align: left;">Hours after the injection</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><code>conc</code></td>
+<td style="text-align: left;">Plasma drug concentration (mcg/mL)</td>
+</tr>
+</tbody>
+</table>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(Indometh, <span class="dv">2</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>  Subject time conc
+1       1 0.25 1.50
+2       1 0.50 0.94</code></pre>
+</div>
+</div>
+<p>How does concentration change over time within one person?</p>
+</section>
 <section id="base-line" class="slide level2 plot-example" data-background="./_extensions/emc/www/triangle1.svg">
 <h2>Base R line plot</h2>
-<p><code>Indometh</code> follows plasma drug concentration after IV dosing. Here the line connects one subject’s measurements in time order.</p>
+<p>Each point is one blood sample. The line connects samples from subject 1 in time order.</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a aria-hidden="true" tabindex="-1"></a>one <span class="ot">&lt;-</span> <span class="fu">subset</span>(Indometh, Subject <span class="sc">==</span> <span class="st">"1"</span>)</span>
-<span id="cb8-2"><a aria-hidden="true" tabindex="-1"></a>one <span class="ot">&lt;-</span> one[<span class="fu">order</span>(one<span class="sc">$</span>time), ]</span>
-<span id="cb8-3"><a aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(conc <span class="sc">~</span> time, <span class="at">data =</span> one, <span class="at">type =</span> <span class="st">"b"</span>,</span>
-<span id="cb8-4"><a aria-hidden="true" tabindex="-1"></a>     <span class="at">xlab =</span> <span class="st">"Time since dose (hours)"</span>,</span>
-<span id="cb8-5"><a aria-hidden="true" tabindex="-1"></a>     <span class="at">ylab =</span> <span class="st">"Plasma concentration (mcg/mL)"</span>,</span>
-<span id="cb8-6"><a aria-hidden="true" tabindex="-1"></a>     <span class="at">pch =</span> <span class="dv">16</span>, <span class="at">lwd =</span> <span class="dv">2</span>, <span class="at">col =</span> <span class="st">"#0072B2"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a aria-hidden="true" tabindex="-1"></a>one <span class="ot">&lt;-</span> <span class="fu">subset</span>(Indometh, Subject <span class="sc">==</span> <span class="st">"1"</span>)</span>
+<span id="cb10-2"><a aria-hidden="true" tabindex="-1"></a>one <span class="ot">&lt;-</span> one[<span class="fu">order</span>(one<span class="sc">$</span>time), ]</span>
+<span id="cb10-3"><a aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(conc <span class="sc">~</span> time, <span class="at">data =</span> one, <span class="at">type =</span> <span class="st">"b"</span>,</span>
+<span id="cb10-4"><a aria-hidden="true" tabindex="-1"></a>     <span class="at">xlab =</span> <span class="st">"Time since dose (hours)"</span>,</span>
+<span id="cb10-5"><a aria-hidden="true" tabindex="-1"></a>     <span class="at">ylab =</span> <span class="st">"Plasma concentration (mcg/mL)"</span>,</span>
+<span id="cb10-6"><a aria-hidden="true" tabindex="-1"></a>     <span class="at">pch =</span> <span class="dv">16</span>, <span class="at">lwd =</span> <span class="dv">2</span>, <span class="at">col =</span> <span class="st">"#0072B2"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output-display">
 <div>
 <figure>
@@ -486,14 +538,14 @@
 <h2>Base R panels with a common scale</h2>
 <p>Save the settings, draw both panels with the same y limits, then restore the settings.</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a aria-hidden="true" tabindex="-1"></a>old <span class="ot">&lt;-</span> <span class="fu">par</span>(<span class="at">no.readonly =</span> <span class="cn">TRUE</span>)</span>
-<span id="cb9-2"><a aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow =</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>), <span class="at">mar =</span> <span class="fu">c</span>(<span class="dv">4</span>, <span class="dv">4</span>, <span class="dv">2</span>, <span class="dv">1</span>), <span class="at">las =</span> <span class="dv">1</span>)</span>
-<span id="cb9-3"><a aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (method <span class="cf">in</span> <span class="fu">c</span>(<span class="st">"OJ"</span>, <span class="st">"VC"</span>)) {</span>
-<span id="cb9-4"><a aria-hidden="true" tabindex="-1"></a>  group <span class="ot">&lt;-</span> <span class="fu">subset</span>(growth, supp <span class="sc">==</span> method)</span>
-<span id="cb9-5"><a aria-hidden="true" tabindex="-1"></a>  <span class="fu">boxplot</span>(len <span class="sc">~</span> dose, <span class="at">data =</span> group,</span>
-<span id="cb9-6"><a aria-hidden="true" tabindex="-1"></a>          <span class="at">main =</span> method, <span class="at">ylim =</span> <span class="fu">range</span>(growth<span class="sc">$</span>len),</span>
-<span id="cb9-7"><a aria-hidden="true" tabindex="-1"></a>          <span class="at">xlab =</span> <span class="st">"Dose (mg/day)"</span>, <span class="at">ylab =</span> <span class="st">"Length"</span>)</span>
-<span id="cb9-8"><a aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a aria-hidden="true" tabindex="-1"></a>old <span class="ot">&lt;-</span> <span class="fu">par</span>(<span class="at">no.readonly =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb11-2"><a aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow =</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>), <span class="at">mar =</span> <span class="fu">c</span>(<span class="dv">4</span>, <span class="dv">4</span>, <span class="dv">2</span>, <span class="dv">1</span>), <span class="at">las =</span> <span class="dv">1</span>)</span>
+<span id="cb11-3"><a aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (method <span class="cf">in</span> <span class="fu">c</span>(<span class="st">"OJ"</span>, <span class="st">"VC"</span>)) {</span>
+<span id="cb11-4"><a aria-hidden="true" tabindex="-1"></a>  group <span class="ot">&lt;-</span> <span class="fu">subset</span>(growth, supp <span class="sc">==</span> method)</span>
+<span id="cb11-5"><a aria-hidden="true" tabindex="-1"></a>  <span class="fu">boxplot</span>(len <span class="sc">~</span> dose, <span class="at">data =</span> group,</span>
+<span id="cb11-6"><a aria-hidden="true" tabindex="-1"></a>          <span class="at">main =</span> method, <span class="at">ylim =</span> <span class="fu">range</span>(growth<span class="sc">$</span>len),</span>
+<span id="cb11-7"><a aria-hidden="true" tabindex="-1"></a>          <span class="at">xlab =</span> <span class="st">"Dose (mg/day)"</span>, <span class="at">ylab =</span> <span class="st">"Length"</span>)</span>
+<span id="cb11-8"><a aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output-display">
 <div>
 <figure>
@@ -501,7 +553,7 @@
 </figure>
 </div>
 </div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(old)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(old)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </section>
 <section id="base-check" class="slide level2" data-background="./_extensions/emc/www/triangle1.svg">
@@ -517,10 +569,10 @@
 <h2>ggplot2</h2>
 <p>A plotting package built around the <strong>layered grammar of graphics</strong>.</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">"ggplot2"</span>)  <span class="co"># Once per R installation</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">"ggplot2"</span>)  <span class="co"># Once per R installation</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p><a href="https://ggplot2.tidyverse.org/reference/">ggplot2 function reference</a></p>
 </section>
@@ -567,13 +619,13 @@
 <h2>The same scatterplot in ggplot2</h2>
 <p>Read it from top to bottom. Choose the data, map columns, then add a layer of points.</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a aria-hidden="true" tabindex="-1"></a>p <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(growth, <span class="fu">aes</span>(<span class="at">x =</span> dose, <span class="at">y =</span> len)) <span class="sc">+</span></span>
-<span id="cb13-2"><a aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="fu">aes</span>(<span class="at">colour =</span> supp, <span class="at">shape =</span> supp),</span>
-<span id="cb13-3"><a aria-hidden="true" tabindex="-1"></a>             <span class="at">size =</span> <span class="fl">2.5</span>) <span class="sc">+</span></span>
-<span id="cb13-4"><a aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">"Vitamin C dose (mg/day)"</span>,</span>
-<span id="cb13-5"><a aria-hidden="true" tabindex="-1"></a>       <span class="at">y =</span> <span class="st">"Odontoblast length"</span>,</span>
-<span id="cb13-6"><a aria-hidden="true" tabindex="-1"></a>       <span class="at">colour =</span> <span class="st">"Method"</span>, <span class="at">shape =</span> <span class="st">"Method"</span>)</span>
-<span id="cb13-7"><a aria-hidden="true" tabindex="-1"></a>p</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a aria-hidden="true" tabindex="-1"></a>p <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(growth, <span class="fu">aes</span>(<span class="at">x =</span> dose, <span class="at">y =</span> len)) <span class="sc">+</span></span>
+<span id="cb15-2"><a aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="fu">aes</span>(<span class="at">colour =</span> supp, <span class="at">shape =</span> supp),</span>
+<span id="cb15-3"><a aria-hidden="true" tabindex="-1"></a>             <span class="at">size =</span> <span class="fl">2.5</span>) <span class="sc">+</span></span>
+<span id="cb15-4"><a aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">"Vitamin C dose (mg/day)"</span>,</span>
+<span id="cb15-5"><a aria-hidden="true" tabindex="-1"></a>       <span class="at">y =</span> <span class="st">"Odontoblast length"</span>,</span>
+<span id="cb15-6"><a aria-hidden="true" tabindex="-1"></a>       <span class="at">colour =</span> <span class="st">"Method"</span>, <span class="at">shape =</span> <span class="st">"Method"</span>)</span>
+<span id="cb15-7"><a aria-hidden="true" tabindex="-1"></a>p</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output-display">
 <div>
 <figure>
@@ -584,21 +636,34 @@
 </div>
 </section>
 <section id="gg-data" class="slide level2" data-background="./_extensions/emc/www/triangle1.svg">
-<h2>Data and observation level</h2>
-<p>A data frame gives each variable a column. What one row represents depends on the study.</p>
-<ul>
-<li><code>ToothGrowth</code> · one row per animal.</li>
-<li><code>Indometh</code> · one row per blood sample, with repeated samples per subject.</li>
-</ul>
-<div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(Indometh, <span class="dv">3</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>  Subject time conc
-1       1 0.25 1.50
-2       1 0.50 0.94
-3       1 0.75 0.78</code></pre>
-</div>
-</div>
+<h2>One row, one observation</h2>
+<table class="caption-top">
+<colgroup>
+<col style="width: 33%">
+<col style="width: 33%">
+<col style="width: 33%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;">Dataset</th>
+<th style="text-align: left;">What one row represents</th>
+<th style="text-align: left;">What connects the rows</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;"><code>ToothGrowth</code></td>
+<td style="text-align: left;">One animal</td>
+<td style="text-align: left;">Animals share a dose and delivery method</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><code>Indometh</code></td>
+<td style="text-align: left;">One blood sample</td>
+<td style="text-align: left;">Several samples come from the same person</td>
+</tr>
+</tbody>
+</table>
+<p>To draw one concentration curve per person in ggplot2, map <code>group = Subject</code> in the line layer.</p>
 </section>
 <section id="gg-aes" class="slide level2" data-background="./_extensions/emc/www/triangle1.svg">
 <h2>Aesthetics and constants</h2>
@@ -778,8 +843,12 @@
 </ol>
 </section>
 <section id="deaths-source" class="slide level2" data-background="./_extensions/emc/www/triangle1.svg">
-<h2>Extension · Data in two time series</h2>
-<p><code>mdeaths</code> and <code>fdeaths</code> hold monthly UK death counts from bronchitis, emphysema and asthma from 1974 through 1979. Sex is encoded in the object names.</p>
+<h2>Extension · UK lung disease deaths</h2>
+<p><code>mdeaths</code> and <code>fdeaths</code> are monthly counts of deaths from bronchitis, emphysema and asthma in the UK from 1974 to 1979.</p>
+<ul>
+<li>Each series has 72 monthly counts. The two series use the same calendar months.</li>
+<li>The object name identifies the sex group. The values are counts of deaths.</li>
+</ul>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb23"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(<span class="fu">cbind</span>(mdeaths, fdeaths), <span class="dv">3</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
@@ -789,7 +858,7 @@ Feb 1974    1863     689
 Mar 1974    1877     827</code></pre>
 </div>
 </div>
-<p>To map sex to a line or colour, make sex a column and keep the calendar date.</p>
+<p>Do the counts peak around the same months in both series?</p>
 </section>
 <section id="deaths-tidy" class="slide level2 plot-example" data-background="./_extensions/emc/www/triangle1.svg">
 <h2>Extension · One variable per column</h2>
@@ -820,6 +889,7 @@ Mar 1974    1877     827</code></pre>
 <h2>References and extensions</h2>
 <ul>
 <li><a href="https://stat.ethz.ch/R-manual/R-devel/library/datasets/html/ToothGrowth.html">R help for ToothGrowth</a> and <a href="https://stat.ethz.ch/R-manual/R-devel/library/datasets/html/Indometh.html">Indometh</a></li>
+<li><a href="https://stat.ethz.ch/R-manual/R-devel/library/datasets/html/UKLungDeaths.html">R help for UK lung disease deaths</a></li>
 <li><a href="https://stat.ethz.ch/R-manual/R-devel/library/graphics/html/par.html">R help for graphical parameters</a></li>
 <li><a href="https://ggplot2-book.org/mastery.html">The layered grammar of graphics</a> and the <a href="https://ggplot2.tidyverse.org/reference/">ggplot2 reference</a></li>
 <li><a href="https://exts.ggplot2.tidyverse.org/gallery/">ggplot2 extension gallery</a></li>

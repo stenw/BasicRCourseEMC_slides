@@ -4,6 +4,7 @@
 # If needed, install ggplot2 before class with install.packages("ggplot2").
 
 # 1. Look at the data and choose a plot ------------------------------------
+# One row per guinea pig. Three doses x two delivery methods, 10 per group.
 growth <- ToothGrowth
 str(growth)
 with(growth, table(dose, supp))
@@ -58,7 +59,8 @@ for (method in c("OJ", "VC")) {
 }
 par(old)
 
-# Confirm the layout is restored with a plot that uses a single panel.
+# Indometh has 11 blood samples per person for six people after an IV dose.
+# Confirm the layout is restored with a time plot for one person.
 one <- subset(Indometh, Subject == "1")
 one <- one[order(one$time), ]
 plot(conc ~ time, data = one, type = "b",
@@ -114,8 +116,12 @@ ggsave(output, plot = p_final, width = 7, height = 4, units = "in", dpi = 300)
 message("Saved figure to ", output)
 
 # 6. Optional practice - connect repeated samples within each person -----
-# Ask what happens if group = Subject is removed from the line layer.
-profiles <- ggplot(Indometh, aes(x = time, y = conc)) +
+# Ask why the line zigzags when it connects samples from different people.
+concentration <- ggplot(Indometh, aes(x = time, y = conc))
+print(concentration + geom_line() + geom_point())
+
+# Use the subject ID to give each person a separate line.
+profiles <- concentration +
   geom_line(aes(group = Subject), colour = "#0072B2", alpha = 0.6) +
   geom_point(colour = "#0072B2", alpha = 0.6) +
   labs(x = "Time since dose (hours)",

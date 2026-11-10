@@ -1747,7 +1747,7 @@
     "href": "slides/Plotting/index.html#toothgrowth",
     "title": "R Course - Day 3",
     "section": "Vitamin C and tooth growth",
-    "text": "Vitamin C and tooth growth\nOne row per guinea pig, 60 animals in total.\n\nlen is odontoblast length. Odontoblasts are cells involved in tooth formation.\ndose is vitamin C dose (0.5, 1 or 2 mg/day).\nsupp is the delivery method (OJ = orange juice, VC = ascorbic acid).\n\n\ngrowth &lt;- ToothGrowth\nhead(growth, 3)\n\n   len supp dose\n1  4.2   VC  0.5\n2 11.5   VC  0.5\n3  7.3   VC  0.5"
+    "text": "Vitamin C and tooth growth\nToothGrowth comes from an animal experiment. Each row is one guinea pig. The 60 animals are split into six groups of 10 (three doses × two delivery methods).\n\n\n\nColumn\nMeaning\n\n\n\n\nlen\nLength of odontoblasts, cells involved in tooth formation\n\n\ndose\nVitamin C dose (0.5, 1 or 2 mg/day)\n\n\nsupp\nDelivery method (OJ = orange juice, VC = ascorbic acid)\n\n\n\n\ngrowth &lt;- ToothGrowth\nhead(growth, 2)\n\n   len supp dose\n1  4.2   VC  0.5\n2 11.5   VC  0.5\n\n\nDoes the pattern across doses look similar for the two methods?"
   },
   {
     "objectID": "slides/Plotting/index.html#plot-choices",
@@ -1803,7 +1803,7 @@
     "href": "slides/Plotting/index.html#base-line",
     "title": "R Course - Day 3",
     "section": "Base R line plot",
-    "text": "Base R line plot\nIndometh follows plasma drug concentration after IV dosing. Here the line connects one subject’s measurements in time order.\n\none &lt;- subset(Indometh, Subject == \"1\")\none &lt;- one[order(one$time), ]\nplot(conc ~ time, data = one, type = \"b\",\n     xlab = \"Time since dose (hours)\",\n     ylab = \"Plasma concentration (mcg/mL)\",\n     pch = 16, lwd = 2, col = \"#0072B2\")"
+    "text": "Base R line plot\nEach point is one blood sample. The line connects samples from subject 1 in time order.\n\none &lt;- subset(Indometh, Subject == \"1\")\none &lt;- one[order(one$time), ]\nplot(conc ~ time, data = one, type = \"b\",\n     xlab = \"Time since dose (hours)\",\n     ylab = \"Plasma concentration (mcg/mL)\",\n     pch = 16, lwd = 2, col = \"#0072B2\")"
   },
   {
     "objectID": "slides/Plotting/index.html#base-par",
@@ -1851,8 +1851,8 @@
     "objectID": "slides/Plotting/index.html#gg-data",
     "href": "slides/Plotting/index.html#gg-data",
     "title": "R Course - Day 3",
-    "section": "Data and observation level",
-    "text": "Data and observation level\nA data frame gives each variable a column. What one row represents depends on the study.\n\nToothGrowth · one row per animal.\nIndometh · one row per blood sample, with repeated samples per subject.\n\n\nhead(Indometh, 3)\n\n  Subject time conc\n1       1 0.25 1.50\n2       1 0.50 0.94\n3       1 0.75 0.78"
+    "section": "One row, one observation",
+    "text": "One row, one observation\n\n\n\n\n\n\n\n\nDataset\nWhat one row represents\nWhat connects the rows\n\n\n\n\nToothGrowth\nOne animal\nAnimals share a dose and delivery method\n\n\nIndometh\nOne blood sample\nSeveral samples come from the same person\n\n\n\nTo draw one concentration curve per person in ggplot2, map group = Subject in the line layer."
   },
   {
     "objectID": "slides/Plotting/index.html#gg-aes",
@@ -1928,8 +1928,8 @@
     "objectID": "slides/Plotting/index.html#deaths-source",
     "href": "slides/Plotting/index.html#deaths-source",
     "title": "R Course - Day 3",
-    "section": "Extension · Data in two time series",
-    "text": "Extension · Data in two time series\nmdeaths and fdeaths hold monthly UK death counts from bronchitis, emphysema and asthma from 1974 through 1979. Sex is encoded in the object names.\n\nhead(cbind(mdeaths, fdeaths), 3)\n\n         mdeaths fdeaths\nJan 1974    2134     901\nFeb 1974    1863     689\nMar 1974    1877     827\n\n\nTo map sex to a line or colour, make sex a column and keep the calendar date."
+    "section": "Extension · UK lung disease deaths",
+    "text": "Extension · UK lung disease deaths\nmdeaths and fdeaths are monthly counts of deaths from bronchitis, emphysema and asthma in the UK from 1974 to 1979.\n\nEach series has 72 monthly counts. The two series use the same calendar months.\nThe object name identifies the sex group. The values are counts of deaths.\n\n\nhead(cbind(mdeaths, fdeaths), 3)\n\n         mdeaths fdeaths\nJan 1974    2134     901\nFeb 1974    1863     689\nMar 1974    1877     827\n\n\nDo the counts peak around the same months in both series?"
   },
   {
     "objectID": "slides/Plotting/index.html#deaths-tidy",
@@ -1943,6 +1943,13 @@
     "href": "slides/Plotting/index.html#gg-extension",
     "title": "R Course - Day 3",
     "section": "References and extensions",
-    "text": "References and extensions\n\nR help for ToothGrowth and Indometh\nR help for graphical parameters\nThe layered grammar of graphics and the ggplot2 reference\nggplot2 extension gallery"
+    "text": "References and extensions\n\nR help for ToothGrowth and Indometh\nR help for UK lung disease deaths\nR help for graphical parameters\nThe layered grammar of graphics and the ggplot2 reference\nggplot2 extension gallery"
+  },
+  {
+    "objectID": "slides/Plotting/index.html#indometh",
+    "href": "slides/Plotting/index.html#indometh",
+    "title": "R Course - Day 3",
+    "section": "Indomethacin in blood samples",
+    "text": "Indomethacin in blood samples\nIndometh follows six people after an intravenous injection of indomethacin. Each person gave 11 blood samples at different times.\n\n\n\nColumn\nMeaning\n\n\n\n\nSubject\nPerson’s study ID\n\n\ntime\nHours after the injection\n\n\nconc\nPlasma drug concentration (mcg/mL)\n\n\n\n\nhead(Indometh, 2)\n\n  Subject time conc\n1       1 0.25 1.50\n2       1 0.50 0.94\n\n\nHow does concentration change over time within one person?"
   }
 ]
