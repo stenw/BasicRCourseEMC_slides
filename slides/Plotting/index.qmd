@@ -1,6 +1,8 @@
 ---
 title: "R Course - Day 3"
 subtitle: "Data visualisation in R"
+date: "11/11/2026"
+date-format: long
 format:
   emc-revealjs:
     menu: true
@@ -12,14 +14,14 @@ execute:
   echo: true
   freeze: auto
 fig-width: 6
-fig-height: 3.6
+fig-height: 4.85
 categories: [Day3]
 image: "image.png"
 resources:
-  - _extensions/emc/www/triangle1.svg
+  - templateassets/triangledb.svg
 ---
 
-## Today's questions {#roadmap data-background="./_extensions/emc/www/triangle1.svg"}
+## Today's questions {#roadmap data-background-image="./templateassets/triangledb.svg"}
 
 - Which plot matches the question and the variables?
 - How do we build and annotate it in base R?
@@ -27,29 +29,32 @@ resources:
 
 **Case study** · What changes in a vitamin C dose-response plot when we show the delivery method?
 
-## R graphics packages {#packages data-background="./_extensions/emc/www/triangle1.svg"}
+## R graphics packages {#packages data-background-image="./templateassets/triangledb.svg"}
 
 | Tool | Typical use |
 |:---|:---|
 | Base R graphics | Quick plots and direct control over drawing |
-| ggplot2 | Layered figures with consistent scales and panels |
+| grid | Graphics building blocks for packages such as lattice and ggplot2 |
 | lattice | Trellis plots for comparisons across groups |
+| ggplot2 | Layered figures with consistent scales and panels |
 | plotly | Interactive figures with hover, zoom and pan |
 
+::: {.slide-callout}
 Base graphics ships with R. Today we use base graphics first, then ggplot2.
+:::
 
-## Plot choice by question {#plot-choices data-background="./_extensions/emc/www/triangle1.svg"}
+## Plot choice by question {#plot-choices data-background-image="./templateassets/triangledb.svg"}
 
 | Question | Variables | Plot |
 |:---|:---|:---|
-| How variable is length? | One numeric variable | Histogram |
+| Where do most length measurements fall? | One numeric variable | Histogram |
 | How many animals got each dose? | Categories and counts | Bar chart |
 | Does length vary with dose? | Two numeric variables | Scatterplot |
 | Does length differ by delivery method? | Numeric outcome and groups | Boxplot |
-| How does concentration change over time? | Ordered measurements | Line plot |
+| How does mean length change across doses? | Ordered doses and group means | Line plot |
 | How do group summaries vary across two factors? | Two groups and a summary | Heatmap |
 
-## Starting and adding to a base plot {#base-high-low data-background="./_extensions/emc/www/triangle1.svg"}
+## Starting and adding to a base plot {#base-high-low data-background-image="./templateassets/triangledb.svg"}
 
 | High-level calls start a plot | Low-level calls add to it |
 |:---|:---|
@@ -58,7 +63,7 @@ Base graphics ships with R. Today we use base graphics first, then ggplot2.
 
 Run the high-level call first. A later high-level call starts the next plot or panel.
 
-## Base R histogram {#base-histogram .plot-example data-background="./_extensions/emc/www/triangle1.svg"}
+## Base R histogram {#base-histogram .plot-example data-background-image="./templateassets/triangledb.svg"}
 
 Each bar counts measurements in an interval. Bin width changes what patterns you can see.
 
@@ -66,12 +71,14 @@ Each bar counts measurements in an interval. Bin width changes what patterns you
 #| label: base-histogram
 #| fig-alt: "Histogram of odontoblast length in five-unit intervals."
 growth <- ToothGrowth
-hist(growth$len, breaks = seq(0, 35, by = 5),
-     xlab = "Odontoblast length", main = "",
+hist(growth$len,
+     breaks = seq(0, 35, by = 5),
+     xlab = "Odontoblast length",
+     main = "",
      col = "#56B4E9", border = "white")
 ```
 
-## Base R bar chart {#base-bars .plot-example data-background="./_extensions/emc/www/triangle1.svg"}
+## Base R bar chart {#base-bars .plot-example data-background-image="./templateassets/triangledb.svg"}
 
 Treat each tested dose as a category. The bars show how many animals received it.
 
@@ -83,7 +90,7 @@ barplot(table(growth$dose),
         ylab = "Animals", col = "#56B4E9")
 ```
 
-## Base R scatterplot {#base-scatter .plot-example data-background="./_extensions/emc/www/triangle1.svg"}
+## Base R scatterplot {#base-scatter .plot-example data-background-image="./templateassets/triangledb.svg"}
 
 Each point is one animal. There are only three x positions, and some points overlap.
 
@@ -96,7 +103,7 @@ plot(len ~ dose, data = growth,
      pch = 16, col = "#0072B2")
 ```
 
-## Adding points and a legend {#base-overlay .plot-example data-background="./_extensions/emc/www/triangle1.svg"}
+## Adding points and a legend {#base-overlay .plot-example .wide-code data-background-image="./templateassets/triangledb.svg"}
 
 Start an empty plot with `type = "n"`. Draw one group at a time, then explain the symbols.
 
@@ -117,7 +124,7 @@ legend("bottomright",
        bty = "n")
 ```
 
-## Base R boxplot {#base-boxplot .plot-example data-background="./_extensions/emc/www/triangle1.svg"}
+## Base R boxplot {#base-boxplot .plot-example data-background-image="./templateassets/triangledb.svg"}
 
 The middle line is the median. The box shows the middle half. Each box is one dose and delivery method.
 
@@ -130,22 +137,23 @@ boxplot(len ~ supp + dose, data = growth,
         col = c("#A6D7ED", "#F4BA9B"))
 ```
 
-## Base R line plot {#base-line .plot-example data-background="./_extensions/emc/www/triangle1.svg"}
+## Base R line plot {#base-line .plot-example data-background-image="./templateassets/triangledb.svg"}
 
-Indomethacin concentration over time for one person. Each point is one blood sample.
+Connect the mean lengths at the three ordered doses for the orange juice group.
 
 ```{r}
 #| label: base-line
-#| fig-alt: "Indomethacin plasma concentration over time for one subject."
-one <- subset(Indometh, Subject == "1")
-one <- one[order(one$time), ]
-plot(conc ~ time, data = one, type = "b",
-     xlab = "Time since dose (hours)",
-     ylab = "Plasma concentration (mcg/mL)",
-     pch = 16, lwd = 2, col = "#0072B2")
+#| fig-alt: "Mean odontoblast length at three vitamin C doses for the orange juice group."
+oj <- growth[growth$supp == "OJ", ]
+oj_means <- aggregate(len ~ dose, data = oj,
+                      FUN = mean)
+plot(len ~ dose, data = oj_means, type = "b",
+     xlab = "Vitamin C dose (mg/day)",
+     ylab = "Mean odontoblast length",
+     pch = 16, col = "#0072B2")
 ```
 
-## Base R graphics settings {#base-par data-background="./_extensions/emc/www/triangle1.svg"}
+## Base R graphics settings {#base-par data-background-image="./templateassets/triangledb.svg"}
 
 `par("mar")` reads a setting. `par(mfrow = c(1, 2))` changes the active device's layout for subsequent plots.
 
@@ -158,12 +166,13 @@ plot(conc ~ time, data = one, type = "b",
 
 Set labels and limits on a plot with `xlab`, `ylab`, `xlim` and `ylim`.
 
-## Base R panels with a common scale {#base-panels .plot-example data-background="./_extensions/emc/www/triangle1.svg"}
+## Base R panels with a common scale {#base-panels .plot-example .wide-code data-background-image="./templateassets/triangledb.svg"}
 
 Save the settings, draw both panels with the same y limits, then restore the settings.
 
 ```{r}
 #| label: base-panels
+#| fig-show: hold
 #| fig-alt: "Side-by-side boxplots by dose for each delivery method, with identical vertical scales."
 old <- par(no.readonly = TRUE)
 par(mfrow = c(1, 2), mar = c(4, 4, 2, 1), las = 1)
@@ -176,15 +185,13 @@ for (method in c("OJ", "VC")) {
 par(old)
 ```
 
-## Reading the dose response {#base-check data-background="./_extensions/emc/www/triangle1.svg"}
+## Reading the dose response {#base-check data-background-image="./templateassets/triangledb.svg"}
 
 - Which plot best shows whether the delivery methods differ at each dose?
 - At which dose do the two groups look most alike?
 - What can a histogram hide when we pool all the animals?
 
-The base graphics section ends here.
-
-## ggplot2 {#ggplot2-intro data-background="./_extensions/emc/www/triangle1.svg"}
+## ggplot2 {#ggplot2-intro data-background-image="./templateassets/triangledb.svg"}
 
 A plotting package built around the **layered grammar of graphics**.
 
@@ -200,29 +207,35 @@ library(ggplot2)
 
 [ggplot2 function reference](https://ggplot2.tidyverse.org/reference/)
 
-## What “grammar of graphics” means {#grammar data-background="./_extensions/emc/www/triangle1.svg"}
+## What “grammar of graphics” means {#grammar data-background-image="./templateassets/triangledb.svg"}
 
-A chart is assembled from parts that can be reused and combined. Describe how the data should appear, one choice at a time.
+A chart combines reusable parts.
 
 | Part | Our dose-response scatterplot |
 |:---|:---|
 | Data | One row per animal |
-| Mapping (`aes()`) | Dose goes on x, length on y, method controls colour |
+| Mapping (`aes()`) | Dose on x, length on y, method sets colour and shape |
+| Stat | None here; a histogram would count rows in bins |
 | Geometry (`geom_point()`) | Draw each animal as a point |
-| Scale and coordinates | Translate values to colours and positions on x and y |
+| Scale and coordinates | Translate values to colours and positions |
 | Facets and theme | Split into panels if useful, then style the display |
 
-A **stat** may summarize rows before drawing them. A histogram counts rows within bins.
+## The same scatterplot in ggplot2 {#gg-scatter .plot-example .wide-code data-background-image="./templateassets/triangledb.svg"}
 
-## The same scatterplot in ggplot2 {#gg-scatter .plot-example data-background="./_extensions/emc/www/triangle1.svg"}
+Start with the data and mappings, then add points.
 
-Read it from top to bottom. Choose the data, map columns, then add a layer of points.
+::: {.panel-tabset}
+
+### ggplot2
 
 ```{r}
 #| label: gg-scatter
+#| fig-height: 4.15
 #| fig-alt: "ggplot2 dose response scatterplot with delivery method mapped to color and shape."
-p <- ggplot(growth, aes(x = dose, y = len)) +
-  geom_point(aes(colour = supp, shape = supp),
+p <- ggplot(growth,
+            aes(x = dose, y = len)) +
+  geom_point(aes(colour = supp,
+                 shape = supp),
              size = 2.5) +
   labs(x = "Vitamin C dose (mg/day)",
        y = "Odontoblast length",
@@ -230,7 +243,16 @@ p <- ggplot(growth, aes(x = dose, y = len)) +
 p
 ```
 
-## One row, one observation {#gg-data data-background="./_extensions/emc/www/triangle1.svg"}
+### Base R
+
+```{r compare-base-overlay, ref.label="base-overlay"}
+#| fig-height: 4.15
+#| fig-alt: "Base R dose response scatterplot with colour and shape indicating delivery method."
+```
+
+:::
+
+## One row, one observation {#gg-data data-background-image="./templateassets/triangledb.svg"}
 
 | Dataset | What one row represents | What connects the rows |
 |:---|:---|:---|
@@ -239,7 +261,7 @@ p
 
 To draw one concentration curve per person in ggplot2, map `group = Subject` in the line layer.
 
-## Aesthetics and constants {#gg-aes data-background="./_extensions/emc/www/triangle1.svg"}
+## Aesthetics and constants {#gg-aes data-background-image="./templateassets/triangledb.svg"}
 
 **Map a column** inside `aes()`. `aes(colour = supp)` assigns colours by method and creates a guide.
 
@@ -247,37 +269,152 @@ To draw one concentration curve per person in ggplot2, map `group = Subject` in 
 
 Other aesthetics include `x`, `y`, `shape`, `fill`, `size`, `alpha` and `linetype`. Use `group` to tell a line layer which points belong together.
 
-## Geometries and summaries {#gg-geoms data-background="./_extensions/emc/www/triangle1.svg"}
+## Grouping repeated samples {#gg-group data-background-image="./templateassets/triangledb.svg"}
 
-| Layer | Marks or summary |
-|:---|:---|
-| `geom_point()` | Individual observations |
-| `geom_line()` | Connected measurements, ordered by x within group |
-| `geom_bar()` / `geom_col()` | Count rows / draw supplied heights |
-| `geom_histogram()` | Count rows within numeric intervals |
-| `geom_boxplot()` | Show a distribution within each group |
-| `geom_tile()` | Draw a tile at each x and y combination |
+Both panels show the same indomethacin measurements.
 
-## Histogram bins in ggplot2 {#gg-hist .plot-example data-background="./_extensions/emc/www/triangle1.svg"}
+```{r}
+#| label: group-data
+#| include: false
+profile <- ggplot(Indometh, aes(x = time, y = conc)) +
+  labs(x = "Time since dose (hours)",
+       y = "Plasma concentration (mcg/mL)")
+```
+
+:::: {.group-comparison}
+::: {}
+**One line through all samples**
+
+```{r}
+#| label: group-unmapped
+#| fig-height: 4.6
+#| fig-alt: "A single zigzag line connects measurements across different subjects at the same sampling times."
+profile + geom_line()
+```
+:::
+
+::: {}
+**One line per subject**
+
+```{r}
+#| label: group-subject
+#| fig-height: 4.6
+#| fig-alt: "Six separate lines each follow one subject's plasma concentration over time."
+profile + geom_line(aes(group = Subject))
+```
+:::
+::::
+
+## Geometries and summaries {#gg-geoms data-background-image="./templateassets/triangledb.svg"}
+
+A geom controls what gets drawn.
+
+```{r}
+#| label: geom-icons
+#| echo: false
+#| fig-width: 10
+#| fig-height: 4.1
+#| fig-alt: "Six small plots show the marks made by geom_point, geom_line, geom_bar, geom_histogram, geom_boxplot and geom_tile."
+icon_theme <- theme_void(base_size = 18) +
+  theme(plot.title = element_text(hjust = 0.5),
+        plot.margin = margin(8, 18, 14, 18))
+
+icons <- list(
+  "geom_point()" = ggplot(growth, aes(dose, len)) +
+    geom_point(colour = "#0072B2"),
+  "geom_line()" = profile + geom_line(aes(group = Subject),
+                                     colour = "#0072B2"),
+  "geom_bar()" = ggplot(growth, aes(factor(dose))) +
+    geom_bar(fill = "#0072B2", width = 0.72),
+  "geom_histogram()" = ggplot(growth, aes(len)) +
+    geom_histogram(binwidth = 5, fill = "#0072B2", colour = "white"),
+  "geom_boxplot()" = ggplot(growth, aes(supp, len)) +
+    geom_boxplot(fill = "#A6D7ED"),
+  "geom_tile()" = ggplot(aggregate(len ~ supp + dose, growth, mean),
+                         aes(supp, factor(dose), fill = len)) +
+    geom_tile(colour = "white") + guides(fill = "none")
+)
+
+grid::grid.newpage()
+grid::pushViewport(grid::viewport(layout = grid::grid.layout(2, 3)))
+for (i in seq_along(icons)) {
+  print(icons[[i]] + icon_theme + labs(title = names(icons)[i]),
+        vp = grid::viewport(layout.pos.row = (i - 1) %/% 3 + 1,
+                            layout.pos.col = (i - 1) %% 3 + 1))
+}
+grid::popViewport()
+```
+
+`geom_bar()` counts rows. Use `geom_col()` when you already have the bar heights.
+
+## Histogram bins in ggplot2 {#gg-hist .plot-example data-background-image="./templateassets/triangledb.svg"}
 
 The histogram layer counts observations. Match the bin boundaries before comparing to the base plot.
 
+::: {.panel-tabset}
+
+### ggplot2
+
 ```{r}
 #| label: gg-hist
+#| fig-height: 4.15
 #| fig-alt: "Histogram of odontoblast length with five-unit bins in ggplot2."
 ggplot(growth, aes(x = len)) +
-  geom_histogram(binwidth = 5, boundary = 0,
+  geom_histogram(binwidth = 5,
+                 boundary = 0,
                  fill = "#56B4E9",
                  colour = "white") +
-  labs(x = "Odontoblast length", y = "Animals")
+  labs(x = "Odontoblast length",
+       y = "Animals")
 ```
 
-## Grouped boxplots in ggplot2 {#gg-box .plot-example data-background="./_extensions/emc/www/triangle1.svg"}
+### Base R
+
+```{r compare-base-histogram, ref.label="base-histogram"}
+#| fig-height: 4.15
+#| fig-alt: "Base R histogram of odontoblast length with five-unit bins."
+```
+
+:::
+
+## Bar charts in ggplot2 {#gg-bars .plot-example data-background-image="./templateassets/triangledb.svg"}
+
+Treat dose as a category. `geom_bar()` counts the animals at each dose.
+
+::: {.panel-tabset}
+
+### ggplot2
+
+```{r}
+#| label: gg-bars
+#| fig-height: 4.15
+#| fig-alt: "Three bars show 20 animals at each tested vitamin C dose."
+ggplot(growth, aes(x = factor(dose))) +
+  geom_bar(fill = "#56B4E9") +
+  labs(x = "Vitamin C dose (mg/day)",
+       y = "Animals")
+```
+
+### Base R
+
+```{r compare-base-bars, ref.label="base-bars"}
+#| fig-height: 4.15
+#| fig-alt: "Base R bar chart showing 20 animals at each tested vitamin C dose."
+```
+
+:::
+
+## Grouped boxplots in ggplot2 {#gg-box .plot-example .wide-code data-background-image="./templateassets/triangledb.svg"}
 
 Make dose a factor to give the three tested doses their own categories. Map delivery method to the fill.
 
+::: {.panel-tabset}
+
+### ggplot2
+
 ```{r}
 #| label: gg-box
+#| fig-height: 4.15
 #| fig-alt: "Grouped boxplots by dose and delivery method."
 ggplot(growth, aes(x = factor(dose), y = len,
                    fill = supp)) +
@@ -286,28 +423,54 @@ ggplot(growth, aes(x = factor(dose), y = len,
        y = "Odontoblast length", fill = "Method")
 ```
 
-## Facets share a scale {#gg-facets .plot-example data-background="./_extensions/emc/www/triangle1.svg"}
+### Base R
+
+```{r compare-base-boxplot, ref.label="base-boxplot"}
+#| fig-height: 4.15
+#| fig-alt: "Base R boxplots for each dose and delivery method."
+```
+
+:::
+
+## Facets share a scale {#gg-facets .plot-example .wide-code data-background-image="./templateassets/triangledb.svg"}
 
 Show one delivery method per panel. The default shared y scale makes the panels comparable.
 
+::: {.panel-tabset}
+
+### ggplot2
+
 ```{r}
 #| label: gg-facets
+#| fig-height: 4.15
 #| fig-alt: "Separate panels for orange juice and ascorbic acid boxplots on a common scale."
-ggplot(growth, aes(x = factor(dose), y = len)) +
+ggplot(growth,
+       aes(x = factor(dose), y = len)) +
   geom_boxplot(fill = "#A6D7ED") +
   facet_wrap(~ supp) +
   labs(x = "Vitamin C dose (mg/day)",
        y = "Odontoblast length")
 ```
 
-## Heatmap of group means {#gg-heat .plot-example data-background="./_extensions/emc/www/triangle1.svg"}
+### Base R
+
+```{r compare-base-panels, ref.label="base-panels"}
+#| fig-height: 4.15
+#| fig-show: hold
+#| fig-alt: "Base R side-by-side boxplots on a common y scale."
+```
+
+:::
+
+## Heatmap of group means {#gg-heat .plot-example .wide-code data-background-image="./templateassets/triangledb.svg"}
 
 Reduce to one row per tile first. A tile shows the mean for a group and hides variation within it.
 
 ```{r}
 #| label: gg-heat
 #| fig-alt: "Heatmap showing the mean odontoblast length for the six dose and method groups."
-means <- aggregate(len ~ supp + dose, growth, mean)
+means <- aggregate(len ~ supp + dose,
+                   data = growth, FUN = mean)
 ggplot(means, aes(x = supp, y = factor(dose),
                   fill = len)) +
   geom_tile(colour = "white") +
@@ -319,14 +482,15 @@ ggplot(means, aes(x = supp, y = factor(dose),
        fill = "Mean length")
 ```
 
-## Scales, axes and guides {#gg-scales .plot-example data-background="./_extensions/emc/www/triangle1.svg"}
+## Scales, axes and guides {#gg-scales .plot-example .wide-code data-background-image="./templateassets/triangledb.svg"}
 
 A mapping says which variable controls colour. The scale chooses the colours and sets the legend labels.
 
 ```{r}
 #| label: gg-scales
 #| fig-alt: "Scatterplot with ticks at the tested doses and a legend spelling out the delivery methods."
-method_labels <- c("Orange juice", "Ascorbic acid")
+method_labels <- c("Orange juice",
+                   "Ascorbic acid")
 p_scaled <- p +
   scale_x_continuous(breaks = c(0.5, 1, 2)) +
   scale_colour_manual(
@@ -337,21 +501,20 @@ p_scaled <- p +
 p_scaled
 ```
 
-## Themes and labels {#gg-themes .plot-example data-background="./_extensions/emc/www/triangle1.svg"}
+## Themes {#gg-themes .plot-example .wide-code data-background-image="./templateassets/triangledb.svg"}
 
-A theme controls the look of the display. `labs()` supplies its wording.
+Use a theme to change the background, text size and legend position.
 
 ```{r}
 #| label: gg-themes
-#| fig-alt: "Dose-response scatterplot with a classic theme, descriptive title and bottom legend."
+#| fig-alt: "Dose-response scatterplot with a classic theme and bottom legend."
 p_final <- p_scaled +
   theme_classic(base_size = 14) +
-  theme(legend.position = "bottom") +
-  labs(title = "Vitamin C and odontoblast length")
+  theme(legend.position = "bottom")
 p_final
 ```
 
-## Saving a figure {#gg-save data-background="./_extensions/emc/www/triangle1.svg"}
+## Saving a figure {#gg-save data-background-image="./templateassets/triangledb.svg"}
 
 ```{r}
 #| eval: false
@@ -361,34 +524,42 @@ ggsave("dose-response.png", plot = p_final,
 
 Pass the plot object explicitly. The filename extension chooses the file format. Use PDF or SVG when you need scalable graphics.
 
-## Choosing a plot for a new question {#wrap-up data-background="./_extensions/emc/www/triangle1.svg"}
+## Choosing a plot for a new question {#wrap-up data-background-image="./templateassets/triangledb.svg"}
 
 A colleague has a numeric outcome for patients in three groups and wants to see spread, typical values and unusual observations.
 
+::: {.slide-callout}
 1. Which plot would you start with?
 2. What does one row represent?
 3. What would you map to x and y, and what would your caption say?
+:::
 
-## Extension · Data in two time series {#deaths-source data-background="./_extensions/emc/www/triangle1.svg"}
+## Data that needs reshaping {#deaths-source data-background-image="./templateassets/triangledb.svg"}
 
-The two UK lung disease series share a calendar. The object name identifies the sex group.
-
-```{r}
-#| label: inspect-deaths
-head(cbind(mdeaths, fdeaths), 3)
-```
-
-To compare when counts peak, keep the calendar month and make sex a column.
-
-## Extension · One variable per column {#deaths-tidy .plot-example data-background="./_extensions/emc/www/triangle1.svg"}
-
-Stack the counts and attach each series to the same sequence of calendar months.
+The UK lung disease data give monthly death counts by sex. Here the group names are stored as column headings.
 
 ```{r}
-#| label: deaths-tidy
-#| fig-alt: "Monthly death counts by sex in the UK from 1974 to 1979."
+#| label: deaths-wide
+#| echo: false
 months <- seq(as.Date("1974-01-01"), by = "month",
               length.out = length(mdeaths))
+wide <- data.frame(
+  month = months,
+  Male = as.numeric(mdeaths),
+  Female = as.numeric(fdeaths)
+)
+knitr::kable(head(wide, 3))
+```
+
+Which column would you map to colour to get one line per group?
+
+## Data ready to plot {#deaths-ready data-background-image="./templateassets/triangledb.svg"}
+
+Put each variable in its own column. Each row now gives the count for one month and one sex.
+
+```{r}
+#| label: deaths-long
+#| echo: false
 deaths <- data.frame(
   month = rep(months, times = 2),
   sex = rep(c("Male", "Female"),
@@ -396,12 +567,27 @@ deaths <- data.frame(
   count = c(as.numeric(mdeaths),
             as.numeric(fdeaths))
 )
-ggplot(deaths, aes(month, count, colour = sex)) +
-  geom_line() +
-  labs(x = "Month", y = "Deaths", colour = "Sex")
+preview <- deaths[c(1:2, length(months) + (1:2)), ]
+knitr::kable(preview, row.names = FALSE)
 ```
 
-## References and extensions {#gg-extension data-background="./_extensions/emc/www/triangle1.svg"}
+Map `month` to x, `count` to y and `sex` to colour.
+
+## Plotting the reshaped data {#deaths-tidy .plot-example data-background-image="./templateassets/triangledb.svg"}
+
+Now ggplot2 can draw a separate line for each sex group on the same date axis.
+
+```{r}
+#| label: deaths-tidy
+#| fig-alt: "Monthly death counts by sex in the UK from 1974 to 1979."
+ggplot(deaths,
+       aes(month, count, colour = sex)) +
+  geom_line() +
+  labs(x = "Month", y = "Deaths",
+       colour = "Sex")
+```
+
+## References and extensions {#gg-extension data-background-image="./templateassets/triangledb.svg"}
 
 - [R help for ToothGrowth](https://stat.ethz.ch/R-manual/R-devel/library/datasets/html/ToothGrowth.html) and [Indometh](https://stat.ethz.ch/R-manual/R-devel/library/datasets/html/Indometh.html)
 - [R help for UK lung disease deaths](https://stat.ethz.ch/R-manual/R-devel/library/datasets/html/UKLungDeaths.html)

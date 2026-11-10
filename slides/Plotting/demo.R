@@ -59,14 +59,14 @@ for (method in c("OJ", "VC")) {
 }
 par(old)
 
-# Indometh has 11 blood samples per person for six people after an IV dose.
-# Confirm the layout is restored with a time plot for one person.
-one <- subset(Indometh, Subject == "1")
-one <- one[order(one$time), ]
-plot(conc ~ time, data = one, type = "b",
-     xlab = "Time since dose (hours)",
-     ylab = "Plasma concentration (mcg/mL)",
-     pch = 16, lwd = 2, col = "#0072B2")
+# Confirm the layout is restored with one point per ordered dose.
+oj <- growth[growth$supp == "OJ", ]
+oj_means <- aggregate(len ~ dose, data = oj,
+                      FUN = mean)
+plot(len ~ dose, data = oj_means, type = "b",
+     xlab = "Vitamin C dose (mg/day)",
+     ylab = "Mean odontoblast length",
+     pch = 16, col = "#0072B2")
 
 # 4. Build the same scatterplot with a grammar ----------------------------
 library(ggplot2)
@@ -106,8 +106,7 @@ p_scaled <- p +
 print(p_scaled)
 p_final <- p_scaled +
   theme_classic(base_size = 14) +
-  theme(legend.position = "bottom") +
-  labs(title = "Vitamin C and odontoblast length")
+  theme(legend.position = "bottom")
 print(p_final)
 
 # Write to a fresh temporary filename so the live demo can be repeated.
@@ -116,6 +115,7 @@ ggsave(output, plot = p_final, width = 7, height = 4, units = "in", dpi = 300)
 message("Saved figure to ", output)
 
 # 6. Optional practice - connect repeated samples within each person -----
+# Indometh has 11 blood samples per person for six people after an IV dose.
 # Ask why the line zigzags when it connects samples from different people.
 concentration <- ggplot(Indometh, aes(x = time, y = conc))
 print(concentration + geom_line() + geom_point())

@@ -9,6 +9,7 @@
 <link href="../../site_libs/quarto-html/quarto-syntax-highlighting-64a204ab8560d761af7679ceaba22944.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
   <meta name="generator" content="quarto-1.10.18">
 
+  <meta name="dcterms.date" content="2026-11-11">
   <title>BasicRCourseEMC_Slides – R Course - Day 3</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
@@ -100,7 +101,7 @@
     code span.vs { color: #20794d; } /* VerbatimString */
     code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
   </style>
-  <link rel="stylesheet" href="../../site_libs/revealjs/dist/theme/quarto-e1f0581f810f88bf64319e2161cff809.css">
+  <link rel="stylesheet" href="../../site_libs/revealjs/dist/theme/quarto-268b9b95f286ec2fb66c90df42586ed1.css">
   <link rel="stylesheet" href="plotting.css">
   <link href="../../site_libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
   <link href="../../site_libs/revealjs/plugin/reveal-menu/menu.css" rel="stylesheet">
@@ -202,9 +203,10 @@
    
   <h1 class="title">R Course - Day 3</h1>
   <h3 class="subtitle">Data visualisation in R</h3>
+  <h3 class="date">November 11, 2026</h3>
 </section>
 
-<section id="roadmap" class="slide level2" data-background="./_extensions/emc/www/triangle1.svg">
+<section id="roadmap" class="slide level2" data-background-image="./templateassets/triangledb.svg">
 <h2>Today’s questions</h2>
 <ul>
 <li>Which plot matches the question and the variables?</li>
@@ -213,9 +215,13 @@
 </ul>
 <p><strong>Case study</strong> · What changes in a vitamin C dose-response plot when we show the delivery method?</p>
 </section>
-<section id="packages" class="slide level2" data-background="./_extensions/emc/www/triangle1.svg">
+<section id="packages" class="slide level2" data-background-image="./templateassets/triangledb.svg">
 <h2>R graphics packages</h2>
 <table class="caption-top">
+<colgroup>
+<col style="width: 50%">
+<col style="width: 50%">
+</colgroup>
 <thead>
 <tr class="header">
 <th style="text-align: left;">Tool</th>
@@ -228,22 +234,28 @@
 <td style="text-align: left;">Quick plots and direct control over drawing</td>
 </tr>
 <tr class="even">
-<td style="text-align: left;">ggplot2</td>
-<td style="text-align: left;">Layered figures with consistent scales and panels</td>
+<td style="text-align: left;">grid</td>
+<td style="text-align: left;">Graphics building blocks for packages such as lattice and ggplot2</td>
 </tr>
 <tr class="odd">
 <td style="text-align: left;">lattice</td>
 <td style="text-align: left;">Trellis plots for comparisons across groups</td>
 </tr>
 <tr class="even">
+<td style="text-align: left;">ggplot2</td>
+<td style="text-align: left;">Layered figures with consistent scales and panels</td>
+</tr>
+<tr class="odd">
 <td style="text-align: left;">plotly</td>
 <td style="text-align: left;">Interactive figures with hover, zoom and pan</td>
 </tr>
 </tbody>
 </table>
+<div class="slide-callout">
 <p>Base graphics ships with R. Today we use base graphics first, then ggplot2.</p>
+</div>
 </section>
-<section id="plot-choices" class="slide level2" data-background="./_extensions/emc/www/triangle1.svg">
+<section id="plot-choices" class="slide level2" data-background-image="./templateassets/triangledb.svg">
 <h2>Plot choice by question</h2>
 <table class="caption-top">
 <colgroup>
@@ -260,7 +272,7 @@
 </thead>
 <tbody>
 <tr class="odd">
-<td style="text-align: left;">How variable is length?</td>
+<td style="text-align: left;">Where do most length measurements fall?</td>
 <td style="text-align: left;">One numeric variable</td>
 <td style="text-align: left;">Histogram</td>
 </tr>
@@ -280,8 +292,8 @@
 <td style="text-align: left;">Boxplot</td>
 </tr>
 <tr class="odd">
-<td style="text-align: left;">How does concentration change over time?</td>
-<td style="text-align: left;">Ordered measurements</td>
+<td style="text-align: left;">How does mean length change across doses?</td>
+<td style="text-align: left;">Ordered doses and group means</td>
 <td style="text-align: left;">Line plot</td>
 </tr>
 <tr class="even">
@@ -292,7 +304,7 @@
 </tbody>
 </table>
 </section>
-<section id="base-high-low" class="slide level2" data-background="./_extensions/emc/www/triangle1.svg">
+<section id="base-high-low" class="slide level2" data-background-image="./templateassets/triangledb.svg">
 <h2>Starting and adding to a base plot</h2>
 <table class="caption-top">
 <colgroup>
@@ -318,14 +330,16 @@
 </table>
 <p>Run the high-level call first. A later high-level call starts the next plot or panel.</p>
 </section>
-<section id="base-histogram" class="slide level2 plot-example" data-background="./_extensions/emc/www/triangle1.svg">
+<section id="base-histogram" class="slide level2 plot-example" data-background-image="./templateassets/triangledb.svg">
 <h2>Base R histogram</h2>
 <p>Each bar counts measurements in an interval. Bin width changes what patterns you can see.</p>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a aria-hidden="true" tabindex="-1"></a>growth <span class="ot">&lt;-</span> ToothGrowth</span>
-<span id="cb1-2"><a aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(growth<span class="sc">$</span>len, <span class="at">breaks =</span> <span class="fu">seq</span>(<span class="dv">0</span>, <span class="dv">35</span>, <span class="at">by =</span> <span class="dv">5</span>),</span>
-<span id="cb1-3"><a aria-hidden="true" tabindex="-1"></a>     <span class="at">xlab =</span> <span class="st">"Odontoblast length"</span>, <span class="at">main =</span> <span class="st">""</span>,</span>
-<span id="cb1-4"><a aria-hidden="true" tabindex="-1"></a>     <span class="at">col =</span> <span class="st">"#56B4E9"</span>, <span class="at">border =</span> <span class="st">"white"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb1-2"><a aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(growth<span class="sc">$</span>len,</span>
+<span id="cb1-3"><a aria-hidden="true" tabindex="-1"></a>     <span class="at">breaks =</span> <span class="fu">seq</span>(<span class="dv">0</span>, <span class="dv">35</span>, <span class="at">by =</span> <span class="dv">5</span>),</span>
+<span id="cb1-4"><a aria-hidden="true" tabindex="-1"></a>     <span class="at">xlab =</span> <span class="st">"Odontoblast length"</span>,</span>
+<span id="cb1-5"><a aria-hidden="true" tabindex="-1"></a>     <span class="at">main =</span> <span class="st">""</span>,</span>
+<span id="cb1-6"><a aria-hidden="true" tabindex="-1"></a>     <span class="at">col =</span> <span class="st">"#56B4E9"</span>, <span class="at">border =</span> <span class="st">"white"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output-display">
 <div>
 <figure>
@@ -335,7 +349,7 @@
 </div>
 </div>
 </section>
-<section id="base-bars" class="slide level2 plot-example" data-background="./_extensions/emc/www/triangle1.svg">
+<section id="base-bars" class="slide level2 plot-example" data-background-image="./templateassets/triangledb.svg">
 <h2>Base R bar chart</h2>
 <p>Treat each tested dose as a category. The bars show how many animals received it.</p>
 <div class="cell">
@@ -351,7 +365,7 @@
 </div>
 </div>
 </section>
-<section id="base-scatter" class="slide level2 plot-example" data-background="./_extensions/emc/www/triangle1.svg">
+<section id="base-scatter" class="slide level2 plot-example" data-background-image="./templateassets/triangledb.svg">
 <h2>Base R scatterplot</h2>
 <p>Each point is one animal. There are only three x positions, and some points overlap.</p>
 <div class="cell">
@@ -368,7 +382,7 @@
 </div>
 </div>
 </section>
-<section id="base-overlay" class="slide level2 plot-example" data-background="./_extensions/emc/www/triangle1.svg">
+<section id="base-overlay" class="slide level2 plot-example wide-code" data-background-image="./templateassets/triangledb.svg">
 <h2>Adding points and a legend</h2>
 <p>Start an empty plot with <code>type = "n"</code>. Draw one group at a time, then explain the symbols.</p>
 <div class="cell">
@@ -393,7 +407,7 @@
 </div>
 </div>
 </section>
-<section id="base-boxplot" class="slide level2 plot-example" data-background="./_extensions/emc/www/triangle1.svg">
+<section id="base-boxplot" class="slide level2 plot-example" data-background-image="./templateassets/triangledb.svg">
 <h2>Base R boxplot</h2>
 <p>The middle line is the median. The box shows the middle half. Each box is one dose and delivery method.</p>
 <div class="cell">
@@ -410,26 +424,27 @@
 </div>
 </div>
 </section>
-<section id="base-line" class="slide level2 plot-example" data-background="./_extensions/emc/www/triangle1.svg">
+<section id="base-line" class="slide level2 plot-example" data-background-image="./templateassets/triangledb.svg">
 <h2>Base R line plot</h2>
-<p>Indomethacin concentration over time for one person. Each point is one blood sample.</p>
+<p>Connect the mean lengths at the three ordered doses for the orange juice group.</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a aria-hidden="true" tabindex="-1"></a>one <span class="ot">&lt;-</span> <span class="fu">subset</span>(Indometh, Subject <span class="sc">==</span> <span class="st">"1"</span>)</span>
-<span id="cb6-2"><a aria-hidden="true" tabindex="-1"></a>one <span class="ot">&lt;-</span> one[<span class="fu">order</span>(one<span class="sc">$</span>time), ]</span>
-<span id="cb6-3"><a aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(conc <span class="sc">~</span> time, <span class="at">data =</span> one, <span class="at">type =</span> <span class="st">"b"</span>,</span>
-<span id="cb6-4"><a aria-hidden="true" tabindex="-1"></a>     <span class="at">xlab =</span> <span class="st">"Time since dose (hours)"</span>,</span>
-<span id="cb6-5"><a aria-hidden="true" tabindex="-1"></a>     <span class="at">ylab =</span> <span class="st">"Plasma concentration (mcg/mL)"</span>,</span>
-<span id="cb6-6"><a aria-hidden="true" tabindex="-1"></a>     <span class="at">pch =</span> <span class="dv">16</span>, <span class="at">lwd =</span> <span class="dv">2</span>, <span class="at">col =</span> <span class="st">"#0072B2"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a aria-hidden="true" tabindex="-1"></a>oj <span class="ot">&lt;-</span> growth[growth<span class="sc">$</span>supp <span class="sc">==</span> <span class="st">"OJ"</span>, ]</span>
+<span id="cb6-2"><a aria-hidden="true" tabindex="-1"></a>oj_means <span class="ot">&lt;-</span> <span class="fu">aggregate</span>(len <span class="sc">~</span> dose, <span class="at">data =</span> oj,</span>
+<span id="cb6-3"><a aria-hidden="true" tabindex="-1"></a>                      <span class="at">FUN =</span> mean)</span>
+<span id="cb6-4"><a aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(len <span class="sc">~</span> dose, <span class="at">data =</span> oj_means, <span class="at">type =</span> <span class="st">"b"</span>,</span>
+<span id="cb6-5"><a aria-hidden="true" tabindex="-1"></a>     <span class="at">xlab =</span> <span class="st">"Vitamin C dose (mg/day)"</span>,</span>
+<span id="cb6-6"><a aria-hidden="true" tabindex="-1"></a>     <span class="at">ylab =</span> <span class="st">"Mean odontoblast length"</span>,</span>
+<span id="cb6-7"><a aria-hidden="true" tabindex="-1"></a>     <span class="at">pch =</span> <span class="dv">16</span>, <span class="at">col =</span> <span class="st">"#0072B2"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output-display">
 <div>
 <figure>
-<p><img data-src="index_files/figure-revealjs/base-line-1.png" alt="Indomethacin plasma concentration over time for one subject." width="576"></p>
+<p><img data-src="index_files/figure-revealjs/base-line-1.png" alt="Mean odontoblast length at three vitamin C doses for the orange juice group." width="576"></p>
 </figure>
 </div>
 </div>
 </div>
 </section>
-<section id="base-par" class="slide level2" data-background="./_extensions/emc/www/triangle1.svg">
+<section id="base-par" class="slide level2" data-background-image="./templateassets/triangledb.svg">
 <h2>Base R graphics settings</h2>
 <p><code>par("mar")</code> reads a setting. <code>par(mfrow = c(1, 2))</code> changes the active device’s layout for subsequent plots.</p>
 <table class="caption-top">
@@ -464,7 +479,7 @@
 </table>
 <p>Set labels and limits on a plot with <code>xlab</code>, <code>ylab</code>, <code>xlim</code> and <code>ylim</code>.</p>
 </section>
-<section id="base-panels" class="slide level2 plot-example" data-background="./_extensions/emc/www/triangle1.svg">
+<section id="base-panels" class="slide level2 plot-example wide-code" data-background-image="./templateassets/triangledb.svg">
 <h2>Base R panels with a common scale</h2>
 <p>Save the settings, draw both panels with the same y limits, then restore the settings.</p>
 <div class="cell">
@@ -475,7 +490,8 @@
 <span id="cb7-5"><a aria-hidden="true" tabindex="-1"></a>  <span class="fu">boxplot</span>(len <span class="sc">~</span> dose, <span class="at">data =</span> group,</span>
 <span id="cb7-6"><a aria-hidden="true" tabindex="-1"></a>          <span class="at">main =</span> method, <span class="at">ylim =</span> <span class="fu">range</span>(growth<span class="sc">$</span>len),</span>
 <span id="cb7-7"><a aria-hidden="true" tabindex="-1"></a>          <span class="at">xlab =</span> <span class="st">"Dose (mg/day)"</span>, <span class="at">ylab =</span> <span class="st">"Length"</span>)</span>
-<span id="cb7-8"><a aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb7-8"><a aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb7-9"><a aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(old)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output-display">
 <div>
 <figure>
@@ -483,32 +499,30 @@
 </figure>
 </div>
 </div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(old)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </section>
-<section id="base-check" class="slide level2" data-background="./_extensions/emc/www/triangle1.svg">
+<section id="base-check" class="slide level2" data-background-image="./templateassets/triangledb.svg">
 <h2>Reading the dose response</h2>
 <ul>
 <li>Which plot best shows whether the delivery methods differ at each dose?</li>
 <li>At which dose do the two groups look most alike?</li>
 <li>What can a histogram hide when we pool all the animals?</li>
 </ul>
-<p>The base graphics section ends here.</p>
 </section>
-<section id="ggplot2-intro" class="slide level2" data-background="./_extensions/emc/www/triangle1.svg">
+<section id="ggplot2-intro" class="slide level2" data-background-image="./templateassets/triangledb.svg">
 <h2>ggplot2</h2>
 <p>A plotting package built around the <strong>layered grammar of graphics</strong>.</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">"ggplot2"</span>)  <span class="co"># Once per R installation</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">"ggplot2"</span>)  <span class="co"># Once per R installation</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p><a href="https://ggplot2.tidyverse.org/reference/">ggplot2 function reference</a></p>
 </section>
-<section id="grammar" class="slide level2" data-background="./_extensions/emc/www/triangle1.svg">
+<section id="grammar" class="slide level2" data-background-image="./templateassets/triangledb.svg">
 <h2>What “grammar of graphics” means</h2>
-<p>A chart is assembled from parts that can be reused and combined. Describe how the data should appear, one choice at a time.</p>
+<p>A chart combines reusable parts.</p>
 <table class="caption-top">
 <colgroup>
 <col style="width: 50%">
@@ -527,35 +541,44 @@
 </tr>
 <tr class="even">
 <td style="text-align: left;">Mapping (<code>aes()</code>)</td>
-<td style="text-align: left;">Dose goes on x, length on y, method controls colour</td>
+<td style="text-align: left;">Dose on x, length on y, method sets colour and shape</td>
 </tr>
 <tr class="odd">
+<td style="text-align: left;">Stat</td>
+<td style="text-align: left;">None here; a histogram would count rows in bins</td>
+</tr>
+<tr class="even">
 <td style="text-align: left;">Geometry (<code>geom_point()</code>)</td>
 <td style="text-align: left;">Draw each animal as a point</td>
 </tr>
-<tr class="even">
-<td style="text-align: left;">Scale and coordinates</td>
-<td style="text-align: left;">Translate values to colours and positions on x and y</td>
-</tr>
 <tr class="odd">
+<td style="text-align: left;">Scale and coordinates</td>
+<td style="text-align: left;">Translate values to colours and positions</td>
+</tr>
+<tr class="even">
 <td style="text-align: left;">Facets and theme</td>
 <td style="text-align: left;">Split into panels if useful, then style the display</td>
 </tr>
 </tbody>
 </table>
-<p>A <strong>stat</strong> may summarize rows before drawing them. A histogram counts rows within bins.</p>
 </section>
-<section id="gg-scatter" class="slide level2 plot-example" data-background="./_extensions/emc/www/triangle1.svg">
+<section id="gg-scatter" class="slide level2 plot-example wide-code" data-background-image="./templateassets/triangledb.svg">
 <h2>The same scatterplot in ggplot2</h2>
-<p>Read it from top to bottom. Choose the data, map columns, then add a layer of points.</p>
+<p>Start with the data and mappings, then add points.</p>
+<div class="panel-tabset">
+<ul id="tabset-1" class="panel-tabset-tabby"><li><a data-tabby-default="" href="#tabset-1-1">ggplot2</a></li><li><a href="#tabset-1-2">Base R</a></li></ul>
+<div class="tab-content">
+<div id="tabset-1-1">
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a aria-hidden="true" tabindex="-1"></a>p <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(growth, <span class="fu">aes</span>(<span class="at">x =</span> dose, <span class="at">y =</span> len)) <span class="sc">+</span></span>
-<span id="cb11-2"><a aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="fu">aes</span>(<span class="at">colour =</span> supp, <span class="at">shape =</span> supp),</span>
-<span id="cb11-3"><a aria-hidden="true" tabindex="-1"></a>             <span class="at">size =</span> <span class="fl">2.5</span>) <span class="sc">+</span></span>
-<span id="cb11-4"><a aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">"Vitamin C dose (mg/day)"</span>,</span>
-<span id="cb11-5"><a aria-hidden="true" tabindex="-1"></a>       <span class="at">y =</span> <span class="st">"Odontoblast length"</span>,</span>
-<span id="cb11-6"><a aria-hidden="true" tabindex="-1"></a>       <span class="at">colour =</span> <span class="st">"Method"</span>, <span class="at">shape =</span> <span class="st">"Method"</span>)</span>
-<span id="cb11-7"><a aria-hidden="true" tabindex="-1"></a>p</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a aria-hidden="true" tabindex="-1"></a>p <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(growth,</span>
+<span id="cb10-2"><a aria-hidden="true" tabindex="-1"></a>            <span class="fu">aes</span>(<span class="at">x =</span> dose, <span class="at">y =</span> len)) <span class="sc">+</span></span>
+<span id="cb10-3"><a aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="fu">aes</span>(<span class="at">colour =</span> supp,</span>
+<span id="cb10-4"><a aria-hidden="true" tabindex="-1"></a>                 <span class="at">shape =</span> supp),</span>
+<span id="cb10-5"><a aria-hidden="true" tabindex="-1"></a>             <span class="at">size =</span> <span class="fl">2.5</span>) <span class="sc">+</span></span>
+<span id="cb10-6"><a aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">"Vitamin C dose (mg/day)"</span>,</span>
+<span id="cb10-7"><a aria-hidden="true" tabindex="-1"></a>       <span class="at">y =</span> <span class="st">"Odontoblast length"</span>,</span>
+<span id="cb10-8"><a aria-hidden="true" tabindex="-1"></a>       <span class="at">colour =</span> <span class="st">"Method"</span>, <span class="at">shape =</span> <span class="st">"Method"</span>)</span>
+<span id="cb10-9"><a aria-hidden="true" tabindex="-1"></a>p</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output-display">
 <div>
 <figure>
@@ -564,8 +587,34 @@
 </div>
 </div>
 </div>
+</div>
+<div id="tabset-1-2">
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(len <span class="sc">~</span> dose, <span class="at">data =</span> growth, <span class="at">type =</span> <span class="st">"n"</span>,</span>
+<span id="cb11-2"><a aria-hidden="true" tabindex="-1"></a>     <span class="at">xlab =</span> <span class="st">"Vitamin C dose (mg/day)"</span>,</span>
+<span id="cb11-3"><a aria-hidden="true" tabindex="-1"></a>     <span class="at">ylab =</span> <span class="st">"Odontoblast length"</span>)</span>
+<span id="cb11-4"><a aria-hidden="true" tabindex="-1"></a><span class="fu">with</span>(<span class="fu">subset</span>(growth, supp <span class="sc">==</span> <span class="st">"OJ"</span>),</span>
+<span id="cb11-5"><a aria-hidden="true" tabindex="-1"></a>     <span class="fu">points</span>(dose, len, <span class="at">pch =</span> <span class="dv">16</span>, <span class="at">col =</span> <span class="st">"#0072B2"</span>))</span>
+<span id="cb11-6"><a aria-hidden="true" tabindex="-1"></a><span class="fu">with</span>(<span class="fu">subset</span>(growth, supp <span class="sc">==</span> <span class="st">"VC"</span>),</span>
+<span id="cb11-7"><a aria-hidden="true" tabindex="-1"></a>     <span class="fu">points</span>(dose, len, <span class="at">pch =</span> <span class="dv">17</span>, <span class="at">col =</span> <span class="st">"#D55E00"</span>))</span>
+<span id="cb11-8"><a aria-hidden="true" tabindex="-1"></a><span class="fu">legend</span>(<span class="st">"bottomright"</span>,</span>
+<span id="cb11-9"><a aria-hidden="true" tabindex="-1"></a>       <span class="fu">c</span>(<span class="st">"Orange juice"</span>, <span class="st">"Ascorbic acid"</span>),</span>
+<span id="cb11-10"><a aria-hidden="true" tabindex="-1"></a>       <span class="at">pch =</span> <span class="fu">c</span>(<span class="dv">16</span>, <span class="dv">17</span>),</span>
+<span id="cb11-11"><a aria-hidden="true" tabindex="-1"></a>       <span class="at">col =</span> <span class="fu">c</span>(<span class="st">"#0072B2"</span>, <span class="st">"#D55E00"</span>),</span>
+<span id="cb11-12"><a aria-hidden="true" tabindex="-1"></a>       <span class="at">bty =</span> <span class="st">"n"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output-display">
+<div>
+<figure>
+<p><img data-src="index_files/figure-revealjs/compare-base-overlay-1.png" alt="Base R dose response scatterplot with colour and shape indicating delivery method." width="576"></p>
+</figure>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
 </section>
-<section id="gg-data" class="slide level2" data-background="./_extensions/emc/www/triangle1.svg">
+<section id="gg-data" class="slide level2" data-background-image="./templateassets/triangledb.svg">
 <h2>One row, one observation</h2>
 <table class="caption-top">
 <colgroup>
@@ -595,58 +644,73 @@
 </table>
 <p>To draw one concentration curve per person in ggplot2, map <code>group = Subject</code> in the line layer.</p>
 </section>
-<section id="gg-aes" class="slide level2" data-background="./_extensions/emc/www/triangle1.svg">
+<section id="gg-aes" class="slide level2" data-background-image="./templateassets/triangledb.svg">
 <h2>Aesthetics and constants</h2>
 <p><strong>Map a column</strong> inside <code>aes()</code>. <code>aes(colour = supp)</code> assigns colours by method and creates a guide.</p>
 <p><strong>Set a constant</strong> outside <code>aes()</code>. <code>colour = "steelblue"</code> gives every point the same colour.</p>
 <p>Other aesthetics include <code>x</code>, <code>y</code>, <code>shape</code>, <code>fill</code>, <code>size</code>, <code>alpha</code> and <code>linetype</code>. Use <code>group</code> to tell a line layer which points belong together.</p>
 </section>
-<section id="gg-geoms" class="slide level2" data-background="./_extensions/emc/www/triangle1.svg">
-<h2>Geometries and summaries</h2>
-<table class="caption-top">
-<thead>
-<tr class="header">
-<th style="text-align: left;">Layer</th>
-<th style="text-align: left;">Marks or summary</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td style="text-align: left;"><code>geom_point()</code></td>
-<td style="text-align: left;">Individual observations</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;"><code>geom_line()</code></td>
-<td style="text-align: left;">Connected measurements, ordered by x within group</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;"><code>geom_bar()</code> / <code>geom_col()</code></td>
-<td style="text-align: left;">Count rows / draw supplied heights</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;"><code>geom_histogram()</code></td>
-<td style="text-align: left;">Count rows within numeric intervals</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;"><code>geom_boxplot()</code></td>
-<td style="text-align: left;">Show a distribution within each group</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;"><code>geom_tile()</code></td>
-<td style="text-align: left;">Draw a tile at each x and y combination</td>
-</tr>
-</tbody>
-</table>
+<section id="gg-group" class="slide level2" data-background-image="./templateassets/triangledb.svg">
+<h2>Grouping repeated samples</h2>
+<p>Both panels show the same indomethacin measurements.</p>
+<div class="group-comparison">
+<div>
+<p><strong>One line through all samples</strong></p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a aria-hidden="true" tabindex="-1"></a>profile <span class="sc">+</span> <span class="fu">geom_line</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output-display">
+<div>
+<figure>
+<p><img data-src="index_files/figure-revealjs/group-unmapped-1.png" alt="A single zigzag line connects measurements across different subjects at the same sampling times." width="576"></p>
+</figure>
+</div>
+</div>
+</div>
+</div>
+<div>
+<p><strong>One line per subject</strong></p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a aria-hidden="true" tabindex="-1"></a>profile <span class="sc">+</span> <span class="fu">geom_line</span>(<span class="fu">aes</span>(<span class="at">group =</span> Subject))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output-display">
+<div>
+<figure>
+<p><img data-src="index_files/figure-revealjs/group-subject-1.png" alt="Six separate lines each follow one subject's plasma concentration over time." width="576"></p>
+</figure>
+</div>
+</div>
+</div>
+</div>
+</div>
 </section>
-<section id="gg-hist" class="slide level2 plot-example" data-background="./_extensions/emc/www/triangle1.svg">
+<section id="gg-geoms" class="slide level2" data-background-image="./templateassets/triangledb.svg">
+<h2>Geometries and summaries</h2>
+<p>A geom controls what gets drawn.</p>
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure>
+<p><img data-src="index_files/figure-revealjs/geom-icons-1.png" alt="Six small plots show the marks made by geom_point, geom_line, geom_bar, geom_histogram, geom_boxplot and geom_tile." width="960"></p>
+</figure>
+</div>
+</div>
+</div>
+<p><code>geom_bar()</code> counts rows. Use <code>geom_col()</code> when you already have the bar heights.</p>
+</section>
+<section id="gg-hist" class="slide level2 plot-example" data-background-image="./templateassets/triangledb.svg">
 <h2>Histogram bins in ggplot2</h2>
 <p>The histogram layer counts observations. Match the bin boundaries before comparing to the base plot.</p>
+<div class="panel-tabset">
+<ul id="tabset-2" class="panel-tabset-tabby"><li><a data-tabby-default="" href="#tabset-2-1">ggplot2</a></li><li><a href="#tabset-2-2">Base R</a></li></ul>
+<div class="tab-content">
+<div id="tabset-2-1">
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(growth, <span class="fu">aes</span>(<span class="at">x =</span> len)) <span class="sc">+</span></span>
-<span id="cb12-2"><a aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_histogram</span>(<span class="at">binwidth =</span> <span class="dv">5</span>, <span class="at">boundary =</span> <span class="dv">0</span>,</span>
-<span id="cb12-3"><a aria-hidden="true" tabindex="-1"></a>                 <span class="at">fill =</span> <span class="st">"#56B4E9"</span>,</span>
-<span id="cb12-4"><a aria-hidden="true" tabindex="-1"></a>                 <span class="at">colour =</span> <span class="st">"white"</span>) <span class="sc">+</span></span>
-<span id="cb12-5"><a aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">"Odontoblast length"</span>, <span class="at">y =</span> <span class="st">"Animals"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(growth, <span class="fu">aes</span>(<span class="at">x =</span> len)) <span class="sc">+</span></span>
+<span id="cb14-2"><a aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_histogram</span>(<span class="at">binwidth =</span> <span class="dv">5</span>,</span>
+<span id="cb14-3"><a aria-hidden="true" tabindex="-1"></a>                 <span class="at">boundary =</span> <span class="dv">0</span>,</span>
+<span id="cb14-4"><a aria-hidden="true" tabindex="-1"></a>                 <span class="at">fill =</span> <span class="st">"#56B4E9"</span>,</span>
+<span id="cb14-5"><a aria-hidden="true" tabindex="-1"></a>                 <span class="at">colour =</span> <span class="st">"white"</span>) <span class="sc">+</span></span>
+<span id="cb14-6"><a aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">"Odontoblast length"</span>,</span>
+<span id="cb14-7"><a aria-hidden="true" tabindex="-1"></a>       <span class="at">y =</span> <span class="st">"Animals"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output-display">
 <div>
 <figure>
@@ -655,16 +719,78 @@
 </div>
 </div>
 </div>
+</div>
+<div id="tabset-2-2">
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a aria-hidden="true" tabindex="-1"></a>growth <span class="ot">&lt;-</span> ToothGrowth</span>
+<span id="cb15-2"><a aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(growth<span class="sc">$</span>len,</span>
+<span id="cb15-3"><a aria-hidden="true" tabindex="-1"></a>     <span class="at">breaks =</span> <span class="fu">seq</span>(<span class="dv">0</span>, <span class="dv">35</span>, <span class="at">by =</span> <span class="dv">5</span>),</span>
+<span id="cb15-4"><a aria-hidden="true" tabindex="-1"></a>     <span class="at">xlab =</span> <span class="st">"Odontoblast length"</span>,</span>
+<span id="cb15-5"><a aria-hidden="true" tabindex="-1"></a>     <span class="at">main =</span> <span class="st">""</span>,</span>
+<span id="cb15-6"><a aria-hidden="true" tabindex="-1"></a>     <span class="at">col =</span> <span class="st">"#56B4E9"</span>, <span class="at">border =</span> <span class="st">"white"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output-display">
+<div>
+<figure>
+<p><img data-src="index_files/figure-revealjs/compare-base-histogram-1.png" alt="Base R histogram of odontoblast length with five-unit bins." width="576"></p>
+</figure>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
 </section>
-<section id="gg-box" class="slide level2 plot-example" data-background="./_extensions/emc/www/triangle1.svg">
+<section id="gg-bars" class="slide level2 plot-example" data-background-image="./templateassets/triangledb.svg">
+<h2>Bar charts in ggplot2</h2>
+<p>Treat dose as a category. <code>geom_bar()</code> counts the animals at each dose.</p>
+<div class="panel-tabset">
+<ul id="tabset-3" class="panel-tabset-tabby"><li><a data-tabby-default="" href="#tabset-3-1">ggplot2</a></li><li><a href="#tabset-3-2">Base R</a></li></ul>
+<div class="tab-content">
+<div id="tabset-3-1">
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(growth, <span class="fu">aes</span>(<span class="at">x =</span> <span class="fu">factor</span>(dose))) <span class="sc">+</span></span>
+<span id="cb16-2"><a aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_bar</span>(<span class="at">fill =</span> <span class="st">"#56B4E9"</span>) <span class="sc">+</span></span>
+<span id="cb16-3"><a aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">"Vitamin C dose (mg/day)"</span>,</span>
+<span id="cb16-4"><a aria-hidden="true" tabindex="-1"></a>       <span class="at">y =</span> <span class="st">"Animals"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output-display">
+<div>
+<figure>
+<p><img data-src="index_files/figure-revealjs/gg-bars-1.png" alt="Three bars show 20 animals at each tested vitamin C dose." width="576"></p>
+</figure>
+</div>
+</div>
+</div>
+</div>
+<div id="tabset-3-2">
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a aria-hidden="true" tabindex="-1"></a><span class="fu">barplot</span>(<span class="fu">table</span>(growth<span class="sc">$</span>dose),</span>
+<span id="cb17-2"><a aria-hidden="true" tabindex="-1"></a>        <span class="at">xlab =</span> <span class="st">"Vitamin C dose (mg/day)"</span>,</span>
+<span id="cb17-3"><a aria-hidden="true" tabindex="-1"></a>        <span class="at">ylab =</span> <span class="st">"Animals"</span>, <span class="at">col =</span> <span class="st">"#56B4E9"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output-display">
+<div>
+<figure>
+<p><img data-src="index_files/figure-revealjs/compare-base-bars-1.png" alt="Base R bar chart showing 20 animals at each tested vitamin C dose." width="576"></p>
+</figure>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="gg-box" class="slide level2 plot-example wide-code" data-background-image="./templateassets/triangledb.svg">
 <h2>Grouped boxplots in ggplot2</h2>
 <p>Make dose a factor to give the three tested doses their own categories. Map delivery method to the fill.</p>
+<div class="panel-tabset">
+<ul id="tabset-4" class="panel-tabset-tabby"><li><a data-tabby-default="" href="#tabset-4-1">ggplot2</a></li><li><a href="#tabset-4-2">Base R</a></li></ul>
+<div class="tab-content">
+<div id="tabset-4-1">
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(growth, <span class="fu">aes</span>(<span class="at">x =</span> <span class="fu">factor</span>(dose), <span class="at">y =</span> len,</span>
-<span id="cb13-2"><a aria-hidden="true" tabindex="-1"></a>                   <span class="at">fill =</span> supp)) <span class="sc">+</span></span>
-<span id="cb13-3"><a aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_boxplot</span>() <span class="sc">+</span></span>
-<span id="cb13-4"><a aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">"Vitamin C dose (mg/day)"</span>,</span>
-<span id="cb13-5"><a aria-hidden="true" tabindex="-1"></a>       <span class="at">y =</span> <span class="st">"Odontoblast length"</span>, <span class="at">fill =</span> <span class="st">"Method"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(growth, <span class="fu">aes</span>(<span class="at">x =</span> <span class="fu">factor</span>(dose), <span class="at">y =</span> len,</span>
+<span id="cb18-2"><a aria-hidden="true" tabindex="-1"></a>                   <span class="at">fill =</span> supp)) <span class="sc">+</span></span>
+<span id="cb18-3"><a aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_boxplot</span>() <span class="sc">+</span></span>
+<span id="cb18-4"><a aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">"Vitamin C dose (mg/day)"</span>,</span>
+<span id="cb18-5"><a aria-hidden="true" tabindex="-1"></a>       <span class="at">y =</span> <span class="st">"Odontoblast length"</span>, <span class="at">fill =</span> <span class="st">"Method"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output-display">
 <div>
 <figure>
@@ -673,16 +799,39 @@
 </div>
 </div>
 </div>
+</div>
+<div id="tabset-4-2">
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a aria-hidden="true" tabindex="-1"></a><span class="fu">boxplot</span>(len <span class="sc">~</span> supp <span class="sc">+</span> dose, <span class="at">data =</span> growth,</span>
+<span id="cb19-2"><a aria-hidden="true" tabindex="-1"></a>        <span class="at">xlab =</span> <span class="st">"Method and dose (mg/day)"</span>,</span>
+<span id="cb19-3"><a aria-hidden="true" tabindex="-1"></a>        <span class="at">ylab =</span> <span class="st">"Odontoblast length"</span>,</span>
+<span id="cb19-4"><a aria-hidden="true" tabindex="-1"></a>        <span class="at">col =</span> <span class="fu">c</span>(<span class="st">"#A6D7ED"</span>, <span class="st">"#F4BA9B"</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output-display">
+<div>
+<figure>
+<p><img data-src="index_files/figure-revealjs/compare-base-boxplot-1.png" alt="Base R boxplots for each dose and delivery method." width="576"></p>
+</figure>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
 </section>
-<section id="gg-facets" class="slide level2 plot-example" data-background="./_extensions/emc/www/triangle1.svg">
+<section id="gg-facets" class="slide level2 plot-example wide-code" data-background-image="./templateassets/triangledb.svg">
 <h2>Facets share a scale</h2>
 <p>Show one delivery method per panel. The default shared y scale makes the panels comparable.</p>
+<div class="panel-tabset">
+<ul id="tabset-5" class="panel-tabset-tabby"><li><a data-tabby-default="" href="#tabset-5-1">ggplot2</a></li><li><a href="#tabset-5-2">Base R</a></li></ul>
+<div class="tab-content">
+<div id="tabset-5-1">
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(growth, <span class="fu">aes</span>(<span class="at">x =</span> <span class="fu">factor</span>(dose), <span class="at">y =</span> len)) <span class="sc">+</span></span>
-<span id="cb14-2"><a aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_boxplot</span>(<span class="at">fill =</span> <span class="st">"#A6D7ED"</span>) <span class="sc">+</span></span>
-<span id="cb14-3"><a aria-hidden="true" tabindex="-1"></a>  <span class="fu">facet_wrap</span>(<span class="sc">~</span> supp) <span class="sc">+</span></span>
-<span id="cb14-4"><a aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">"Vitamin C dose (mg/day)"</span>,</span>
-<span id="cb14-5"><a aria-hidden="true" tabindex="-1"></a>       <span class="at">y =</span> <span class="st">"Odontoblast length"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(growth,</span>
+<span id="cb20-2"><a aria-hidden="true" tabindex="-1"></a>       <span class="fu">aes</span>(<span class="at">x =</span> <span class="fu">factor</span>(dose), <span class="at">y =</span> len)) <span class="sc">+</span></span>
+<span id="cb20-3"><a aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_boxplot</span>(<span class="at">fill =</span> <span class="st">"#A6D7ED"</span>) <span class="sc">+</span></span>
+<span id="cb20-4"><a aria-hidden="true" tabindex="-1"></a>  <span class="fu">facet_wrap</span>(<span class="sc">~</span> supp) <span class="sc">+</span></span>
+<span id="cb20-5"><a aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">"Vitamin C dose (mg/day)"</span>,</span>
+<span id="cb20-6"><a aria-hidden="true" tabindex="-1"></a>       <span class="at">y =</span> <span class="st">"Odontoblast length"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output-display">
 <div>
 <figure>
@@ -691,21 +840,45 @@
 </div>
 </div>
 </div>
+</div>
+<div id="tabset-5-2">
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a aria-hidden="true" tabindex="-1"></a>old <span class="ot">&lt;-</span> <span class="fu">par</span>(<span class="at">no.readonly =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb21-2"><a aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow =</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>), <span class="at">mar =</span> <span class="fu">c</span>(<span class="dv">4</span>, <span class="dv">4</span>, <span class="dv">2</span>, <span class="dv">1</span>), <span class="at">las =</span> <span class="dv">1</span>)</span>
+<span id="cb21-3"><a aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (method <span class="cf">in</span> <span class="fu">c</span>(<span class="st">"OJ"</span>, <span class="st">"VC"</span>)) {</span>
+<span id="cb21-4"><a aria-hidden="true" tabindex="-1"></a>  group <span class="ot">&lt;-</span> <span class="fu">subset</span>(growth, supp <span class="sc">==</span> method)</span>
+<span id="cb21-5"><a aria-hidden="true" tabindex="-1"></a>  <span class="fu">boxplot</span>(len <span class="sc">~</span> dose, <span class="at">data =</span> group,</span>
+<span id="cb21-6"><a aria-hidden="true" tabindex="-1"></a>          <span class="at">main =</span> method, <span class="at">ylim =</span> <span class="fu">range</span>(growth<span class="sc">$</span>len),</span>
+<span id="cb21-7"><a aria-hidden="true" tabindex="-1"></a>          <span class="at">xlab =</span> <span class="st">"Dose (mg/day)"</span>, <span class="at">ylab =</span> <span class="st">"Length"</span>)</span>
+<span id="cb21-8"><a aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb21-9"><a aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(old)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output-display">
+<div>
+<figure>
+<p><img data-src="index_files/figure-revealjs/compare-base-panels-1.png" alt="Base R side-by-side boxplots on a common y scale." width="576"></p>
+</figure>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
 </section>
-<section id="gg-heat" class="slide level2 plot-example" data-background="./_extensions/emc/www/triangle1.svg">
+<section id="gg-heat" class="slide level2 plot-example wide-code" data-background-image="./templateassets/triangledb.svg">
 <h2>Heatmap of group means</h2>
 <p>Reduce to one row per tile first. A tile shows the mean for a group and hides variation within it.</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a aria-hidden="true" tabindex="-1"></a>means <span class="ot">&lt;-</span> <span class="fu">aggregate</span>(len <span class="sc">~</span> supp <span class="sc">+</span> dose, growth, mean)</span>
-<span id="cb15-2"><a aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(means, <span class="fu">aes</span>(<span class="at">x =</span> supp, <span class="at">y =</span> <span class="fu">factor</span>(dose),</span>
-<span id="cb15-3"><a aria-hidden="true" tabindex="-1"></a>                  <span class="at">fill =</span> len)) <span class="sc">+</span></span>
-<span id="cb15-4"><a aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_tile</span>(<span class="at">colour =</span> <span class="st">"white"</span>) <span class="sc">+</span></span>
-<span id="cb15-5"><a aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_text</span>(<span class="fu">aes</span>(<span class="at">label =</span> <span class="fu">round</span>(len, <span class="dv">1</span>)),</span>
-<span id="cb15-6"><a aria-hidden="true" tabindex="-1"></a>            <span class="at">colour =</span> <span class="st">"white"</span>) <span class="sc">+</span></span>
-<span id="cb15-7"><a aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_fill_gradient</span>(<span class="at">low =</span> <span class="st">"#315E85"</span>,</span>
-<span id="cb15-8"><a aria-hidden="true" tabindex="-1"></a>                      <span class="at">high =</span> <span class="st">"#113045"</span>) <span class="sc">+</span></span>
-<span id="cb15-9"><a aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">"Delivery method"</span>, <span class="at">y =</span> <span class="st">"Dose (mg/day)"</span>,</span>
-<span id="cb15-10"><a aria-hidden="true" tabindex="-1"></a>       <span class="at">fill =</span> <span class="st">"Mean length"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb22"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a aria-hidden="true" tabindex="-1"></a>means <span class="ot">&lt;-</span> <span class="fu">aggregate</span>(len <span class="sc">~</span> supp <span class="sc">+</span> dose,</span>
+<span id="cb22-2"><a aria-hidden="true" tabindex="-1"></a>                   <span class="at">data =</span> growth, <span class="at">FUN =</span> mean)</span>
+<span id="cb22-3"><a aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(means, <span class="fu">aes</span>(<span class="at">x =</span> supp, <span class="at">y =</span> <span class="fu">factor</span>(dose),</span>
+<span id="cb22-4"><a aria-hidden="true" tabindex="-1"></a>                  <span class="at">fill =</span> len)) <span class="sc">+</span></span>
+<span id="cb22-5"><a aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_tile</span>(<span class="at">colour =</span> <span class="st">"white"</span>) <span class="sc">+</span></span>
+<span id="cb22-6"><a aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_text</span>(<span class="fu">aes</span>(<span class="at">label =</span> <span class="fu">round</span>(len, <span class="dv">1</span>)),</span>
+<span id="cb22-7"><a aria-hidden="true" tabindex="-1"></a>            <span class="at">colour =</span> <span class="st">"white"</span>) <span class="sc">+</span></span>
+<span id="cb22-8"><a aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_fill_gradient</span>(<span class="at">low =</span> <span class="st">"#315E85"</span>,</span>
+<span id="cb22-9"><a aria-hidden="true" tabindex="-1"></a>                      <span class="at">high =</span> <span class="st">"#113045"</span>) <span class="sc">+</span></span>
+<span id="cb22-10"><a aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">"Delivery method"</span>, <span class="at">y =</span> <span class="st">"Dose (mg/day)"</span>,</span>
+<span id="cb22-11"><a aria-hidden="true" tabindex="-1"></a>       <span class="at">fill =</span> <span class="st">"Mean length"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output-display">
 <div>
 <figure>
@@ -715,19 +888,20 @@
 </div>
 </div>
 </section>
-<section id="gg-scales" class="slide level2 plot-example" data-background="./_extensions/emc/www/triangle1.svg">
+<section id="gg-scales" class="slide level2 plot-example wide-code" data-background-image="./templateassets/triangledb.svg">
 <h2>Scales, axes and guides</h2>
 <p>A mapping says which variable controls colour. The scale chooses the colours and sets the legend labels.</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a aria-hidden="true" tabindex="-1"></a>method_labels <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"Orange juice"</span>, <span class="st">"Ascorbic acid"</span>)</span>
-<span id="cb16-2"><a aria-hidden="true" tabindex="-1"></a>p_scaled <span class="ot">&lt;-</span> p <span class="sc">+</span></span>
-<span id="cb16-3"><a aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_x_continuous</span>(<span class="at">breaks =</span> <span class="fu">c</span>(<span class="fl">0.5</span>, <span class="dv">1</span>, <span class="dv">2</span>)) <span class="sc">+</span></span>
-<span id="cb16-4"><a aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_colour_manual</span>(</span>
-<span id="cb16-5"><a aria-hidden="true" tabindex="-1"></a>    <span class="at">values =</span> <span class="fu">c</span>(<span class="at">OJ =</span> <span class="st">"#0072B2"</span>, <span class="at">VC =</span> <span class="st">"#D55E00"</span>),</span>
-<span id="cb16-6"><a aria-hidden="true" tabindex="-1"></a>    <span class="at">labels =</span> method_labels</span>
-<span id="cb16-7"><a aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
-<span id="cb16-8"><a aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_shape_discrete</span>(<span class="at">labels =</span> method_labels)</span>
-<span id="cb16-9"><a aria-hidden="true" tabindex="-1"></a>p_scaled</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb23"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a aria-hidden="true" tabindex="-1"></a>method_labels <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"Orange juice"</span>,</span>
+<span id="cb23-2"><a aria-hidden="true" tabindex="-1"></a>                   <span class="st">"Ascorbic acid"</span>)</span>
+<span id="cb23-3"><a aria-hidden="true" tabindex="-1"></a>p_scaled <span class="ot">&lt;-</span> p <span class="sc">+</span></span>
+<span id="cb23-4"><a aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_x_continuous</span>(<span class="at">breaks =</span> <span class="fu">c</span>(<span class="fl">0.5</span>, <span class="dv">1</span>, <span class="dv">2</span>)) <span class="sc">+</span></span>
+<span id="cb23-5"><a aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_colour_manual</span>(</span>
+<span id="cb23-6"><a aria-hidden="true" tabindex="-1"></a>    <span class="at">values =</span> <span class="fu">c</span>(<span class="at">OJ =</span> <span class="st">"#0072B2"</span>, <span class="at">VC =</span> <span class="st">"#D55E00"</span>),</span>
+<span id="cb23-7"><a aria-hidden="true" tabindex="-1"></a>    <span class="at">labels =</span> method_labels</span>
+<span id="cb23-8"><a aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
+<span id="cb23-9"><a aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_shape_discrete</span>(<span class="at">labels =</span> method_labels)</span>
+<span id="cb23-10"><a aria-hidden="true" tabindex="-1"></a>p_scaled</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output-display">
 <div>
 <figure>
@@ -737,71 +911,126 @@
 </div>
 </div>
 </section>
-<section id="gg-themes" class="slide level2 plot-example" data-background="./_extensions/emc/www/triangle1.svg">
-<h2>Themes and labels</h2>
-<p>A theme controls the look of the display. <code>labs()</code> supplies its wording.</p>
+<section id="gg-themes" class="slide level2 plot-example wide-code" data-background-image="./templateassets/triangledb.svg">
+<h2>Themes</h2>
+<p>Use a theme to change the background, text size and legend position.</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a aria-hidden="true" tabindex="-1"></a>p_final <span class="ot">&lt;-</span> p_scaled <span class="sc">+</span></span>
-<span id="cb17-2"><a aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_classic</span>(<span class="at">base_size =</span> <span class="dv">14</span>) <span class="sc">+</span></span>
-<span id="cb17-3"><a aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">legend.position =</span> <span class="st">"bottom"</span>) <span class="sc">+</span></span>
-<span id="cb17-4"><a aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"Vitamin C and odontoblast length"</span>)</span>
-<span id="cb17-5"><a aria-hidden="true" tabindex="-1"></a>p_final</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb24"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a aria-hidden="true" tabindex="-1"></a>p_final <span class="ot">&lt;-</span> p_scaled <span class="sc">+</span></span>
+<span id="cb24-2"><a aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_classic</span>(<span class="at">base_size =</span> <span class="dv">14</span>) <span class="sc">+</span></span>
+<span id="cb24-3"><a aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">legend.position =</span> <span class="st">"bottom"</span>)</span>
+<span id="cb24-4"><a aria-hidden="true" tabindex="-1"></a>p_final</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output-display">
 <div>
 <figure>
-<p><img data-src="index_files/figure-revealjs/gg-themes-1.png" alt="Dose-response scatterplot with a classic theme, descriptive title and bottom legend." width="576"></p>
+<p><img data-src="index_files/figure-revealjs/gg-themes-1.png" alt="Dose-response scatterplot with a classic theme and bottom legend." width="576"></p>
 </figure>
 </div>
 </div>
 </div>
 </section>
-<section id="gg-save" class="slide level2" data-background="./_extensions/emc/www/triangle1.svg">
+<section id="gg-save" class="slide level2" data-background-image="./templateassets/triangledb.svg">
 <h2>Saving a figure</h2>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a aria-hidden="true" tabindex="-1"></a><span class="fu">ggsave</span>(<span class="st">"dose-response.png"</span>, <span class="at">plot =</span> p_final,</span>
-<span id="cb18-2"><a aria-hidden="true" tabindex="-1"></a>       <span class="at">width =</span> <span class="dv">7</span>, <span class="at">height =</span> <span class="dv">4</span>, <span class="at">units =</span> <span class="st">"in"</span>, <span class="at">dpi =</span> <span class="dv">300</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb25"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a aria-hidden="true" tabindex="-1"></a><span class="fu">ggsave</span>(<span class="st">"dose-response.png"</span>, <span class="at">plot =</span> p_final,</span>
+<span id="cb25-2"><a aria-hidden="true" tabindex="-1"></a>       <span class="at">width =</span> <span class="dv">7</span>, <span class="at">height =</span> <span class="dv">4</span>, <span class="at">units =</span> <span class="st">"in"</span>, <span class="at">dpi =</span> <span class="dv">300</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>Pass the plot object explicitly. The filename extension chooses the file format. Use PDF or SVG when you need scalable graphics.</p>
 </section>
-<section id="wrap-up" class="slide level2" data-background="./_extensions/emc/www/triangle1.svg">
+<section id="wrap-up" class="slide level2" data-background-image="./templateassets/triangledb.svg">
 <h2>Choosing a plot for a new question</h2>
 <p>A colleague has a numeric outcome for patients in three groups and wants to see spread, typical values and unusual observations.</p>
+<div class="slide-callout">
 <ol type="1">
 <li>Which plot would you start with?</li>
 <li>What does one row represent?</li>
 <li>What would you map to x and y, and what would your caption say?</li>
 </ol>
+</div>
 </section>
-<section id="deaths-source" class="slide level2" data-background="./_extensions/emc/www/triangle1.svg">
-<h2>Extension · Data in two time series</h2>
-<p>The two UK lung disease series share a calendar. The object name identifies the sex group.</p>
+<section id="deaths-source" class="slide level2" data-background-image="./templateassets/triangledb.svg">
+<h2>Data that needs reshaping</h2>
+<p>The UK lung disease data give monthly death counts by sex. Here the group names are stored as column headings.</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(<span class="fu">cbind</span>(mdeaths, fdeaths), <span class="dv">3</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>         mdeaths fdeaths
-Jan 1974    2134     901
-Feb 1974    1863     689
-Mar 1974    1877     827</code></pre>
+<div class="cell-output-display">
+<table class="caption-top">
+<thead>
+<tr class="header">
+<th style="text-align: left;">month</th>
+<th style="text-align: right;">Male</th>
+<th style="text-align: right;">Female</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">1974-01-01</td>
+<td style="text-align: right;">2134</td>
+<td style="text-align: right;">901</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">1974-02-01</td>
+<td style="text-align: right;">1863</td>
+<td style="text-align: right;">689</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">1974-03-01</td>
+<td style="text-align: right;">1877</td>
+<td style="text-align: right;">827</td>
+</tr>
+</tbody>
+</table>
 </div>
 </div>
-<p>To compare when counts peak, keep the calendar month and make sex a column.</p>
+<p>Which column would you map to colour to get one line per group?</p>
 </section>
-<section id="deaths-tidy" class="slide level2 plot-example" data-background="./_extensions/emc/www/triangle1.svg">
-<h2>Extension · One variable per column</h2>
-<p>Stack the counts and attach each series to the same sequence of calendar months.</p>
+<section id="deaths-ready" class="slide level2" data-background-image="./templateassets/triangledb.svg">
+<h2>Data ready to plot</h2>
+<p>Put each variable in its own column. Each row now gives the count for one month and one sex.</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a aria-hidden="true" tabindex="-1"></a>months <span class="ot">&lt;-</span> <span class="fu">seq</span>(<span class="fu">as.Date</span>(<span class="st">"1974-01-01"</span>), <span class="at">by =</span> <span class="st">"month"</span>,</span>
-<span id="cb21-2"><a aria-hidden="true" tabindex="-1"></a>              <span class="at">length.out =</span> <span class="fu">length</span>(mdeaths))</span>
-<span id="cb21-3"><a aria-hidden="true" tabindex="-1"></a>deaths <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(</span>
-<span id="cb21-4"><a aria-hidden="true" tabindex="-1"></a>  <span class="at">month =</span> <span class="fu">rep</span>(months, <span class="at">times =</span> <span class="dv">2</span>),</span>
-<span id="cb21-5"><a aria-hidden="true" tabindex="-1"></a>  <span class="at">sex =</span> <span class="fu">rep</span>(<span class="fu">c</span>(<span class="st">"Male"</span>, <span class="st">"Female"</span>),</span>
-<span id="cb21-6"><a aria-hidden="true" tabindex="-1"></a>            <span class="at">each =</span> <span class="fu">length</span>(months)),</span>
-<span id="cb21-7"><a aria-hidden="true" tabindex="-1"></a>  <span class="at">count =</span> <span class="fu">c</span>(<span class="fu">as.numeric</span>(mdeaths),</span>
-<span id="cb21-8"><a aria-hidden="true" tabindex="-1"></a>            <span class="fu">as.numeric</span>(fdeaths))</span>
-<span id="cb21-9"><a aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb21-10"><a aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(deaths, <span class="fu">aes</span>(month, count, <span class="at">colour =</span> sex)) <span class="sc">+</span></span>
-<span id="cb21-11"><a aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>() <span class="sc">+</span></span>
-<span id="cb21-12"><a aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">"Month"</span>, <span class="at">y =</span> <span class="st">"Deaths"</span>, <span class="at">colour =</span> <span class="st">"Sex"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output-display">
+<table class="caption-top">
+<thead>
+<tr class="header">
+<th style="text-align: left;">month</th>
+<th style="text-align: left;">sex</th>
+<th style="text-align: right;">count</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">1974-01-01</td>
+<td style="text-align: left;">Male</td>
+<td style="text-align: right;">2134</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">1974-02-01</td>
+<td style="text-align: left;">Male</td>
+<td style="text-align: right;">1863</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">1974-01-01</td>
+<td style="text-align: left;">Female</td>
+<td style="text-align: right;">901</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">1974-02-01</td>
+<td style="text-align: left;">Female</td>
+<td style="text-align: right;">689</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<p>Map <code>month</code> to x, <code>count</code> to y and <code>sex</code> to colour.</p>
+</section>
+<section id="deaths-tidy" class="slide level2 plot-example" data-background-image="./templateassets/triangledb.svg">
+<h2>Plotting the reshaped data</h2>
+<p>Now ggplot2 can draw a separate line for each sex group on the same date axis.</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb26"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(deaths,</span>
+<span id="cb26-2"><a aria-hidden="true" tabindex="-1"></a>       <span class="fu">aes</span>(month, count, <span class="at">colour =</span> sex)) <span class="sc">+</span></span>
+<span id="cb26-3"><a aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>() <span class="sc">+</span></span>
+<span id="cb26-4"><a aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">"Month"</span>, <span class="at">y =</span> <span class="st">"Deaths"</span>,</span>
+<span id="cb26-5"><a aria-hidden="true" tabindex="-1"></a>       <span class="at">colour =</span> <span class="st">"Sex"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output-display">
 <div>
 <figure>
@@ -811,7 +1040,7 @@ Mar 1974    1877     827</code></pre>
 </div>
 </div>
 </section>
-<section id="gg-extension" class="slide level2" data-background="./_extensions/emc/www/triangle1.svg">
+<section id="gg-extension" class="slide level2" data-background-image="./templateassets/triangledb.svg">
 <h2>References and extensions</h2>
 <ul>
 <li><a href="https://stat.ethz.ch/R-manual/R-devel/library/datasets/html/ToothGrowth.html">R help for ToothGrowth</a> and <a href="https://stat.ethz.ch/R-manual/R-devel/library/datasets/html/Indometh.html">Indometh</a></li>

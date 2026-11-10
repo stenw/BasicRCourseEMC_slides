@@ -1,25 +1,74 @@
-.reveal .plot-example .cell {
+.reveal .plot-example .cell,
+.reveal .group-comparison {
   display: grid;
-  grid-template-columns: 1.07fr 1fr;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1.17fr);
   align-items: center;
   gap: 0.8rem;
 }
 
-.reveal .plot-example .cell > * {
-  min-width: 0;
+.reveal .wide-code .cell {
+  grid-template-columns: minmax(0, 1.15fr) minmax(0, 1fr);
+}
+
+.reveal .group-comparison {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  align-items: start;
+}
+
+.reveal .plot-example .cell > *,
+.reveal .group-comparison p {
   margin: 0;
 }
 
-.reveal .plot-example .cell-output-display img {
+.reveal .cell-output-display img {
   display: block;
   width: 100%;
   margin: 0;
 }
 
-.reveal .plot-example div.sourceCode pre code {
+.reveal .plot-example div.sourceCode pre code,
+.reveal .group-comparison div.sourceCode pre code {
   line-height: 1.4;
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+}
+
+.reveal .plot-example pre > code.sourceCode > span,
+.reveal .group-comparison pre > code.sourceCode > span {
+  display: inline;
 }
 
 .reveal .slides table {
+  border-collapse: collapse;
   font-size: 0.76em;
+  line-height: 1.25;
+}
+
+.reveal .slides table th,
+.reveal .slides table td {
+  border: 0;
+  padding: 0.32em 0.55em;
+}
+
+.reveal .slides table thead th {
+  background: #0c2074;
+  color: #fff;
+}
+
+.reveal .slides table tbody tr {
+  background: #fff;
+}
+
+.reveal .slides table tbody tr:nth-child(odd) {
+  background: #eaf5fc;
+}
+
+.reveal .slide-callout {
+  margin-top: 1.15em;
+  padding: 0.6em 0.85em;
+  background: #eaf5fc;
+}
+
+.reveal .slide-callout > p:only-child {
+  margin: 0;
 }
