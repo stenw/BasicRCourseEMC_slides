@@ -1768,7 +1768,7 @@
     "href": "slides/Plotting/index.html#base-histogram",
     "title": "R Course - Day 3",
     "section": "Base R histogram",
-    "text": "Base R histogram\nEach bar counts measurements in an interval. Bin width changes what patterns you can see.\n\nhist(growth$len, breaks = seq(0, 35, by = 5),\n     xlab = \"Odontoblast length\", main = \"\",\n     col = \"#56B4E9\", border = \"white\")"
+    "text": "Base R histogram\nEach bar counts measurements in an interval. Bin width changes what patterns you can see.\n\ngrowth &lt;- ToothGrowth\nhist(growth$len, breaks = seq(0, 35, by = 5),\n     xlab = \"Odontoblast length\", main = \"\",\n     col = \"#56B4E9\", border = \"white\")"
   },
   {
     "objectID": "slides/Plotting/index.html#base-bars",
@@ -1803,7 +1803,7 @@
     "href": "slides/Plotting/index.html#base-line",
     "title": "R Course - Day 3",
     "section": "Base R line plot",
-    "text": "Base R line plot\nEach point is one blood sample. The line connects samples from subject 1 in time order.\n\none &lt;- subset(Indometh, Subject == \"1\")\none &lt;- one[order(one$time), ]\nplot(conc ~ time, data = one, type = \"b\",\n     xlab = \"Time since dose (hours)\",\n     ylab = \"Plasma concentration (mcg/mL)\",\n     pch = 16, lwd = 2, col = \"#0072B2\")"
+    "text": "Base R line plot\nIndomethacin concentration over time for one person. Each point is one blood sample.\n\none &lt;- subset(Indometh, Subject == \"1\")\none &lt;- one[order(one$time), ]\nplot(conc ~ time, data = one, type = \"b\",\n     xlab = \"Time since dose (hours)\",\n     ylab = \"Plasma concentration (mcg/mL)\",\n     pch = 16, lwd = 2, col = \"#0072B2\")"
   },
   {
     "objectID": "slides/Plotting/index.html#base-par",
@@ -1928,8 +1928,8 @@
     "objectID": "slides/Plotting/index.html#deaths-source",
     "href": "slides/Plotting/index.html#deaths-source",
     "title": "R Course - Day 3",
-    "section": "Extension · UK lung disease deaths",
-    "text": "Extension · UK lung disease deaths\nmdeaths and fdeaths are monthly counts of deaths from bronchitis, emphysema and asthma in the UK from 1974 to 1979.\n\nEach series has 72 monthly counts. The two series use the same calendar months.\nThe object name identifies the sex group. The values are counts of deaths.\n\n\nhead(cbind(mdeaths, fdeaths), 3)\n\n         mdeaths fdeaths\nJan 1974    2134     901\nFeb 1974    1863     689\nMar 1974    1877     827\n\n\nDo the counts peak around the same months in both series?"
+    "section": "Extension · Data in two time series",
+    "text": "Extension · Data in two time series\nThe two UK lung disease series share a calendar. The object name identifies the sex group.\n\nhead(cbind(mdeaths, fdeaths), 3)\n\n         mdeaths fdeaths\nJan 1974    2134     901\nFeb 1974    1863     689\nMar 1974    1877     827\n\n\nTo compare when counts peak, keep the calendar month and make sex a column."
   },
   {
     "objectID": "slides/Plotting/index.html#deaths-tidy",

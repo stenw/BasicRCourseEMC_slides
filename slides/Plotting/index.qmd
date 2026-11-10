@@ -38,24 +38,6 @@ resources:
 
 Base graphics ships with R. Today we use base graphics first, then ggplot2.
 
-## Vitamin C and tooth growth {#toothgrowth data-background="./_extensions/emc/www/triangle1.svg"}
-
-**`ToothGrowth`** comes from an animal experiment. Each row is one guinea pig. The 60 animals are split into six groups of 10 (three doses × two delivery methods).
-
-| Column | Meaning |
-|:---|:---|
-| `len` | Length of odontoblasts, cells involved in tooth formation |
-| `dose` | Vitamin C dose (0.5, 1 or 2 mg/day) |
-| `supp` | Delivery method (OJ = orange juice, VC = ascorbic acid) |
-
-```{r}
-#| label: inspect-growth
-growth <- ToothGrowth
-head(growth, 2)
-```
-
-Does the pattern across doses look similar for the two methods?
-
 ## Plot choice by question {#plot-choices data-background="./_extensions/emc/www/triangle1.svg"}
 
 | Question | Variables | Plot |
@@ -83,6 +65,7 @@ Each bar counts measurements in an interval. Bin width changes what patterns you
 ```{r}
 #| label: base-histogram
 #| fig-alt: "Histogram of odontoblast length in five-unit intervals."
+growth <- ToothGrowth
 hist(growth$len, breaks = seq(0, 35, by = 5),
      xlab = "Odontoblast length", main = "",
      col = "#56B4E9", border = "white")
@@ -147,26 +130,9 @@ boxplot(len ~ supp + dose, data = growth,
         col = c("#A6D7ED", "#F4BA9B"))
 ```
 
-## Indomethacin in blood samples {#indometh data-background="./_extensions/emc/www/triangle1.svg"}
-
-**`Indometh`** follows six people after an intravenous injection of indomethacin. Each person gave 11 blood samples at different times.
-
-| Column | Meaning |
-|:---|:---|
-| `Subject` | Person's study ID |
-| `time` | Hours after the injection |
-| `conc` | Plasma drug concentration (mcg/mL) |
-
-```{r}
-#| label: inspect-indometh
-head(Indometh, 2)
-```
-
-How does concentration change over time within one person?
-
 ## Base R line plot {#base-line .plot-example data-background="./_extensions/emc/www/triangle1.svg"}
 
-Each point is one blood sample. The line connects samples from subject 1 in time order.
+Indomethacin concentration over time for one person. Each point is one blood sample.
 
 ```{r}
 #| label: base-line
@@ -403,19 +369,16 @@ A colleague has a numeric outcome for patients in three groups and wants to see 
 2. What does one row represent?
 3. What would you map to x and y, and what would your caption say?
 
-## Extension · UK lung disease deaths {#deaths-source data-background="./_extensions/emc/www/triangle1.svg"}
+## Extension · Data in two time series {#deaths-source data-background="./_extensions/emc/www/triangle1.svg"}
 
-`mdeaths` and `fdeaths` are monthly counts of deaths from bronchitis, emphysema and asthma in the UK from 1974 to 1979.
-
-- Each series has 72 monthly counts. The two series use the same calendar months.
-- The object name identifies the sex group. The values are counts of deaths.
+The two UK lung disease series share a calendar. The object name identifies the sex group.
 
 ```{r}
 #| label: inspect-deaths
 head(cbind(mdeaths, fdeaths), 3)
 ```
 
-Do the counts peak around the same months in both series?
+To compare when counts peak, keep the calendar month and make sex a column.
 
 ## Extension · One variable per column {#deaths-tidy .plot-example data-background="./_extensions/emc/www/triangle1.svg"}
 
