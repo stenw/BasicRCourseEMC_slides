@@ -203,7 +203,7 @@
   <h3 class="subtitle">Functions I</h3>
 </section>
 
-<section id="built-in-named-functions" class="slide level2" data-background="./_extensions/emc/www/triangle1.svg">
+<section id="built-in-named-functions" class="slide level2" data-background-image="./_extensions/emc/www/triangle1.svg" data-background-size="contain" data-background-position="top left">
 <h2>Built-in Named Functions</h2>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a aria-label="1"></a><span class="fu">head</span>() <span class="co">#Print the first 6 lines of a dataframe</span></span>
@@ -223,7 +223,7 @@
 <p>Built-in functions in base-R :</p>
 <p><a href="https://stat.ethz.ch/R-manual/R-patched/library/base/html/00Index.html" class="uri">https://stat.ethz.ch/R-manual/R-patched/library/base/html/00Index.html</a></p>
 </section>
-<section id="function-arguments" class="slide level2" data-background="./_extensions/emc/www/triangle1.svg">
+<section id="function-arguments" class="slide level2" data-background-image="./_extensions/emc/www/triangle1.svg" data-background-size="contain" data-background-position="top left">
 <h2>Function arguments</h2>
 <p><strong><em>arguments</em></strong>, the object in the parentheses <code>( )</code>:</p>
 <div class="cell">
@@ -248,7 +248,7 @@
 </div>
 </div>
 </section>
-<section id="functions-with-multiple-arguments" class="slide level2" data-background="./_extensions/emc/www/triangle1.svg">
+<section id="functions-with-multiple-arguments" class="slide level2" data-background-image="./_extensions/emc/www/triangle1.svg" data-background-size="contain" data-background-position="top left">
 <h2>Functions with multiple arguments</h2>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a aria-label="1"></a><span class="fu">args</span>(round)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
@@ -269,7 +269,7 @@ NULL</code></pre>
 </div>
 </div>
 </section>
-<section id="named-argument-matching" class="slide level2" data-background="./_extensions/emc/www/triangle1.svg">
+<section id="named-argument-matching" class="slide level2" data-background-image="./_extensions/emc/www/triangle1.svg" data-background-size="contain" data-background-position="top left">
 <h2>Named Argument Matching</h2>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb14"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a aria-label="1"></a><span class="fu">round</span>(<span class="at">x =</span> <span class="fl">4.679</span>, <span class="at">digits =</span> <span class="dv">2</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
@@ -293,7 +293,7 @@ NULL</code></pre>
 </div>
 </div>
 </section>
-<section id="creating-your-own-functions" class="slide level2" data-background="./_extensions/emc/www/triangle1.svg">
+<section id="creating-your-own-functions" class="slide level2" data-background-image="./_extensions/emc/www/triangle1.svg" data-background-size="contain" data-background-position="top left">
 <h2>Creating your own functions</h2>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb22"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a aria-label="1"></a>myFun <span class="ot">&lt;-</span> <span class="cf">function</span>(arg1, arg2) {</span>
@@ -303,7 +303,7 @@ NULL</code></pre>
 <span id="cb22-5"><a aria-label="5"></a><span class="fu">myFun</span>(arg1, arg2)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </section>
-<section id="example-of-a-custom-function" class="slide level2" data-background="./_extensions/emc/www/triangle1.svg">
+<section id="example-of-a-custom-function" class="slide level2" data-background-image="./_extensions/emc/www/triangle1.svg" data-background-size="contain" data-background-position="top left">
 <h2>Example of a custom function</h2>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb23"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a aria-label="1"></a>mean_xy <span class="ot">&lt;-</span> <span class="cf">function</span>(x, y){</span>
@@ -325,7 +325,7 @@ NULL</code></pre>
 </div>
 </div>
 </section>
-<section id="giving-an-argument-a-default" class="slide level2" data-background="./_extensions/emc/www/triangle1.svg">
+<section id="giving-an-argument-a-default" class="slide level2" data-background-image="./_extensions/emc/www/triangle1.svg" data-background-size="contain" data-background-position="top left">
 <h2>Giving an argument a default</h2>
 <p>Set a default in the function definition. Here <code>x</code> is required and <code>y</code> is optional.</p>
 <div class="cell">
@@ -343,7 +343,7 @@ NULL</code></pre>
 </div>
 </div>
 </section>
-<section id="use-return-in-a-function" class="slide level2" data-background="./_extensions/emc/www/triangle1.svg">
+<section id="use-return-in-a-function" class="slide level2" data-background-image="./_extensions/emc/www/triangle1.svg" data-background-size="contain" data-background-position="top left">
 <h2>Use <code>return()</code> in a function</h2>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb32"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb32-1"><a aria-label="1"></a>mean_xy <span class="ot">&lt;-</span> <span class="cf">function</span>(x, y){</span>
@@ -357,7 +357,7 @@ NULL</code></pre>
 </div>
 </div>
 </section>
-<section id="default-return-value" class="slide level2" data-background="./_extensions/emc/www/triangle1.svg">
+<section id="default-return-value" class="slide level2" data-background-image="./_extensions/emc/www/triangle1.svg" data-background-size="contain" data-background-position="top left">
 <h2>Default return value</h2>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb34"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb34-1"><a aria-label="1"></a>mean_xy_2 <span class="ot">&lt;-</span> <span class="cf">function</span>(x, y){</span>
@@ -386,7 +386,7 @@ NULL</code></pre>
 </div>
 <p>z is not returned!</p>
 </section>
-<section id="function-with-multiple-input-values" class="slide level2" data-background="./_extensions/emc/www/triangle1.svg">
+<section id="function-with-multiple-input-values" class="slide level2" data-background-image="./_extensions/emc/www/triangle1.svg" data-background-size="contain" data-background-position="top left">
 <h2>Function with multiple input values</h2>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb38"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb38-1"><a aria-label="1"></a>mean_vector <span class="ot">&lt;-</span> <span class="cf">function</span>(...){ </span>
@@ -407,7 +407,7 @@ NULL</code></pre>
 </div>
 </div>
 </section>
-<section id="vector-as-an-input-to-a-function" class="slide level2" data-background="./_extensions/emc/www/triangle1.svg">
+<section id="vector-as-an-input-to-a-function" class="slide level2" data-background-image="./_extensions/emc/www/triangle1.svg" data-background-size="contain" data-background-position="top left">
 <h2>Vector as an input to a function</h2>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb42"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb42-1"><a aria-label="1"></a>mean_x <span class="ot">&lt;-</span> <span class="cf">function</span>(x){ </span>
@@ -421,7 +421,7 @@ NULL</code></pre>
 </div>
 </div>
 </section>
-<section id="build-a-custom-function-to-clean-data" class="slide level2" data-background="./_extensions/emc/www/triangle1.svg">
+<section id="build-a-custom-function-to-clean-data" class="slide level2" data-background-image="./_extensions/emc/www/triangle1.svg" data-background-size="contain" data-background-position="top left">
 <h2>Build a custom function to clean data</h2>
 <p>Calculate mean of only the positive values (data cleaning)</p>
 <div class="cell">
@@ -435,29 +435,29 @@ NULL</code></pre>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb45"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb45-1"><a aria-label="1"></a>data<span class="sc">$</span>Ages</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
-<pre><code> [1]  47  41  73  55  31  48  37  50  42  34  52  62  55  40  50 -50  39  29  55
-[20]  63  52  52  52  32  44</code></pre>
+<pre><code> [1]  53  64  46  53  54  53  51  44  40  20  46  37  40  44  62 -50  38  46  45
+[20]  44  50  40  65  28  43</code></pre>
 </div>
 </div>
 <p>-50 is clearly wrong</p>
 </section>
-<section id="build-a-custom-function-to-clean-data-1" class="slide level2" data-background="./_extensions/emc/www/triangle1.svg">
+<section id="build-a-custom-function-to-clean-data-1" class="slide level2" data-background-image="./_extensions/emc/www/triangle1.svg" data-background-size="contain" data-background-position="top left">
 <h2>Build a custom function to clean data</h2>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb47"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb47-1"><a aria-label="1"></a><span class="fu">my_descriptives</span>(data<span class="sc">$</span>Ages)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] 47.29167</code></pre>
+<pre><code>[1] 46.08333</code></pre>
 </div>
 </div>
 <p>In stead of:</p>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb49"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb49-1"><a aria-label="1"></a><span class="fu">mean</span>(data<span class="sc">$</span>Ages)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] 43.4</code></pre>
+<pre><code>[1] 42.24</code></pre>
 </div>
 </div>
 </section>
-<section id="returning-vectors" class="slide level2" data-background="./_extensions/emc/www/triangle1.svg">
+<section id="returning-vectors" class="slide level2" data-background-image="./_extensions/emc/www/triangle1.svg" data-background-size="contain" data-background-position="top left">
 <h2>Returning vectors</h2>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb51"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb51-1"><a aria-label="1"></a>my_descriptives <span class="ot">&lt;-</span> <span class="cf">function</span>(x){</span>
@@ -469,11 +469,11 @@ NULL</code></pre>
 <span id="cb51-7"><a aria-label="7"></a><span class="fu">my_descriptives</span>(data<span class="sc">$</span>Ages)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>   Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
-  29.00   39.75   49.00   47.29   52.75   73.00 </code></pre>
+  20.00   40.00   45.50   46.08   53.00   65.00 </code></pre>
 </div>
 </div>
 </section>
-<section id="returning-multiple-values" class="slide level2" data-background="./_extensions/emc/www/triangle1.svg">
+<section id="returning-multiple-values" class="slide level2" data-background-image="./_extensions/emc/www/triangle1.svg" data-background-size="contain" data-background-position="top left">
 <h2>Returning multiple values</h2>
 <p>It is not possible to use <code>return(x,y)</code></p>
 <div class="cell">
@@ -491,7 +491,7 @@ NULL</code></pre>
 </div>
 </div>
 </section>
-<section id="returning-multiple-values-1" class="slide level2" data-background="./_extensions/emc/www/triangle1.svg">
+<section id="returning-multiple-values-1" class="slide level2" data-background-image="./_extensions/emc/www/triangle1.svg" data-background-size="contain" data-background-position="top left">
 <h2>Returning multiple values</h2>
 <p>To return multiple values we use: <code>return(c(x,y))</code> or <code>return(list(x,y))</code></p>
 <div class="cell">
@@ -508,11 +508,11 @@ NULL</code></pre>
 [1] 1
 
 [[2]]
-[1] 47.29167</code></pre>
+[1] 46.08333</code></pre>
 </div>
 </div>
 </section>
-<section id="function-environments-and-scoping" class="slide level2" data-background="./_extensions/emc/www/triangle1.svg">
+<section id="function-environments-and-scoping" class="slide level2" data-background-image="./_extensions/emc/www/triangle1.svg" data-background-size="contain" data-background-position="top left">
 <h2>Function environments and scoping</h2>
 <p>The Top-Level (or Global) Environment</p>
 <div class="cell">
@@ -539,7 +539,7 @@ NULL</code></pre>
 </div>
 </div>
 </section>
-<section id="global-and-local-variables" class="slide level2" data-background="./_extensions/emc/www/triangle1.svg">
+<section id="global-and-local-variables" class="slide level2" data-background-image="./_extensions/emc/www/triangle1.svg" data-background-size="contain" data-background-position="top left">
 <h2>Global and Local Variables</h2>
 <p><code>w</code> is a global variable</p>
 <p><code>d</code> is a local variable to <code>f()</code></p>
@@ -560,7 +560,7 @@ NULL</code></pre>
 </div>
 </div>
 </section>
-<section id="pass-inputs-explicitly" class="slide level2" data-background="./_extensions/emc/www/triangle1.svg">
+<section id="pass-inputs-explicitly" class="slide level2" data-background-image="./_extensions/emc/www/triangle1.svg" data-background-size="contain" data-background-position="top left">
 <h2>Pass inputs explicitly</h2>
 <p>The earlier <code>f(y)</code> reads <code>w</code> from the global environment. Give <code>w</code> its own argument so the call shows both inputs.</p>
 <div class="cell">
@@ -583,7 +583,7 @@ NULL</code></pre>
 </div>
 </div>
 </section>
-<section id="local-preference-over-global" class="slide level2" data-background="./_extensions/emc/www/triangle1.svg">
+<section id="local-preference-over-global" class="slide level2" data-background-image="./_extensions/emc/www/triangle1.svg" data-background-size="contain" data-background-position="top left">
 <h2>Local preference over Global</h2>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb69"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb69-1"><a aria-label="1"></a>w <span class="ot">&lt;-</span> <span class="dv">2</span></span>
@@ -600,7 +600,7 @@ NULL</code></pre>
 </div>
 </div>
 </section>
-<section id="local-assignment-of-variables" class="slide level2" data-background="./_extensions/emc/www/triangle1.svg">
+<section id="local-assignment-of-variables" class="slide level2" data-background-image="./_extensions/emc/www/triangle1.svg" data-background-size="contain" data-background-position="top left">
 <h2>Local assignment of variables</h2>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb71"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb71-1"><a aria-label="1"></a>w <span class="ot">&lt;-</span> <span class="dv">2</span></span>
@@ -679,7 +679,7 @@ NULL</code></pre>
         progress: true,
 
         // Display the page number of the current slide
-        slideNumber: false,
+        slideNumber: 'c/t',
 
         // 'all', 'print', or 'speaker'
         showSlideNumber: 'all',

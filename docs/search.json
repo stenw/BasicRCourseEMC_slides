@@ -1488,21 +1488,21 @@
     "href": "slides/Functions1/index.html#build-a-custom-function-to-clean-data",
     "title": "R Course - Day 3",
     "section": "Build a custom function to clean data",
-    "text": "Build a custom function to clean data\nCalculate mean of only the positive values (data cleaning)\n\nmy_descriptives &lt;- function(x){\n  x.trim &lt;- x[x &gt;= 0]\n  out &lt;- mean(x.trim)\n  return(out)\n}\n\nPatient data:\n\ndata$Ages\n\n [1]  47  41  73  55  31  48  37  50  42  34  52  62  55  40  50 -50  39  29  55\n[20]  63  52  52  52  32  44\n\n\n-50 is clearly wrong"
+    "text": "Build a custom function to clean data\nCalculate mean of only the positive values (data cleaning)\n\nmy_descriptives &lt;- function(x){\n  x.trim &lt;- x[x &gt;= 0]\n  out &lt;- mean(x.trim)\n  return(out)\n}\n\nPatient data:\n\ndata$Ages\n\n [1]  53  64  46  53  54  53  51  44  40  20  46  37  40  44  62 -50  38  46  45\n[20]  44  50  40  65  28  43\n\n\n-50 is clearly wrong"
   },
   {
     "objectID": "slides/Functions1/index.html#build-a-custom-function-to-clean-data-1",
     "href": "slides/Functions1/index.html#build-a-custom-function-to-clean-data-1",
     "title": "R Course - Day 3",
     "section": "Build a custom function to clean data",
-    "text": "Build a custom function to clean data\n\nmy_descriptives(data$Ages)\n\n[1] 47.29167\n\n\nIn stead of:\n\nmean(data$Ages)\n\n[1] 43.4"
+    "text": "Build a custom function to clean data\n\nmy_descriptives(data$Ages)\n\n[1] 46.08333\n\n\nIn stead of:\n\nmean(data$Ages)\n\n[1] 42.24"
   },
   {
     "objectID": "slides/Functions1/index.html#returning-vectors",
     "href": "slides/Functions1/index.html#returning-vectors",
     "title": "R Course - Day 3",
     "section": "Returning vectors",
-    "text": "Returning vectors\n\nmy_descriptives &lt;- function(x){\n  x.trim &lt;- x[x&gt;=0]\n  out &lt;- summary(x.trim)\n  return(out)\n}\n\nmy_descriptives(data$Ages)\n\n   Min. 1st Qu.  Median    Mean 3rd Qu.    Max. \n  29.00   39.75   49.00   47.29   52.75   73.00"
+    "text": "Returning vectors\n\nmy_descriptives &lt;- function(x){\n  x.trim &lt;- x[x&gt;=0]\n  out &lt;- summary(x.trim)\n  return(out)\n}\n\nmy_descriptives(data$Ages)\n\n   Min. 1st Qu.  Median    Mean 3rd Qu.    Max. \n  20.00   40.00   45.50   46.08   53.00   65.00"
   },
   {
     "objectID": "slides/Functions1/index.html#returning-multiple-values",
@@ -1516,7 +1516,7 @@
     "href": "slides/Functions1/index.html#returning-multiple-values-1",
     "title": "R Course - Day 3",
     "section": "Returning multiple values",
-    "text": "Returning multiple values\nTo return multiple values we use: return(c(x,y)) or return(list(x,y))\n\nmy_descriptives2 &lt;- function(x){\n  x.trim &lt;- x[x&gt;0]\n  below0 &lt;- sum(x&lt;0)\n  meanX &lt;- mean(x.trim)\n  return(list(below0, meanX))\n}\n\nmy_descriptives2(data$Ages)\n\n[[1]]\n[1] 1\n\n[[2]]\n[1] 47.29167"
+    "text": "Returning multiple values\nTo return multiple values we use: return(c(x,y)) or return(list(x,y))\n\nmy_descriptives2 &lt;- function(x){\n  x.trim &lt;- x[x&gt;0]\n  below0 &lt;- sum(x&lt;0)\n  meanX &lt;- mean(x.trim)\n  return(list(below0, meanX))\n}\n\nmy_descriptives2(data$Ages)\n\n[[1]]\n[1] 1\n\n[[2]]\n[1] 46.08333"
   },
   {
     "objectID": "slides/Functions1/index.html#function-environments-and-scoping",
@@ -1719,14 +1719,14 @@
     "href": "slides/Functions2/index.html#using-tapply-on-groups-of-data",
     "title": "R Course - Day 3",
     "section": "Using tapply on groups of data",
-    "text": "Using tapply on groups of data\n\npatients &lt;- data.frame(\"group\"=paste('grp',\n                          c(1,1,1,1,1,2,2,2,2,2),sep='-'), \n                       \"outcome\"=rnorm(10)) \n                      #10 random normally distributed values\npatients\n\n   group     outcome\n1  grp-1 -0.75294096\n2  grp-1  0.85568184\n3  grp-1  1.96303992\n4  grp-1 -1.04541907\n5  grp-1  0.06321283\n6  grp-2  1.63047476\n7  grp-2  0.22138318\n8  grp-2  2.10755443\n9  grp-2  0.44204809\n10 grp-2 -1.24399777\n\ntapply(patients$outcome, patients$group, mean)\n\n    grp-1     grp-2 \n0.2167149 0.6314925"
+    "text": "Using tapply on groups of data\n\npatients &lt;- data.frame(\"group\"=paste('grp',\n                          c(1,1,1,1,1,2,2,2,2,2),sep='-'), \n                       \"outcome\"=rnorm(10)) \n                      #10 random normally distributed values\npatients\n\n   group    outcome\n1  grp-1 -1.1920968\n2  grp-1 -1.2664199\n3  grp-1  0.2706536\n4  grp-1 -0.8823030\n5  grp-1  0.0761237\n6  grp-2  0.3274393\n7  grp-2  1.5348562\n8  grp-2 -0.9218222\n9  grp-2  0.9618851\n10 grp-2 -1.1534662\n\ntapply(patients$outcome, patients$group, mean)\n\n     grp-1      grp-2 \n-0.5988085  0.1497784"
   },
   {
     "objectID": "slides/Functions2/index.html#multiple-grouping-variables-possible",
     "href": "slides/Functions2/index.html#multiple-grouping-variables-possible",
     "title": "R Course - Day 3",
     "section": "Multiple grouping variables possible",
-    "text": "Multiple grouping variables possible\n\npatients &lt;- data.frame(\"group\"=paste('grp',c(1,1,1,1,1,2,2,2,2,2),sep='-'),\n                       \"serotype\"=c(\"A\",\"B\",\"A\",\"B\",\"A\",\"B\",\"A\",\"B\",\"A\",\"B\"),\n                       \"outcome\"=rnorm(10))\n\ntapply(patients$outcome, list(patients$group, patients$serotype), mean)\n\n               A           B\ngrp-1 -0.3600117 -0.11722877\ngrp-2  0.4169627  0.01935005"
+    "text": "Multiple grouping variables possible\n\npatients &lt;- data.frame(\"group\"=paste('grp',c(1,1,1,1,1,2,2,2,2,2),sep='-'),\n                       \"serotype\"=c(\"A\",\"B\",\"A\",\"B\",\"A\",\"B\",\"A\",\"B\",\"A\",\"B\"),\n                       \"outcome\"=rnorm(10))\n\ntapply(patients$outcome, list(patients$group, patients$serotype), mean)\n\n              A          B\ngrp-1 0.2537932 -0.1995478\ngrp-2 0.2336460  0.4385568"
   },
   {
     "objectID": "slides/Functions1/index.html#giving-an-argument-a-default",
