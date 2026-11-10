@@ -1727,5 +1727,222 @@
     "title": "R Course - Day 3",
     "section": "Multiple grouping variables possible",
     "text": "Multiple grouping variables possible\n\npatients &lt;- data.frame(\"group\"=paste('grp',c(1,1,1,1,1,2,2,2,2,2),sep='-'),\n                       \"serotype\"=c(\"A\",\"B\",\"A\",\"B\",\"A\",\"B\",\"A\",\"B\",\"A\",\"B\"),\n                       \"outcome\"=rnorm(10))\n\ntapply(patients$outcome, list(patients$group, patients$serotype), mean)\n\n                A         B\ngrp-1  0.09293757 1.6339488\ngrp-2 -0.75751287 0.1602559"
+  },
+  {
+    "objectID": "slides/Plotting/index.html#roadmap",
+    "href": "slides/Plotting/index.html#roadmap",
+    "title": "R Course - Day 3",
+    "section": "Today’s questions",
+    "text": "Today’s questions\n\nWhich plot matches the question and the variables?\nHow do we build and annotate it in base R?\nHow does ggplot2 express the same choices?\n\nCase study · What changes in a vitamin C dose-response plot when we show the delivery method?"
+  },
+  {
+    "objectID": "slides/Plotting/index.html#packages",
+    "href": "slides/Plotting/index.html#packages",
+    "title": "R Course - Day 3",
+    "section": "R graphics packages",
+    "text": "R graphics packages\n\n\n\nTool\nTypical use\n\n\n\n\nBase R graphics\nQuick plots and direct control over drawing\n\n\nggplot2\nLayered figures with consistent scales and panels\n\n\nlattice\nTrellis plots for comparisons across groups\n\n\nplotly\nInteractive figures with hover, zoom and pan\n\n\n\nBase graphics ships with R. Today we use base graphics first, then ggplot2."
+  },
+  {
+    "objectID": "slides/Plotting/index.html#toothgrowth",
+    "href": "slides/Plotting/index.html#toothgrowth",
+    "title": "R Course - Day 3",
+    "section": "Vitamin C and tooth growth",
+    "text": "Vitamin C and tooth growth\nOne row per guinea pig, 60 animals in total.\n\nlen is odontoblast length. Odontoblasts are cells involved in tooth formation.\ndose is vitamin C dose (0.5, 1 or 2 mg/day).\nsupp is the delivery method (OJ = orange juice, VC = ascorbic acid).\n\n\ngrowth &lt;- ToothGrowth\nhead(growth, 3)\n\n   len supp dose\n1  4.2   VC  0.5\n2 11.5   VC  0.5\n3  7.3   VC  0.5"
+  },
+  {
+    "objectID": "slides/Plotting/index.html#plot-choices",
+    "href": "slides/Plotting/index.html#plot-choices",
+    "title": "R Course - Day 3",
+    "section": "Plot choice by question",
+    "text": "Plot choice by question\n\n\n\n\n\n\n\n\nQuestion\nVariables\nPlot\n\n\n\n\nHow variable is length?\nOne numeric variable\nHistogram\n\n\nHow many animals got each dose?\nCategories and counts\nBar chart\n\n\nDoes length vary with dose?\nTwo numeric variables\nScatterplot\n\n\nDoes length differ by delivery method?\nNumeric outcome and groups\nBoxplot\n\n\nHow does concentration change over time?\nOrdered measurements\nLine plot\n\n\nHow do group summaries vary across two factors?\nTwo groups and a summary\nHeatmap"
+  },
+  {
+    "objectID": "slides/Plotting/index.html#base-high-low",
+    "href": "slides/Plotting/index.html#base-high-low",
+    "title": "R Course - Day 3",
+    "section": "Starting and adding to a base plot",
+    "text": "Starting and adding to a base plot\n\n\n\n\n\n\n\nHigh-level calls start a plot\nLow-level calls add to it\n\n\n\n\nplot(), hist(), boxplot(), barplot()\npoints(), lines(), abline()\n\n\nSet up axes and plotting coordinates\ntext(), legend(), axis(), title()\n\n\n\nRun the high-level call first. A later high-level call starts the next plot or panel."
+  },
+  {
+    "objectID": "slides/Plotting/index.html#base-histogram",
+    "href": "slides/Plotting/index.html#base-histogram",
+    "title": "R Course - Day 3",
+    "section": "Base R histogram",
+    "text": "Base R histogram\nEach bar counts measurements in an interval. Bin width changes what patterns you can see.\n\nhist(growth$len, breaks = seq(0, 35, by = 5),\n     xlab = \"Odontoblast length\", main = \"\",\n     col = \"#56B4E9\", border = \"white\")"
+  },
+  {
+    "objectID": "slides/Plotting/index.html#base-bars",
+    "href": "slides/Plotting/index.html#base-bars",
+    "title": "R Course - Day 3",
+    "section": "Base R bar chart",
+    "text": "Base R bar chart\nTreat each tested dose as a category. The bars show how many animals received it.\n\nbarplot(table(growth$dose),\n        xlab = \"Vitamin C dose (mg/day)\",\n        ylab = \"Animals\", col = \"#56B4E9\")"
+  },
+  {
+    "objectID": "slides/Plotting/index.html#base-scatter",
+    "href": "slides/Plotting/index.html#base-scatter",
+    "title": "R Course - Day 3",
+    "section": "Base R scatterplot",
+    "text": "Base R scatterplot\nEach point is one animal. There are only three x positions, and some points overlap.\n\nplot(len ~ dose, data = growth,\n     xlab = \"Vitamin C dose (mg/day)\",\n     ylab = \"Odontoblast length\",\n     pch = 16, col = \"#0072B2\")"
+  },
+  {
+    "objectID": "slides/Plotting/index.html#base-overlay",
+    "href": "slides/Plotting/index.html#base-overlay",
+    "title": "R Course - Day 3",
+    "section": "Adding points and a legend",
+    "text": "Adding points and a legend\nStart an empty plot with type = \"n\". Draw one group at a time, then explain the symbols.\n\nplot(len ~ dose, data = growth, type = \"n\",\n     xlab = \"Vitamin C dose (mg/day)\",\n     ylab = \"Odontoblast length\")\nwith(subset(growth, supp == \"OJ\"),\n     points(dose, len, pch = 16, col = \"#0072B2\"))\nwith(subset(growth, supp == \"VC\"),\n     points(dose, len, pch = 17, col = \"#D55E00\"))\nlegend(\"bottomright\",\n       c(\"Orange juice\", \"Ascorbic acid\"),\n       pch = c(16, 17),\n       col = c(\"#0072B2\", \"#D55E00\"),\n       bty = \"n\")"
+  },
+  {
+    "objectID": "slides/Plotting/index.html#base-boxplot",
+    "href": "slides/Plotting/index.html#base-boxplot",
+    "title": "R Course - Day 3",
+    "section": "Base R boxplot",
+    "text": "Base R boxplot\nThe middle line is the median. The box shows the middle half. Each box is one dose and delivery method.\n\nboxplot(len ~ supp + dose, data = growth,\n        xlab = \"Method and dose (mg/day)\",\n        ylab = \"Odontoblast length\",\n        col = c(\"#A6D7ED\", \"#F4BA9B\"))"
+  },
+  {
+    "objectID": "slides/Plotting/index.html#base-line",
+    "href": "slides/Plotting/index.html#base-line",
+    "title": "R Course - Day 3",
+    "section": "Base R line plot",
+    "text": "Base R line plot\nIndometh follows plasma drug concentration after IV dosing. Here the line connects one subject’s measurements in time order.\n\none &lt;- subset(Indometh, Subject == \"1\")\none &lt;- one[order(one$time), ]\nplot(conc ~ time, data = one, type = \"b\",\n     xlab = \"Time since dose (hours)\",\n     ylab = \"Plasma concentration (mcg/mL)\",\n     pch = 16, lwd = 2, col = \"#0072B2\")"
+  },
+  {
+    "objectID": "slides/Plotting/index.html#base-par",
+    "href": "slides/Plotting/index.html#base-par",
+    "title": "R Course - Day 3",
+    "section": "Base R graphics settings",
+    "text": "Base R graphics settings\npar(\"mar\") reads a setting. par(mfrow = c(1, 2)) changes the active device’s layout for subsequent plots.\n\n\n\n\n\n\n\nSetting\nControls\n\n\n\n\nmfrow, mar\nPanel rows and columns, margins (bottom, left, top, right)\n\n\npch, col, cex\nPoint symbol, colour, relative size\n\n\nlty, lwd\nLine type and width\n\n\nlas, cex.axis, cex.lab\nAxis tick-label orientation, tick text and axis title size\n\n\n\nSet labels and limits on a plot with xlab, ylab, xlim and ylim."
+  },
+  {
+    "objectID": "slides/Plotting/index.html#base-panels",
+    "href": "slides/Plotting/index.html#base-panels",
+    "title": "R Course - Day 3",
+    "section": "Base R panels with a common scale",
+    "text": "Base R panels with a common scale\nSave the settings, draw both panels with the same y limits, then restore the settings.\n\nold &lt;- par(no.readonly = TRUE)\npar(mfrow = c(1, 2), mar = c(4, 4, 2, 1), las = 1)\nfor (method in c(\"OJ\", \"VC\")) {\n  group &lt;- subset(growth, supp == method)\n  boxplot(len ~ dose, data = group,\n          main = method, ylim = range(growth$len),\n          xlab = \"Dose (mg/day)\", ylab = \"Length\")\n}\n\n\n\n\n\n\n\npar(old)"
+  },
+  {
+    "objectID": "slides/Plotting/index.html#base-check",
+    "href": "slides/Plotting/index.html#base-check",
+    "title": "R Course - Day 3",
+    "section": "Reading the dose response",
+    "text": "Reading the dose response\n\nWhich plot best shows whether the delivery methods differ at each dose?\nAt which dose do the two groups look most alike?\nWhat can a histogram hide when we pool all the animals?\n\nThe base graphics section ends here."
+  },
+  {
+    "objectID": "slides/Plotting/index.html#ggplot2-intro",
+    "href": "slides/Plotting/index.html#ggplot2-intro",
+    "title": "R Course - Day 3",
+    "section": "ggplot2",
+    "text": "ggplot2\nA plotting package built around the layered grammar of graphics.\n\ninstall.packages(\"ggplot2\")  # Once per R installation\n\n\nlibrary(ggplot2)\n\nggplot2 function reference"
+  },
+  {
+    "objectID": "slides/Plotting/index.html#grammar",
+    "href": "slides/Plotting/index.html#grammar",
+    "title": "R Course - Day 3",
+    "section": "What “grammar of graphics” means",
+    "text": "What “grammar of graphics” means\nA chart is assembled from parts that can be reused and combined. Describe how the data should appear, one choice at a time.\n\n\n\n\n\n\n\nPart\nOur dose-response scatterplot\n\n\n\n\nData\nOne row per animal\n\n\nMapping (aes())\nDose goes on x, length on y, method controls colour\n\n\nGeometry (geom_point())\nDraw each animal as a point\n\n\nScale and coordinates\nTranslate values to colours and positions on x and y\n\n\nFacets and theme\nSplit into panels if useful, then style the display\n\n\n\nA stat may summarize rows before drawing them. A histogram counts rows within bins."
+  },
+  {
+    "objectID": "slides/Plotting/index.html#gg-scatter",
+    "href": "slides/Plotting/index.html#gg-scatter",
+    "title": "R Course - Day 3",
+    "section": "The same scatterplot in ggplot2",
+    "text": "The same scatterplot in ggplot2\nRead it from top to bottom. Choose the data, map columns, then add a layer of points.\n\np &lt;- ggplot(growth, aes(x = dose, y = len)) +\n  geom_point(aes(colour = supp, shape = supp),\n             size = 2.5) +\n  labs(x = \"Vitamin C dose (mg/day)\",\n       y = \"Odontoblast length\",\n       colour = \"Method\", shape = \"Method\")\np"
+  },
+  {
+    "objectID": "slides/Plotting/index.html#gg-data",
+    "href": "slides/Plotting/index.html#gg-data",
+    "title": "R Course - Day 3",
+    "section": "Data and observation level",
+    "text": "Data and observation level\nA data frame gives each variable a column. What one row represents depends on the study.\n\nToothGrowth · one row per animal.\nIndometh · one row per blood sample, with repeated samples per subject.\n\n\nhead(Indometh, 3)\n\n  Subject time conc\n1       1 0.25 1.50\n2       1 0.50 0.94\n3       1 0.75 0.78"
+  },
+  {
+    "objectID": "slides/Plotting/index.html#gg-aes",
+    "href": "slides/Plotting/index.html#gg-aes",
+    "title": "R Course - Day 3",
+    "section": "Aesthetics and constants",
+    "text": "Aesthetics and constants\nMap a column inside aes(). aes(colour = supp) assigns colours by method and creates a guide.\nSet a constant outside aes(). colour = \"steelblue\" gives every point the same colour.\nOther aesthetics include x, y, shape, fill, size, alpha and linetype. Use group to tell a line layer which points belong together."
+  },
+  {
+    "objectID": "slides/Plotting/index.html#gg-geoms",
+    "href": "slides/Plotting/index.html#gg-geoms",
+    "title": "R Course - Day 3",
+    "section": "Geometries and summaries",
+    "text": "Geometries and summaries\n\n\n\nLayer\nMarks or summary\n\n\n\n\ngeom_point()\nIndividual observations\n\n\ngeom_line()\nConnected measurements, ordered by x within group\n\n\ngeom_bar() / geom_col()\nCount rows / draw supplied heights\n\n\ngeom_histogram()\nCount rows within numeric intervals\n\n\ngeom_boxplot()\nShow a distribution within each group\n\n\ngeom_tile()\nDraw a tile at each x and y combination"
+  },
+  {
+    "objectID": "slides/Plotting/index.html#gg-hist",
+    "href": "slides/Plotting/index.html#gg-hist",
+    "title": "R Course - Day 3",
+    "section": "Histogram bins in ggplot2",
+    "text": "Histogram bins in ggplot2\nThe histogram layer counts observations. Match the bin boundaries before comparing to the base plot.\n\nggplot(growth, aes(x = len)) +\n  geom_histogram(binwidth = 5, boundary = 0,\n                 fill = \"#56B4E9\",\n                 colour = \"white\") +\n  labs(x = \"Odontoblast length\", y = \"Animals\")"
+  },
+  {
+    "objectID": "slides/Plotting/index.html#gg-box",
+    "href": "slides/Plotting/index.html#gg-box",
+    "title": "R Course - Day 3",
+    "section": "Grouped boxplots in ggplot2",
+    "text": "Grouped boxplots in ggplot2\nMake dose a factor to give the three tested doses their own categories. Map delivery method to the fill.\n\nggplot(growth, aes(x = factor(dose), y = len,\n                   fill = supp)) +\n  geom_boxplot() +\n  labs(x = \"Vitamin C dose (mg/day)\",\n       y = \"Odontoblast length\", fill = \"Method\")"
+  },
+  {
+    "objectID": "slides/Plotting/index.html#gg-facets",
+    "href": "slides/Plotting/index.html#gg-facets",
+    "title": "R Course - Day 3",
+    "section": "Facets share a scale",
+    "text": "Facets share a scale\nShow one delivery method per panel. The default shared y scale makes the panels comparable.\n\nggplot(growth, aes(x = factor(dose), y = len)) +\n  geom_boxplot(fill = \"#A6D7ED\") +\n  facet_wrap(~ supp) +\n  labs(x = \"Vitamin C dose (mg/day)\",\n       y = \"Odontoblast length\")"
+  },
+  {
+    "objectID": "slides/Plotting/index.html#gg-heat",
+    "href": "slides/Plotting/index.html#gg-heat",
+    "title": "R Course - Day 3",
+    "section": "Heatmap of group means",
+    "text": "Heatmap of group means\nReduce to one row per tile first. A tile shows the mean for a group and hides variation within it.\n\nmeans &lt;- aggregate(len ~ supp + dose, growth, mean)\nggplot(means, aes(x = supp, y = factor(dose),\n                  fill = len)) +\n  geom_tile(colour = \"white\") +\n  geom_text(aes(label = round(len, 1)),\n            colour = \"white\") +\n  scale_fill_gradient(low = \"#315E85\",\n                      high = \"#113045\") +\n  labs(x = \"Delivery method\", y = \"Dose (mg/day)\",\n       fill = \"Mean length\")"
+  },
+  {
+    "objectID": "slides/Plotting/index.html#gg-scales",
+    "href": "slides/Plotting/index.html#gg-scales",
+    "title": "R Course - Day 3",
+    "section": "Scales, axes and guides",
+    "text": "Scales, axes and guides\nA mapping says which variable controls colour. The scale chooses the colours and sets the legend labels.\n\nmethod_labels &lt;- c(\"Orange juice\", \"Ascorbic acid\")\np_scaled &lt;- p +\n  scale_x_continuous(breaks = c(0.5, 1, 2)) +\n  scale_colour_manual(\n    values = c(OJ = \"#0072B2\", VC = \"#D55E00\"),\n    labels = method_labels\n  ) +\n  scale_shape_discrete(labels = method_labels)\np_scaled"
+  },
+  {
+    "objectID": "slides/Plotting/index.html#gg-themes",
+    "href": "slides/Plotting/index.html#gg-themes",
+    "title": "R Course - Day 3",
+    "section": "Themes and labels",
+    "text": "Themes and labels\nA theme controls the look of the display. labs() supplies its wording.\n\np_final &lt;- p_scaled +\n  theme_classic(base_size = 14) +\n  theme(legend.position = \"bottom\") +\n  labs(title = \"Vitamin C and odontoblast length\")\np_final"
+  },
+  {
+    "objectID": "slides/Plotting/index.html#gg-save",
+    "href": "slides/Plotting/index.html#gg-save",
+    "title": "R Course - Day 3",
+    "section": "Saving a figure",
+    "text": "Saving a figure\n\nggsave(\"dose-response.png\", plot = p_final,\n       width = 7, height = 4, units = \"in\", dpi = 300)\n\nPass the plot object explicitly. The filename extension chooses the file format. Use PDF or SVG when you need scalable graphics."
+  },
+  {
+    "objectID": "slides/Plotting/index.html#wrap-up",
+    "href": "slides/Plotting/index.html#wrap-up",
+    "title": "R Course - Day 3",
+    "section": "Choosing a plot for a new question",
+    "text": "Choosing a plot for a new question\nA colleague has a numeric outcome for patients in three groups and wants to see spread, typical values and unusual observations.\n\nWhich plot would you start with?\nWhat does one row represent?\nWhat would you map to x and y, and what would your caption say?"
+  },
+  {
+    "objectID": "slides/Plotting/index.html#deaths-source",
+    "href": "slides/Plotting/index.html#deaths-source",
+    "title": "R Course - Day 3",
+    "section": "Extension · Data in two time series",
+    "text": "Extension · Data in two time series\nmdeaths and fdeaths hold monthly UK death counts from bronchitis, emphysema and asthma from 1974 through 1979. Sex is encoded in the object names.\n\nhead(cbind(mdeaths, fdeaths), 3)\n\n         mdeaths fdeaths\nJan 1974    2134     901\nFeb 1974    1863     689\nMar 1974    1877     827\n\n\nTo map sex to a line or colour, make sex a column and keep the calendar date."
+  },
+  {
+    "objectID": "slides/Plotting/index.html#deaths-tidy",
+    "href": "slides/Plotting/index.html#deaths-tidy",
+    "title": "R Course - Day 3",
+    "section": "Extension · One variable per column",
+    "text": "Extension · One variable per column\nStack the counts and attach each series to the same sequence of calendar months.\n\nmonths &lt;- seq(as.Date(\"1974-01-01\"), by = \"month\",\n              length.out = length(mdeaths))\ndeaths &lt;- data.frame(\n  month = rep(months, times = 2),\n  sex = rep(c(\"Male\", \"Female\"),\n            each = length(months)),\n  count = c(as.numeric(mdeaths),\n            as.numeric(fdeaths))\n)\nggplot(deaths, aes(month, count, colour = sex)) +\n  geom_line() +\n  labs(x = \"Month\", y = \"Deaths\", colour = \"Sex\")"
+  },
+  {
+    "objectID": "slides/Plotting/index.html#gg-extension",
+    "href": "slides/Plotting/index.html#gg-extension",
+    "title": "R Course - Day 3",
+    "section": "References and extensions",
+    "text": "References and extensions\n\nR help for ToothGrowth and Indometh\nR help for graphical parameters\nThe layered grammar of graphics and the ggplot2 reference\nggplot2 extension gallery"
   }
 ]

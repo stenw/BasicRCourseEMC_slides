@@ -1,0 +1,25 @@
+.reveal .plot-example .cell {
+  display: grid;
+  grid-template-columns: 1.07fr 1fr;
+  align-items: center;
+  gap: 0.8rem;
+}
+
+.reveal .plot-example .cell > * {
+  min-width: 0;
+  margin: 0;
+}
+
+.reveal .plot-example .cell-output-display img {
+  display: block;
+  width: 100%;
+  margin: 0;
+}
+
+.reveal .plot-example div.sourceCode pre code {
+  line-height: 1.4;
+}
+
+.reveal .slides table {
+  font-size: 0.76em;
+}
