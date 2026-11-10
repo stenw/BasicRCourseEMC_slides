@@ -10,6 +10,8 @@ execute:
   echo: true
 categories: [Day3]
 image: "image.png"
+resources:
+  - _extensions/emc/www/triangle1.svg
 ---
 
 ## Built-in Named Functions {data-background="./_extensions/emc/www/triangle1.svg"}
@@ -27,7 +29,7 @@ sort(c(3,4,2,5,1)) #Sort numbers or letters numerically or alphabetically
 
 max(c(111,333,444,55,6,777,999)) #Determine the maximum value of a vector
 
-rnorm(10) #Sample 10 values from a r(andom) norm(al) distribution between 0 and 1
+rnorm(10) # Draw 10 standard normal values (mean 0, SD 1)
 ```
 
 Built-in functions in base-R :
@@ -109,6 +111,19 @@ mean_xy(2,6)
 or
 ```{r}
 mean_xy(x = 2,y = 6)
+```
+
+## Giving an argument a default {data-background="./_extensions/emc/www/triangle1.svg"}
+
+Set a default in the function definition. Here `x` is required and `y` is optional.
+
+```{r}
+mean_xy <- function(x, y = 2) {
+  (x + y) / 2
+}
+
+mean_xy(2)        # Uses the default y = 2
+mean_xy(2, y = 6) # Overrides the default
 ```
 
 ## Use `return()` in a function {data-background="./_extensions/emc/www/triangle1.svg"}
@@ -280,6 +295,26 @@ f <- function(y) {
 f(y = 1)
 
 d
+```
+
+## Pass inputs explicitly {data-background="./_extensions/emc/www/triangle1.svg"}
+
+The earlier `f(y)` reads `w` from the global environment. Give `w` its own argument so the call shows both inputs.
+
+```{r}
+f <- function(y, w) {
+  d <- 3
+  d * (w + y)
+}
+
+f(y = 1, w = 2)
+```
+
+Predict the result of the same call after changing the global `w`.
+
+```{r}
+w <- 10
+f(y = 1, w = 2)
 ```
 
 ## Local preference over Global {data-background="./_extensions/emc/www/triangle1.svg"}

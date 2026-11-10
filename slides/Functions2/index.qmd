@@ -10,6 +10,8 @@ execute:
   echo: true
 categories: [Day3]
 image: "image.png"
+resources:
+  - _extensions/emc/www/triangle1.svg
 ---
 
 ## If? Then! Else? {data-background="./_extensions/emc/www/triangle1.svg"}
@@ -84,27 +86,33 @@ if(condition1) {
 }
 ```
 
-## Adding if else to the descriptives function {data-background="./_extensions/emc/www/triangle1.svg"}
+## Decide which inputs to accept {data-background="./_extensions/emc/www/triangle1.svg"}
 
-```{r, echo=FALSE}
-PatientID <- 1:25
-Ages <- round(c(rnorm(15, mean = 45, sd = 10), -50, rnorm(9, mean = 45, sd = 10) ) )
-data <- data.frame(PatientID = PatientID, Ages = Ages)
-data$Sex <- as.factor(c(rbinom(24, 1, 0.5),-1))
-```
+For numeric ages, skip missing and nonpositive values. For a factor, drop the invalid code `-1`. Stop if there are no valid ages or if the input type is unsupported.
 
 ```{r}
-my_descriptives <- function(x){
-  if(class(x) == "numeric"){
-    x.trim <- x[x>0]
-    summary(x.trim)
-  } else if (class(x) == "factor"){
-    x.trim <- droplevels(x[x!=-1])
-    table(x.trim)
+my_descriptives <- function(x) {
+  if (is.numeric(x)) {
+    ages <- x[!is.na(x) & x > 0]
+    if (length(ages) == 0) stop("No valid ages left")
+    summary(ages)
+  } else if (is.factor(x)) {
+    table(droplevels(x[x != -1]))
+  } else {
+    stop("Expected numeric ages or a factor")
   }
 }
-my_descriptives(data$Ages)
-my_descriptives(data$Sex)
+```
+
+## Try typical inputs and edge cases {data-background="./_extensions/emc/www/triangle1.svg"}
+
+Predict what each call will return or report.
+
+```{r, error=TRUE}
+my_descriptives(c(NA, -50, 42, 50))
+my_descriptives(factor(c(0, 1, -1)))
+my_descriptives(c(NA, -50))
+my_descriptives(c("42", "50"))
 ```
 
 ## Stringing multiple if else together {data-background="./_extensions/emc/www/triangle1.svg"}
@@ -174,35 +182,50 @@ Note: `return("Zero")` not reached
 
 ## Terminating Using `stop()` {data-background="./_extensions/emc/www/triangle1.svg"}
 
-`stop()` means "error"
+An `if` condition needs one `TRUE` or `FALSE`. Check that `y` is one nonmissing number before comparing it to zero.
 
 ```{r}
 myRatio <- function(x, y) {
-  if(y == 0) stop("Cannot divide by 0")
-  return(x/y)
+  if (!is.numeric(y) || length(y) != 1 || is.na(y)) {
+    stop("y must be one nonmissing number")
+  }
+  if (y == 0) stop("Cannot divide by 0")
+  x / y
 }
 ```
 
 ```{r, error=TRUE}
-myRatio(x = 3, y = 0)
+myRatio(3, 2) # Valid input
+myRatio(3, 0) # Zero denominator
 ```
 
-Note: `return(x/y)` not reached
+## Test the denominator check {data-background="./_extensions/emc/www/triangle1.svg"}
+
+Each of these inputs fails the check before R compares `y` to zero.
+
+```{r, error=TRUE}
+myRatio(3, c(1, 2))   # More than one value
+myRatio(3, numeric()) # No values
+myRatio(3, NA_real_)  # Missing value
+```
 
 ## Printing a Warning Message Using `warning()` {data-background="./_extensions/emc/www/triangle1.svg"}
 
-`warning()` just prints a warning message.
+`warning()` reports a problem and lets the function continue.
 
 ```{r, warning=TRUE}
 myRatio <- function(x, y) {
-  if(y == 0) warning("Attempt made to divide by 0")
-  return(x/y)
+  if (!is.numeric(y) || length(y) != 1 || is.na(y)) {
+    stop("y must be one nonmissing number")
+  }
+  if (y == 0) warning("Attempt made to divide by 0")
+  x / y
 }
 
 myRatio(x = 3, y = 0)
 ```
 
-R can divide by zero, it returns special value `Inf`
+In this example, `3 / 0` returns `Inf` after the warning.
 
 ## Looping {data-background="./_extensions/emc/www/triangle1.svg"}
 

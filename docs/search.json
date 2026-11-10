@@ -1418,7 +1418,7 @@
     "href": "slides/Functions1/index.html#built-in-named-functions",
     "title": "R Course - Day 3",
     "section": "Built-in Named Functions",
-    "text": "Built-in Named Functions\n\nhead() #Print the first 6 lines of a dataframe\n\ntail() #Print the last 6 lines of a dataframe\n\nseq(from=1, to=10, by=2) #Create a sequence from 1 to 10 with steps of 2\n\nas.numeric(c(\"1\",\"2\",\"3\",\"4\")) #Turn string into numbers\n\nsort(c(3,4,2,5,1)) #Sort numbers or letters numerically or alphabetically\n\nmax(c(111,333,444,55,6,777,999)) #Determine the maximum value of a vector\n\nrnorm(10) #Sample 10 values from a r(andom) norm(al) distribution between 0 and 1\n\nBuilt-in functions in base-R :\nhttps://stat.ethz.ch/R-manual/R-patched/library/base/html/00Index.html"
+    "text": "Built-in Named Functions\n\nhead() #Print the first 6 lines of a dataframe\n\ntail() #Print the last 6 lines of a dataframe\n\nseq(from=1, to=10, by=2) #Create a sequence from 1 to 10 with steps of 2\n\nas.numeric(c(\"1\",\"2\",\"3\",\"4\")) #Turn string into numbers\n\nsort(c(3,4,2,5,1)) #Sort numbers or letters numerically or alphabetically\n\nmax(c(111,333,444,55,6,777,999)) #Determine the maximum value of a vector\n\nrnorm(10) # Draw 10 standard normal values (mean 0, SD 1)\n\nBuilt-in functions in base-R :\nhttps://stat.ethz.ch/R-manual/R-patched/library/base/html/00Index.html"
   },
   {
     "objectID": "slides/Functions1/index.html#function-arguments",
@@ -1432,7 +1432,7 @@
     "href": "slides/Functions1/index.html#functions-with-multiple-arguments",
     "title": "R Course - Day 3",
     "section": "Functions with multiple arguments",
-    "text": "Functions with multiple arguments\n\nargs(round)\n\nfunction (x, digits = 0) \nNULL\n\nround(4.679, 2)\n\n[1] 4.68\n\n\ndigits is optional and defaults to 0:\n\nround(4.679)\n\n[1] 5"
+    "text": "Functions with multiple arguments\n\nargs(round)\n\nfunction (x, digits = 0, ...) \nNULL\n\nround(4.679, 2)\n\n[1] 4.68\n\n\ndigits is optional and defaults to 0:\n\nround(4.679)\n\n[1] 5"
   },
   {
     "objectID": "slides/Functions1/index.html#named-argument-matching",
@@ -1488,49 +1488,49 @@
     "href": "slides/Functions1/index.html#build-a-custom-function-to-clean-data",
     "title": "R Course - Day 3",
     "section": "Build a custom function to clean data",
-    "text": "Build a custom function to clean data\nCalculate mean of only the positive values (data cleaning)\n\nmy_descriptives &lt;- function(x){\n  x.trim &lt;- x[x &gt;= 0]\n  out &lt;- mean(x.trim)\n  return(out)\n}\n\nPatient data:\n\ndata$Ages\n\n [1]  30  45  56  50  35  46  28  41  37  44  46  52  59  46  46 -50  26  44  51\n[20]  20  56  43  52  26  46\n\n\n-50 is clearly wrong"
+    "text": "Build a custom function to clean data\nCalculate mean of only the positive values (data cleaning)\n\nmy_descriptives &lt;- function(x){\n  x.trim &lt;- x[x &gt;= 0]\n  out &lt;- mean(x.trim)\n  return(out)\n}\n\nPatient data:\n\ndata$Ages\n\n [1]  47  41  73  55  31  48  37  50  42  34  52  62  55  40  50 -50  39  29  55\n[20]  63  52  52  52  32  44\n\n\n-50 is clearly wrong"
   },
   {
     "objectID": "slides/Functions1/index.html#build-a-custom-function-to-clean-data-1",
     "href": "slides/Functions1/index.html#build-a-custom-function-to-clean-data-1",
     "title": "R Course - Day 3",
     "section": "Build a custom function to clean data",
-    "text": "Build a custom function to clean data\n\nmy_descriptives(data$Ages)\n\n[1] 42.70833\n\n\nIn stead of:\n\nmean(data$Ages)\n\n[1] 39"
+    "text": "Build a custom function to clean data\n\nmy_descriptives(data$Ages)\n\n[1] 47.29167\n\n\nIn stead of:\n\nmean(data$Ages)\n\n[1] 43.4"
   },
   {
     "objectID": "slides/Functions1/index.html#returning-vectors",
     "href": "slides/Functions1/index.html#returning-vectors",
     "title": "R Course - Day 3",
     "section": "Returning vectors",
-    "text": "Returning vectors\n\nmy_descriptives &lt;- function(x){\n  x.trim &lt;- x[x&gt;=0]\n  out &lt;- summary(x.trim)\n  return(out)\n}\n\nmy_descriptives(data$Ages)\n\n   Min. 1st Qu.  Median    Mean 3rd Qu.    Max. \n  20.00   36.50   45.50   42.71   50.25   59.00"
+    "text": "Returning vectors\n\nmy_descriptives &lt;- function(x){\n  x.trim &lt;- x[x&gt;=0]\n  out &lt;- summary(x.trim)\n  return(out)\n}\n\nmy_descriptives(data$Ages)\n\n   Min. 1st Qu.  Median    Mean 3rd Qu.    Max. \n  29.00   39.75   49.00   47.29   52.75   73.00"
   },
   {
     "objectID": "slides/Functions1/index.html#returning-multiple-values",
     "href": "slides/Functions1/index.html#returning-multiple-values",
     "title": "R Course - Day 3",
     "section": "Returning multiple values",
-    "text": "Returning multiple values\nIt is not possible to use return(x,y)\n\nmy_descriptives2_wrong &lt;- function(x){\n  x.trim &lt;- x[x&gt;0]\n  below0 &lt;- sum(x&lt;0)\n  meanX &lt;- mean(x.trim)\n  return(below0, meanX)\n}\n\nmy_descriptives2_wrong(data$Ages)\n\nError in return(below0, meanX): multi-argument returns are not permitted"
+    "text": "Returning multiple values\nIt is not possible to use return(x,y)\n\nmy_descriptives2_wrong &lt;- function(x){\n  x.trim &lt;- x[x&gt;0]\n  below0 &lt;- sum(x&lt;0)\n  meanX &lt;- mean(x.trim)\n  return(below0, meanX)\n}\n\nmy_descriptives2_wrong(data$Ages)\n\nError in `return()`:\n! multi-argument returns are not permitted"
   },
   {
     "objectID": "slides/Functions1/index.html#returning-multiple-values-1",
     "href": "slides/Functions1/index.html#returning-multiple-values-1",
     "title": "R Course - Day 3",
     "section": "Returning multiple values",
-    "text": "Returning multiple values\nTo return multiple values we use: return(c(x,y)) or return(list(x,y))\n\nmy_descriptives2 &lt;- function(x){\n  x.trim &lt;- x[x&gt;0]\n  below0 &lt;- sum(x&lt;0)\n  meanX &lt;- mean(x.trim)\n  return(list(below0, meanX))\n}\n\nmy_descriptives2(data$Ages)\n\n[[1]]\n[1] 1\n\n[[2]]\n[1] 42.70833"
+    "text": "Returning multiple values\nTo return multiple values we use: return(c(x,y)) or return(list(x,y))\n\nmy_descriptives2 &lt;- function(x){\n  x.trim &lt;- x[x&gt;0]\n  below0 &lt;- sum(x&lt;0)\n  meanX &lt;- mean(x.trim)\n  return(list(below0, meanX))\n}\n\nmy_descriptives2(data$Ages)\n\n[[1]]\n[1] 1\n\n[[2]]\n[1] 47.29167"
   },
   {
     "objectID": "slides/Functions1/index.html#function-environments-and-scoping",
     "href": "slides/Functions1/index.html#function-environments-and-scoping",
     "title": "R Course - Day 3",
     "section": "Function environments and scoping",
-    "text": "Function environments and scoping\nThe Top-Level (or Global) Environment\n\nw &lt;- 2\nf &lt;- function(y) {\n  d &lt;- 3\n  return(d * (w + y))\n}\nenvironment(f)\n\n&lt;environment: R_GlobalEnv&gt;\n\n\nObjects in the Global Environment:\n\nobjects()\n\n [1] \"Ages\"                   \"data\"                   \"f\"                     \n [4] \"mean_vector\"            \"mean_x\"                 \"mean_xy\"               \n [7] \"mean_xy_2\"              \"mean_xy_3\"              \"my_descriptives\"       \n[10] \"my_descriptives2\"       \"my_descriptives2_wrong\" \"PatientID\"             \n[13] \"w\"                      \"x\""
+    "text": "Function environments and scoping\nThe Top-Level (or Global) Environment\n\nw &lt;- 2\nf &lt;- function(y) {\n  d &lt;- 3\n  return(d * (w + y))\n}\nenvironment(f)\n\n&lt;environment: R_GlobalEnv&gt;\n\n\nObjects in the Global Environment:\n\nobjects()\n\n [1] \"Ages\"                   \"PatientID\"              \"data\"                  \n [4] \"f\"                      \"mean_vector\"            \"mean_x\"                \n [7] \"mean_xy\"                \"mean_xy_2\"              \"mean_xy_3\"             \n[10] \"my_descriptives\"        \"my_descriptives2\"       \"my_descriptives2_wrong\"\n[13] \"pandoc_dir\"             \"quarto_bin_path\"        \"w\"                     \n[16] \"x\""
   },
   {
     "objectID": "slides/Functions1/index.html#global-and-local-variables",
     "href": "slides/Functions1/index.html#global-and-local-variables",
     "title": "R Course - Day 3",
     "section": "Global and Local Variables",
-    "text": "Global and Local Variables\nw is a global variable\nd is a local variable to f()\n\nf &lt;- function(y) {\n  d &lt;- 3\n  return(d * (w + y))\n}\n\nf(y = 1)\n\n[1] 9\n\nd\n\nError in eval(expr, envir, enclos): object 'd' not found"
+    "text": "Global and Local Variables\nw is a global variable\nd is a local variable to f()\n\nf &lt;- function(y) {\n  d &lt;- 3\n  return(d * (w + y))\n}\n\nf(y = 1)\n\n[1] 9\n\nd\n\nError:\n! object 'd' not found"
   },
   {
     "objectID": "slides/Functions1/index.html#local-preference-over-global",
@@ -1593,7 +1593,7 @@
     "href": "slides/Functions2/index.html#if-else-on-a-vector-the-ifelse-function",
     "title": "R Course - Day 3",
     "section": "if-else on a vector: The ifelse() Function",
-    "text": "if-else on a vector: The ifelse() Function\n\nheight &lt;- c(69, 71, 67, 66, 72, 71, 61, 65, 73, 70, 68, 74)\n\nif (height &gt; 69){\n  print(\"tall\") \n} else {\n  print(\"short\")\n}\n\nError in if (height &gt; 69) {: the condition has length &gt; 1\n\n\n\nhtCategory &lt;- ifelse(height &gt; 69, yes = \"tall\", no = \"short\")\n\nhtCategory\n\n [1] \"short\" \"tall\"  \"short\" \"short\" \"tall\"  \"tall\"  \"short\" \"short\" \"tall\" \n[10] \"tall\"  \"short\" \"tall\" \n\n\nFor more complicated cases we can use apply()"
+    "text": "if-else on a vector: The ifelse() Function\n\nheight &lt;- c(69, 71, 67, 66, 72, 71, 61, 65, 73, 70, 68, 74)\n\nif (height &gt; 69){\n  print(\"tall\") \n} else {\n  print(\"short\")\n}\n\nError in `if (height &gt; 69) ...`:\n! the condition has length &gt; 1\n\n\n\nhtCategory &lt;- ifelse(height &gt; 69, yes = \"tall\", no = \"short\")\n\nhtCategory\n\n [1] \"short\" \"tall\"  \"short\" \"short\" \"tall\"  \"tall\"  \"short\" \"short\" \"tall\" \n[10] \"tall\"  \"short\" \"tall\" \n\n\nFor more complicated cases we can use apply()"
   },
   {
     "objectID": "slides/Functions2/index.html#terminating-a-function-with-returns-errors-and-warnings",
@@ -1614,14 +1614,14 @@
     "href": "slides/Functions2/index.html#terminating-using-stop",
     "title": "R Course - Day 3",
     "section": "Terminating Using stop()",
-    "text": "Terminating Using stop()\nstop() means “error”\n\nmyRatio &lt;- function(x, y) {\n  if(y == 0) stop(\"Cannot divide by 0\")\n  return(x/y)\n}\n\n\nmyRatio(x = 3, y = 0)\n\nError in myRatio(x = 3, y = 0): Cannot divide by 0\n\n\nNote: return(x/y) not reached"
+    "text": "Terminating Using stop()\nAn if condition needs one TRUE or FALSE. Check that y is one nonmissing number before comparing it to zero.\n\nmyRatio &lt;- function(x, y) {\n  if (!is.numeric(y) || length(y) != 1 || is.na(y)) {\n    stop(\"y must be one nonmissing number\")\n  }\n  if (y == 0) stop(\"Cannot divide by 0\")\n  x / y\n}\n\n\nmyRatio(3, 2) # Valid input\n\n[1] 1.5\n\nmyRatio(3, 0) # Zero denominator\n\nError in `myRatio()`:\n! Cannot divide by 0"
   },
   {
     "objectID": "slides/Functions2/index.html#printing-a-warning-message-using-warning",
     "href": "slides/Functions2/index.html#printing-a-warning-message-using-warning",
     "title": "R Course - Day 3",
     "section": "Printing a Warning Message Using warning()",
-    "text": "Printing a Warning Message Using warning()\nwarning() just prints a warning message.\n\nmyRatio &lt;- function(x, y) {\n  if(y == 0) warning(\"Attempt made to divide by 0\")\n  return(x/y)\n}\n\nmyRatio(x = 3, y = 0)\n\nWarning in myRatio(x = 3, y = 0): Attempt made to divide by 0\n\n\n[1] Inf\n\n\nR can divide by zero, it returns special value Inf"
+    "text": "Printing a Warning Message Using warning()\nwarning() reports a problem and lets the function continue.\n\nmyRatio &lt;- function(x, y) {\n  if (!is.numeric(y) || length(y) != 1 || is.na(y)) {\n    stop(\"y must be one nonmissing number\")\n  }\n  if (y == 0) warning(\"Attempt made to divide by 0\")\n  x / y\n}\n\nmyRatio(x = 3, y = 0)\n\nWarning in myRatio(x = 3, y = 0): Attempt made to divide by 0\n\n\n[1] Inf\n\n\nIn this example, 3 / 0 returns Inf after the warning."
   },
   {
     "objectID": "slides/Functions2/index.html#looping",
@@ -1649,7 +1649,7 @@
     "href": "slides/Functions2/index.html#looping-over-a-data.frame",
     "title": "R Course - Day 3",
     "section": "“Looping” over a data.frame",
-    "text": "“Looping” over a data.frame\n\ncoins &lt;- data.frame(Coin = c(\"penny\", \"quarter\", \"nickel\", \"quarter\", \"dime\", \"penny\"),\n                    Year = c(1943, 1905, 1889, 1960, 1937, 1900),\n                    Mint = c(\"Den\", \"SF\", \"Phil\", \"Den\", \"SF\", \"Den\"),\n                    Condition = c(\"good\", \"fair\", \"excellent\", \"good\", \"poor\", \"good\"),\n                    Value = c(12.00, 55.00, 300.00, 40.00, 18.00, 28.00),\n                    Price = c(15.00, 45.00, 375.00, 25.00, 20.00, 20.00))\ncoins\n\n     Coin Year Mint Condition Value Price\n1   penny 1943  Den      good    12    15\n2 quarter 1905   SF      fair    55    45\n3  nickel 1889 Phil excellent   300   375\n4 quarter 1960  Den      good    40    25\n5    dime 1937   SF      poor    18    20\n6   penny 1900  Den      good    28    20\n\n\nCalculate the mean of each column:\n\ncolMeans(coins)\n\nError in colMeans(coins): 'x' must be numeric"
+    "text": "“Looping” over a data.frame\n\ncoins &lt;- data.frame(Coin = c(\"penny\", \"quarter\", \"nickel\", \"quarter\", \"dime\", \"penny\"),\n                    Year = c(1943, 1905, 1889, 1960, 1937, 1900),\n                    Mint = c(\"Den\", \"SF\", \"Phil\", \"Den\", \"SF\", \"Den\"),\n                    Condition = c(\"good\", \"fair\", \"excellent\", \"good\", \"poor\", \"good\"),\n                    Value = c(12.00, 55.00, 300.00, 40.00, 18.00, 28.00),\n                    Price = c(15.00, 45.00, 375.00, 25.00, 20.00, 20.00))\ncoins\n\n     Coin Year Mint Condition Value Price\n1   penny 1943  Den      good    12    15\n2 quarter 1905   SF      fair    55    45\n3  nickel 1889 Phil excellent   300   375\n4 quarter 1960  Den      good    40    25\n5    dime 1937   SF      poor    18    20\n6   penny 1900  Den      good    28    20\n\n\nCalculate the mean of each column:\n\ncolMeans(coins)\n\nError in `colMeans()`:\n! 'x' must be numeric or complex"
   },
   {
     "objectID": "slides/Functions2/index.html#looping-over-data.frame-columns",
@@ -1719,13 +1719,48 @@
     "href": "slides/Functions2/index.html#using-tapply-on-groups-of-data",
     "title": "R Course - Day 3",
     "section": "Using tapply on groups of data",
-    "text": "Using tapply on groups of data\n\npatients &lt;- data.frame(\"group\"=paste('grp',\n                          c(1,1,1,1,1,2,2,2,2,2),sep='-'), \n                       \"outcome\"=rnorm(10)) \n                      #10 random normally distributed values\npatients\n\n   group    outcome\n1  grp-1 -0.7930061\n2  grp-1  0.4491819\n3  grp-1  0.4399118\n4  grp-1  0.8997570\n5  grp-1 -0.8043006\n6  grp-2 -0.1144139\n7  grp-2  0.1370383\n8  grp-2 -1.0170428\n9  grp-2  0.6118554\n10 grp-2  0.6728039\n\ntapply(patients$outcome, patients$group, mean)\n\n     grp-1      grp-2 \n0.03830882 0.05804818"
+    "text": "Using tapply on groups of data\n\npatients &lt;- data.frame(\"group\"=paste('grp',\n                          c(1,1,1,1,1,2,2,2,2,2),sep='-'), \n                       \"outcome\"=rnorm(10)) \n                      #10 random normally distributed values\npatients\n\n   group     outcome\n1  grp-1 -0.75294096\n2  grp-1  0.85568184\n3  grp-1  1.96303992\n4  grp-1 -1.04541907\n5  grp-1  0.06321283\n6  grp-2  1.63047476\n7  grp-2  0.22138318\n8  grp-2  2.10755443\n9  grp-2  0.44204809\n10 grp-2 -1.24399777\n\ntapply(patients$outcome, patients$group, mean)\n\n    grp-1     grp-2 \n0.2167149 0.6314925"
   },
   {
     "objectID": "slides/Functions2/index.html#multiple-grouping-variables-possible",
     "href": "slides/Functions2/index.html#multiple-grouping-variables-possible",
     "title": "R Course - Day 3",
     "section": "Multiple grouping variables possible",
-    "text": "Multiple grouping variables possible\n\npatients &lt;- data.frame(\"group\"=paste('grp',c(1,1,1,1,1,2,2,2,2,2),sep='-'),\n                       \"serotype\"=c(\"A\",\"B\",\"A\",\"B\",\"A\",\"B\",\"A\",\"B\",\"A\",\"B\"),\n                       \"outcome\"=rnorm(10))\n\ntapply(patients$outcome, list(patients$group, patients$serotype), mean)\n\n                A         B\ngrp-1  0.09293757 1.6339488\ngrp-2 -0.75751287 0.1602559"
+    "text": "Multiple grouping variables possible\n\npatients &lt;- data.frame(\"group\"=paste('grp',c(1,1,1,1,1,2,2,2,2,2),sep='-'),\n                       \"serotype\"=c(\"A\",\"B\",\"A\",\"B\",\"A\",\"B\",\"A\",\"B\",\"A\",\"B\"),\n                       \"outcome\"=rnorm(10))\n\ntapply(patients$outcome, list(patients$group, patients$serotype), mean)\n\n               A           B\ngrp-1 -0.3600117 -0.11722877\ngrp-2  0.4169627  0.01935005"
+  },
+  {
+    "objectID": "slides/Functions1/index.html#giving-an-argument-a-default",
+    "href": "slides/Functions1/index.html#giving-an-argument-a-default",
+    "title": "R Course - Day 3",
+    "section": "Giving an argument a default",
+    "text": "Giving an argument a default\nSet a default in the function definition. Here x is required and y is optional.\n\nmean_xy &lt;- function(x, y = 2) {\n  (x + y) / 2\n}\n\nmean_xy(2)        # Uses the default y = 2\n\n[1] 2\n\nmean_xy(2, y = 6) # Overrides the default\n\n[1] 4"
+  },
+  {
+    "objectID": "slides/Functions1/index.html#pass-inputs-explicitly",
+    "href": "slides/Functions1/index.html#pass-inputs-explicitly",
+    "title": "R Course - Day 3",
+    "section": "Pass inputs explicitly",
+    "text": "Pass inputs explicitly\nThe earlier f(y) reads w from the global environment. Give w its own argument so the call shows both inputs.\n\nf &lt;- function(y, w) {\n  d &lt;- 3\n  d * (w + y)\n}\n\nf(y = 1, w = 2)\n\n[1] 9\n\n\nPredict the result of the same call after changing the global w.\n\nw &lt;- 10\nf(y = 1, w = 2)\n\n[1] 9"
+  },
+  {
+    "objectID": "slides/Functions2/index.html#decide-which-inputs-to-accept",
+    "href": "slides/Functions2/index.html#decide-which-inputs-to-accept",
+    "title": "R Course - Day 3",
+    "section": "Decide which inputs to accept",
+    "text": "Decide which inputs to accept\nFor numeric ages, skip missing and nonpositive values. For a factor, drop the invalid code -1. Stop if there are no valid ages or if the input type is unsupported.\n\nmy_descriptives &lt;- function(x) {\n  if (is.numeric(x)) {\n    ages &lt;- x[!is.na(x) & x &gt; 0]\n    if (length(ages) == 0) stop(\"No valid ages left\")\n    summary(ages)\n  } else if (is.factor(x)) {\n    table(droplevels(x[x != -1]))\n  } else {\n    stop(\"Expected numeric ages or a factor\")\n  }\n}"
+  },
+  {
+    "objectID": "slides/Functions2/index.html#try-typical-inputs-and-edge-cases",
+    "href": "slides/Functions2/index.html#try-typical-inputs-and-edge-cases",
+    "title": "R Course - Day 3",
+    "section": "Try typical inputs and edge cases",
+    "text": "Try typical inputs and edge cases\nPredict what each call will return or report.\n\nmy_descriptives(c(NA, -50, 42, 50))\n\n   Min. 1st Qu.  Median    Mean 3rd Qu.    Max. \n     42      44      46      46      48      50 \n\nmy_descriptives(factor(c(0, 1, -1)))\n\n\n0 1 \n1 1 \n\nmy_descriptives(c(NA, -50))\n\nError in `my_descriptives()`:\n! No valid ages left\n\nmy_descriptives(c(\"42\", \"50\"))\n\nError in `my_descriptives()`:\n! Expected numeric ages or a factor"
+  },
+  {
+    "objectID": "slides/Functions2/index.html#test-the-denominator-check",
+    "href": "slides/Functions2/index.html#test-the-denominator-check",
+    "title": "R Course - Day 3",
+    "section": "Test the denominator check",
+    "text": "Test the denominator check\nEach of these inputs fails the check before R compares y to zero.\n\nmyRatio(3, c(1, 2))   # More than one value\n\nError in `myRatio()`:\n! y must be one nonmissing number\n\nmyRatio(3, numeric()) # No values\n\nError in `myRatio()`:\n! y must be one nonmissing number\n\nmyRatio(3, NA_real_)  # Missing value\n\nError in `myRatio()`:\n! y must be one nonmissing number"
   }
 ]
