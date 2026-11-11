@@ -246,6 +246,10 @@ h2::after.title {
 	margin: 10px 15px 35px 0;
 }
 
+.hide-slide-number .reveal .slide-number {
+	display: none !important;
+}
+
 .reveal .slide-number a {
 	font-size: 120%;
 	background-color: #fafafa;
