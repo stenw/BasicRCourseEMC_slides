@@ -1,3 +1,7 @@
+.hide-slide-number .reveal .slide-number {
+  display: none !important;
+}
+
 .reveal .plot-example .cell,
 .reveal .group-comparison {
   display: grid;
