@@ -503,7 +503,7 @@
 </section>
 <section id="base-save" class="slide level2" data-background-image="./templateassets/triangledb.svg">
 <h2>Saving base R plots</h2>
-<p>Open a graphics device for the file, draw the plot, then close the device.</p>
+<p>Use <code>png()</code> to open a file for drawing. Run your plotting commands again, then use <code>dev.off()</code> to finish writing the file.</p>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a aria-hidden="true" tabindex="-1"></a><span class="fu">png</span>(<span class="st">"dose-response-base.png"</span>,</span>
 <span id="cb8-2"><a aria-hidden="true" tabindex="-1"></a>    <span class="at">width =</span> <span class="dv">7</span>, <span class="at">height =</span> <span class="dv">4</span>, <span class="at">units =</span> <span class="st">"in"</span>, <span class="at">res =</span> <span class="dv">300</span>)</span>
@@ -920,7 +920,7 @@
 </div>
 </section>
 <section id="gg-save" class="slide level2" data-background-image="./templateassets/triangledb.svg">
-<h2>Saving a figure</h2>
+<h2>Saving a ggplot</h2>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb27"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a aria-hidden="true" tabindex="-1"></a><span class="fu">ggsave</span>(<span class="st">"dose-response.png"</span>, <span class="at">plot =</span> p_final,</span>
 <span id="cb27-2"><a aria-hidden="true" tabindex="-1"></a>       <span class="at">width =</span> <span class="dv">7</span>, <span class="at">height =</span> <span class="dv">4</span>, <span class="at">units =</span> <span class="st">"in"</span>, <span class="at">dpi =</span> <span class="dv">300</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
@@ -1030,16 +1030,6 @@
 </div>
 </div>
 </div>
-</section>
-<section id="saving-ggplots" class="slide level2" data-background="./_extensions/emc/www/triangle1.svg">
-<h2>Saving ggplots</h2>
-<ul>
-<li>Save plot with <code>ggsave()</code> function
-<ul>
-<li>Enter plot object and file to save <code>ggsave(p, "myplot.png")</code></li>
-<li>Possible file extensions: “eps”, “ps”, “tex”, “pdf”, “jpeg”, “tiff”, “png”, “bmp”, “svg” or “wmf”</li>
-</ul></li>
-</ul>
 </section>
 <section id="gg-extension" class="slide level2" data-background-image="./templateassets/triangledb.svg">
 <h2>References and extensions</h2>

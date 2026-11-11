@@ -187,7 +187,7 @@ par(old)
 
 ## Saving base R plots {#base-save data-background-image="./templateassets/triangledb.svg"}
 
-Open a graphics device for the file, draw the plot, then close the device.
+Use `png()` to open a file for drawing. Run your plotting commands again, then use `dev.off()` to finish writing the file.
 
 ```{r}
 #| eval: false
@@ -531,7 +531,7 @@ p_final <- p_scaled +
 p_final
 ```
 
-## Saving a figure {#gg-save data-background-image="./templateassets/triangledb.svg"}
+## Saving a ggplot {#gg-save data-background-image="./templateassets/triangledb.svg"}
 
 ```{r}
 #| eval: false
@@ -603,12 +603,6 @@ ggplot(deaths,
   labs(x = "Month", y = "Deaths",
        colour = "Sex")
 ```
-
-## Saving ggplots {data-background="./_extensions/emc/www/triangle1.svg"}
-
-* Save plot with `ggsave()` function
-  * Enter plot object and file to save `ggsave(p, "myplot.png")`
-  * Possible file extensions: "eps", "ps", "tex", "pdf", "jpeg", "tiff", "png", "bmp", "svg" or "wmf"
 
 ## References and extensions {#gg-extension data-background-image="./templateassets/triangledb.svg"}
 
