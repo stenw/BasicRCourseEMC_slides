@@ -11,6 +11,11 @@ author:
 date: " 12 November 2026"
 categories: [Day4]
 image: "image.png"
+resources:
+  - templateassets/lbback.svg
+  - _extensions/stenw/templateassets/triangledb-bg.svg
+  - _extensions/stenw/templateassets/triangledb-cap.svg
+  - assets-day4/knitr.svg
 format:
   emctemplatereveal-revealjs:
     css: extra.css
@@ -31,7 +36,7 @@ pbc <- survival::pbc
 pbcseq <- survival::pbcseq
 ```
 
-## R Course - Programme {data-background="./templateassets/lbback.svg" class="center"} 
+## R Course - Programme {data-background-image="./templateassets/lbback.svg" data-background-color="#86d2ed" .center}
 
 ```{css, echo=FALSE, include=FALSE}
 <style>
@@ -44,12 +49,13 @@ pbcseq <- survival::pbcseq
       color: green;
     }
 </style>  
+
 ```
 
 
 -   Day 1: Introduction
--   Day 2: Data management and visualization
--   Day 3: Functions and Analysis
+-   Day 2: Data management and Analysis
+-   Day 3: Data visualisation and Functions
 -   <b>Day 4: Additional topics</b>
 
 ## Program this morning
@@ -62,14 +68,14 @@ pbcseq <- survival::pbcseq
 - R in Erasmus MC
 
 
-# Quarto {data-background="./templateassets/lbback.svg" class="center"} 
+# Quarto {data-background-image="./templateassets/lbback.svg" data-background-color="#86d2ed" .center}
 
 ## Problems {.triangledb}
 
-* When doing research you often want to discuss things with collaborators (for example your supervisor)
+* When doing research, you often want to discuss things with collaborators (for example your supervisor)
 
-* Results from R need to be copied to word or powerpoint. 
-  - Often this [**does not look good**]{color="#b281e2"} without formatting
+* Results from R often need to be copied into Word or PowerPoint.
+  - This often [**does not look good**]{color="#b281e2"} without formatting
   - [**Errors**]{color="#e84720"} can be introduced
   - Making small changes means you have to do everything again
   
@@ -79,8 +85,8 @@ pbcseq <- survival::pbcseq
 
 
 * [**Authors**]{color="#e84720"} need to invest effort to create a [**aesthetically pleasing**]{color="#0c2074"} document (presentation, web, report)
-* [**Readers**]{color="#afcc46"} that want to reproduce results must obtain different files must puzzle out which results are produced by which code
-* Often there is no single comprehensive document that integrates data analysis witch documentation and discussion of results 
+* [**Readers**]{color="#afcc46"} who want to reproduce results may need to gather different files and puzzle out which results were produced by which code
+* No single comprehensive document that integrates data analysis with documentation and discussion of results
   - **Data**, **Code**, **Documentation** and **Results** [**lack proper linkage**]{color="#e84720"}
 * Hard to [**update**]{color="#AFA4F6"} analyses when there are small changes to data or methods
 
@@ -89,20 +95,20 @@ pbcseq <- survival::pbcseq
 <br>
   
 * We want our scientific documents to be:
-  - **Reproducible**
-  - **Transparent**
-  - **Shareable**
-  - **Understandable**
-  - **Efficient to produce and maintain**
+  - [**Reproducible**]{color="#0c2074"}
+  - [**Transparent**]{color="#0c2074"}
+  - [**Shareable**]{color="#0c2074"}
+  - [**Understandable**]{color="#0c2074"}
+  - [**Efficient to produce and maintain**]{color="#0c2074"}
   
 ## Literate Programming {.triangledb}
 
-* [**Origin of the Concept:**]{color="#0c2074"}  Don Knuth
-* Document is a stream of [**text**]{color="df4512"} and [**code** ("**chunks**")]{color="#afcc46"}
+* [**Origin of the concept:**]{color="#0c2074"} Don Knuth
+* A document is a stream of [**text**]{color="#df4512"} and [**code** ("**chunks**")]{color="#afcc46"}
 * Presentation code formats results (tables, figures)
-* Text explains what is done 
-  - Self documenting
-* Literate programs are [**woven**]{color="#b281e2"} to produce human readable documents and [**tangled**]{color="#0078d1"} to produce machine readable documents
+* Text explains what is done
+  - self-documenting
+* Literate programs are [**woven**]{color="#b281e2"} to produce human-readable documents and [**tangled**]{color="#0078d1"} to produce machine-readable documents
 
 ## Two parts  {.triangledb}
 
@@ -111,14 +117,14 @@ pbcseq <- survival::pbcseq
 * We need:
 
   - a [**documentation language**]{color="#e84720"}
-    * To write our program / analysis script
-  
+    * To write and format the explanatory text
+
   - a [**programming language**]{color="#afcc46"}
-    * To write and format the text that explains what is done
+    * To write the code for the analysis
 
 ## Quarto  {.triangledb}
 
-*	Quarto is a format for writing \alert{reproducible, dynamic reports} 
+* Quarto is a format for writing \alert{reproducible, dynamic reports}
 * Keeps **code**, **output**, **documentation** and **results** [**together**]{color="#e84720"}
 * Use it to [**embed R code and results**]{color="#0c2074"} into **various formats**
 
@@ -145,7 +151,7 @@ pbcseq <- survival::pbcseq
 
 ::::
 
-## History {background-image="triangledb-bg.svg" background-size="cover" .smaller}
+## History {data-background-image="./_extensions/stenw/templateassets/triangledb-bg.svg" data-background-size="cover" data-background-position="top center" .smaller}
   
 ::: {.timeline}
 
@@ -164,9 +170,7 @@ pbcseq <- survival::pbcseq
 </div>
 <div class="side-by-side-container">
 <div class="extrabox">
-
-
-<img src="https://upload.wikimedia.org/wikipedia/commons/3/34/Knitr_hex_logo.svg" alt="knitr sticker" style="width:64px;height:64px;">
+<img src="assets-day4/knitr.svg" alt="knitr sticker" style="width:64px;height:64px;">
 </div>
 <div class="container right2">
 <div class="content">
@@ -197,12 +201,12 @@ pbcseq <- survival::pbcseq
 ## Formats {.triangledb}
 
 * Quarto can produce output in [**various formats**]{color="#e84720"} such as:
-  - slideshows (e.g. powerpoint), 
-  - pdfs, 
-  - books,
-  - html documents,
-  - blogs,
-  - dashboards,
+  - [slideshows (e.g. PowerPoint)]{color="#0c2074"},
+  - [PDFs]{color="#0c2074"},
+  - [books]{color="#0c2074"},
+  - [HTML documents]{color="#0c2074"},
+  - [blogs]{color="#0c2074"},
+  - [dashboards]{color="#0c2074"},
   - etc
 
 ## Markdown (cont'd) {.triangledb}
@@ -259,15 +263,23 @@ pbcseq <- survival::pbcseq
 ::::
 
 :::   
+
+## Visual editor {.triangledb}
+
+* RStudio has a visual editor for Quarto
+
+* Use CTRL-/ to insert a new structure (list, equation, image, etc)
+
+* RStudio promises seamless switching between visual and source mode, but your mileage may vary
    
-# Markdown basics {data-background="./templateassets/lbback.svg" class="center"}   
+# Markdown basics {data-background-image="./templateassets/lbback.svg" data-background-color="#86d2ed" .center}
    
 
 ## Headers {.triangledb}
 
 <br>
 
-::: columns
+::: {.columns .equal-height}
 
 
 :::: {.column width="47%"}
@@ -298,7 +310,7 @@ pbcseq <- survival::pbcseq
 
 ## Emphasis {.triangledb}
 
-::: columns
+::: {.columns .equal-height}
 
 
 :::: {.column width="47%"}
@@ -319,7 +331,7 @@ __Methods__
 
 :::: {.column width="47%"}
 
-<h3>output</h3>
+<h3>Output</h3>
 
 *Methods*  
 _Methods_<br>
@@ -332,7 +344,7 @@ __Methods__<br>
 
 ## Bullets {.triangledb}
 
-::: columns
+::: {.columns .equal-height}
 
 
 :::: {.column width="47%"}
@@ -356,7 +368,7 @@ __Methods__<br>
 
 :::: {.column width="47%"}
 
-<h3>output</h3>
+<h3>Output</h3>
 
 * Method 1
 - Method 2
@@ -372,7 +384,7 @@ __Methods__<br>
 
 ## Links {.triangledb}
 
-::: columns
+::: {.columns .equal-height}
 
 
 :::: {.column width="47%"}
@@ -381,7 +393,7 @@ __Methods__<br>
 
 ```{.markdown code-line-numbers="false"}
 
-[link](http://example.com)
+[link](https://example.com)
 
 ```
 
@@ -391,7 +403,7 @@ __Methods__<br>
 
 <h3>output</h3>
 
-[link](http://example.com)
+[link](https://example.com)
 
 ::::
 
@@ -399,7 +411,7 @@ __Methods__<br>
 
 ## Images {.triangledb}
 
-::: columns
+::: {.columns .equal-height}
 
 
 :::: {.column width="47%"}
@@ -446,7 +458,7 @@ __Methods__<br>
 
 ## Tables {.triangledb}
 
-::: columns
+::: {.columns .equal-height}
 
 :::: {.column width="47%"}
 
@@ -498,7 +510,7 @@ __Methods__<br>
 
 ## Escaping {.triangledb}
 
-::: columns
+::: {.columns .equal-height}
 
 
 :::: {.column width="47%"}
@@ -528,7 +540,7 @@ Escaping Markdown characters with a backslash allows you to use characters that 
 
 ## Code {.triangledb}
 
-::: columns
+::: {.columns .equal-height}
 
 
 :::: {.column width="47%"}
@@ -609,7 +621,13 @@ escape = FALSE
 ## Code chunks {.triangledb}
 
 * [**Quarto**]{color="#0c2074"} allows us to include [**code blocks**]{color="#b281e2"}
+* They are surrounded by three backticks (```)
+* The header is surrounded by curly braces and specifies the language (e.g. `r` )
+  * r is the default, but other languages are also supported (e.g. python, julia, etc)
 * They will be executed during rendering
+
+## Code chunks (cont'd) {.triangledb}
+
 
 ::: columns
 
@@ -619,11 +637,26 @@ escape = FALSE
 <h3>Code</h3>
 
 ````{.r code-line-numbers="false"}
-
-```
+```{{r }}
 1+1
 ```
+````
 
+Optionally use a label:
+
+````{.r code-line-numbers="false"}
+```{{r}}
+label: oneplusone
+1+1
+```
+````
+
+or
+
+````{.r code-line-numbers="false"}
+```{{r oneplusone}}
+1+1
+```
 ````
 
 ::::
@@ -636,17 +669,21 @@ escape = FALSE
 1+1
 ```
 
+<br>
+
+* Note: inline R can be included using something like ``{r} NROW(x)``
+
 ::::
 
 :::
 
-* Note: inline R can be included using something like ``{r} NROW(x)``
+
 
 ## Plots  {.triangledb}
 
 * Plots that are produced in an R code chunk are included in the document
 
-::: columns
+::: {.columns .equal-height}
 
 
 :::: {.column width="47%"}
@@ -686,7 +723,7 @@ plot(x=c(1, 2),
 
 * Sometimes it can be useful to save the plot to file and then include it in the document using Quarto
 
-::: columns
+::: {.columns .equal-height}
 
 
 :::: {.column width="47%"}
@@ -731,7 +768,7 @@ dev.off()
 * Sometimes we want to use R.
 * Use the `kable` function to display tables nicely 
 
-::: columns
+::: {.columns .equal-height}
 
 
 :::: {.column width="47%"}
@@ -771,6 +808,63 @@ knitr::kable(data.frame(a=c(1,2),
 
 <small>The `flextable` and `kableExtra` packages can also be useful</small>
 
+
+
+
+## Chunk options {.triangledb}
+
+<br>
+
+* Code chunks can have various options
+* Options can be set as a comma-separated list of `key=value` pairs in the chunk header
+* In Quarto, they can also be set using `#|` followed by `key: value` pairs
+  - [NB: When using `#|` comments, use `true` and `false` instead of `TRUE` and `FALSE`]{color="#df4512"}
+
+
+
+
+
+## Chunk options (cont'd) {.triangledb .smaller}
+
+
+| Option           | Run code | Show code | Output | Plots | Messages | Warnings |
+|------------------|:--------:|:---------:|:------:|:-----:|:--------:|:--------:|
+| `eval: false`    |    X     |           |   X    |   X   |    X     |    X     |
+| `include: false` |          |     X     |   X    |   X   |    X     |    X     |
+| `echo: false`    |          |     X     |        |       |          |          |
+| `results: hide`  |          |           |   X    |       |          |          |
+| `fig-show: hide` |          |           |        |   X   |          |          |
+| `message: false` |          |           |        |       |    X     |          |
+| `warning: false` |          |           |        |       |          |    X     |
+
+<br>
+
+* R for data science Hadley
+
+
+## Chunk options (cont'd) {.triangledb}
+
+*  **results**: If `hide`, results are not shown. If `hold`, knitr will delay displaying all output until the end of the chunk. If `asis`, knitr will pass through results without reformatting them (useful if results return raw HTML, etc.)
+* **error**: If `TRUE`, rendering will continue after an error and the error message will be included in the output.
+*	**cache**: If `TRUE`, quarto will cache the results to reuse in future knits. Quarto will reuse the results until the code chunk is altered.
+* **cache.comments**: If `FALSE`, quarto will not rerun the chunk if only a code comment has changed
+
+
+
+## Chunk options (cont'd) {.triangledb}
+
+* **fig.cap**: A character string to be used as a figure caption in HTML
+*	 **fig.height**, **fig.width**: The width and height to use in R for plots created by the chunk (in inches)
+*  **out.height**, **out.width**: The width and height of plots as they are included in the document (in px or percentages (for html output))
+* **fig-format** : The format to use for plots (e.g. `png`, `jpg`, `pdf` etc)
+
+## R Markdown Gallery {.triangledb}
+
+```{=html}
+<iframe  height="80%" width="95%" src="https://rmarkdown.rstudio.com/gallery.html" title="R Markdown Gallery"></iframe>
+```
+
+
 ## YAML header  {.triangledb}
 
 * **YAML:** YAML Ain't Markup Language
@@ -797,6 +891,7 @@ date: "16 November 2023"
   * [**format**]{color="#e84720"} of output
   * [**Themes**]{color="#e84720"} and [**templates**]{color="#e84720"}
   * Inclusion of TOC (table-of-contents)
+  * Set execution options for code chunks globally
   * etc
 
 ## Popular Output formats {.triangledb}
@@ -813,46 +908,7 @@ date: "16 November 2023"
 
 :::
 
-
-## Chunk options {.triangledb}
-
-<br>
-
-* Code chunks can have various options
-* Options can be set as a comma-separated list of `key=value` pairs in the chunk header
-* In Quarto, they can also be set using `#|` followed by `key: value` pairs
-  - [NB: When using `#|` comments, use `true` and `false` instead of `TRUE` and `FALSE`]{color="#df4512"}
-
-
-
-## Chunk options {.triangledb}
-
-*  **eval**: If `FALSE`, code chunk is not run
-*	 **include**: If `FALSE`, code is run but not included the chunk in the final document
-*	**echo**: If `FALSE`, code is not shown (but results are)
-*  **results**: If `hide`, results are not shown. If `hold`, knitr will delay displaying all output until the end of the chunk. If `asis`, knitr will pass through results without reformatting them (useful if results return raw HTML, etc.)
-
-## Chunk options (cont'd) {.triangledb}
-
-
-* **error**: If `FALSE`, knitr will not display any error messages generated by the code
-*	**message**: If `FALSE`, knitr will not display any messages
-*	**warning**: If `FALSE`, knitr will not display any warning messages
-*	**cache**: If `TRUE`, knitr will cache the results to reuse in future knits. Knitr will reuse the results until the code chunk is altered.
-* **cache.comments**: If `FALSE`, knitr will not rerun the chunk if only a code comment has changed
-
-## Chunk options (cont'd) {.triangledb}
-
-* **fig.cap**: A character string to be used as a figure caption in html
-*	 **fig.height**, **fig.width**: The width and height to use in R for plots created by the chunk (in inches)
-
-## R Markdown Gallery {.triangledb}
-
-```{=html}
-<iframe  height="80%" width="95%" src="https://rmarkdown.rstudio.com/gallery.html" title="R Markdown Gallery"></iframe>
-```
-
-## Spin {background-image="triangledb-cap.svg" background-size="cover"}
+## Spin {data-background-image="./_extensions/stenw/templateassets/triangledb-cap.svg" data-background-size="cover" data-background-position="top center"}
 
 * We normally use Quarto to transform `.qmd` files into documents
 
@@ -874,13 +930,6 @@ date: "16 November 2023"
 
 * See the demos from the first day as examples
 
-## Visual editor {.triangledb}
-
-* RStudio has a visual editor for Quarto
-
-* Use CTRL-/ to insert a new structure (list, equation, image, etc)
-
-* RStudio promises seamless switching between visual and source mode, but your mileage may vary
 
 
 ## If you want to know more {.triangledb}
@@ -893,7 +942,7 @@ date: "16 November 2023"
 
 :::
 
-# Shiny {data-background="./templateassets/lbback.svg" class="center"}
+# Shiny {data-background-image="./templateassets/lbback.svg" data-background-color="#86d2ed" .center}
 
 ## Introduction {.triangledb}
 
@@ -1000,7 +1049,7 @@ plotOutput("distPlot")
 * Uses different **render** functions
 
 
-# Tidyverse {data-background="./templateassets/lbback.svg" class="center"}
+# Tidyverse {data-background-image="./templateassets/lbback.svg" data-background-color="#86d2ed" .center}
 
 
 ## What is the tidyverse {.triangledb}
@@ -1022,7 +1071,7 @@ There are also disadvantages to the tidyverse. For example it is less stable in 
 
 
 
-## Tidyverse packages{.triangledb}
+## Tidyverse packages{.triangledb .smaller}
 
 
 :::{.emcdescriptionlist}
@@ -1070,23 +1119,31 @@ There are many more packages that, although not formally part of the tidyverse, 
 <br>
 * Now also included in base R `|`<wbr>`>` (sometimes rendered as `|>`)
 
-## Pipe operation (cont'd) {.triangledb}
+## Pipe operation (cont'd) {.triangledb .smaller }
 
-**Nested functions - hard to read:**
+* Nested functions - hard to read:
 
-```{r eval=FALSE}
+```{r echo=TRUE}
+#| eval: false
 # Without pipe - hard to read
 mean(log(abs(c(-5, -2, 3, 7))))
 ```
 
-**Using a pipe - reads left to right:**
 
-```{r eval=FALSE}
+* Using a pipe - reads left to right:
+
+```{r echo=TRUE}
+#| eval: false
 c(-5, -2, 3, 7) %>% 
   abs() %>% 
   log() %>% 
   mean()
 ```
+
+* Base R syntax can be made shorter by nesting expressions
+* Does not help readability
+
+
 
 
 ## Tibble {.triangledb}
@@ -1174,7 +1231,7 @@ pbc %>%
 - [tidyverse.org](https://www.tidyverse.org/) - Official site
 - [R for Data Science](https://r4ds.hadley.nz/) - Free online book
 
-# R in Erasmus MC {data-background="./templateassets/lbback.svg" class="center"}
+# R in Erasmus MC {data-background-image="./templateassets/lbback.svg" data-background-color="#86d2ed" .center}
 
 
 ## Local installation {.triangledb}
@@ -1218,7 +1275,7 @@ R_LIBS_USER=v:/homedir/959750/tools/Rlibs/%p%V-library/%v
 * See [https://andrea-cloud.com/](https://andrea-cloud.com/) and [support.mydre.org](https://support.mydre.org)
 
 
-## The End / Questions?
+## The End / Questions? {.closing-slide data-background-image="./templateassets/lbback.svg" data-background-color="#86d2ed"}
 
 **Keep practicing! The best way to learn R is to use it on real problems.**
 

@@ -1,0 +1,119 @@
+.reveal .slides .columns.equal-height {
+  display: flex;
+  align-items: stretch;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.reveal .slides .columns.equal-height > .column {
+  box-sizing: border-box;
+  min-width: 0;
+  margin: 0;
+}
+
+.reveal .slides .closing-slide {
+  min-height: 100%;
+}
+
+.reveal .slides .closing-slide > p {
+  position: absolute;
+  inset: 50% 0 auto;
+  width: 95%;
+  margin: 0 auto;
+  transform: translateY(-50%);
+  font-size: 0.85em;
+  text-align: center;
+  text-wrap: balance;
+}
+
+#history .timeline {
+  --timeline-line: #ff9f55;
+  --timeline-card: lightblue;
+  position: relative;
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+#history .timeline::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 50%;
+  width: 6px;
+  transform: translateX(-50%);
+  background: var(--timeline-line);
+}
+
+#history .side-by-side-container {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  align-items: center;
+  margin-top: 20px;
+}
+
+#history .timeline .container {
+  position: relative;
+  padding: 0 35px;
+}
+
+#history .timeline .container::before,
+#history .timeline .container::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+}
+
+#history .timeline .container::before {
+  transform: translateY(-50%);
+  border: 10px solid transparent;
+}
+
+#history .timeline .left::before {
+  right: 15px;
+  border-left-color: var(--timeline-card);
+}
+
+#history .timeline .right2::before {
+  left: 15px;
+  border-right-color: var(--timeline-card);
+}
+
+#history .timeline .container::after {
+  box-sizing: border-box;
+  width: 25px;
+  height: 25px;
+  border: 4px solid var(--timeline-line);
+  border-radius: 50%;
+  background: white;
+  z-index: 1;
+}
+
+#history .timeline .left::after {
+  right: 0;
+  transform: translate(50%, -50%);
+}
+
+#history .timeline .right2::after {
+  left: 0;
+  transform: translate(-50%, -50%);
+}
+
+#history .timeline .content {
+  padding: 18px 24px;
+  border-radius: 6px;
+  background: var(--timeline-card);
+}
+
+#history .timeline .content h5 {
+  margin: 0 0 0.35em;
+}
+
+#history .timeline .content p,
+#history .timeline .extrabox img {
+  margin: 0;
+}
+
+#history .timeline .extrabox {
+  text-align: center;
+}

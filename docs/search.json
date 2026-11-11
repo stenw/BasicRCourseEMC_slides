@@ -4,7 +4,7 @@
     "href": "slides/Rmarkdown/index.html#r-course---programme",
     "title": "R course - Day 4",
     "section": "R Course - Programme",
-    "text": "R Course - Programme\n\nDay 1: Introduction\nDay 2: Data management and visualization\nDay 3: Functions and Analysis\nDay 4: Additional topics"
+    "text": "R Course - Programme\n\nDay 1: Introduction\nDay 2: Data management and Analysis\nDay 3: Data visualisation and Functions\nDay 4: Additional topics"
   },
   {
     "objectID": "slides/Rmarkdown/index.html#program-this-morning",
@@ -18,14 +18,14 @@
     "href": "slides/Rmarkdown/index.html#problems",
     "title": "R course - Day 4",
     "section": "Problems",
-    "text": "Problems\n\nWhen doing research you often want to discuss things with collaborators (for example your supervisor)\nResults from R need to be copied to word or powerpoint.\n\nOften this does not look good without formatting\nErrors can be introduced\nMaking small changes means you have to do everything again\n\nIt is convenient to have code, output and documentation together"
+    "text": "Problems\n\nWhen doing research, you often want to discuss things with collaborators (for example your supervisor)\nResults from R often need to be copied into Word or PowerPoint.\n\nThis often does not look good without formatting\nErrors can be introduced\nMaking small changes means you have to do everything again\n\nIt is convenient to have code, output and documentation together"
   },
   {
     "objectID": "slides/Rmarkdown/index.html#problem-2",
     "href": "slides/Rmarkdown/index.html#problem-2",
     "title": "R course - Day 4",
     "section": "Problem (2)",
-    "text": "Problem (2)\n\nAuthors need to invest effort to create a aesthetically pleasing document (presentation, web, report)\nReaders that want to reproduce results must obtain different files must puzzle out which results are produced by which code\nOften there is no single comprehensive document that integrates data analysis witch documentation and discussion of results\n\nData, Code, Documentation and Results lack proper linkage\n\nHard to update analyses when there are small changes to data or methods"
+    "text": "Problem (2)\n\nAuthors need to invest effort to create a aesthetically pleasing document (presentation, web, report)\nReaders who want to reproduce results may need to gather different files and puzzle out which results were produced by which code\nNo single comprehensive document that integrates data analysis with documentation and discussion of results\n\nData, Code, Documentation and Results lack proper linkage\n\nHard to update analyses when there are small changes to data or methods"
   },
   {
     "objectID": "slides/Rmarkdown/index.html#goals",
@@ -39,14 +39,14 @@
     "href": "slides/Rmarkdown/index.html#literate-programming",
     "title": "R course - Day 4",
     "section": "Literate Programming",
-    "text": "Literate Programming\n\nOrigin of the Concept: Don Knuth\nDocument is a stream of text and code (“chunks”)\nPresentation code formats results (tables, figures)\nText explains what is done\n\nSelf documenting\n\nLiterate programs are woven to produce human readable documents and tangled to produce machine readable documents"
+    "text": "Literate Programming\n\nOrigin of the concept: Don Knuth\nA document is a stream of text and code (“chunks”)\nPresentation code formats results (tables, figures)\nText explains what is done\n\nself-documenting\n\nLiterate programs are woven to produce human-readable documents and tangled to produce machine-readable documents"
   },
   {
     "objectID": "slides/Rmarkdown/index.html#two-parts",
     "href": "slides/Rmarkdown/index.html#two-parts",
     "title": "R course - Day 4",
     "section": "Two parts",
-    "text": "Two parts\n\n\nWe need:\n\na documentation language\n\nTo write our program / analysis script\n\na programming language\n\nTo write and format the text that explains what is done"
+    "text": "Two parts\n\n\nWe need:\n\na documentation language\n\nTo write and format the explanatory text\n\na programming language\n\nTo write the code for the analysis"
   },
   {
     "objectID": "slides/Rmarkdown/index.html#quarto-1",
@@ -67,7 +67,7 @@
     "href": "slides/Rmarkdown/index.html#formats",
     "title": "R course - Day 4",
     "section": "Formats",
-    "text": "Formats\n\nQuarto can produce output in various formats such as:\n\nslideshows (e.g. powerpoint),\npdfs,\nbooks,\nhtml documents,\nblogs,\ndashboards,\netc"
+    "text": "Formats\n\nQuarto can produce output in various formats such as:\n\nslideshows (e.g. PowerPoint),\nPDFs,\nbooks,\nHTML documents,\nblogs,\ndashboards,\netc"
   },
   {
     "objectID": "slides/Rmarkdown/index.html#markdown-contd",
@@ -109,21 +109,21 @@
     "href": "slides/Rmarkdown/index.html#emphasis",
     "title": "R course - Day 4",
     "section": "Emphasis",
-    "text": "Emphasis\n\n\n\nCode\n\n\n*Methods*  \n_Methods_\n**Methods**\n__Methods__\n\n\noutput\n\nMethods\nMethods Methods Methods"
+    "text": "Emphasis\n\n\n\nCode\n\n\n*Methods*  \n_Methods_\n**Methods**\n__Methods__\n\n\nOutput\n\nMethods\nMethods Methods Methods"
   },
   {
     "objectID": "slides/Rmarkdown/index.html#bullets",
     "href": "slides/Rmarkdown/index.html#bullets",
     "title": "R course - Day 4",
     "section": "Bullets",
-    "text": "Bullets\n\n\nCode\n\n* Method 1\n- Method 2\n+ Method 3\n\n* Results\n  * Method 1\n  * Method 2\n\n\n\noutput\n\n\nMethod 1\nMethod 2\nMethod 3\nResults\n\nMethod 1\nMethod 2"
+    "text": "Bullets\n\n\nCode\n\n* Method 1\n- Method 2\n+ Method 3\n\n* Results\n  * Method 1\n  * Method 2\n\n\n\nOutput\n\n\nMethod 1\nMethod 2\nMethod 3\nResults\n\nMethod 1\nMethod 2"
   },
   {
     "objectID": "slides/Rmarkdown/index.html#links",
     "href": "slides/Rmarkdown/index.html#links",
     "title": "R course - Day 4",
     "section": "Links",
-    "text": "Links\n\n\n\nCode\n\n\n[link](http://example.com)\n\n\noutput\n\nlink"
+    "text": "Links\n\n\n\nCode\n\n\n[link](https://example.com)\n\n\noutput\n\nlink"
   },
   {
     "objectID": "slides/Rmarkdown/index.html#images",
@@ -172,7 +172,7 @@
     "href": "slides/Rmarkdown/index.html#code-chunks",
     "title": "R course - Day 4",
     "section": "Code chunks",
-    "text": "Code chunks\n\nQuarto allows us to include code blocks\nThey will be executed during rendering\n\n\n\n\nCode\n\n\n```\n1+1\n```\n\n\nOutput\n\n\n\n[1] 2\n\n\n\n\nNote: inline R can be included using something like {r} NROW(x)"
+    "text": "Code chunks\n\nQuarto allows us to include code blocks\nThey are surrounded by three backticks (```)\nThe header is surrounded by curly braces and specifies the language (e.g. r )\n\nr is the default, but other languages are also supported (e.g. python, julia, etc)\n\nThey will be executed during rendering"
   },
   {
     "objectID": "slides/Rmarkdown/index.html#plots",
@@ -207,7 +207,7 @@
     "href": "slides/Rmarkdown/index.html#yaml-header-2",
     "title": "R course - Day 4",
     "section": "YAML header (2)",
-    "text": "YAML header (2)\n\nAlso used to set various options\n\nformat of output\nThemes and templates\nInclusion of TOC (table-of-contents)\netc"
+    "text": "YAML header (2)\n\nAlso used to set various options\n\nformat of output\nThemes and templates\nInclusion of TOC (table-of-contents)\nSet execution options for code chunks globally\netc"
   },
   {
     "objectID": "slides/Rmarkdown/index.html#popular-output-formats",
@@ -235,14 +235,14 @@
     "href": "slides/Rmarkdown/index.html#chunk-options-contd",
     "title": "R course - Day 4",
     "section": "Chunk options (cont’d)",
-    "text": "Chunk options (cont’d)\n\nerror: If FALSE, knitr will not display any error messages generated by the code\nmessage: If FALSE, knitr will not display any messages\nwarning: If FALSE, knitr will not display any warning messages\ncache: If TRUE, knitr will cache the results to reuse in future knits. Knitr will reuse the results until the code chunk is altered.\ncache.comments: If FALSE, knitr will not rerun the chunk if only a code comment has changed"
+    "text": "Chunk options (cont’d)\n\n\n\n\n\n\n\n\n\n\n\n\nOption\nRun code\nShow code\nOutput\nPlots\nMessages\nWarnings\n\n\n\n\neval: false\nX\n\nX\nX\nX\nX\n\n\ninclude: false\n\nX\nX\nX\nX\nX\n\n\necho: false\n\nX\n\n\n\n\n\n\nresults: hide\n\n\nX\n\n\n\n\n\nfig-show: hide\n\n\n\nX\n\n\n\n\nmessage: false\n\n\n\n\nX\n\n\n\nwarning: false\n\n\n\n\n\nX\n\n\n\n\n\nR for data science Hadley"
   },
   {
     "objectID": "slides/Rmarkdown/index.html#chunk-options-contd-1",
     "href": "slides/Rmarkdown/index.html#chunk-options-contd-1",
     "title": "R course - Day 4",
     "section": "Chunk options (cont’d)",
-    "text": "Chunk options (cont’d)\n\nfig.cap: A character string to be used as a figure caption in html\nfig.height, fig.width: The width and height to use in R for plots created by the chunk (in inches)"
+    "text": "Chunk options (cont’d)\n\nresults: If hide, results are not shown. If hold, knitr will delay displaying all output until the end of the chunk. If asis, knitr will pass through results without reformatting them (useful if results return raw HTML, etc.)\nerror: If TRUE, rendering will continue after an error and the error message will be included in the output.\ncache: If TRUE, quarto will cache the results to reuse in future knits. Quarto will reuse the results until the code chunk is altered.\ncache.comments: If FALSE, quarto will not rerun the chunk if only a code comment has changed"
   },
   {
     "objectID": "slides/Rmarkdown/index.html#r-markdown-gallery",
@@ -368,7 +368,7 @@
     "href": "slides/Rmarkdown/index.html#pipe-operation-contd",
     "title": "R course - Day 4",
     "section": "Pipe operation (cont’d)",
-    "text": "Pipe operation (cont’d)\nNested functions - hard to read:\nUsing a pipe - reads left to right:"
+    "text": "Pipe operation (cont’d)\n\nNested functions - hard to read:\n\n\n# Without pipe - hard to read\nmean(log(abs(c(-5, -2, 3, 7))))\n\n\nUsing a pipe - reads left to right:\n\n\nc(-5, -2, 3, 7) %&gt;% \n  abs() %&gt;% \n  log() %&gt;% \n  mean()\n\n\nBase R syntax can be made shorter by nesting expressions\nDoes not help readability"
   },
   {
     "objectID": "slides/Rmarkdown/index.html#tibble",
@@ -439,6 +439,20 @@
     "title": "R course - Day 4",
     "section": "The End / Questions?",
     "text": "The End / Questions?\nKeep practicing! The best way to learn R is to use it on real problems."
+  },
+  {
+    "objectID": "slides/Rmarkdown/index.html#code-chunks-contd",
+    "href": "slides/Rmarkdown/index.html#code-chunks-contd",
+    "title": "R course - Day 4",
+    "section": "Code chunks (cont’d)",
+    "text": "Code chunks (cont’d)\n\n\n\nCode\n\n```{r }\n1+1\n```\nOptionally use a label:\n```{r}\nlabel: oneplusone\n1+1\n```\nor\n```{r oneplusone}\n1+1\n```\n\n\nOutput\n\n\n\n[1] 2\n\n\n\n\nNote: inline R can be included using something like {r} NROW(x)"
+  },
+  {
+    "objectID": "slides/Rmarkdown/index.html#chunk-options-contd-2",
+    "href": "slides/Rmarkdown/index.html#chunk-options-contd-2",
+    "title": "R course - Day 4",
+    "section": "Chunk options (cont’d)",
+    "text": "Chunk options (cont’d)\n\nfig.cap: A character string to be used as a figure caption in HTML\nfig.height, fig.width: The width and height to use in R for plots created by the chunk (in inches)\nout.height, out.width: The width and height of plots as they are included in the document (in px or percentages (for html output))\nfig-format : The format to use for plots (e.g. png, jpg, pdf etc)"
   },
   {
     "objectID": "slides/Introduction/index.html#introduction-to-r-1",
