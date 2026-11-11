@@ -1,4 +1,5 @@
-.hide-slide-number .reveal .slide-number {
+.hide-slide-number .reveal > .slide-number,
+.reveal .pdf-page:has(> [data-state~="hide-slide-number"]) > .slide-number-pdf {
   display: none !important;
 }
 
